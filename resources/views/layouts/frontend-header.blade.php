@@ -25,45 +25,13 @@
                 <div class="main-menu smooth d-none d-none d-xl-block">
                     <nav id="mobile-menu">
                     <ul>
-                        <li class="has-dropdown has-mega-menu">
-                        <a href="index.html">Home</a>
-                        <ul class="mega-menu">
-                            <li>
-                            <a
-                                style="
-                                background-image: url('{{ URL::asset('build/media/landing.227cfd5a.jpg') }};
-                                "
-                                href="index.html"
-                                ></a>
-                            </li>
-                            <li>
-                            <a
-                                style="
-                                background-image: url('{{ URL::asset('build/media/dashboard.44ab482c.jpg') }};
-                                "
-                                href="signin"
-                                ></a>
-                            </li>
-                            <li>
-                            <a
-                                style="
-                                background-image: url('{{ URL::asset('build/media/event.ac7ebef9.jpg') }};
-                                "
-                                href="signin"
-                                ></a>
-                            </li>
-                        </ul>
-                        </li>
-                        <li class=""><a href="about">About</a></li>
-                        <li class="">
-                        <a href="speaker-list-two">Speakers</a>
-                        </li>
-                        <li class="">
-                        <a href="event-list-two">Events</a>
-                        </li>
-                        <li class=""><a href="blog">Blog</a></li>
-                        <li class=""><a href="pricing">Pricing</a></li>
-                        <li class=""><a href="contact">Contact</a></li>
+                        <li class=""><a href="{{ route('home') }}">Home</a></li>
+                        <li class=""><a href="{{ route('aboutUs') }}">About</a></li>
+                        <li class=""><a href="{{ route('events') }}">Events</a></li>
+                        <li class=""><a href="{{ route('gallery') }}">Gallery</a></li>
+                        <li class=""><a href="{{ route('blog') }}">Blog</a></li>
+                        <li class=""><a href="{{ route('membership') }}">Membership</a></li>
+                        <li class=""><a href="{{ route('contactUs') }}">Contact</a></li>
                     </ul>
                     </nav>
                 </div>
