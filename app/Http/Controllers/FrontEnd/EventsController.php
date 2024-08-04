@@ -11,4 +11,8 @@ class EventsController extends Controller
     {
         return view('frontend.events.index');
     }
+    public function eventDetail(Request $request)
+    {
+        return view('frontend.events.event-detail');
+    }
 }

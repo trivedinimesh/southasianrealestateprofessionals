@@ -11,4 +11,9 @@ class BlogController extends Controller
     {
         return view('frontend.blog.index');
     }
+    public function blogDetail(Request $request)
+    {
+        return view('frontend.blog.blog-detail');
+    }
+
 }

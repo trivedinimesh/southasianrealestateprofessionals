@@ -193,50 +193,6 @@ Contact
     </div>
   </div>
 </section>
-<div class="bd-theme-settings-area transition-3">
-  <div class="bd-theme-wrapper bd-theme-dark">
-    <div class="bd-theme-header text-center">
-      <h4 class="bd-theme-header-title">Template Settings</h4>
-    </div>
-    <div class="bd-theme-toggle mb-20 d-block">
-      <label class="bd-theme-toggle-main" for="bd-theme-toggler"
-        ><span class="bd-theme-toggle-dark active"
-          ><i class="fa-light fa-moon"></i> Dark</span
-        ><input type="checkbox" id="bd-theme-toggler" checked="" /><i
-          class="bd-theme-toggle-slide"
-        ></i
-        ><span class="bd-theme-toggle-light"
-          ><i class="fa-light fa-sun-bright"></i> Light</span
-        ></label
-      >
-    </div>
-    <div class="bd-theme-settings">
-      <div class="bd-theme-settings-wrapper">
-        <div class="bd-theme-settings-open">
-          <button class="bd-theme-settings-open-btn">
-            <span class="bd-theme-settings-gear"
-              ><i class="fa-light fa-gear"></i></span
-            ><span class="bd-theme-settings-close"
-              ><i class="fa-regular fa-xmark"></i
-            ></span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="progress-wrap active-progress">
-  <button id="back_to_top" type="button" class="back-to-top-btn">
-    <svg
-      class="progress-circle svg-content"
-      width="100%"
-      height="100%"
-      viewBox="-1 -1 102 102"
-    >
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"></path>
-    </svg>
-  </button>
-</div>
 
 
 
