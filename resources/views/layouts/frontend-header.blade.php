@@ -1,0 +1,158 @@
+
+<div id="__next">
+<main class="body-area bd-theme-light">
+        <div class="fix">
+          <div class="offcanvas__info">
+            <div class="offcanvas__wrapper">
+              <div class="offcanvas__content">
+                <div
+                  class="offcanvas__top mb-40 d-flex justify-content-between align-items-center"
+                  >
+                  <div class="offcanvas__logo">
+                    <a href="index.html"
+                      ><img
+                      src="{{ URL::asset('build/media/logo-black.51edaff6.svg') }}"
+                      alt="logo not found"
+                      /></a>
+                  </div>
+                  <div class="offcanvas__close">
+                    <button><i class="fal fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="offcanvas__search mb-25">
+                  <form action="#">
+                    <input
+                      type="text"
+                      placeholder="What are you searching for?"
+                      /><button type="submit">
+                    <i class="far fa-search"></i>
+                    </button>
+                  </form>
+                </div>
+                <div class="mobile-menu fix mb-40"></div>
+                <div class="offcanvas__contact mt-30 mb-20">
+                  <h4>Contact Info</h4>
+                  <ul>
+                    <li class="d-flex align-items-center">
+                      <div class="offcanvas__contact-icon mr-15">
+                        <i class="fal fa-map-marker-alt"></i>
+                      </div>
+                      <div class="offcanvas__contact-text">
+                        <a
+                          href="https://www.google.com/maps/place/Dhaka/@23.7806207,90.3492859,12z/data=!3m1!4b1!4m5!3m4!1s0x3755b8b087026b81:0x8fa563bbdd5904c2!8m2!3d23.8104753!4d90.4119873"
+                          >12/A, Mirnada City Tower, NYC</a
+                          >
+                      </div>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <div class="offcanvas__contact-icon mr-15">
+                        <i class="far fa-phone"></i>
+                      </div>
+                      <div class="offcanvas__contact-text">
+                        <a href="tel:+088889797697">+088889797697</a>
+                      </div>
+                    </li>
+                    <li class="d-flex align-items-center">
+                      <div class="offcanvas__contact-icon mr-15">
+                        <i class="fal fa-envelope"></i>
+                      </div>
+                      <div class="offcanvas__contact-text">
+                        <a href="tel:+012-345-6789"
+                          ><span class="mailto:support@mail.com"
+                          >support@mail.com</span
+                          ></a
+                          >
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="offcanvas__social">
+                  <ul>
+                    <li>
+                      <a href="https://www.facebook.com/"
+                        ><i class="fa-brands fa-facebook"></i
+                        ></a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/"
+                        ><i class="fa-brands fa-twitter"></i
+                        ></a>
+                    </li>
+                    <li>
+                      <a href="https://bd.linkedin.com/"
+                        ><i class="fa-brands fa-linkedin"></i
+                        ></a>
+                    </li>
+                    <li>
+                      <a href="https://www.youtube.com/"
+                        ><i class="fa-brands fa-youtube"></i
+                        ></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="offcanvas__overlay"></div>
+        <div class="offcanvas__overlay-white"></div>
+
+<header>
+    <div
+    id="header-sticky"
+    class="header__area header-1 header__transparent menu-sticky dark_light_class"
+    >
+    <div class="container">
+        <div class="row align-items-center">
+        <div class="col-12">
+            <div class="mega__menu-wrapper p-relative">
+            <div
+                class="header__navigation d-flex align-items-center justify-content-between"
+                >
+                <div class="header__logo">
+                <a href="index.html"
+                    ><img
+                    class="logo__white"
+                    src="{{ URL::asset('build/media/logo.6dd2592f.svg') }}"
+                    alt="logo not found" /><img
+                    class="logo__dark"
+                    src="{{ URL::asset('build/media/logo-dark.f5dee282.svg') }}"
+                    alt="logo not found"
+                    /></a>
+                </div>
+                <div class="header__right">
+                <div class="main-menu smooth d-none d-none d-xl-block">
+                    <nav id="mobile-menu">
+                    <ul>
+                        <li class=""><a href="{{ route('home') }}">Home</a></li>
+                        <li class=""><a href="{{ route('aboutUs') }}">About</a></li>
+                        <li class=""><a href="{{ route('events') }}">Events</a></li>
+                        <li class=""><a href="{{ route('gallery') }}">Gallery</a></li>
+                        <li class=""><a href="{{ route('blog') }}">Blog</a></li>
+                        <li class=""><a href="{{ route('membership') }}">Membership</a></li>
+                        <li class=""><a href="{{ route('contactUs') }}">Contact</a></li>
+                    </ul>
+                    </nav>
+                </div>
+                <div class="header__action-inner">
+                    <div class="header__btn d-none d-xl-block">
+                    <a class="fill__btn" href="signin"
+                        >SignIn<i class="fa-regular fa-angle-right"></i
+                        ></a>
+                    </div>
+                    <div class="header__hamburger">
+                    <div class="sidebar__toggle">
+                        <button type="button" class="bar-icon">
+                        <span></span><span></span><span></span>
+                        </button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+</header>
