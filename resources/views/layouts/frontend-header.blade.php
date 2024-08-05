@@ -11,7 +11,7 @@
                   <div class="offcanvas__logo">
                     <a href="index.html"
                       ><img
-                      src="{{ URL::asset('build/media/logo-black.51edaff6.svg') }}"
+                      src="{{ URL::asset('build/media/logo.png') }}"
                       alt="logo not found"
                       /></a>
                   </div>
@@ -112,11 +112,11 @@
                 <div class="header__logo">
                 <a href="index.html"
                     ><img
-                    class="logo__white"
-                    src="{{ URL::asset('build/media/logo.6dd2592f.svg') }}"
+                    class="logo__white w-100-px"
+                    src="{{ URL::asset('build/media/logo.png') }}"
                     alt="logo not found" /><img
-                    class="logo__dark"
-                    src="{{ URL::asset('build/media/logo-dark.f5dee282.svg') }}"
+                    class="logo__dark w-100-px"
+                    src="{{ URL::asset('build/media/logo.png') }}"
                     alt="logo not found"
                     /></a>
                 </div>

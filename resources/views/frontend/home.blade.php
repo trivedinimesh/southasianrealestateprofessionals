@@ -107,7 +107,7 @@ Home
 </section>
 <section
     id="homeabout"
-    class="about__area p-relative pt-150 dark_light_class pb-90"
+    class="about__area p-relative pt-90 dark_light_class pb-90"
     >
     <div class="about__shape-1">
     <img src="{{ URL::asset('build/media/shape/about-1.png') }}" alt="image not found" />
@@ -117,13 +117,12 @@ Home
         <div class="col-xxl-6 col-xl-6 col-lg-6">
         <div class="about__content-wrapper mb-60">
             <div class="section__title-wrapper mb-80">
-            <span class="section__back-title">A</span
-                ><span class="section__subtitle">ABOUT THIS EVENT</span>
+            
             <h2 class="section__title">
-                EXPERIENCE A TRUE DIGITAL
+                Welcome to 
                 <span class="text__highlight"
                 >
-                CONFERENCE
+                SAREP
                 <svg
                     class="title-underline"
                     width="328"
@@ -158,44 +157,16 @@ Home
             </div>
             <div class="about__content">
             <div class="about__text">
-                <h4>
-                How you transform your business as technology, consumer
-                habits industry dynamic
-                </h4>
                 <p class="mb-30">
-                Velit auctor aliquet. Aenean sollicitudin, lorem quis
-                bibendum auctor, nisi elit consequat ipsum, nec sagittis
-                sem nibh.
+                We are confident that with our amazing panel of progressive, experienced & successful real estate professionals, SAREP will be a great place to network, learn & grow your Real Estate Business.
                 </p>
                 <p>
-                Lorem ipsum proin gravida nibh vel velit auctor aliquet.
-                Aeneansollicitudin, lorem quis bibendum auctonisi elit
-                consequat ipsum nec sagittis sem nibh id elit. Duis sed
-                odio sit amet nibh vulputate cursusa sit amet mauris.
-                Morbi accumsan ipsum velit.” Nam nec tellus a odio
-                tincidunt.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchange.
                 </p>
-            </div>
-            <div class="about__location-info mb-80">
-                <div class="about__location-inner">
-                <div class="about__location-icon">
-                    <a href="#"
-                    ><i class="fa-solid fa-location-dot"></i
-                    ></a>
-                </div>
-                <div class="about__location-address">
-                    <h5>WHEN AND WHERE</h5>
-                    <span>November 9–10 <br />The Midway SF, Zoom</span>
-                </div>
-                </div>
-                <div class="pluse__status">
-                <span class="dot"></span
-                    ><span class="text">Online</span>
-                </div>
             </div>
             </div>
             <a class="fill__btn" href="event-list-two"
-            >Join Now<i class="fa-regular fa-angle-right"></i
+            >FIND OUT MORE<i class="fa-regular fa-angle-right"></i
             ></a>
         </div>
         </div>
@@ -230,17 +201,9 @@ Home
     style="background-image: url('{{ URL::asset('build/media/joinbg.e1b1d152.jpg') }}"
     >
     <div class="join__all-shape p-relative">
-    <img
-        class="join__shape-1"
-        src="{{ URL::asset('build/media/shape/join-shape-1.png') }}"
-        alt="image not found"
-        /><img
-        class="join__shape-2"
-        src="{{ URL::asset('build/media/shape/join-shape-2.png') }}"
-        alt="image not found"
-        />
+    
     <div class="container">
-        <div class="join__main-wrapper pt-150 pb-90">
+        <div class="join__main-wrapper pt-90 pb-90">
         <div class="row align-items-sm-start">
             <div class="col-xxl-6 col-xl-6 col-lg-6">
             <div class="join__features-wrapper mb-60">
@@ -249,27 +212,27 @@ Home
                     <div class="join__features-icon">
                     <span><i class="flaticon-network"></i></span>
                     </div>
-                    <h3 class="join__features-title">Build Networking</h3>
+                    <h5 class="join__features-title">Educate & empower real estate professionals who serve South Asian communities.                    </h5>
                 </div>
                 <div class="join__features-item text-center">
                     <div class="join__features-icon">
                     <span><i class="flaticon-teamwork"></i></span>
                     </div>
-                    <h3 class="join__features-title">Meet New People</h3>
+                    <h5 class="join__features-title">Strengthen relationships among real estate professionals and industry stakeholders.</h5>
                 </div>
                 <div class="join__features-item text-center">
                     <div class="join__features-icon">
                     <span><i class="flaticon-speech"></i></span>
                     </div>
-                    <h3 class="join__features-title">
-                    Experience Speakers
-                    </h3>
+                    <h5 class="join__features-title">
+                    Promote sustainable homeownership in South Asian communities.
+                    </h5>
                 </div>
                 <div class="join__features-item text-center">
                     <div class="join__features-icon">
                     <span><i class="flaticon-confetti"></i></span>
                     </div>
-                    <h3 class="join__features-title">Lot’s Of Fun</h3>
+                    <h5 class="join__features-title">Empower members to serve in leadership positions within the real estate industry, government, and community.                    </h5>
                 </div>
                 </div>
             </div>
@@ -277,12 +240,11 @@ Home
             <div class="col-xxl-6 col-xl-6 col-lg-6">
             <div class="join__content-wrapper mb-60">
                 <div class="section__title-wrapper is-white mb-40">
-                <span class="section__back-title">w</span
-                    ><span class="section__subtitle">WHY JOIN EVENT</span>
+                
                 <h2 class="section__title">
-                    WHY YOU SHOULD
+                What is 
                     <span class="text__highlight">
-                    JOIN THIS
+                    SAREP
                     <svg
                         width="164"
                         height="32"
@@ -312,26 +274,19 @@ Home
                         </defs>
                     </svg>
                     </span>
-                    EVENT
+                    ?
                 </h2>
                 </div>
                 <div class="join__content mb-70">
                 <p>
-                    Velit auctor aliquet. Aenean sollicitudin, lorem quis
-                    bibendum auctor, nisi elit consequat ipsum, nec
-                    sagittis sem nibh.
+                We are confident that with our amazing panel of progressive, experienced & successful real estate professionals, SAREP will be a great place to network, learn & grow your Real Estate Business.
                 </p>
                 <p class="mt-30">
-                    Lorem ipsum proin gravida nibh vel velit auctor
-                    aliquet. Aeneansollicitudin, lorem quis bibendum
-                    auctonisi elit consequat ipsum nec sagittis sem nibh
-                    id elit. Duis sed odio sit amet nibh vulputate cursusa
-                    sit amet mauris. Morbi accumsan ipsum velit.” Nam nec
-                    tellus a odio tincidunt.
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                 </p>
                 </div>
                 <a class="fill__btn fill_btn_new" href="event-list-two"
-                >Join Now<i class="fa-regular fa-angle-right"></i
+                >I'M READY TO BE A MEMBER!  <i class="fa-regular fa-angle-right"></i
                 ></a>
             </div>
             </div>
@@ -340,317 +295,290 @@ Home
     </div>
     </div>
 </section>
-<section
-    class="counter__area include__bg pt-150 pb-120 counter__overlay fix"
-    style="
-    background-image: url('{{ URL::asset('build/media/cunter-bg.8a8fac26.jpg') }};
-    "
-    >
-    <div class="counter__shape">
-    <img src="{{ URL::asset('build/media/shape/counter-shape.png') }}" alt="" />
-    </div>
-    <div class="container">
-    <div class="row">
-        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
-        <div class="counter__item text-center mb-60">
-            <div class="counter__icon"><i class="flaticon-team"></i></div>
-            <div class="counter__content">
-            <div class="counter__number">
-                <span class="counter"></span>
-            </div>
-            <div class="counter__title">
-                <h3>Participants</h3>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
-        <div class="counter__item text-center mb-60">
-            <div class="counter__icon"><i class="flaticon-team"></i></div>
-            <div class="counter__content">
-            <div class="counter__number">
-                <span class="counter"></span>
-            </div>
-            <div class="counter__title">
-                <h3>Speakers</h3>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
-        <div class="counter__item text-center mb-60">
-            <div class="counter__icon"><i class="flaticon-team"></i></div>
-            <div class="counter__content">
-            <div class="counter__number">
-                <span class="counter"></span>
-            </div>
-            <div class="counter__title">
-                <h3>Workshop</h3>
-            </div>
-            </div>
-        </div>
-        </div>
-        <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-6 col-sm-6">
-        <div class="counter__item text-center mb-60">
-            <div class="counter__icon"><i class="flaticon-team"></i></div>
-            <div class="counter__content">
-            <div class="counter__number">
-                <span class="counter"></span>
-            </div>
-            <div class="counter__title">
-                <h3>Awards Win</h3>
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</section>
-<section class="pricing__area dark_light_class pt-185 pb-120">
-    <div class="container">
-    <div class="row align-items-center">
-        <div class="col-xxl-5 col-xl-6 col-lg-6">
-        <div class="section__title-wrapper is-left mb-105">
-            <span class="section__back-title">R</span
-            ><span class="section__subtitle">REGISTRATION NOW</span>
+<section class="blog_section dark_light_class section_space_lg">
+  <div class="container">
+  <div class="row align-items-center">
+      <div class="col-12">
+        <div class="blog__intro-innner mb-80">
+          <div class="section__title-wrapper is-left">
+            
             <h2 class="section__title">
-            Get
-            <span class="text__highlight">
-                Ticket
+              LATEST 
+              <span class="text__highlight">
+              BLOGS
                 <svg
-                width="164"
-                height="32"
-                viewBox="0 0 164 32"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+                  width="228"
+                  height="32"
+                  viewBox="0 0 228 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
                 >
-                <path
-                    d="M1.99971 28.2805C55.3778 8.30722 162.042 -19.4147 161.673 29.4835"
-                    stroke="url(#paint0_linear_83_347)"
+                  <path
+                    d="M2.6296 28.2336C77.1701 8.41978 226.159 -18.9833 225.79 29.9149"
+                    stroke="url(#paint0_linear_85_33)"
                     stroke-width="4"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    ></path>
-                <defs>
+                  ></path>
+                  <defs>
                     <linearGradient
-                    id="paint0_linear_83_347"
-                    x1="2.30241"
-                    y1="21.3238"
-                    x2="162.062"
-                    y2="33.1155"
-                    gradientUnits="userSpaceOnUse"
+                      id="paint0_linear_85_33"
+                      x1="3.0318"
+                      y1="21.2777"
+                      x2="225.342"
+                      y2="43.5485"
+                      gradientUnits="userSpaceOnUse"
                     >
-                    <stop offset="1" stop-color="#F7426F"></stop>
-                    <stop offset="1" stop-color="#F87A58"></stop>
+                      <stop offset="1" stop-color="#F7426F"></stop>
+                      <stop offset="1" stop-color="#F87A58"></stop>
                     </linearGradient>
-                </defs>
-                </svg>
-            </span>
-            Now
+                  </defs></svg></span>
             </h2>
-        </div>
-        </div>
-        <div class="col-xxl-7 col-xl-6 col-lg-6">
-        <div
-            class="price__short-details d-lg-flex justify-content-center mb-105"
+          </div>
+          <div class="blog__pagination">
+            <div
+              class="testimonial-slider-dot bd-swiper-dot swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
             >
-            <p>
-            Velit auctor aliquet. Aenean sollicitudin, lorem quis
-            bibendum auctor, nisi <br />elit consequat ipsum, nec
-            sagittis sem nibh.
-            </p>
+              <span
+                class="swiper-pagination-bullet swiper-pagination-bullet-active"
+              ></span
+              ><span class="swiper-pagination-bullet"></span
+              ><span class="swiper-pagination-bullet"></span>
+            </div>
+          </div>
         </div>
-        </div>
+      </div>
     </div>
-    <div class="row">
-        <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
-        <div class="pricing__item mb-30">
-            <div class="pricing__item-header">
-            <div>
-                <span class="pricing__item-title">
-                <!-- -->$599<!-- -->
-                </span>
+    <div class="blog_grouped row justify-content-center">
+      <div class="blog_responsive col-lg-12">
+        <div class="blog_wrapper">
+          <div class="row g-4">
+            <div class="col-md-3">
+              <div class="blog_item">
+                <a class="item_image" href="{{ route('blog-detail') }}"
+                  ><img
+                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    alt="Blog Image"
+                    style="height: 100%; width: 100%"
+                /></a>
+                <div class="item_content">
+                  
+                  <h3 class="item_title">
+                    <a href="{{ route('blog-detail') }}"
+                      >Event Security: Ensuring Safety and Peace of Mind</a
+                    >
+                  </h3>
+                  <div class="flex_wrap">
+                    <ul class="category_list unordered_list">
+                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
+                    </ul>
+                    <span class="post_date"
+                      ><span style="margin-right: 10px"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clipcxcxc0_89_209)">
+                            <path
+                              d="M16.1386 1.54064H15.3926V0.785785C15.3926 0.354493 15.043 0.00488281 14.6117 0.00488281C14.1804 0.00488281 13.8308 0.354493 13.8308 0.785785V1.54064H6.16913V0.785785C6.16913 0.354493 5.81952 0.00488281 5.38823 0.00488281C4.95693 0.00488281 4.60732 0.354493 4.60732 0.785785V1.54064H3.86137C1.7322 1.54064 0 3.27284 0 5.40197V16.1346C0 18.2638 1.7322 19.996 3.86137 19.996H16.1387C18.2678 19.996 20 18.2638 20 16.1346V5.40197C20 3.27284 18.2678 1.54064 16.1386 1.54064ZM3.86137 3.10245H4.60732V4.62521C4.60732 5.0565 4.95693 5.40611 5.38823 5.40611C5.81952 5.40611 6.16913 5.0565 6.16913 4.62521V3.10245H13.8309V4.62521C13.8309 5.0565 14.1805 5.40611 14.6118 5.40611C15.0431 5.40611 15.3927 5.0565 15.3927 4.62521V3.10245H16.1387C17.4066 3.10245 18.4382 4.13402 18.4382 5.40197V6.14797H1.5618V5.40197C1.5618 4.13402 2.59338 3.10245 3.86137 3.10245ZM16.1386 18.4342H3.86137C2.59338 18.4342 1.5618 17.4026 1.5618 16.1346V7.70977H18.4382V16.1346C18.4382 17.4026 17.4066 18.4342 16.1386 18.4342ZM6.93703 10.7813C6.93703 11.2126 6.58742 11.5622 6.15613 11.5622H4.62036C4.18907 11.5622 3.83946 11.2126 3.83946 10.7813C3.83946 10.35 4.18907 10.0004 4.62036 10.0004H6.15613C6.58738 10.0004 6.93703 10.35 6.93703 10.7813ZM16.1606 10.7813C16.1606 11.2126 15.811 11.5622 15.3797 11.5622H13.8439C13.4126 11.5622 13.063 11.2126 13.063 10.7813C13.063 10.35 13.4126 10.0004 13.8439 10.0004H15.3797C15.8109 10.0004 16.1606 10.35 16.1606 10.7813ZM11.5444 10.7813C11.5444 11.2126 11.1947 11.5622 10.7634 11.5622H9.22769C8.79639 11.5622 8.44678 11.2126 8.44678 10.7813C8.44678 10.35 8.79639 10.0004 9.22769 10.0004H10.7634C11.1947 10.0004 11.5444 10.35 11.5444 10.7813ZM6.93703 15.3887C6.93703 15.8199 6.58742 16.1696 6.15613 16.1696H4.62036C4.18907 16.1696 3.83946 15.8199 3.83946 15.3887C3.83946 14.9574 4.18907 14.6078 4.62036 14.6078H6.15613C6.58738 14.6078 6.93703 14.9574 6.93703 15.3887ZM16.1606 15.3887C16.1606 15.8199 15.811 16.1696 15.3797 16.1696H13.8439C13.4126 16.1696 13.063 15.8199 13.063 15.3887C13.063 14.9574 13.4126 14.6078 13.8439 14.6078H15.3797C15.8109 14.6078 16.1606 14.9574 16.1606 15.3887ZM11.5444 15.3887C11.5444 15.8199 11.1947 16.1696 10.7634 16.1696H9.22769C8.79639 16.1696 8.44678 15.8199 8.44678 15.3887C8.44678 14.9574 8.79639 14.6078 9.22769 14.6078H10.7634C11.1947 14.6078 11.5444 14.9574 11.5444 15.3887Z"
+                              fill="#7C7C7C"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_8vcvc9_209">
+                              <rect width="20" height="20" fill="white"></rect>
+                            </clipPath>
+                          </defs></svg></span
+                      >25 Sep, 2023</span
+                    >
+                  </div>
+                  <div class="header__btn">
+                    <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
+                      >Read More<i class="fa-regular fa-angle-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="pricing__item-lable">
-                <span class="pricing__item-label">
-                <!-- -->CIP
-                </span
-                >
-                <svg
-                class="lable-border"
-                width="97"
-                height="54"
-                viewBox="0 0 97 54"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                >
-                <path
-                    d="M1.55449 2.53125L0.518162 0.84375L0.944232 0.582093L0.893817 0.5H1.01039V0H3.03123V0.5H5.05206V0H7.0729V0.5H9.09373V0H11.1146V0.5H13.1354V0H15.1562V0.5H17.1771V0H19.1979V0.5H21.2188V0H23.2396V0.5H25.2604V0H27.2813V0.5H29.3021V0H31.3229V0.5H33.3438V0H35.3646V0.5H37.3854V0H39.4063V0.5H41.4271V0H43.4479V0.5H45.4688V0H47.4896V0.5H49.5104V0H51.5313V0.5H53.5521V0H55.5729V0.5H57.5938V0H59.6146V0.5H61.6354V0H63.6562V0.5H65.6771V0H67.6979V0.5H69.7188V0H71.7396V0.5H73.7604V0H75.7812V0.5H77.8021V0H79.8229V0.5H81.8438V0H83.8646V0.5H85.8854V0H87.9062V0.5H89.9271V0H91.9479V0.5H93.9688V0H95.9896V0.5H96.5V0.964301H97V2.89287H96.5V4.82144H97V6.75001H96.5V8.67858H97V10.6072H96.5V12.5357H97V14.4643H96.5V16.3929H97V18.3214H96.5V20.25H97V22.1786H96.5V24.1071H97V26.0357H96.5V27.9643H97V29.8929H96.5V31.8214H97V33.75H96.5V35.6786H97V37.6071H96.5V39.5357H97V41.4643H96.5V43.3929H97V45.3214H96.5V47.25H97V49.1786H96.5V51.1071H97V53.0357H96.5V53.5H95.9896V54H93.9688V53.5H91.9479V54H89.9271V53.5H87.9063V54H85.8854V53.5H83.8646V54H81.8438V53.5H79.8229V54H77.8021V53.5H75.7812V54H73.7604V53.5H71.7396V54H69.7187V53.5H67.6979V54H65.6771V53.5H63.6562V54H61.6354V53.5H59.6146V54H57.5937V53.5H55.5729V54H53.5521V53.5H51.5312V54H49.5104V53.5H47.4896V54H45.4687V53.5H43.4479V54H41.4271V53.5H39.4062V54H37.3854V53.5H35.3646V54H33.3438V53.5H31.3229V54H29.3021V53.5H27.2813V54H25.2604V53.5H23.2396V54H21.2188V53.5H19.1979V54H17.1771V53.5H15.1562V54H13.1354V53.5H11.1146V54H9.09375V53.5H7.07292V54H5.05208V53.5H3.03125V54H1.01042V53.5H0.893817L0.944236 53.4179L0.518167 53.1562L1.55449 51.4688L1.98056 51.7304L3.01688 50.0429L2.59082 49.7812L3.62714 48.0938L4.05321 48.3554L5.08953 46.6679L4.66346 46.4062L5.69979 44.7188L6.12586 44.9804L7.16218 43.2929L6.73611 43.0312L7.77244 41.3438L8.19851 41.6054L9.23483 39.9179L8.80876 39.6562L9.84509 37.9688L10.2712 38.2304L11.3075 36.5429L10.8814 36.2812L11.9177 34.5938L12.3438 34.8554L13.3801 33.1679L12.9541 32.9062L13.9904 31.2188L14.4165 31.4804L15.4528 29.7929L15.0267 29.5313L16.063 27.8438L16.4891 28.1054L17.0073 27.2617L17.168 27L17.0073 26.7383L16.4891 25.8946L16.063 26.1562L15.0267 24.4687L15.4528 24.2071L14.4165 22.5196L13.9904 22.7812L12.9541 21.0937L13.3801 20.8321L12.3438 19.1446L11.9177 19.4062L10.8814 17.7188L11.3075 17.4571L10.2712 15.7696L9.84508 16.0312L8.80876 14.3438L9.23483 14.0821L8.19851 12.3946L7.77244 12.6562L6.73611 10.9688L7.16218 10.7071L6.12586 9.01959L5.69979 9.28125L4.66346 7.59375L5.08953 7.33209L4.05321 5.64459L3.62714 5.90625L2.59081 4.21875L3.01688 3.95709L1.98056 2.26959L1.55449 2.53125Z"
-                    stroke="#1EA9F8"
-                    stroke-dasharray="2 2"
-                    ></path>
-                </svg>
+            <div class="col-md-3">
+              <div class="blog_item">
+                <a class="item_image" href="{{ route('blog-detail') }}"
+                  ><img
+                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    alt="Blog Image"
+                    style="height: 100%; width: 100%"
+                /></a>
+                <div class="item_content">
+                  
+                  <h3 class="item_title">
+                    <a href="{{ route('blog-detail') }}"
+                      >Event Security: Ensuring Safety and Peace of Mind</a
+                    >
+                  </h3>
+                  <div class="flex_wrap">
+                    <ul class="category_list unordered_list">
+                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
+                    </ul>
+                    <span class="post_date"
+                      ><span style="margin-right: 10px"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clipcxcxc0_89_209)">
+                            <path
+                              d="M16.1386 1.54064H15.3926V0.785785C15.3926 0.354493 15.043 0.00488281 14.6117 0.00488281C14.1804 0.00488281 13.8308 0.354493 13.8308 0.785785V1.54064H6.16913V0.785785C6.16913 0.354493 5.81952 0.00488281 5.38823 0.00488281C4.95693 0.00488281 4.60732 0.354493 4.60732 0.785785V1.54064H3.86137C1.7322 1.54064 0 3.27284 0 5.40197V16.1346C0 18.2638 1.7322 19.996 3.86137 19.996H16.1387C18.2678 19.996 20 18.2638 20 16.1346V5.40197C20 3.27284 18.2678 1.54064 16.1386 1.54064ZM3.86137 3.10245H4.60732V4.62521C4.60732 5.0565 4.95693 5.40611 5.38823 5.40611C5.81952 5.40611 6.16913 5.0565 6.16913 4.62521V3.10245H13.8309V4.62521C13.8309 5.0565 14.1805 5.40611 14.6118 5.40611C15.0431 5.40611 15.3927 5.0565 15.3927 4.62521V3.10245H16.1387C17.4066 3.10245 18.4382 4.13402 18.4382 5.40197V6.14797H1.5618V5.40197C1.5618 4.13402 2.59338 3.10245 3.86137 3.10245ZM16.1386 18.4342H3.86137C2.59338 18.4342 1.5618 17.4026 1.5618 16.1346V7.70977H18.4382V16.1346C18.4382 17.4026 17.4066 18.4342 16.1386 18.4342ZM6.93703 10.7813C6.93703 11.2126 6.58742 11.5622 6.15613 11.5622H4.62036C4.18907 11.5622 3.83946 11.2126 3.83946 10.7813C3.83946 10.35 4.18907 10.0004 4.62036 10.0004H6.15613C6.58738 10.0004 6.93703 10.35 6.93703 10.7813ZM16.1606 10.7813C16.1606 11.2126 15.811 11.5622 15.3797 11.5622H13.8439C13.4126 11.5622 13.063 11.2126 13.063 10.7813C13.063 10.35 13.4126 10.0004 13.8439 10.0004H15.3797C15.8109 10.0004 16.1606 10.35 16.1606 10.7813ZM11.5444 10.7813C11.5444 11.2126 11.1947 11.5622 10.7634 11.5622H9.22769C8.79639 11.5622 8.44678 11.2126 8.44678 10.7813C8.44678 10.35 8.79639 10.0004 9.22769 10.0004H10.7634C11.1947 10.0004 11.5444 10.35 11.5444 10.7813ZM6.93703 15.3887C6.93703 15.8199 6.58742 16.1696 6.15613 16.1696H4.62036C4.18907 16.1696 3.83946 15.8199 3.83946 15.3887C3.83946 14.9574 4.18907 14.6078 4.62036 14.6078H6.15613C6.58738 14.6078 6.93703 14.9574 6.93703 15.3887ZM16.1606 15.3887C16.1606 15.8199 15.811 16.1696 15.3797 16.1696H13.8439C13.4126 16.1696 13.063 15.8199 13.063 15.3887C13.063 14.9574 13.4126 14.6078 13.8439 14.6078H15.3797C15.8109 14.6078 16.1606 14.9574 16.1606 15.3887ZM11.5444 15.3887C11.5444 15.8199 11.1947 16.1696 10.7634 16.1696H9.22769C8.79639 16.1696 8.44678 15.8199 8.44678 15.3887C8.44678 14.9574 8.79639 14.6078 9.22769 14.6078H10.7634C11.1947 14.6078 11.5444 14.9574 11.5444 15.3887Z"
+                              fill="#7C7C7C"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_8vcvc9_209">
+                              <rect width="20" height="20" fill="white"></rect>
+                            </clipPath>
+                          </defs></svg></span
+                      >25 Sep, 2023</span
+                    >
+                  </div>
+                  <div class="header__btn">
+                    <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
+                      >Read More<i class="fa-regular fa-angle-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="col-md-3">
+              <div class="blog_item">
+                <a class="item_image" href="{{ route('blog-detail') }}"
+                  ><img
+                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    alt="Blog Image"
+                    style="height: 100%; width: 100%"
+                /></a>
+                <div class="item_content">
+                  
+                  <h3 class="item_title">
+                    <a href="{{ route('blog-detail') }}"
+                      >Event Security: Ensuring Safety and Peace of Mind</a
+                    >
+                  </h3>
+                  <div class="flex_wrap">
+                    <ul class="category_list unordered_list">
+                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
+                    </ul>
+                    <span class="post_date"
+                      ><span style="margin-right: 10px"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clipcxcxc0_89_209)">
+                            <path
+                              d="M16.1386 1.54064H15.3926V0.785785C15.3926 0.354493 15.043 0.00488281 14.6117 0.00488281C14.1804 0.00488281 13.8308 0.354493 13.8308 0.785785V1.54064H6.16913V0.785785C6.16913 0.354493 5.81952 0.00488281 5.38823 0.00488281C4.95693 0.00488281 4.60732 0.354493 4.60732 0.785785V1.54064H3.86137C1.7322 1.54064 0 3.27284 0 5.40197V16.1346C0 18.2638 1.7322 19.996 3.86137 19.996H16.1387C18.2678 19.996 20 18.2638 20 16.1346V5.40197C20 3.27284 18.2678 1.54064 16.1386 1.54064ZM3.86137 3.10245H4.60732V4.62521C4.60732 5.0565 4.95693 5.40611 5.38823 5.40611C5.81952 5.40611 6.16913 5.0565 6.16913 4.62521V3.10245H13.8309V4.62521C13.8309 5.0565 14.1805 5.40611 14.6118 5.40611C15.0431 5.40611 15.3927 5.0565 15.3927 4.62521V3.10245H16.1387C17.4066 3.10245 18.4382 4.13402 18.4382 5.40197V6.14797H1.5618V5.40197C1.5618 4.13402 2.59338 3.10245 3.86137 3.10245ZM16.1386 18.4342H3.86137C2.59338 18.4342 1.5618 17.4026 1.5618 16.1346V7.70977H18.4382V16.1346C18.4382 17.4026 17.4066 18.4342 16.1386 18.4342ZM6.93703 10.7813C6.93703 11.2126 6.58742 11.5622 6.15613 11.5622H4.62036C4.18907 11.5622 3.83946 11.2126 3.83946 10.7813C3.83946 10.35 4.18907 10.0004 4.62036 10.0004H6.15613C6.58738 10.0004 6.93703 10.35 6.93703 10.7813ZM16.1606 10.7813C16.1606 11.2126 15.811 11.5622 15.3797 11.5622H13.8439C13.4126 11.5622 13.063 11.2126 13.063 10.7813C13.063 10.35 13.4126 10.0004 13.8439 10.0004H15.3797C15.8109 10.0004 16.1606 10.35 16.1606 10.7813ZM11.5444 10.7813C11.5444 11.2126 11.1947 11.5622 10.7634 11.5622H9.22769C8.79639 11.5622 8.44678 11.2126 8.44678 10.7813C8.44678 10.35 8.79639 10.0004 9.22769 10.0004H10.7634C11.1947 10.0004 11.5444 10.35 11.5444 10.7813ZM6.93703 15.3887C6.93703 15.8199 6.58742 16.1696 6.15613 16.1696H4.62036C4.18907 16.1696 3.83946 15.8199 3.83946 15.3887C3.83946 14.9574 4.18907 14.6078 4.62036 14.6078H6.15613C6.58738 14.6078 6.93703 14.9574 6.93703 15.3887ZM16.1606 15.3887C16.1606 15.8199 15.811 16.1696 15.3797 16.1696H13.8439C13.4126 16.1696 13.063 15.8199 13.063 15.3887C13.063 14.9574 13.4126 14.6078 13.8439 14.6078H15.3797C15.8109 14.6078 16.1606 14.9574 16.1606 15.3887ZM11.5444 15.3887C11.5444 15.8199 11.1947 16.1696 10.7634 16.1696H9.22769C8.79639 16.1696 8.44678 15.8199 8.44678 15.3887C8.44678 14.9574 8.79639 14.6078 9.22769 14.6078H10.7634C11.1947 14.6078 11.5444 14.9574 11.5444 15.3887Z"
+                              fill="#7C7C7C"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_8vcvc9_209">
+                              <rect width="20" height="20" fill="white"></rect>
+                            </clipPath>
+                          </defs></svg></span
+                      >25 Sep, 2023</span
+                    >
+                  </div>
+                  <div class="header__btn">
+                    <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
+                      >Read More<i class="fa-regular fa-angle-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="pricing__item-content">
-            <ul>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Everything from ALL Access
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Cocktail Hour
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Premium Seating
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Speaker Meet &amp; Greets
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Signed Books
-                </li>
-            </ul>
+            <div class="col-md-3">
+              <div class="blog_item">
+                <a class="item_image" href="{{ route('blog-detail') }}"
+                  ><img
+                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    alt="Blog Image"
+                    style="height: 100%; width: 100%"
+                /></a>
+                <div class="item_content">
+                  
+                  <h3 class="item_title">
+                    <a href="{{ route('blog-detail') }}"
+                      >Event Security: Ensuring Safety and Peace of Mind</a
+                    >
+                  </h3>
+                  <div class="flex_wrap">
+                    <ul class="category_list unordered_list">
+                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
+                    </ul>
+                    <span class="post_date"
+                      ><span style="margin-right: 10px"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clipcxcxc0_89_209)">
+                            <path
+                              d="M16.1386 1.54064H15.3926V0.785785C15.3926 0.354493 15.043 0.00488281 14.6117 0.00488281C14.1804 0.00488281 13.8308 0.354493 13.8308 0.785785V1.54064H6.16913V0.785785C6.16913 0.354493 5.81952 0.00488281 5.38823 0.00488281C4.95693 0.00488281 4.60732 0.354493 4.60732 0.785785V1.54064H3.86137C1.7322 1.54064 0 3.27284 0 5.40197V16.1346C0 18.2638 1.7322 19.996 3.86137 19.996H16.1387C18.2678 19.996 20 18.2638 20 16.1346V5.40197C20 3.27284 18.2678 1.54064 16.1386 1.54064ZM3.86137 3.10245H4.60732V4.62521C4.60732 5.0565 4.95693 5.40611 5.38823 5.40611C5.81952 5.40611 6.16913 5.0565 6.16913 4.62521V3.10245H13.8309V4.62521C13.8309 5.0565 14.1805 5.40611 14.6118 5.40611C15.0431 5.40611 15.3927 5.0565 15.3927 4.62521V3.10245H16.1387C17.4066 3.10245 18.4382 4.13402 18.4382 5.40197V6.14797H1.5618V5.40197C1.5618 4.13402 2.59338 3.10245 3.86137 3.10245ZM16.1386 18.4342H3.86137C2.59338 18.4342 1.5618 17.4026 1.5618 16.1346V7.70977H18.4382V16.1346C18.4382 17.4026 17.4066 18.4342 16.1386 18.4342ZM6.93703 10.7813C6.93703 11.2126 6.58742 11.5622 6.15613 11.5622H4.62036C4.18907 11.5622 3.83946 11.2126 3.83946 10.7813C3.83946 10.35 4.18907 10.0004 4.62036 10.0004H6.15613C6.58738 10.0004 6.93703 10.35 6.93703 10.7813ZM16.1606 10.7813C16.1606 11.2126 15.811 11.5622 15.3797 11.5622H13.8439C13.4126 11.5622 13.063 11.2126 13.063 10.7813C13.063 10.35 13.4126 10.0004 13.8439 10.0004H15.3797C15.8109 10.0004 16.1606 10.35 16.1606 10.7813ZM11.5444 10.7813C11.5444 11.2126 11.1947 11.5622 10.7634 11.5622H9.22769C8.79639 11.5622 8.44678 11.2126 8.44678 10.7813C8.44678 10.35 8.79639 10.0004 9.22769 10.0004H10.7634C11.1947 10.0004 11.5444 10.35 11.5444 10.7813ZM6.93703 15.3887C6.93703 15.8199 6.58742 16.1696 6.15613 16.1696H4.62036C4.18907 16.1696 3.83946 15.8199 3.83946 15.3887C3.83946 14.9574 4.18907 14.6078 4.62036 14.6078H6.15613C6.58738 14.6078 6.93703 14.9574 6.93703 15.3887ZM16.1606 15.3887C16.1606 15.8199 15.811 16.1696 15.3797 16.1696H13.8439C13.4126 16.1696 13.063 15.8199 13.063 15.3887C13.063 14.9574 13.4126 14.6078 13.8439 14.6078H15.3797C15.8109 14.6078 16.1606 14.9574 16.1606 15.3887ZM11.5444 15.3887C11.5444 15.8199 11.1947 16.1696 10.7634 16.1696H9.22769C8.79639 16.1696 8.44678 15.8199 8.44678 15.3887C8.44678 14.9574 8.79639 14.6078 9.22769 14.6078H10.7634C11.1947 14.6078 11.5444 14.9574 11.5444 15.3887Z"
+                              fill="#7C7C7C"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_8vcvc9_209">
+                              <rect width="20" height="20" fill="white"></rect>
+                            </clipPath>
+                          </defs></svg></span
+                      >25 Sep, 2023</span
+                    >
+                  </div>
+                  <div class="header__btn">
+                    <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
+                      >Read More<i class="fa-regular fa-angle-right"></i
+                    ></a>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="pricing__btn-wrap">
-            <button type="button" class="pricing__btn">
-            Buy Ticket
-            </button>
-            </div>
+            
+          </div>
         </div>
+        <div class="row">
+          <div class="col-xxl-12">
+            <div
+              class="pagination mt-40 ex-mmb-60 d-flex justify-content-center"
+            >
+              <nav>
+                <ul>
+                  <li><a href="#">01</a></li>
+                  <li><span class="current">02</span></li>
+                  <li><a href="#">03</a></li>
+                  <li class="next">
+                    <a href="#"><i class="fa-light fa-arrow-right-long"></i></a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
         </div>
-        <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
-        <div class="pricing__item mb-30">
-            <div class="pricing__item-header">
-            <div>
-                <span class="pricing__item-title">
-                <!-- -->$799<!-- -->
-                </span>
-            </div>
-            <div class="pricing__item-lable">
-                <span
-                class="pricing__item-label pricing__item-label-color1"
-                >
-                <!-- -->VIP
-                </span
-                >
-                <svg
-                class="lable-border"
-                width="97"
-                height="54"
-                viewBox="0 0 97 54"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                >
-                <path
-                    d="M1.55449 2.53125L0.518162 0.84375L0.944232 0.582093L0.893817 0.5H1.01039V0H3.03123V0.5H5.05206V0H7.0729V0.5H9.09373V0H11.1146V0.5H13.1354V0H15.1562V0.5H17.1771V0H19.1979V0.5H21.2188V0H23.2396V0.5H25.2604V0H27.2813V0.5H29.3021V0H31.3229V0.5H33.3438V0H35.3646V0.5H37.3854V0H39.4063V0.5H41.4271V0H43.4479V0.5H45.4688V0H47.4896V0.5H49.5104V0H51.5313V0.5H53.5521V0H55.5729V0.5H57.5938V0H59.6146V0.5H61.6354V0H63.6562V0.5H65.6771V0H67.6979V0.5H69.7188V0H71.7396V0.5H73.7604V0H75.7812V0.5H77.8021V0H79.8229V0.5H81.8438V0H83.8646V0.5H85.8854V0H87.9062V0.5H89.9271V0H91.9479V0.5H93.9688V0H95.9896V0.5H96.5V0.964301H97V2.89287H96.5V4.82144H97V6.75001H96.5V8.67858H97V10.6072H96.5V12.5357H97V14.4643H96.5V16.3929H97V18.3214H96.5V20.25H97V22.1786H96.5V24.1071H97V26.0357H96.5V27.9643H97V29.8929H96.5V31.8214H97V33.75H96.5V35.6786H97V37.6071H96.5V39.5357H97V41.4643H96.5V43.3929H97V45.3214H96.5V47.25H97V49.1786H96.5V51.1071H97V53.0357H96.5V53.5H95.9896V54H93.9688V53.5H91.9479V54H89.9271V53.5H87.9063V54H85.8854V53.5H83.8646V54H81.8438V53.5H79.8229V54H77.8021V53.5H75.7812V54H73.7604V53.5H71.7396V54H69.7187V53.5H67.6979V54H65.6771V53.5H63.6562V54H61.6354V53.5H59.6146V54H57.5937V53.5H55.5729V54H53.5521V53.5H51.5312V54H49.5104V53.5H47.4896V54H45.4687V53.5H43.4479V54H41.4271V53.5H39.4062V54H37.3854V53.5H35.3646V54H33.3438V53.5H31.3229V54H29.3021V53.5H27.2813V54H25.2604V53.5H23.2396V54H21.2188V53.5H19.1979V54H17.1771V53.5H15.1562V54H13.1354V53.5H11.1146V54H9.09375V53.5H7.07292V54H5.05208V53.5H3.03125V54H1.01042V53.5H0.893817L0.944236 53.4179L0.518167 53.1562L1.55449 51.4688L1.98056 51.7304L3.01688 50.0429L2.59082 49.7812L3.62714 48.0938L4.05321 48.3554L5.08953 46.6679L4.66346 46.4062L5.69979 44.7188L6.12586 44.9804L7.16218 43.2929L6.73611 43.0312L7.77244 41.3438L8.19851 41.6054L9.23483 39.9179L8.80876 39.6562L9.84509 37.9688L10.2712 38.2304L11.3075 36.5429L10.8814 36.2812L11.9177 34.5938L12.3438 34.8554L13.3801 33.1679L12.9541 32.9062L13.9904 31.2188L14.4165 31.4804L15.4528 29.7929L15.0267 29.5313L16.063 27.8438L16.4891 28.1054L17.0073 27.2617L17.168 27L17.0073 26.7383L16.4891 25.8946L16.063 26.1562L15.0267 24.4687L15.4528 24.2071L14.4165 22.5196L13.9904 22.7812L12.9541 21.0937L13.3801 20.8321L12.3438 19.1446L11.9177 19.4062L10.8814 17.7188L11.3075 17.4571L10.2712 15.7696L9.84508 16.0312L8.80876 14.3438L9.23483 14.0821L8.19851 12.3946L7.77244 12.6562L6.73611 10.9688L7.16218 10.7071L6.12586 9.01959L5.69979 9.28125L4.66346 7.59375L5.08953 7.33209L4.05321 5.64459L3.62714 5.90625L2.59081 4.21875L3.01688 3.95709L1.98056 2.26959L1.55449 2.53125Z"
-                    stroke="#1EA9F8"
-                    stroke-dasharray="2 2"
-                    ></path>
-                </svg>
-            </div>
-            </div>
-            <div class="pricing__item-content">
-            <ul>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Everything from ALL Access
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Cocktail Hour
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Premium Seating
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Speaker Meet &amp; Greets
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Signed Books
-                </li>
-            </ul>
-            </div>
-            <div class="pricing__btn-wrap">
-            <button type="button" class="pricing__btn">
-            Buy Ticket
-            </button>
-            </div>
-        </div>
-        </div>
-        <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6">
-        <div class="pricing__item mb-30">
-            <div class="pricing__item-header">
-            <div>
-                <span class="pricing__item-title">
-                <!-- -->$999<!-- -->
-                </span>
-            </div>
-            <div class="pricing__item-lable">
-                <span
-                class="pricing__item-label pricing__item-label-color2"
-                >
-                <!-- -->VVIP
-                </span
-                >
-                <svg
-                class="lable-border"
-                width="97"
-                height="54"
-                viewBox="0 0 97 54"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                >
-                <path
-                    d="M1.55449 2.53125L0.518162 0.84375L0.944232 0.582093L0.893817 0.5H1.01039V0H3.03123V0.5H5.05206V0H7.0729V0.5H9.09373V0H11.1146V0.5H13.1354V0H15.1562V0.5H17.1771V0H19.1979V0.5H21.2188V0H23.2396V0.5H25.2604V0H27.2813V0.5H29.3021V0H31.3229V0.5H33.3438V0H35.3646V0.5H37.3854V0H39.4063V0.5H41.4271V0H43.4479V0.5H45.4688V0H47.4896V0.5H49.5104V0H51.5313V0.5H53.5521V0H55.5729V0.5H57.5938V0H59.6146V0.5H61.6354V0H63.6562V0.5H65.6771V0H67.6979V0.5H69.7188V0H71.7396V0.5H73.7604V0H75.7812V0.5H77.8021V0H79.8229V0.5H81.8438V0H83.8646V0.5H85.8854V0H87.9062V0.5H89.9271V0H91.9479V0.5H93.9688V0H95.9896V0.5H96.5V0.964301H97V2.89287H96.5V4.82144H97V6.75001H96.5V8.67858H97V10.6072H96.5V12.5357H97V14.4643H96.5V16.3929H97V18.3214H96.5V20.25H97V22.1786H96.5V24.1071H97V26.0357H96.5V27.9643H97V29.8929H96.5V31.8214H97V33.75H96.5V35.6786H97V37.6071H96.5V39.5357H97V41.4643H96.5V43.3929H97V45.3214H96.5V47.25H97V49.1786H96.5V51.1071H97V53.0357H96.5V53.5H95.9896V54H93.9688V53.5H91.9479V54H89.9271V53.5H87.9063V54H85.8854V53.5H83.8646V54H81.8438V53.5H79.8229V54H77.8021V53.5H75.7812V54H73.7604V53.5H71.7396V54H69.7187V53.5H67.6979V54H65.6771V53.5H63.6562V54H61.6354V53.5H59.6146V54H57.5937V53.5H55.5729V54H53.5521V53.5H51.5312V54H49.5104V53.5H47.4896V54H45.4687V53.5H43.4479V54H41.4271V53.5H39.4062V54H37.3854V53.5H35.3646V54H33.3438V53.5H31.3229V54H29.3021V53.5H27.2813V54H25.2604V53.5H23.2396V54H21.2188V53.5H19.1979V54H17.1771V53.5H15.1562V54H13.1354V53.5H11.1146V54H9.09375V53.5H7.07292V54H5.05208V53.5H3.03125V54H1.01042V53.5H0.893817L0.944236 53.4179L0.518167 53.1562L1.55449 51.4688L1.98056 51.7304L3.01688 50.0429L2.59082 49.7812L3.62714 48.0938L4.05321 48.3554L5.08953 46.6679L4.66346 46.4062L5.69979 44.7188L6.12586 44.9804L7.16218 43.2929L6.73611 43.0312L7.77244 41.3438L8.19851 41.6054L9.23483 39.9179L8.80876 39.6562L9.84509 37.9688L10.2712 38.2304L11.3075 36.5429L10.8814 36.2812L11.9177 34.5938L12.3438 34.8554L13.3801 33.1679L12.9541 32.9062L13.9904 31.2188L14.4165 31.4804L15.4528 29.7929L15.0267 29.5313L16.063 27.8438L16.4891 28.1054L17.0073 27.2617L17.168 27L17.0073 26.7383L16.4891 25.8946L16.063 26.1562L15.0267 24.4687L15.4528 24.2071L14.4165 22.5196L13.9904 22.7812L12.9541 21.0937L13.3801 20.8321L12.3438 19.1446L11.9177 19.4062L10.8814 17.7188L11.3075 17.4571L10.2712 15.7696L9.84508 16.0312L8.80876 14.3438L9.23483 14.0821L8.19851 12.3946L7.77244 12.6562L6.73611 10.9688L7.16218 10.7071L6.12586 9.01959L5.69979 9.28125L4.66346 7.59375L5.08953 7.33209L4.05321 5.64459L3.62714 5.90625L2.59081 4.21875L3.01688 3.95709L1.98056 2.26959L1.55449 2.53125Z"
-                    stroke="#1EA9F8"
-                    stroke-dasharray="2 2"
-                    ></path>
-                </svg>
-            </div>
-            </div>
-            <div class="pricing__item-content">
-            <ul>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Everything from ALL Access
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Cocktail Hour
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Premium Seating
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Speaker Meet &amp; Greets
-                </li>
-                <li>
-                <i class="flaticon-comment"></i>
-                <!-- -->Signed Books
-                </li>
-            </ul>
-            </div>
-            <div class="pricing__btn-wrap">
-            <button type="button" class="pricing__btn">
-            Buy Ticket
-            </button>
-            </div>
-        </div>
-        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </section>
-<div class="partner__area grey-bg pt-175 pb-150">
+<div class="partner__area grey-bg pt-90 pb-90">
     <div class="container">
     <div class="row justify-content-center">
         <div class="col-xxl-6 col-xl-6">
@@ -778,28 +706,6 @@ Home
                 src="{{ URL::asset('build/media/10.ced8e199.png') }}"
                 alt="image not found"
                 />
-            </div>
-            </div>
-        </div>
-        </div>
-    </div>
-    </div>
-</div>
-<div class="trailer__area dark_light_class pt-60">
-    <div class="container">
-    <div class="row">
-        <div class="col-12">
-        <div class="trailer__wrapper p-relative">
-            <div
-            class="trailer__thumb include__bg"
-            style="
-            background-image: url('{{ URL::asset('build/media/trailer.2c9a7750.jpg') }};
-            "
-            >
-            <div class="trailer__play-btn">
-                <button type="button" class="video__play-btn popup-video">
-                <i class="fa-solid fa-play"></i> PLAY TRAILER
-                </button>
             </div>
             </div>
         </div>
