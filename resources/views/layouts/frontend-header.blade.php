@@ -1,4 +1,3 @@
-
 <div id="__next">
 <main class="body-area bd-theme-light">
         <div class="fix">
@@ -137,7 +136,8 @@
                 <div class="header__action-inner">
                     <div class="header__btn d-none d-xl-block">
                     <a class="fill__btn" href="signin"
-                        >SignIn</a>
+                      >SignIn<i class="fa-regular fa-angle-right"></i
+                    ></a>
                     </div>
                     <div class="header__hamburger">
                     <div class="sidebar__toggle">
