@@ -39459,7 +39459,7 @@ a {
     content: "";
     height: 100%;
     width: 100%;
-    background: #DEE2E6;
+    background: #0049AD;
     top: 0;
     left: 0;
     z-index: -1;
@@ -44806,7 +44806,7 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
     }
 }
 .bd-theme-light .blog_item .item_title > a {
-    color: white;
+    color: #0049AD;
 }
 .bd-theme-light .blog_item .item_title > a:hover {
     color: #0049AD;
@@ -44815,7 +44815,7 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
     font-size: 16px;
     font-weight: 600;
     line-height: 22px;
-    color: lightgrey;
+    color: black;
 }
 .bd-theme-light .blog_item .post_date svg {
     transform: translateY(-2px);
