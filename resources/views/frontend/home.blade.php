@@ -8,40 +8,11 @@ Home
 <section
     id="homeindex"
     class="banner__area banner__area-1 banner__height-1 d-flex align-items-center"
-    style="background-image: url('{{ URL::asset('build/media/banner.84002f4b.png') }}"
+    style="background-image: url('{{ URL::asset('build/media/banner.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center;"
     >
     <div class="spotlight"></div>
-    <div class="banner__meta-title"><span>Meet Up 2023</span></div>
     <div class="banner__shape">
-    <img
-        class="banner__shape-1 parallaxed"
-        src="{{ URL::asset('build/media/shape-1.511a9d33.png') }}"
-        alt="imge not found"
-        /><img
-        class="banner__shape-2"
-        src="{{ URL::asset('build/media/shape-2.c0ab6f45.png') }}"
-        alt="imge not found"
-        /><img
-        class="banner__shape-3"
-        src="{{ URL::asset('build/media/shape-3.37295c70.png') }}"
-        alt="imge not found"
-        /><img
-        class="banner__shape-4 parallaxed"
-        src="{{ URL::asset('build/media/shape-4.194446d7.png') }}"
-        alt="imge not found"
-        /><img
-        class="banner__shape-5"
-        src="{{ URL::asset('build/media/shape-5.7d57ae36.png') }}"
-        alt="imge not found"
-        /><img
-        class="banner__shape-6 parallaxed"
-        src="{{ URL::asset('build/media/shape-6.a42cb8c1.png') }}"
-        alt="imge not found"
-        />
-    <div class="banner-all-line">
-        <div class="banner__line banner__line-1"></div>
-        <div class="banner__line banner__line-2"></div>
-    </div>
+  
     <div class="container-fluid">
         <div class="row align-items-xl-end">
         <div class="col-xxl-7 col-xl-8 col-lg-6">
@@ -52,8 +23,7 @@ Home
             </h2>
             <div class="slider__btdn">
                 <a class="fill__btn" href="signup"
-                >Register Now<i class="fa-regular fa-angle-right"></i
-                ></a>
+                >Register Now</a>
             </div>
             </div>
         </div>
@@ -67,13 +37,7 @@ Home
                     >
                 <span class="shape"
                     >
-                    <svg
-                    width="146"
-                    height="227"
-                    viewBox="0 0 146 227"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    >
+                    
                     <path
                         d="M124 1H139C142.314 1 145 3.68629 145 7V220C145 223.314 142.314 226 139 226H7C3.68629 226 1 223.314 1 220V166.194"
                         stroke="#F87A58"
@@ -166,31 +130,26 @@ Home
             </div>
             </div>
             <a class="fill__btn" href="event-list-two"
-            >FIND OUT MORE<i class="fa-regular fa-angle-right"></i
-            ></a>
+            >FIND OUT MORE</a>
         </div>
         </div>
         <div class="col-xxl-6 col-xl-6 col-lg-6">
         <div class="about__thumb-wrapper mb-60 p-relative">
             <div class="about__thumb-1 text-end w-img">
             <img
-                src="{{ URL::asset('build/media/about/img1.jpg') }}"
+                src="{{ URL::asset('build/media/about/welcome_back.png') }}"
                 alt="image not found"
                 />
             <div class="panel wow"></div>
             </div>
             <div class="about__thumb-2 w-img">
             <img
-                src="{{ URL::asset('build/media/about/img2.jpg') }}"
+                src="{{ URL::asset('build/media/about/welcome_front.png') }}"
                 alt="image not found"
                 />
             <div class="panel wow"></div>
             </div>
-            <span class="about__play-btn"
-            ><button type="button" class="video__play-btn popup-video">
-            <i class="fa-solid fa-play"></i>PLAY TRAILER
-            </button></span
-            >
+           
         </div>
         </div>
     </div>
@@ -286,8 +245,7 @@ Home
                 </p>
                 </div>
                 <a class="fill__btn fill_btn_new" href="event-list-two"
-                >I'M READY TO BE A MEMBER!  <i class="fa-regular fa-angle-right"></i
-                ></a>
+                >I'M READY TO BE A MEMBER!  </a>
             </div>
             </div>
         </div>
@@ -335,29 +293,20 @@ Home
                   </defs></svg></span>
             </h2>
           </div>
-          <div class="blog__pagination">
-            <div
-              class="testimonial-slider-dot bd-swiper-dot swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal"
-            >
-              <span
-                class="swiper-pagination-bullet swiper-pagination-bullet-active"
-              ></span
-              ><span class="swiper-pagination-bullet"></span
-              ><span class="swiper-pagination-bullet"></span>
-            </div>
+         
           </div>
         </div>
       </div>
     </div>
     <div class="blog_grouped row justify-content-center">
       <div class="blog_responsive col-lg-12">
-        <div class="blog_wrapper">
+        <div class="blog_wrapper container">
           <div class="row g-4">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="blog_item">
                 <a class="item_image" href="{{ route('blog-detail') }}"
                   ><img
-                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    src="{{ URL::asset('build/media/blog_1.png') }}"
                     alt="Blog Image"
                     style="height: 100%; width: 100%"
                 /></a>
@@ -365,14 +314,11 @@ Home
                   
                   <h3 class="item_title">
                     <a href="{{ route('blog-detail') }}"
-                      >Event Security: Ensuring Safety and Peace of Mind</a
+                      >The Ultimate Event Planning Guide To Execution</a
                     >
                   </h3>
                   <div class="flex_wrap">
-                    <ul class="category_list unordered_list">
-                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
-                    </ul>
-                    <span class="post_date"
+                  <span class="post_date"
                       ><span style="margin-right: 10px"
                         ><svg
                           width="20"
@@ -394,20 +340,41 @@ Home
                           </defs></svg></span
                       >25 Sep, 2023</span
                     >
+                    <span class="post_date"
+                      ><span style="margin-right: 10px"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clipcxcxc0_89_209)">
+                            <path
+                              d="M16.1386 1.54064H15.3926V0.785785C15.3926 0.354493 15.043 0.00488281 14.6117 0.00488281C14.1804 0.00488281 13.8308 0.354493 13.8308 0.785785V1.54064H6.16913V0.785785C6.16913 0.354493 5.81952 0.00488281 5.38823 0.00488281C4.95693 0.00488281 4.60732 0.354493 4.60732 0.785785V1.54064H3.86137C1.7322 1.54064 0 3.27284 0 5.40197V16.1346C0 18.2638 1.7322 19.996 3.86137 19.996H16.1387C18.2678 19.996 20 18.2638 20 16.1346V5.40197C20 3.27284 18.2678 1.54064 16.1386 1.54064ZM3.86137 3.10245H4.60732V4.62521C4.60732 5.0565 4.95693 5.40611 5.38823 5.40611C5.81952 5.40611 6.16913 5.0565 6.16913 4.62521V3.10245H13.8309V4.62521C13.8309 5.0565 14.1805 5.40611 14.6118 5.40611C15.0431 5.40611 15.3927 5.0565 15.3927 4.62521V3.10245H16.1387C17.4066 3.10245 18.4382 4.13402 18.4382 5.40197V6.14797H1.5618V5.40197C1.5618 4.13402 2.59338 3.10245 3.86137 3.10245ZM16.1386 18.4342H3.86137C2.59338 18.4342 1.5618 17.4026 1.5618 16.1346V7.70977H18.4382V16.1346C18.4382 17.4026 17.4066 18.4342 16.1386 18.4342ZM6.93703 10.7813C6.93703 11.2126 6.58742 11.5622 6.15613 11.5622H4.62036C4.18907 11.5622 3.83946 11.2126 3.83946 10.7813C3.83946 10.35 4.18907 10.0004 4.62036 10.0004H6.15613C6.58738 10.0004 6.93703 10.35 6.93703 10.7813ZM16.1606 10.7813C16.1606 11.2126 15.811 11.5622 15.3797 11.5622H13.8439C13.4126 11.5622 13.063 11.2126 13.063 10.7813C13.063 10.35 13.4126 10.0004 13.8439 10.0004H15.3797C15.8109 10.0004 16.1606 10.35 16.1606 10.7813ZM11.5444 10.7813C11.5444 11.2126 11.1947 11.5622 10.7634 11.5622H9.22769C8.79639 11.5622 8.44678 11.2126 8.44678 10.7813C8.44678 10.35 8.79639 10.0004 9.22769 10.0004H10.7634C11.1947 10.0004 11.5444 10.35 11.5444 10.7813ZM6.93703 15.3887C6.93703 15.8199 6.58742 16.1696 6.15613 16.1696H4.62036C4.18907 16.1696 3.83946 15.8199 3.83946 15.3887C3.83946 14.9574 4.18907 14.6078 4.62036 14.6078H6.15613C6.58738 14.6078 6.93703 14.9574 6.93703 15.3887ZM16.1606 15.3887C16.1606 15.8199 15.811 16.1696 15.3797 16.1696H13.8439C13.4126 16.1696 13.063 15.8199 13.063 15.3887C13.063 14.9574 13.4126 14.6078 13.8439 14.6078H15.3797C15.8109 14.6078 16.1606 14.9574 16.1606 15.3887ZM11.5444 15.3887C11.5444 15.8199 11.1947 16.1696 10.7634 16.1696H9.22769C8.79639 16.1696 8.44678 15.8199 8.44678 15.3887C8.44678 14.9574 8.79639 14.6078 9.22769 14.6078H10.7634C11.1947 14.6078 11.5444 14.9574 11.5444 15.3887Z"
+                              fill="#7C7C7C"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_8vcvc9_209">
+                              <rect width="20" height="20" fill="white"></rect>
+                            </clipPath>
+                          </defs></svg></span
+                      >Comments</span
+                    >
                   </div>
                   <div class="header__btn">
                     <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
-                      >Read More<i class="fa-regular fa-angle-right"></i
-                    ></a>
+                      >Read More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="blog_item">
                 <a class="item_image" href="{{ route('blog-detail') }}"
                   ><img
-                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    src="{{ URL::asset('build/media/blog_2.png') }}"
                     alt="Blog Image"
                     style="height: 100%; width: 100%"
                 /></a>
@@ -419,10 +386,7 @@ Home
                     >
                   </h3>
                   <div class="flex_wrap">
-                    <ul class="category_list unordered_list">
-                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
-                    </ul>
-                    <span class="post_date"
+                  <span class="post_date"
                       ><span style="margin-right: 10px"
                         ><svg
                           width="20"
@@ -444,20 +408,41 @@ Home
                           </defs></svg></span
                       >25 Sep, 2023</span
                     >
+                    <span class="post_date"
+                      ><span style="margin-right: 10px"
+                        ><svg
+                          width="20"
+                          height="20"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g clip-path="url(#clipcxcxc0_89_209)">
+                            <path
+                              d="M16.1386 1.54064H15.3926V0.785785C15.3926 0.354493 15.043 0.00488281 14.6117 0.00488281C14.1804 0.00488281 13.8308 0.354493 13.8308 0.785785V1.54064H6.16913V0.785785C6.16913 0.354493 5.81952 0.00488281 5.38823 0.00488281C4.95693 0.00488281 4.60732 0.354493 4.60732 0.785785V1.54064H3.86137C1.7322 1.54064 0 3.27284 0 5.40197V16.1346C0 18.2638 1.7322 19.996 3.86137 19.996H16.1387C18.2678 19.996 20 18.2638 20 16.1346V5.40197C20 3.27284 18.2678 1.54064 16.1386 1.54064ZM3.86137 3.10245H4.60732V4.62521C4.60732 5.0565 4.95693 5.40611 5.38823 5.40611C5.81952 5.40611 6.16913 5.0565 6.16913 4.62521V3.10245H13.8309V4.62521C13.8309 5.0565 14.1805 5.40611 14.6118 5.40611C15.0431 5.40611 15.3927 5.0565 15.3927 4.62521V3.10245H16.1387C17.4066 3.10245 18.4382 4.13402 18.4382 5.40197V6.14797H1.5618V5.40197C1.5618 4.13402 2.59338 3.10245 3.86137 3.10245ZM16.1386 18.4342H3.86137C2.59338 18.4342 1.5618 17.4026 1.5618 16.1346V7.70977H18.4382V16.1346C18.4382 17.4026 17.4066 18.4342 16.1386 18.4342ZM6.93703 10.7813C6.93703 11.2126 6.58742 11.5622 6.15613 11.5622H4.62036C4.18907 11.5622 3.83946 11.2126 3.83946 10.7813C3.83946 10.35 4.18907 10.0004 4.62036 10.0004H6.15613C6.58738 10.0004 6.93703 10.35 6.93703 10.7813ZM16.1606 10.7813C16.1606 11.2126 15.811 11.5622 15.3797 11.5622H13.8439C13.4126 11.5622 13.063 11.2126 13.063 10.7813C13.063 10.35 13.4126 10.0004 13.8439 10.0004H15.3797C15.8109 10.0004 16.1606 10.35 16.1606 10.7813ZM11.5444 10.7813C11.5444 11.2126 11.1947 11.5622 10.7634 11.5622H9.22769C8.79639 11.5622 8.44678 11.2126 8.44678 10.7813C8.44678 10.35 8.79639 10.0004 9.22769 10.0004H10.7634C11.1947 10.0004 11.5444 10.35 11.5444 10.7813ZM6.93703 15.3887C6.93703 15.8199 6.58742 16.1696 6.15613 16.1696H4.62036C4.18907 16.1696 3.83946 15.8199 3.83946 15.3887C3.83946 14.9574 4.18907 14.6078 4.62036 14.6078H6.15613C6.58738 14.6078 6.93703 14.9574 6.93703 15.3887ZM16.1606 15.3887C16.1606 15.8199 15.811 16.1696 15.3797 16.1696H13.8439C13.4126 16.1696 13.063 15.8199 13.063 15.3887C13.063 14.9574 13.4126 14.6078 13.8439 14.6078H15.3797C15.8109 14.6078 16.1606 14.9574 16.1606 15.3887ZM11.5444 15.3887C11.5444 15.8199 11.1947 16.1696 10.7634 16.1696H9.22769C8.79639 16.1696 8.44678 15.8199 8.44678 15.3887C8.44678 14.9574 8.79639 14.6078 9.22769 14.6078H10.7634C11.1947 14.6078 11.5444 14.9574 11.5444 15.3887Z"
+                              fill="#7C7C7C"
+                            ></path>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_8vcvc9_209">
+                              <rect width="20" height="20" fill="white"></rect>
+                            </clipPath>
+                          </defs></svg></span
+                      >Comments</span
+                    >
                   </div>
                   <div class="header__btn">
                     <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
-                      >Read More<i class="fa-regular fa-angle-right"></i
-                    ></a>
+                      >Read More</a>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
               <div class="blog_item">
                 <a class="item_image" href="{{ route('blog-detail') }}"
                   ><img
-                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
+                    src="{{ URL::asset('build/media/blog_3.png') }}"
                     alt="Blog Image"
                     style="height: 100%; width: 100%"
                 /></a>
@@ -465,14 +450,11 @@ Home
                   
                   <h3 class="item_title">
                     <a href="{{ route('blog-detail') }}"
-                      >Event Security: Ensuring Safety and Peace of Mind</a
+                      >Unleashing the Power of Event Management</a
                     >
                   </h3>
                   <div class="flex_wrap">
-                    <ul class="category_list unordered_list">
-                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
-                    </ul>
-                    <span class="post_date"
+                  <span class="post_date"
                       ><span style="margin-right: 10px"
                         ><svg
                           width="20"
@@ -494,34 +476,6 @@ Home
                           </defs></svg></span
                       >25 Sep, 2023</span
                     >
-                  </div>
-                  <div class="header__btn">
-                    <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
-                      >Read More<i class="fa-regular fa-angle-right"></i
-                    ></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="blog_item">
-                <a class="item_image" href="{{ route('blog-detail') }}"
-                  ><img
-                    src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
-                    alt="Blog Image"
-                    style="height: 100%; width: 100%"
-                /></a>
-                <div class="item_content">
-                  
-                  <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
-                      >Event Security: Ensuring Safety and Peace of Mind</a
-                    >
-                  </h3>
-                  <div class="flex_wrap">
-                    <ul class="category_list unordered_list">
-                      <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
-                    </ul>
                     <span class="post_date"
                       ><span style="margin-right: 10px"
                         ><svg
@@ -542,38 +496,21 @@ Home
                               <rect width="20" height="20" fill="white"></rect>
                             </clipPath>
                           </defs></svg></span
-                      >25 Sep, 2023</span
+                      >Comments</span
                     >
                   </div>
                   <div class="header__btn">
                     <a class="blog_custome_btn" href="{{ route('blog-detail') }}"
-                      >Read More<i class="fa-regular fa-angle-right"></i
-                    ></a>
+                      >Read More</a>
                   </div>
                 </div>
               </div>
             </div>
             
+            
           </div>
         </div>
-        <div class="row">
-          <div class="col-xxl-12">
-            <div
-              class="pagination mt-40 ex-mmb-60 d-flex justify-content-center"
-            >
-              <nav>
-                <ul>
-                  <li><a href="#">01</a></li>
-                  <li><span class="current">02</span></li>
-                  <li><a href="#">03</a></li>
-                  <li class="next">
-                    <a href="#"><i class="fa-light fa-arrow-right-long"></i></a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>
@@ -585,12 +522,11 @@ Home
         <div
             class="section__title-wrapper is-center text-center mb-110"
             >
-            <span class="section__back-title">P</span
-            ><span class="section__subtitle">EVENT SPONSORS</span>
+           
             <h2 class="section__title">
-            Organize
+            SPECIAL SHOUT-OUTS & THANK YOU FOR OUR
             <span class="text__highlight">
-                Partner
+            SPONSORS!
                 <svg
                 class="title-underline"
                 width="328"
@@ -631,7 +567,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/01.990cfaac.png') }}"
+                src="{{ URL::asset('build/media/partner_1.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -639,7 +575,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/02.26220d5e.png') }}"
+                src="{{ URL::asset('build/media/partner_2.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -647,7 +583,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/03.1fec9324.png') }}"
+                src="{{ URL::asset('build/media/partner_3.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -655,7 +591,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/04.1d6fe294.png') }}"
+                src="{{ URL::asset('build/media/partner_4.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -663,7 +599,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/05.656d6b91.png') }}"
+                src="{{ URL::asset('build/media/partner_5.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -671,7 +607,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/06.dbe6d30e.png') }}"
+                src="{{ URL::asset('build/media/partner_6.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -679,7 +615,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/07.b7f2f87e.png') }}"
+                src="{{ URL::asset('build/media/partner_7.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -687,7 +623,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/08.fd1ffc44.png') }}"
+                src="{{ URL::asset('build/media/partner_8.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -695,7 +631,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/09.2e24a739.png') }}"
+                src="{{ URL::asset('build/media/partner_9.png') }}"
                 alt="image not found"
                 />
             </div>
@@ -703,7 +639,7 @@ Home
             <div class="partner__item">
             <div class="partner__thumb">
                 <img
-                src="{{ URL::asset('build/media/10.ced8e199.png') }}"
+                src="{{ URL::asset('build/media/partner_10.png') }}"
                 alt="image not found"
                 />
             </div>
