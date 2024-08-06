@@ -7,10 +7,10 @@ Membership
 
 <section class="page_banner text-center pt-150 pb-60">
   <div class="container decoration_wrap">
-    <h1 class="page_title mb-15">Pricing</h1>
+    <h1 class="page_title mb-15">Membership</h1>
     <ul class="breadcrumb_nav unordered_list_center">
       <li><a href="{{ route('home') }}">Home</a></li>
-      <li>Pricing</li>
+      <li>Membership</li>
     </ul>
   </div>
 </section>
@@ -24,7 +24,7 @@ Membership
           <h2 class="section__title">
             Get
             <span class="text__highlight">
-              Ticket
+              Membership
               <svg
                 width="164"
                 height="32"
@@ -72,7 +72,7 @@ Membership
         <div class="pricing__item mb-30">
           <div class="pricing__item-header">
             <div>
-              <span class="pricing__item-title"> <!-- -->$599<!-- --> </span>
+              <span class="pricing__item-title"> <!-- -->$100<!-- --> </span>
             </div>
             <div class="pricing__item-lable">
               <span class="pricing__item-label"> <!-- -->CIP</span
@@ -117,7 +117,7 @@ Membership
             </ul>
           </div>
           <div class="pricing__btn-wrap">
-            <button type="button" class="pricing__btn">Buy Ticket</button>
+            <button type="button" class="pricing__btn">Buy Membership</button>
           </div>
         </div>
       </div>
@@ -125,7 +125,7 @@ Membership
         <div class="pricing__item mb-30">
           <div class="pricing__item-header">
             <div>
-              <span class="pricing__item-title"> <!-- -->$799<!-- --> </span>
+              <span class="pricing__item-title"> <!-- -->$150<!-- --> </span>
             </div>
             <div class="pricing__item-lable">
               <span class="pricing__item-label pricing__item-label-color1">
@@ -171,7 +171,7 @@ Membership
             </ul>
           </div>
           <div class="pricing__btn-wrap">
-            <button type="button" class="pricing__btn">Buy Ticket</button>
+            <button type="button" class="pricing__btn">Buy Membership</button>
           </div>
         </div>
       </div>
@@ -179,7 +179,7 @@ Membership
         <div class="pricing__item mb-30">
           <div class="pricing__item-header">
             <div>
-              <span class="pricing__item-title"> <!-- -->$999<!-- --> </span>
+              <span class="pricing__item-title"> <!-- -->$200<!-- --> </span>
             </div>
             <div class="pricing__item-lable">
               <span class="pricing__item-label pricing__item-label-color2">
@@ -225,7 +225,7 @@ Membership
             </ul>
           </div>
           <div class="pricing__btn-wrap">
-            <button type="button" class="pricing__btn">Buy Ticket</button>
+            <button type="button" class="pricing__btn">Buy Membership</button>
           </div>
         </div>
       </div>

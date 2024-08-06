@@ -1,18 +1,20 @@
 @extends('layouts.frontend')
 @section('title')
-Blog
+Annual Gala - Milano Event Center
 @endsection
 
 @section('body')
-
-<section class="page_banner text-center pt-150 pb-60">
-  <div class="container decoration_wrap">
-    <h1 class="page_title mb-15">Event Details</h1>
-    <ul class="breadcrumb_nav unordered_list_center">
-      <li><a href="{{ route('home') }}">Home</a></li>
-      <li>Event Details</li>
-    </ul>
-  </div>
+<section class="dark_light_class">
+  <section class="page_banner text-center pt-150 pb-60">
+    <div class="container decoration_wrap">
+      <h1 class="page_title mb-15">Annual Gala - Milano Event Center</h1>
+      <ul class="breadcrumb_nav unordered_list_center">
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('events') }}">Events</a></li>
+        <li>Annual Gala - Milano Event Center</li>
+      </ul>
+    </div>
+  </section>
 </section>
 <div class="event__details-area pt-150 pb-120">
   <div class="container">
@@ -23,37 +25,6 @@ Blog
             <div class="card__header-top">
               <div class="card__title-inner">
                 <h4 class="event__information-title">Event news and updates</h4>
-              </div>
-              <div class="card__header-dropdown">
-                <div class="dropdown">
-                  <button>
-                    <svg
-                      class="attendant__dot"
-                      width="14"
-                      height="4"
-                      viewBox="0 0 14 4"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                        fill="white"
-                      ></path>
-                      <path
-                        d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                        fill="white"
-                      ></path>
-                    </svg>
-                  </button>
-                  <div class="dropdown-list" style="display: none">
-                    <button class="dropdown__item">Edit</button
-                    ><button class="dropdown__item">Delete</button>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="review__main-wrapper pt-25">
@@ -284,7 +255,7 @@ Blog
                           ></rect>
                         </clipPath>
                       </defs></svg></span
-                  ><span> Basic Programming </span>
+                  ><span> Networking </span>
                 </li>
                 <li>
                   <span
@@ -311,7 +282,7 @@ Blog
                           ></rect>
                         </clipPath>
                       </defs></svg></span
-                  ><span> Wireframe </span>
+                  ><span> Industry Updates </span>
                 </li>
                 <li>
                   <span
@@ -338,7 +309,7 @@ Blog
                           ></rect>
                         </clipPath>
                       </defs></svg></span
-                  ><span> Create a Website </span>
+                  ><span> Entertainment </span>
                 </li>
                 <li>
                   <span
@@ -365,61 +336,7 @@ Blog
                           ></rect>
                         </clipPath>
                       </defs></svg></span
-                  ><span> User Interface Design </span>
-                </li>
-                <li>
-                  <span
-                    ><svg
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_8)">
-                        <path
-                          d="M8 0.5C6.41775 0.5 4.87104 0.969192 3.55544 1.84824C2.23985 2.72729 1.21447 3.97672 0.608967 5.43853C0.00346629 6.90034 -0.15496 8.50887 0.153721 10.0607C0.462403 11.6126 1.22433 13.038 2.34315 14.1569C3.46197 15.2757 4.88743 16.0376 6.43928 16.3463C7.99113 16.655 9.59966 16.4965 11.0615 15.891C12.5233 15.2855 13.7727 14.2602 14.6518 12.9446C15.5308 11.629 16 10.0822 16 8.5C16 6.37827 15.1571 4.34344 13.6569 2.84315C12.1566 1.34285 10.1217 0.5 8 0.5V0.5ZM12.5467 6.57L7.52667 12.2633C7.44566 12.3546 7.34742 12.429 7.23759 12.4822C7.12776 12.5354 7.00851 12.5663 6.88667 12.5733H6.82667C6.59929 12.5747 6.3795 12.4916 6.21 12.34L3.52334 9.95667C3.33857 9.79267 3.22652 9.562 3.21182 9.31539C3.19713 9.06878 3.28101 8.82643 3.445 8.64167C3.609 8.4569 3.83967 8.34484 4.08628 8.33015C4.33289 8.31546 4.57524 8.39934 4.76 8.56333L6.76 10.3267L11.1633 5.32667C11.3269 5.14146 11.5573 5.0288 11.8039 5.01349C12.0505 4.99817 12.2931 5.08145 12.4783 5.245C12.6635 5.40855 12.7762 5.63898 12.7915 5.88559C12.8068 6.1322 12.7236 6.37479 12.56 6.56L12.5467 6.57Z"
-                          fill="#4CBC9A"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip031_1082_8">
-                          <rect
-                            width="16"
-                            height="16"
-                            fill="white"
-                            transform="translate(0 0.5)"
-                          ></rect>
-                        </clipPath>
-                      </defs></svg></span
-                  ><span> Basic HTML &amp; CSS </span>
-                </li>
-                <li>
-                  <span
-                    ><svg
-                      width="16"
-                      height="17"
-                      viewBox="0 0 16 17"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <g clip-path="url(#clip0_1082_8)">
-                        <path
-                          d="M8 0.5C6.41775 0.5 4.87104 0.969192 3.55544 1.84824C2.23985 2.72729 1.21447 3.97672 0.608967 5.43853C0.00346629 6.90034 -0.15496 8.50887 0.153721 10.0607C0.462403 11.6126 1.22433 13.038 2.34315 14.1569C3.46197 15.2757 4.88743 16.0376 6.43928 16.3463C7.99113 16.655 9.59966 16.4965 11.0615 15.891C12.5233 15.2855 13.7727 14.2602 14.6518 12.9446C15.5308 11.629 16 10.0822 16 8.5C16 6.37827 15.1571 4.34344 13.6569 2.84315C12.1566 1.34285 10.1217 0.5 8 0.5V0.5ZM12.5467 6.57L7.52667 12.2633C7.44566 12.3546 7.34742 12.429 7.23759 12.4822C7.12776 12.5354 7.00851 12.5663 6.88667 12.5733H6.82667C6.59929 12.5747 6.3795 12.4916 6.21 12.34L3.52334 9.95667C3.33857 9.79267 3.22652 9.562 3.21182 9.31539C3.19713 9.06878 3.28101 8.82643 3.445 8.64167C3.609 8.4569 3.83967 8.34484 4.08628 8.33015C4.33289 8.31546 4.57524 8.39934 4.76 8.56333L6.76 10.3267L11.1633 5.32667C11.3269 5.14146 11.5573 5.0288 11.8039 5.01349C12.0505 4.99817 12.2931 5.08145 12.4783 5.245C12.6635 5.40855 12.7762 5.63898 12.7915 5.88559C12.8068 6.1322 12.7236 6.37479 12.56 6.56L12.5467 6.57Z"
-                          fill="#4CBC9A"
-                        ></path>
-                      </g>
-                      <defs>
-                        <clipPath id="clip031_1082_8">
-                          <rect
-                            width="16"
-                            height="16"
-                            fill="white"
-                            transform="translate(0 0.5)"
-                          ></rect>
-                        </clipPath>
-                      </defs></svg></span
-                  ><span> Create Responsive Website </span>
+                  ><span> Silent Auction </span>
                 </li>
               </ul>
             </div>
@@ -427,11 +344,10 @@ Blog
           <div class="body__card-wrapper mb-20">
             <div class="event__meta-time">
               <ul>
-                <li><span> Price : </span>$75</li>
-                <li><span> Date : </span>January 1, 2024 - January 1, 2025</li>
-                <li><span>Time :</span>3:00 pm - 6:00 pm (UTC)</li>
-                <li><span>Reg. Deadline : </span>June 1, 2023</li>
-                <li><span>Venue : </span>Alaska</li>
+                <li><span> Price : </span>$85 / $95</li>
+                <li><span> Date : </span>June 24</li>
+                <li><span>Time :</span>6:00 pm - 9:00 pm (UTC)</li>
+                <li><span>Venue : </span>Sugarland, Texas</li>
               </ul>
               <div class="ticket__purchase-btn mt-30 text-center pb-20">
                 <a class="fill__btn" href="{{ route('membership') }}"
