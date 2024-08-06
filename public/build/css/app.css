@@ -44784,11 +44784,7 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
 .bd-theme-light .blog_item {
     padding: 20px 20px 30px;
     border-radius: 12px;
-<<<<<<< HEAD
     background-color: #DEE2E6;
-=======
-    background-color: #2C2C2C;
->>>>>>> b2431a925aa57bb81c897994beedab909250290b
 }
 .bd-theme-light .blog_item .flex_wrap {
     display: flex;
