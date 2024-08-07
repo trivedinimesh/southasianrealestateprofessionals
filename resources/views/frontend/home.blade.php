@@ -57,12 +57,6 @@ Home
                     ><span class="text">Online</span>
                 </div>
                 </div>
-                <div class="banner__time">
-                <div class="count-down"><span>Day</span></div>
-                <div class="count-down"><span>Hour</span></div>
-                <div class="count-down"><span>Min</span></div>
-                <div class="count-down"><span>Sec</span></div>
-                </div>
             </div>
             </div>
         </div>
