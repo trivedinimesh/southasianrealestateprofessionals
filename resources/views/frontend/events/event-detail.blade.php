@@ -5,9 +5,9 @@ Annual Gala - Milano Event Center
 
 @section('body')
 <section class="dark_light_class">
-  <section class="page_banner text-center pt-150 pb-60">
+  <section class="page_banner text-center pt-90 pb-60">
     <div class="container decoration_wrap">
-      <h1 class="page_title mb-15">Annual Gala - Milano Event Center</h1>
+      <h1 class="page_title mb-15 text__highlight">Annual Gala - Milano Event Center</h1>
       <ul class="breadcrumb_nav unordered_list_center">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li><a href="{{ route('events') }}">Events</a></li>
@@ -16,7 +16,7 @@ Annual Gala - Milano Event Center
     </div>
   </section>
 </section>
-<div class="event__details-area pt-150 pb-120">
+<div class="event__details-area pt-90 pb-120">
   <div class="container">
     <div class="row">
       <div class="col-xxl-7 col-xl-7">

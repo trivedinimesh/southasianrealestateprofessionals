@@ -5,9 +5,9 @@ Blog
 
 @section('body')
 <section class="dark_light_class">
-  <section class="page_banner text-center pt-150 pb-60">
+  <section class="page_banner text-center pt-90 pb-60">
     <div class="container decoration_wrap">
-      <h1 class="page_title mb-15">Blogs</h1>
+      <h1 class="page_title mb-15 text__highlight">Blogs</h1>
       <ul class="breadcrumb_nav unordered_list_center">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li>Blogs</li>
@@ -58,7 +58,7 @@ Blog
                     >
                   </div>
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-black" href="{{ route('blog-detail') }}"
                       >Top Factors to Consider When Investing in Real Estate</a
                     >
                   </h3>
@@ -107,7 +107,7 @@ Blog
                     >
                   </div>
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-black" href="{{ route('blog-detail') }}"
                       >Top Factors to Consider When Investing in Real Estate</a
                     >
                   </h3>
@@ -156,7 +156,7 @@ Blog
                     >
                   </div>
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-black" href="{{ route('blog-detail') }}"
                       >Top Factors to Consider When Investing in Real Estate</a
                     >
                   </h3>
@@ -205,7 +205,7 @@ Blog
                     >
                   </div>
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-black" href="{{ route('blog-detail') }}"
                       >Top Factors to Consider When Investing in Real Estate</a
                     >
                   </h3>
@@ -254,7 +254,7 @@ Blog
                     >
                   </div>
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-black" href="{{ route('blog-detail') }}"
                       >Top Factors to Consider When Investing in Real Estate</a
                     >
                   </h3>
@@ -303,7 +303,7 @@ Blog
                     >
                   </div>
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-black" href="{{ route('blog-detail') }}"
                       >Top Factors to Consider When Investing in Real Estate</a
                     >
                   </h3>
@@ -371,7 +371,7 @@ Blog
             <ul class="recent_post_list unordered_list_block">
               <li>
                 <div class="recent_post_item">
-                  <a class="item_image" href="blog-details/%5bid%5d-5"
+                  <a class="item_image" href="{{ route('blog-detail') }}"
                     ><img
                       src="{{ URL::asset('build/media/blog-5.48df76c3.jpg') }}"
                       style="height: auto; width: 100%"
@@ -383,7 +383,7 @@ Blog
                       <li><span>05 Aug, 2024</span></li>
                     </ul>
                     <h3 class="item_title">
-                      <a href="blog-details/%5bid%5d-5"
+                      <a href="{{ route('blog-detail') }}"
                         >Top Factors to Consider When Invest ...</a
                       >
                     </h3>

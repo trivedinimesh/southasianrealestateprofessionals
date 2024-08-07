@@ -8,7 +8,7 @@ About
 <section class="dark_light_class">
   <section class="page_banner text-center pt-90 pb-60">
     <div class="container decoration_wrap">
-      <h1 class="page_title mb-15">About Us</h1>
+      <h1 class="page_title mb-15 text__highlight">About Us</h1>
       <ul class="breadcrumb_nav unordered_list_center">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li>About Us</li>
@@ -25,6 +25,7 @@ About
         <div class="col-xxl-6 col-xl-6 col-lg-6">
           <div class="about__content-wrapper mb-60">
             <div class="section__title-wrapper mb-80">
+            <span class="section__subtitle">ABOUT THIS EVENT</span>
               <h2 class="section__title">
                 EXPERIENCE A TRUE DIGITAL
                 <span class="text__highlight"
@@ -78,6 +79,7 @@ About
               </div>
               
             </div>
+            <div class="about__location-info mb-80"><div class="about__location-inner"><div class="about__location-icon"><a href="#"><i class="fa-solid fa-location-dot"></i></a></div><div class="about__location-address"><h5>WHEN AND WHERE</h5><span>November 9–10 <br>The Midway SF, Zoom</span></div></div><div class="pluse__status"><span class="dot"></span><span class="text">Online</span></div></div>
             <a class="fill__btn" href="{{ route('membership') }}"
               >Join Now<i class="fa-regular fa-angle-right"></i
             ></a>
@@ -258,7 +260,7 @@ About
         <div class="blog_wrapper">
           <div class="row g-4">
             <div class="col-md-4">
-              <div class="blog_item">
+              <div class="blog_item about-blog">
                 <a class="item_image" href="{{ route('blog-detail') }}"
                   ><img
                     src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
@@ -268,7 +270,7 @@ About
                 <div class="item_content">
                   
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-white" href="{{ route('blog-detail') }}"
                       >Event Security: Ensuring Safety and Peace of Mind</a
                     >
                   </h3>
@@ -276,7 +278,7 @@ About
                     <ul class="category_list unordered_list">
                       <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
                     </ul>
-                    <span class="post_date"
+                    <span class="post_date text-white"
                       ><span style="margin-right: 10px"
                         ><svg
                           width="20"
@@ -308,7 +310,7 @@ About
               </div>
             </div>
             <div class="col-md-4">
-              <div class="blog_item">
+              <div class="blog_item about-blog">
                 <a class="item_image" href="{{ route('blog-detail') }}"
                   ><img
                     src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
@@ -318,7 +320,7 @@ About
                 <div class="item_content">
                   
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-white" href="{{ route('blog-detail') }}"
                       >Event Security: Ensuring Safety and Peace of Mind</a
                     >
                   </h3>
@@ -326,7 +328,7 @@ About
                     <ul class="category_list unordered_list">
                       <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
                     </ul>
-                    <span class="post_date"
+                    <span class="post_date text-white"
                       ><span style="margin-right: 10px"
                         ><svg
                           width="20"
@@ -358,7 +360,7 @@ About
               </div>
             </div>
             <div class="col-md-4">
-              <div class="blog_item">
+              <div class="blog_item about-blog">
                 <a class="item_image" href="{{ route('blog-detail') }}"
                   ><img
                     src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
@@ -368,7 +370,7 @@ About
                 <div class="item_content">
                   
                   <h3 class="item_title">
-                    <a href="{{ route('blog-detail') }}"
+                    <a class="text-white" href="{{ route('blog-detail') }}"
                       >Event Security: Ensuring Safety and Peace of Mind</a
                     >
                   </h3>
@@ -376,7 +378,7 @@ About
                     <ul class="category_list unordered_list">
                       <li><a href="{{ route('blog-detail') }}">UI/UX</a></li>
                     </ul>
-                    <span class="post_date"
+                    <span class="post_date text-white"
                       ><span style="margin-right: 10px"
                         ><svg
                           width="20"
@@ -416,8 +418,8 @@ About
             >
               <nav>
                 <ul>
-                  <li><a href="#">01</a></li>
-                  <li><span class="current">02</span></li>
+                  <li><span class="current">01</span></li>
+                  <li><a href="#">02</a></li>
                   <li><a href="#">03</a></li>
                   <li class="next">
                     <a href="#"><i class="fa-light fa-arrow-right-long"></i></a>

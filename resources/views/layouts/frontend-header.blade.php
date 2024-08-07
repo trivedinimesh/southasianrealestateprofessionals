@@ -79,7 +79,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="offcanvas__social">
+                <div class="offcanvas__social pb-20">
                   <ul>
                     <li>
                       <a href="https://www.facebook.com/"
@@ -150,7 +150,7 @@
                 <div class="header__action-inner">
                     <div class="header__btn d-none d-xl-block">
                     <a class="fill__btn" href="#"
-                      >SignIn<i class="fa-regular fa-angle-right"></i
+                      >Sign In<i class="fa-regular fa-angle-right"></i
                     ></a>
                     </div>
                     <div class="header__hamburger">

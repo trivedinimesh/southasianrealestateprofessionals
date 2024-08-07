@@ -39346,7 +39346,7 @@ i[class^="flaticon-"] {
     inset-inline-end: 0;
     top: 50%;
     font-size: 16px;
-    background: #b60000;
+    background: #0049ad;
     overflow: hidden;
     color: var(--clr-text-primary);
     z-index: 5;
@@ -41200,6 +41200,7 @@ a {
     padding: 0;
     min-height: auto;
     background: none;
+    display: none;
 }
 .mean-container .mean-nav > ul {
     padding: 0;
@@ -43906,8 +43907,8 @@ a {
     text-transform: capitalize;
 }
 .accordion__tab .nav-tabs .nav-link.active {
-    color: #b60000;
-    background: #b60000;
+    color: #fff;
+    background: #0049AD !important;
     border-radius: 6px;
 }
 .accordion__meta-thumb img {
@@ -44771,6 +44772,9 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
     padding: 20px 20px 30px;
     border-radius: 12px;
     background-color: #DEE2E6;
+}
+.bd-theme-light .about-blog {
+    background-color: #2C2C2C !important;
 }
 .bd-theme-light .blog_item .flex_wrap {
     display: flex;
@@ -48998,4 +49002,9 @@ textarea.form-control {
 }
 div.modal-video {
     background-color: rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 1200px) {
+    .mean-bar {
+        display: block !important;
+    }
 }

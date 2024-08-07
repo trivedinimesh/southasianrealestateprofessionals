@@ -2,9 +2,9 @@
 @section('body')
 
 <section class="dark_light_class">
-  <section class="page_banner text-center pt-150 pb-60">
+  <section class="page_banner text-center pt-90 pb-60">
     <div class="container decoration_wrap">
-      <h1 class="page_title mb-15">Events</h1>
+      <h1 class="page_title mb-15 text__highlight">Events</h1>
       <ul class="breadcrumb_nav unordered_list_center">
         <li><a href="{{ route('home') }}">Home</a></li>
         <li>Events</li>
@@ -13,7 +13,7 @@
   </section>
 <section
     id="homeschedule"
-    class="event__schedule-area dark_light_class pt-185 pb-150"
+    class="event__schedule-area dark_light_class pt-90 pb-90"
 >
     <div class="container">
         <div class="row align-items-center">
@@ -160,7 +160,7 @@
                                                         ></span
                                                     ></span
                                                 ><span
-                                                    class="accordion__title_inner accordion-border"
+                                                    class="accordion__title_inner"
                                                     ></span
                                             ></span
                                         >
@@ -177,17 +177,7 @@
                                                     class="accordion__title-inner mb-25"
                                                 >
                                                     <p>
-                                                        Lorem ipsum, dolor sit
-                                                        amet consectetur
-                                                        adipisicing elit.
-                                                        Quisquam, nulla.
-                                                        Veritatis magnam esse
-                                                        laboriosam aliquam sunt
-                                                        voluptate sequi nesciunt
-                                                        officia, sint culpa!
-                                                        Numquam, soluta commodi.
-                                                        Ex laborum natus iste
-                                                        nihil?
+                                                    Join us for an evening filled with networking, industry updates, delicious food, drinks, exiting casino entertainment, a silent auction, and much more!
                                                     </p>
                                                 </div>
                                                 <div
@@ -277,7 +267,7 @@
                                                         ></span
                                                     ></span
                                                 ><span
-                                                    class="accordion__title_inner accordion-border"
+                                                    class="accordion__title_inner"
                                                     ></span
                                             ></span
                                         >
@@ -294,17 +284,7 @@
                                                     class="accordion__title-inner mb-25"
                                                 >
                                                     <p>
-                                                        Lorem ipsum, dolor sit
-                                                        amet consectetur
-                                                        adipisicing elit.
-                                                        Quisquam, nulla.
-                                                        Veritatis magnam esse
-                                                        laboriosam aliquam sunt
-                                                        voluptate sequi nesciunt
-                                                        officia, sint culpa!
-                                                        Numquam, soluta commodi.
-                                                        Ex laborum natus iste
-                                                        nihil?
+                                                        Join us for an evening filled with networking, industry updates, delicious food, drinks, exiting casino entertainment, a silent auction, and much more!
                                                     </p>
                                                 </div>
                                                 <div
@@ -394,7 +374,7 @@
                                                         ></span
                                                     ></span
                                                 ><span
-                                                    class="accordion__title_inner accordion-border"
+                                                    class="accordion__title_inner"
                                                     ></span
                                             ></span
                                         >
@@ -411,17 +391,7 @@
                                                     class="accordion__title-inner mb-25"
                                                 >
                                                     <p>
-                                                        Lorem ipsum, dolor sit
-                                                        amet consectetur
-                                                        adipisicing elit.
-                                                        Quisquam, nulla.
-                                                        Veritatis magnam esse
-                                                        laboriosam aliquam sunt
-                                                        voluptate sequi nesciunt
-                                                        officia, sint culpa!
-                                                        Numquam, soluta commodi.
-                                                        Ex laborum natus iste
-                                                        nihil?
+                                                        Join us for an evening filled with networking, industry updates, delicious food, drinks, exiting casino entertainment, a silent auction, and much more!
                                                     </p>
                                                 </div>
                                                 <div

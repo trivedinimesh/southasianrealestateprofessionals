@@ -5,14 +5,16 @@ Contact
 
 @section('body')
 
-<section class="page_banner text-center pt-150 pb-60">
-  <div class="container decoration_wrap">
-    <h1 class="page_title mb-15">Contact Us</h1>
-    <ul class="breadcrumb_nav unordered_list_center">
-      <li><a href="{{ route('home') }}">Home</a></li>
-      <li>Contact Us</li>
-    </ul>
-  </div>
+<section class="dark_light_class">
+  <section class="page_banner text-center pt-90 pb-60">
+    <div class="container decoration_wrap">
+      <h1 class="page_title mb-15 text__highlight">Contact Us</h1>
+      <ul class="breadcrumb_nav unordered_list_center">
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+  </section>
 </section>
 <section class="contact_section dark_light_class section_space_lg">
   <div class="container">
