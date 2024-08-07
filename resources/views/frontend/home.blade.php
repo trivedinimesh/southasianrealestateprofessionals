@@ -22,7 +22,7 @@ Home
                 <span class="text__highlight"> Conference </span>
             </h2>
             <div class="slider__btdn">
-                <a class="fill__btn" href="signup"
+                <a class="fill__btn" href="#"
                 >Register Now<i class="fa-regular fa-angle-right"></i
                 ></a>
             </div>
@@ -130,7 +130,7 @@ Home
                 </p>
             </div>
             </div>
-            <a class="fill__btn" href="event-list-two"
+            <a class="fill__btn" href="{{ route('aboutUs') }}"
             >FIND OUT MORE<i class="fa-regular fa-angle-right"></i
             ></a>
         </div>
@@ -246,7 +246,7 @@ Home
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
                 </p>
                 </div>
-                <a class="fill__btn fill_btn_new" href="event-list-two"
+                <a class="fill__btn fill_btn_new" href="{{ route('membership') }}"
                 >I'M READY TO BE A MEMBER!  <i class="fa-regular fa-angle-right"></i
                 ></a>
             </div>

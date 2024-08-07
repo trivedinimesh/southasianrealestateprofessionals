@@ -25,8 +25,6 @@ About
         <div class="col-xxl-6 col-xl-6 col-lg-6">
           <div class="about__content-wrapper mb-60">
             <div class="section__title-wrapper mb-80">
-              <span class="section__back-title">A</span
-              ><span class="section__subtitle">ABOUT THIS EVENT</span>
               <h2 class="section__title">
                 EXPERIENCE A TRUE DIGITAL
                 <span class="text__highlight"
@@ -78,22 +76,9 @@ About
                   accumsan ipsum velit.” Nam nec tellus a odio tincidunt.
                 </p>
               </div>
-              <div class="about__location-info mb-80">
-                <div class="about__location-inner">
-                  <div class="about__location-icon">
-                    <a href="#"><i class="fa-solid fa-location-dot"></i></a>
-                  </div>
-                  <div class="about__location-address">
-                    <h5>WHEN AND WHERE</h5>
-                    <span>November 9–10 <br />The Midway SF, Zoom</span>
-                  </div>
-                </div>
-                <div class="pluse__status">
-                  <span class="dot"></span><span class="text">Online</span>
-                </div>
-              </div>
+              
             </div>
-            <a class="fill__btn" href="event-list-two"
+            <a class="fill__btn" href="{{ route('membership') }}"
               >Join Now<i class="fa-regular fa-angle-right"></i
             ></a>
           </div>
@@ -142,11 +127,11 @@ About
         <div class="row ">
         <div class=" col-md-3">
     <div class="speaker__list-item p-0 mb-30 ">
-        <div class="speaker__list-thumb"><a href="/speaker-details-two/3"><img
+        <div class="speaker__list-thumb"><a href="#"><img
                     src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found"></a></div>
         <div class="speaker__list-content-inner">
             <div class="speaker__list-content">
-                <h5 class="speaker__author-title"><a href="/speaker-details-two/3">Bruce S. Smith</a></h5><span
+                <h5 class="speaker__author-title"><a href="#">Bruce S. Smith</a></h5><span
                     class="speaker__author-info">Digital Marketer</span>
             </div>
             <div class="speaker__list-social"><a href="https://www.facebook.com/"><i
@@ -160,11 +145,11 @@ About
 </div>
 <div class=" col-md-3">
     <div class="speaker__list-item p-0 mb-30 ">
-        <div class="speaker__list-thumb"><a href="/speaker-details-two/3"><img
+        <div class="speaker__list-thumb"><a href="#"><img
                     src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found"></a></div>
         <div class="speaker__list-content-inner">
             <div class="speaker__list-content">
-                <h5 class="speaker__author-title"><a href="/speaker-details-two/3">Bruce S. Smith</a></h5><span
+                <h5 class="speaker__author-title"><a href="#">Bruce S. Smith</a></h5><span
                     class="speaker__author-info">Digital Marketer</span>
             </div>
             <div class="speaker__list-social"><a href="https://www.facebook.com/"><i
@@ -178,11 +163,11 @@ About
 </div>
 <div class=" col-md-3">
     <div class="speaker__list-item p-0 mb-30 ">
-        <div class="speaker__list-thumb"><a href="/speaker-details-two/3"><img
+        <div class="speaker__list-thumb"><a href="#"><img
                     src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found"></a></div>
         <div class="speaker__list-content-inner">
             <div class="speaker__list-content">
-                <h5 class="speaker__author-title"><a href="/speaker-details-two/3">Bruce S. Smith</a></h5><span
+                <h5 class="speaker__author-title"><a href="#">Bruce S. Smith</a></h5><span
                     class="speaker__author-info">Digital Marketer</span>
             </div>
             <div class="speaker__list-social"><a href="https://www.facebook.com/"><i
@@ -196,11 +181,11 @@ About
 </div>
 <div class=" col-md-3">
     <div class="speaker__list-item p-0 mb-30 ">
-        <div class="speaker__list-thumb"><a href="/speaker-details-two/3"><img
+        <div class="speaker__list-thumb"><a href="#"><img
                     src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found"></a></div>
         <div class="speaker__list-content-inner">
             <div class="speaker__list-content">
-                <h5 class="speaker__author-title"><a href="/speaker-details-two/3">Bruce S. Smith</a></h5><span
+                <h5 class="speaker__author-title"><a href="#">Bruce S. Smith</a></h5><span
                     class="speaker__author-info">Digital Marketer</span>
             </div>
             <div class="speaker__list-social"><a href="https://www.facebook.com/"><i

@@ -165,12 +165,12 @@ Contact
         <ul class="contact_info_list style_2 ps-lg-4 unordered_list_block">
           <li>
             <strong>Loaction:</strong
-            ><span>1989 Timber Ridge Road Sacramento CA, California</span>
+            ><span>Houston, Texas</span>
           </li>
-          <li><strong>Phone:</strong><span>+1-202-555-0149</span></li>
-          <li><strong>Email:</strong><span>contact@paradox.com</span></li>
+          <li><strong>Phone:</strong><span>832 723 5294</span></li>
+          <li><strong>Email:</strong><span>sarephouseton@gmail.com</span></li>
           <li>
-            <strong>Opening:</strong><span>10am - 6pm, Friday Close</span>
+            <strong>Opening:</strong><span>9am - 5pm, Saturday and Sunday Close</span>
           </li>
           <li>
             <strong>Follow Us:</strong>

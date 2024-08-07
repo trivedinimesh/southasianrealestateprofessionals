@@ -39318,7 +39318,7 @@ i[class^="flaticon-"] {
     content: "";
     height: 100%;
     width: 100%;
-    background: var(--clr-gradient-15);
+    background: #b60000;
     opacity: 0;
     visibility: hidden;
     z-index: -1;
@@ -39346,7 +39346,7 @@ i[class^="flaticon-"] {
     inset-inline-end: 0;
     top: 50%;
     font-size: 16px;
-    background: var(--clr-gradient-15);
+    background: #b60000;
     overflow: hidden;
     color: var(--clr-text-primary);
     z-index: 5;
@@ -39743,7 +39743,7 @@ a {
     content: "";
     height: 100%;
     width: 100%;
-    background: var(--clr-gradient-1);
+    background: #b60000;
     opacity: 0;
     z-index: -1;
     left: 0;
@@ -39765,7 +39765,7 @@ a {
     transform: translateY(-50%);
     width: 45px;
     height: 45px;
-    background: var(--clr-gradient-1);
+    background: #b60000;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -42093,7 +42093,7 @@ a {
     line-height: 50px;
 }
 .dlabnav .metismenu > li.mm-active li:hover a {
-    background: var(--clr-gradient-1);
+    background: #b60000;
     color: var(--clr-common-white);
 }
 .bd-theme-dark .dlabnav .metismenu > li.mm-active li:hover a {
@@ -42102,7 +42102,7 @@ a {
 }
 .dlabnav .metismenu > li.mm-active > a {
     color: var(--clr-text-primary);
-    background: var(--clr-gradient-1);
+    background: #b60000;
 }
 .bd-theme-dark .dlabnav .metismenu > li.mm-active > a {
     background: var(--clr-common-white);
@@ -42172,7 +42172,7 @@ a {
     transform: rotate(-225deg) translateY(-50%);
 }
 .dlabnav .metismenu > li:hover > a {
-    background: var(--clr-gradient-1);
+    background: #b60000;
     color: var(--clr-common-white);
 }
 .bd-theme-dark .dlabnav .metismenu > li:hover > a {
@@ -42180,7 +42180,7 @@ a {
     color: var(--clr-text-19);
 }
 .dlabnav .metismenu > li:focus > a {
-    background: var(--clr-gradient-1);
+    background: #b60000;
     color: var(--clr-common-white);
 }
 .bd-theme-dark .dlabnav .metismenu > li:focus > a {
@@ -43906,8 +43906,8 @@ a {
     text-transform: capitalize;
 }
 .accordion__tab .nav-tabs .nav-link.active {
-    color: var(--clr-common-white);
-    background: var(--clr-gradient-1);
+    color: #b60000;
+    background: #b60000;
     border-radius: 6px;
 }
 .accordion__meta-thumb img {
@@ -48028,7 +48028,7 @@ textarea.form-control {
     width: 70px;
     height: 60px;
     border-radius: 0 12px 12px 0;
-    background: var(--clr-gradient-1);
+    background: #b60000;
 }
 .row .contact_field {
     flex: unset;
