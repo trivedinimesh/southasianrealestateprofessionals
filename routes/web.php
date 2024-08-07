@@ -11,7 +11,7 @@ use App\Http\Controllers\FrontEnd\MembershipController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
-Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
 Route::get('/blog-detail', [BlogController::class, 'blogDetail'])->name('blog-detail');
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contactUs');
 Route::get('/events', [EventsController::class, 'index'])->name('events');

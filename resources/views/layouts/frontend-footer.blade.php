@@ -29,7 +29,7 @@
                         <li><a href="{{ route('aboutUs') }}">ABOUT</a></li>
                         <li><a href="{{ route('events') }}">EVENTS</a></li>
                         <li><a href="{{ route('gallery') }}">GALLERY</a></li>
-                        <li><a href="{{ route('blog') }}">BLOGS</a></li>
+                        <li><a href="{{ route('blogs') }}">BLOGS</a></li>
                         <li><a href="{{ route('membership') }}">MEMBERSHIP</a></li>
                         <li><a href="{{ route('contactUs') }}">CONTACT</a></li>
                       </ul>

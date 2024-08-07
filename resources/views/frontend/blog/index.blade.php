@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('title')
-Blog
+Blogs
 @endsection
 
 @section('body')

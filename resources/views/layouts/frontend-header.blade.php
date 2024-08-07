@@ -36,7 +36,7 @@
                                         <li class=""><a href="{{ route('aboutUs') }}">About</a></li>
                                         <li class=""><a href="{{ route('events') }}">Events</a></li>
                                         <li class=""><a href="{{ route('gallery') }}">Gallery</a></li>
-                                        <li class=""><a href="{{ route('blog') }}">Blog</a></li>
+                                        <li class=""><a href="{{ route('blogs') }}">Blogs</a></li>
                                         <li class=""><a href="{{ route('membership') }}">Membership</a></li>
                                         <li class=""><a href="{{ route('contactUs') }}">Contact</a></li>
                             </ul>
@@ -141,7 +141,7 @@
                         <li class=""><a href="{{ route('aboutUs') }}">About</a></li>
                         <li class=""><a href="{{ route('events') }}">Events</a></li>
                         <li class=""><a href="{{ route('gallery') }}">Gallery</a></li>
-                        <li class=""><a href="{{ route('blog') }}">Blog</a></li>
+                        <li class=""><a href="{{ route('blogs') }}">Blogs</a></li>
                         <li class=""><a href="{{ route('membership') }}">Membership</a></li>
                         <li class=""><a href="{{ route('contactUs') }}">Contact</a></li>
                     </ul>

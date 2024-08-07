@@ -34585,6 +34585,9 @@ fieldset:disabled .btn {
 .w-75 {
     width: 75% !important;
 }
+.w-90 {
+    width: 90% !important;
+}
 .w-100 {
     width: 100% !important;
 }
@@ -44463,7 +44466,7 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
 }
 @media (max-width: 450px) {
     .partner__grid-wrapper {
-        grid-template-columns: repeat(2, 120px);
+        grid-template-columns: repeat(3, 120px);
     }
 }
 .partner__thumb {
@@ -44772,6 +44775,11 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
     padding: 20px 20px 30px;
     border-radius: 12px;
     background-color: #DEE2E6;
+}
+.bd-theme-light .upcoming-event {
+    padding: 20px 20px 30px;
+    border-radius: 12px;
+    background-color: #FFECED;
 }
 .bd-theme-light .about-blog {
     background-color: #2C2C2C !important;

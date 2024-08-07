@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('title')
-Blog
+Blog Details
 @endsection
 
 @section('body')
@@ -10,7 +10,7 @@ Blog
       <h1 class="page_title mb-15 text__highlight">Top Factors to Consider When Investing in Real Estate</h1>
       <ul class="breadcrumb_nav unordered_list_center">
         <li><a href="{{ route('home') }}">Home</a></li>
-        <li><a href="{{ route('blog') }}">Blog</a></li>
+        <li><a href="{{ route('blogs') }}">Blogs</a></li>
         <li>Top Factors to Consider When Investing in Real Estate</li>
       </ul>
     </div>
