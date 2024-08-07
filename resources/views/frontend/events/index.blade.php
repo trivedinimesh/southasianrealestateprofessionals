@@ -19,8 +19,7 @@
         <div class="row align-items-center">
             <div class="col-xxl-7 col-xl-7 col-lg-6">
                 <div class="section__title-wrapper is-left mb-110">
-                    <span class="section__back-title">S</span
-                    ><span class="section__subtitle">SCHEDULE OF EVENT</span>
+                    <span class="section__subtitle">SCHEDULE OF EVENT</span>
                     <h2 class="section__title">
                         Conference
                         <span class="text__highlight">
@@ -66,39 +65,39 @@
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <button
                                 class="nav-link active"
-                                id="nav-day-one-tab"
+                                id="nav-june-tab"
                                 data-bs-toggle="tab"
-                                data-bs-target="#nav-day-one"
+                                data-bs-target="#nav-june"
                                 type="button"
                                 role="tab"
-                                aria-controls="nav-day-one"
+                                aria-controls="nav-june"
                                 aria-selected="true"
                             >
-                                day one</button
+                                June</button
                             ><button
                                 class="nav-link"
-                                id="nav-day-tow-tab"
+                                id="nav-july-tab"
                                 data-bs-toggle="tab"
-                                data-bs-target="#nav-day-tow"
+                                data-bs-target="#nav-july"
                                 type="button"
                                 role="tab"
-                                aria-controls="nav-day-tow"
+                                aria-controls="nav-july"
                                 aria-selected="false"
                                 tabindex="-1"
                             >
-                                day two</button
+                                July</button
                             ><button
                                 class="nav-link"
-                                id="nav-day-three-tab"
+                                id="nav-august-tab"
                                 data-bs-toggle="tab"
-                                data-bs-target="#nav-day-three"
+                                data-bs-target="#nav-august"
                                 type="button"
                                 role="tab"
-                                aria-controls="nav-day-three"
+                                aria-controls="nav-august"
                                 aria-selected="false"
                                 tabindex="-1"
                             >
-                                day three
+                                August
                             </button>
                         </div>
                     </nav>
@@ -111,9 +110,9 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div
                             class="tab-pane fade show active"
-                            id="nav-day-one"
+                            id="nav-june"
                             role="tabpanel"
-                            aria-labelledby="nav-day-one-tab"
+                            aria-labelledby="nav-june-tab"
                             tabindex="0"
                         >
                             <div class="accordion" id="accordionExample">
@@ -128,48 +127,41 @@
                                             data-bs-target="#collapseOne"
                                             aria-expanded="true"
                                             aria-controls="collapseOne"
-                                            ><span class="accordion__heading"
-                                                ><span
-                                                    class="accordion__meta accordion__meta-field"
-                                                    ><span
-                                                        class="accordion__meta-contet"
-                                                        ><span
-                                                            class="accordion__meta-contet-wrap"
-                                                            ><span class="title"
-                                                                >$75</span
-                                                            ><button
-                                                                type="button"
-                                                                class="accordion__meta-contet-url"
-                                                            >
-                                                                Get Ticket Now
-                                                            </button></span
-                                                        ></span
-                                                    ></span
-                                                ><span
+                                            >
+                                            <span class="accordion__heading">
+                                                <span class="accordion__meta accordion__meta-field">
+                                                    <span class="accordion__meta-contet  d-flex column-gap-lg-5">
+                                                        <span class="accordion__meta-contet-wrap">
+                                                            <span class="title">
+                                                                $85
+                                                            </span>
+                                                            <button type="button" class="accordion__meta-contet-url">
+                                                                Members
+                                                            </button>
+                                                        </span>
+                                                        <span class="accordion__meta-contet-wrap">
+                                                            <span class="title">
+                                                                $95
+                                                            </span>
+                                                            <button type="button" class="accordion__meta-contet-url">
+                                                                Non-Members
+                                                            </button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span
                                                     class="accordion__meta accordion-border"
-                                                    ><span
-                                                        class="accordion__meta-thumb"
-                                                        ><img
-                                                            src="{{ URL::asset('build/media/meta-01.png') }}"
-                                                            alt="image not found" /></span
                                                     ><span
                                                         class="accordion__meta-contet"
                                                         ><span class="title"
-                                                            >Fredric
-                                                            Martin</span
+                                                            >Annual Gala - Milano Event Center</span
                                                         ><span class="info"
-                                                            >Digital
-                                                            Marketer</span
+                                                            >16555 Creekbend Dr; Sugarland, TX 77478</span
                                                         ></span
                                                     ></span
                                                 ><span
                                                     class="accordion__title_inner accordion-border"
-                                                    ><span
-                                                        class="accordion__title"
-                                                        >BITPA Conference Dhaka
-                                                        Meet up 2023</span
                                                     ></span
-                                                ></span
                                             ></span
                                         >
                                     </h2>
@@ -211,18 +203,17 @@
                                                         ><i
                                                             class="fa-light fa-clock"
                                                         ></i>
-                                                        3:00PM-4:30PM</span
+                                                        6:00PM-9.00PM</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-calendar"
                                                         ></i
-                                                        >November 09</span
+                                                        >June 24</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-placeholder-1"
                                                         ></i
-                                                        >Sand diego,
-                                                        Canada</span
+                                                        >Sugarland, Texas</span
                                                     >
                                                     <div class="header__btn">
                                                         <a class="blog_custome_btn" href="{{ route('event-detail') }}">Read More<i class="fa-regular fa-angle-right"></i></a>
@@ -236,73 +227,66 @@
                         </div>
                         <div
                             class="tab-pane fade"
-                            id="nav-day-tow"
+                            id="nav-july"
                             role="tabpanel"
-                            aria-labelledby="nav-day-tow-tab"
+                            aria-labelledby="nav-july-tab"
                             tabindex="0"
                         >
                             <div class="accordion" id="accordionExample-p">
                                 <div class="accordion-item">
                                     <h2
                                         class="accordion-header"
-                                        id="headingOne-p"
+                                        id="headingOne"
                                     >
                                         <span
                                             class="accordion-button"
                                             data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne-p"
+                                            data-bs-target="#collapseOne"
                                             aria-expanded="true"
-                                            aria-controls="collapseOne-p"
-                                            ><span class="accordion__heading"
-                                                ><span
-                                                    class="accordion__meta accordion__meta-field"
-                                                    ><span
-                                                        class="accordion__meta-contet"
-                                                        ><span
-                                                            class="accordion__meta-contet-wrap"
-                                                            ><span class="title"
-                                                                >$95</span
-                                                            ><button
-                                                                type="button"
-                                                                class="accordion__meta-contet-url"
-                                                            >
-                                                                Get Ticket Now
-                                                            </button></span
-                                                        ></span
-                                                    ></span
-                                                ><span
+                                            aria-controls="collapseOne"
+                                            >
+                                            <span class="accordion__heading">
+                                                <span class="accordion__meta accordion__meta-field">
+                                                    <span class="accordion__meta-contet  d-flex column-gap-lg-5">
+                                                        <span class="accordion__meta-contet-wrap">
+                                                            <span class="title">
+                                                                $85
+                                                            </span>
+                                                            <button type="button" class="accordion__meta-contet-url">
+                                                                Members
+                                                            </button>
+                                                        </span>
+                                                        <span class="accordion__meta-contet-wrap">
+                                                            <span class="title">
+                                                                $95
+                                                            </span>
+                                                            <button type="button" class="accordion__meta-contet-url">
+                                                                Non-Members
+                                                            </button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span
                                                     class="accordion__meta accordion-border"
-                                                    ><span
-                                                        class="accordion__meta-thumb"
-                                                        ><img
-                                                            src="{{ URL::asset('build/media/meta-01.png') }}"
-                                                            alt="image not found" /></span
                                                     ><span
                                                         class="accordion__meta-contet"
                                                         ><span class="title"
-                                                            >Fredric
-                                                            Martin</span
+                                                            >Annual Gala - Milano Event Center</span
                                                         ><span class="info"
-                                                            >Digital
-                                                            Marketer</span
+                                                            >16555 Creekbend Dr; Sugarland, TX 77478</span
                                                         ></span
                                                     ></span
                                                 ><span
                                                     class="accordion__title_inner accordion-border"
-                                                    ><span
-                                                        class="accordion__title"
-                                                        >BITPA Conference Dhaka
-                                                        Meet up 2023</span
                                                     ></span
-                                                ></span
                                             ></span
                                         >
                                     </h2>
                                     <div
-                                        id="collapseOne-p"
+                                        id="collapseOne"
                                         class="accordion-collapse collapse show"
-                                        aria-labelledby="headingOne-p"
-                                        data-bs-parent="#accordionExample-p"
+                                        aria-labelledby="headingOne"
+                                        data-bs-parent="#accordionExample"
                                     >
                                         <div class="accordion-body">
                                             <div class="accordiong__inner">
@@ -336,18 +320,17 @@
                                                         ><i
                                                             class="fa-light fa-clock"
                                                         ></i>
-                                                        2:00PM-4:30PM</span
+                                                        6:00PM-9.00PM</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-calendar"
                                                         ></i
-                                                        >November 10</span
+                                                        >July 24</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-placeholder-1"
                                                         ></i
-                                                        >Sand diego,
-                                                        Canada</span
+                                                        >Sugarland, Texas</span
                                                     >
                                                     <div class="header__btn">
                                                         <a class="blog_custome_btn" href="{{ route('event-detail') }}">Read More<i class="fa-regular fa-angle-right"></i></a>
@@ -361,73 +344,66 @@
                         </div>
                         <div
                             class="tab-pane fade"
-                            id="nav-day-three"
+                            id="nav-august"
                             role="tabpanel"
-                            aria-labelledby="nav-day-three-tab"
+                            aria-labelledby="nav-august-tab"
                             tabindex="0"
                         >
                             <div class="accordion" id="accordionExample-c">
                                 <div class="accordion-item">
                                     <h2
                                         class="accordion-header"
-                                        id="headingOne-c"
+                                        id="headingOne"
                                     >
                                         <span
                                             class="accordion-button"
                                             data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne-c"
+                                            data-bs-target="#collapseOne"
                                             aria-expanded="true"
-                                            aria-controls="collapseOne-c"
-                                            ><span class="accordion__heading"
-                                                ><span
-                                                    class="accordion__meta accordion__meta-field"
-                                                    ><span
-                                                        class="accordion__meta-contet"
-                                                        ><span
-                                                            class="accordion__meta-contet-wrap"
-                                                            ><span class="title"
-                                                                >$85</span
-                                                            ><button
-                                                                type="button"
-                                                                class="accordion__meta-contet-url"
-                                                            >
-                                                                Get Ticket Now
-                                                            </button></span
-                                                        ></span
-                                                    ></span
-                                                ><span
+                                            aria-controls="collapseOne"
+                                            >
+                                            <span class="accordion__heading">
+                                                <span class="accordion__meta accordion__meta-field">
+                                                    <span class="accordion__meta-contet  d-flex column-gap-lg-5">
+                                                        <span class="accordion__meta-contet-wrap">
+                                                            <span class="title">
+                                                                $85
+                                                            </span>
+                                                            <button type="button" class="accordion__meta-contet-url">
+                                                                Members
+                                                            </button>
+                                                        </span>
+                                                        <span class="accordion__meta-contet-wrap">
+                                                            <span class="title">
+                                                                $95
+                                                            </span>
+                                                            <button type="button" class="accordion__meta-contet-url">
+                                                                Non-Members
+                                                            </button>
+                                                        </span>
+                                                    </span>
+                                                </span>
+                                                <span
                                                     class="accordion__meta accordion-border"
-                                                    ><span
-                                                        class="accordion__meta-thumb"
-                                                        ><img
-                                                            src="{{ URL::asset('build/media/meta-01.png') }}"
-                                                            alt="image not found" /></span
                                                     ><span
                                                         class="accordion__meta-contet"
                                                         ><span class="title"
-                                                            >Fredric
-                                                            Martin</span
+                                                            >Annual Gala - Milano Event Center</span
                                                         ><span class="info"
-                                                            >Digital
-                                                            Marketer</span
+                                                            >16555 Creekbend Dr; Sugarland, TX 77478</span
                                                         ></span
                                                     ></span
                                                 ><span
                                                     class="accordion__title_inner accordion-border"
-                                                    ><span
-                                                        class="accordion__title"
-                                                        >BITPA Conference Dhaka
-                                                        Meet up 2023</span
                                                     ></span
-                                                ></span
                                             ></span
                                         >
                                     </h2>
                                     <div
-                                        id="collapseOne-c"
+                                        id="collapseOne"
                                         class="accordion-collapse collapse show"
-                                        aria-labelledby="headingOne-c"
-                                        data-bs-parent="#accordionExample-c"
+                                        aria-labelledby="headingOne"
+                                        data-bs-parent="#accordionExample"
                                     >
                                         <div class="accordion-body">
                                             <div class="accordiong__inner">
@@ -461,18 +437,17 @@
                                                         ><i
                                                             class="fa-light fa-clock"
                                                         ></i>
-                                                        2:00PM-4:30PM</span
+                                                        6:00PM-9.00PM</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-calendar"
                                                         ></i
-                                                        >November 11</span
+                                                        >August 24</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-placeholder-1"
                                                         ></i
-                                                        >Sand diego,
-                                                        Canada</span
+                                                        >Sugarland, Texas</span
                                                     >
                                                     <div class="header__btn">
                                                         <a class="blog_custome_btn" href="{{ route('event-detail') }}">Read More<i class="fa-regular fa-angle-right"></i></a>
