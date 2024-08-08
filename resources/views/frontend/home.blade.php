@@ -279,12 +279,12 @@ Home
           <div class="row g-4">
             <div class="col-md-4">
               <div class="blog_item upcoming-event ">
-                <a class="item_image" href="{{ route('blog-detail') }}">
+                <a class="item_image" href="{{ route('event-detail') }}">
                   <img src="{{ URL::asset('build/media/upcoming-event.png') }}" alt="Blog Image" style="height: 100%; width: 100%" />
                 </a>
                 <div class="item_content">
                   <h3 class="item_title">
-                    <a class="text-black" href="{{ route('blog-detail') }}">Annual Gala - Milano Event Center </a>
+                    <a class="text-black" href="{{ route('event-detail') }}">Annual Gala - Milano Event Center </a>
                   </h3>
                   <div class="flex_wrap d-grid">
                     <span>
@@ -306,7 +306,7 @@ Home
                       </span>24 June, 2024 </span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('blog-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>
@@ -314,12 +314,12 @@ Home
             </div>
             <div class="col-md-4">
               <div class="blog_item upcoming-event ">
-                <a class="item_image" href="{{ route('blog-detail') }}">
+                <a class="item_image" href="{{ route('event-detail') }}">
                   <img src="{{ URL::asset('build/media/upcoming-event.png') }}" alt="Blog Image" style="height: 100%; width: 100%" />
                 </a>
                 <div class="item_content">
                   <h3 class="item_title">
-                    <a class="text-black" href="{{ route('blog-detail') }}">Annual Gala - Milano Event Center </a>
+                    <a class="text-black" href="{{ route('event-detail') }}">Annual Gala - Milano Event Center </a>
                   </h3>
                   <div class="flex_wrap d-grid">
                     <span>
@@ -341,7 +341,7 @@ Home
                       </span>24 June, 2024 </span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('blog-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>
@@ -349,12 +349,12 @@ Home
             </div>
             <div class="col-md-4">
               <div class="blog_item upcoming-event ">
-                <a class="item_image" href="{{ route('blog-detail') }}">
+                <a class="item_image" href="{{ route('event-detail') }}">
                   <img src="{{ URL::asset('build/media/upcoming-event.png') }}" alt="Blog Image" style="height: 100%; width: 100%" />
                 </a>
                 <div class="item_content">
                   <h3 class="item_title">
-                    <a class="text-black" href="{{ route('blog-detail') }}">Annual Gala - Milano Event Center </a>
+                    <a class="text-black" href="{{ route('event-detail') }}">Annual Gala - Milano Event Center </a>
                   </h3>
                   <div class="flex_wrap d-grid">
                     <span>
@@ -376,7 +376,7 @@ Home
                       </span>24 June, 2024 </span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('blog-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>

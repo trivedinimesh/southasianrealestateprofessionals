@@ -22,7 +22,7 @@
                   <form action="#">
                     <input
                       type="text"
-                      placeholder="What are you searching for?"
+                      placeholder=""
                       /><button type="submit">
                     <i class="far fa-search"></i>
                     </button>

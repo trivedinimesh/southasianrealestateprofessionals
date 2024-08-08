@@ -39984,7 +39984,7 @@ a {
     color: var(--clr-common-white);
 }
 .offcanvas__info {
-    background: #191919 none repeat scroll 0 0;
+    background: var(--clr-common-white) none repeat scroll 0 0;
     border-left: 2px solid #0049AD;
     position: fixed;
     right: 0;
@@ -40062,7 +40062,7 @@ a {
     outline: none;
     border-bottom: 1px solid var(--clr-border-2);
     font-size: 16px;
-    color: var(--clr-common-white);
+    color: var(--clr-common-black);
 }
 .offcanvas__search input::-moz-placeholder {
     color: var(--clr-common-white);
@@ -40096,7 +40096,7 @@ a {
     margin-bottom: 20px;
     text-transform: uppercase;
     font-weight: var(--bd-fw-bold);
-    color: var(--clr-common-white);
+    color: var(--clr-common-black);
 }
 .offcanvas__contact ul li:not(:last-child) {
     margin-bottom: 20px;
@@ -40113,18 +40113,18 @@ a {
     align-items: center;
     justify-content: space-evenly;
     text-align: center;
-    border: 1px solid var(--clr-border-1);
+    border: 1px solid var(--clr-common-black);
     border-radius: 50%;
     transition: all 0.3s ease-out 0s;
     overflow: hidden;
-    color: var(--clr-common-white);
+    color: var(--clr-common-black);
     position: relative;
     z-index: 5;
 }
 .offcanvas__contact-text a {
     font-size: 16px;
     font-weight: 500;
-    color: var(--clr-common-white);
+    color: var(--clr-common-black);
 }
 .offcanvas__contact-text a:hover {
     color: #0049AD;
@@ -40145,7 +40145,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--clr-border-1);
+    border: 1px solid var(--clr-common-black);
     color: #0049AD;
     border-radius: 50%;
     overflow: hidden;
@@ -41805,7 +41805,7 @@ a {
 .mean-container .mean-nav ul li a {
     width: 100%;
     padding: 10px 0;
-    color: var(--clr-common-white);
+    color: var(--clr-common-black);
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
@@ -49015,4 +49015,7 @@ div.modal-video {
     .mean-bar {
         display: block !important;
     }
+}
+i.far.fa-search{
+    color: black;
 }
