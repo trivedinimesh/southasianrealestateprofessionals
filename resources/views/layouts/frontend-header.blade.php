@@ -149,7 +149,7 @@
                 </div>
                 <div class="header__action-inner">
                     <div class="header__btn d-none d-xl-block">
-                    <a class="fill__btn" href="#"
+                    <a class="fill__btn" href="{{ route('signin') }}"
                       >Sign In<i class="fa-regular fa-angle-right"></i
                     ></a>
                     </div>

@@ -23,7 +23,7 @@ Home
             </h2>
             <div class="slider__btdn">
                 <a class="fill__btn" href="#"
-                >Register Now<i class="fa-regular fa-angle-right"></i
+                >Signup Now<i class="fa-regular fa-angle-right"></i
                 ></a>
             </div>
             </div>
@@ -306,7 +306,7 @@ Home
                       </span>24 June, 2024 </span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Signup Now <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>
@@ -341,7 +341,7 @@ Home
                       </span>24 June, 2024 </span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Signup Now <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>
@@ -376,7 +376,7 @@ Home
                       </span>24 June, 2024 </span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Register Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail') }}">Signup Now <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>

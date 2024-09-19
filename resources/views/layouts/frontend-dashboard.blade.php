@@ -36,7 +36,17 @@
             data-n-g=""
             />
         <noscript data-n-css=""></noscript>
-
+        <script src="_next/static/chunks/webpack-6afe86ff35db31cc.js" defer=""></script>
+        <script src="_next/static/chunks/framework-d51ece3d757c7ed2.js" defer=""></script>
+        <script src="_next/static/chunks/main-81bb36a6aee6d986.js" defer=""></script>
+        <script src="_next/static/chunks/_app-d4ec09ba86fa23b5.js" defer=""></script>
+        <script src="_next/static/chunks/4607-44de2254aebe5f39.js" defer=""></script>
+        <script src="_next/static/chunks/5559-e8fa78a1c2db10a2.js" defer=""></script>
+        <script src="_next/static/chunks/2107-a151e37794064242.js" defer=""></script>
+        <script src="_next/static/chunks/35-f588ec9e24d0a4dd.js" defer=""></script>
+        <script src="_next/static/chunks/pages/dashboard-709aa79ceb0d142f.js" defer=""></script>
+        <script src="_next/static/10tcLR4Z-1GmfDXmyRDs3/_buildManifest.js" defer=""></script>
+        <script src="_next/static/10tcLR4Z-1GmfDXmyRDs3/_ssgManifest.js" defer=""></script>
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"/>
     </head>
@@ -46,11 +56,10 @@
 
             <!-- header-section -->
             
-            @include('layouts.frontend-header')
-            
+            @include('layouts.frontend-dashboard-header')
+
             @yield('body')
 
-            @include('layouts.frontend-footer')
             
             </main>
         </div>
@@ -68,16 +77,10 @@
         </script>
         <script src="{{ URL::asset('build/js/polyfills-0d1b80a048d4787e.js') }}"></script>
         <script src="{{ URL::asset('build/js/webpack6afe86ff35db31cc.js') }}"></script>
-        <script src="{{ URL::asset('build/js/framework-d51ece3d757c7ed2.js') }}"></script>
-        <script src="{{ URL::asset('build/js/main-81bb36a6aee6d986.js') }}"></script>
-        <script src="{{ URL::asset('build/js/_app-d4ec09ba86fa23b5.js') }}"></script>
-        <script src="{{ URL::asset('build/js/4607-44de2254aebe5f39.js') }}"></script>
         <script src="{{ URL::asset('build/js/1239-12e8f239e1957a1b.js') }}"></script>
         <script src="{{ URL::asset('build/js/7142-66de4c62f6d97743.js') }}"></script>
         <!-- <script src="{{ URL::asset('build/js/8529-4b69ae82a6f4878e.js') }}"></script> -->
         <script src="{{ URL::asset('build/js/index-338f7080ea9bc9b0.js') }}"></script>
-        <script src="{{ URL::asset('build/js/_buildManifest.js') }}"></script>
-        <script src="{{ URL::asset('build/js/_ssgManifest.js') }}"></script>
         <script>
             var box = document.querySelector('.bar-icon');
             var offcanvas__info = document.querySelector('.offcanvas__info');
