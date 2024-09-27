@@ -59,7 +59,7 @@
                     </h2>
                 </div>
             </div>
-            <div class="col-xxl-5 col-xl-5 col-lg-6">
+            <!-- <div class="col-xxl-5 col-xl-5 col-lg-6">
                 <div class="accordion__tab">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -102,19 +102,19 @@
                         </div>
                     </nav>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="schedule__accordion">
                     <div class="tab-content" id="nav-tabContent">
-                        <div
-                            class="tab-pane fade show active"
-                            id="nav-june"
-                            role="tabpanel"
-                            aria-labelledby="nav-june-tab"
-                            tabindex="0"
-                        >
+                        <!-- <div
+                        class="tab-pane fade show active"
+                        id="nav-june"
+                        role="tabpanel"
+                        aria-labelledby="nav-june-tab"
+                        tabindex="0"> -->
+                        @foreach ($events as $event)
                             <div class="accordion" id="accordionExample">
                                 <div class="accordion-item">
                                     <h2
@@ -133,7 +133,7 @@
                                                     <span class="accordion__meta-contet  d-flex column-gap-lg-5">
                                                         <span class="accordion__meta-contet-wrap">
                                                             <span class="title">
-                                                                $85
+                                                                ${{$event->price_member}}
                                                             </span>
                                                             <button type="button" class="accordion__meta-contet-url">
                                                                 Members
@@ -141,7 +141,7 @@
                                                         </span>
                                                         <span class="accordion__meta-contet-wrap">
                                                             <span class="title">
-                                                                $95
+                                                                ${{$event->price_non_member}}
                                                             </span>
                                                             <button type="button" class="accordion__meta-contet-url">
                                                                 Non-Members
@@ -154,9 +154,9 @@
                                                     ><span
                                                         class="accordion__meta-contet"
                                                         ><span class="title"
-                                                            >Annual Gala - Milano Event Center</span
+                                                            >{{$event->title}}</span
                                                         ><span class="info"
-                                                            >16555 Creekbend Dr; Sugarland, TX 77478</span
+                                                            >{{$event->address}}, {{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</span
                                                         ></span
                                                     ></span
                                                 ><span
@@ -177,14 +177,14 @@
                                                     class="accordion__title-inner mb-25"
                                                 >
                                                     <p>
-                                                    Join us for an evening filled with networking, industry updates, delicious food, drinks, exiting casino entertainment, a silent auction, and much more!
+                                                    {{$event->details}}
                                                     </p>
                                                 </div>
                                                 <div
                                                     class="accordion__thumb w-img"
                                                 >
                                                     <img
-                                                        src="{{ URL::asset('build/media/schedule-thumb.jpg') }}"
+                                                        src="{{ asset('images/events/'.$event->image)}}"
                                                         alt="image not found"
                                                     />
                                                 </div>
@@ -193,12 +193,12 @@
                                                         ><i
                                                             class="fa-light fa-clock"
                                                         ></i>
-                                                        6:00PM-9.00PM</span
+                                                        {{$event->start_time}} - {{$event->end_time}}</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-calendar"
                                                         ></i
-                                                        >June 24</span
+                                                        >{{$event->date}}</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-placeholder-1"
@@ -206,7 +206,7 @@
                                                         >Sugarland, Texas</span
                                                     >
                                                     <div class="header__btn">
-                                                        <a class="blog_custome_btn" href="{{ route('event-detail') }}">Read More<i class="fa-regular fa-angle-right"></i></a>
+                                                        <a class="blog_custome_btn" href="{{route('events.show', $event->id)}}">Read More<i class="fa-regular fa-angle-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,14 +214,14 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
+                        @endforeach
+                        <!-- </div> -->
+                        <!-- <div
                             class="tab-pane fade"
                             id="nav-july"
                             role="tabpanel"
                             aria-labelledby="nav-july-tab"
-                            tabindex="0"
-                        >
+                            tabindex="0">
                             <div class="accordion" id="accordionExample-p">
                                 <div class="accordion-item">
                                     <h2
@@ -327,8 +327,7 @@
                             id="nav-august"
                             role="tabpanel"
                             aria-labelledby="nav-august-tab"
-                            tabindex="0"
-                        >
+                            tabindex="0">
                             <div class="accordion" id="accordionExample-c">
                                 <div class="accordion-item">
                                     <h2
@@ -428,7 +427,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

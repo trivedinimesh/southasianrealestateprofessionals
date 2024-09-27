@@ -149,9 +149,15 @@
                 </div>
                 <div class="header__action-inner">
                     <div class="header__btn d-none d-xl-block">
-                    <a class="fill__btn" href="{{ route('signin') }}"
-                      >Sign In<i class="fa-regular fa-angle-right"></i
-                    ></a>
+                    {!! 
+                      !Auth::check()
+                      ? '<a class="fill__btn" href="' .
+                          route('login') .
+                          '">Login<i class="fa-regular fa-angle-right"></i></a>'
+                      : '<a class="fill__btn" href="' .
+                          route('dashboard') .
+                          '">' . Auth::user()->first_name . '<i class="fa-regular fa-angle-right"></i></a>'
+                  !!}
                     </div>
                     <div class="header__hamburger">
                     <div class="sidebar__toggle">

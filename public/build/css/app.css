@@ -6876,7 +6876,7 @@ i[class^="flaticon-"]:before {
 }
 .fa-hands:before,
 .fa-sign-language:before,
-.fa-signing:before {
+.fa-loging:before {
     content: "";
 }
 .fa-american-sign-language-interpreting:before,
@@ -19819,10 +19819,10 @@ i[class^="flaticon-"]:before {
 }
 .fa-duotone.fa-hands:after,
 .fa-duotone.fa-sign-language:after,
-.fa-duotone.fa-signing:after,
+.fa-duotone.fa-loging:after,
 .fad.fa-hands:after,
 .fad.fa-sign-language:after,
-.fad.fa-signing:after {
+.fad.fa-loging:after {
     content: "";
 }
 .fa-duotone.fa-american-sign-language-interpreting:after,
@@ -40204,7 +40204,7 @@ a {
     opacity: 0.8;
     visibility: visible;
 }
-.offcanvas .signin-area.open {
+.offcanvas .login-area.open {
     opacity: 0.6;
     visibility: visible;
     transition: all 0.3s ease-out 0s;
@@ -47042,7 +47042,7 @@ main.bd-theme-dark .schedule__accordion .collapseFour .accordion-body {
 .bd-theme-light .active_chat {
     background-color: #eae5e6;
 }
-.signin__area {
+.login__area {
     display: flex;
     align-items: center;
     justify-content: center;

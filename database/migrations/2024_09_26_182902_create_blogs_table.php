@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('keywords')->nullable();
             $table->string('tags')->nullable();
+            $table->boolean('is_publish')->default(true);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->timestamps();

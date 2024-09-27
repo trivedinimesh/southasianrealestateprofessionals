@@ -37,9 +37,10 @@ Dashboard
                         </div>
                         </div>
                         <div class="pt-25">
-                            <div class="create__input-wrapper">
-                                <form method="POST" action="{{route('users.store')}}">
+                            <form method="POST" action="{{route('users.store')}}">
                                 @csrf
+                                <div class="create__input-wrapper row">
+                                <div class="col-xxl-6 col-xl-6 col-lg-6">
                                     <div class="singel__input-field mb-15"><label
                                             class="input__field-text" >First Name</label>
                                             <input name="first_name" type="text" />
@@ -47,6 +48,9 @@ Dashboard
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+
                                     <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Last Name</label>
                                             <input name="last_name" type="text" />
@@ -54,6 +58,9 @@ Dashboard
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+
                                     <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Email</label>
                                             <input name="email" type="text" />
@@ -61,6 +68,10 @@ Dashboard
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+
+                                    
                                     <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Phone Number</label>
                                             <input name="phone_number" type="text" />
@@ -68,12 +79,16 @@ Dashboard
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+
                                     <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Password</label>
                                             <input type="password" name="password" />
                                             @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                             @endif
+                                    </div>
                                     </div>
                                     <button class="input__btn w-100"
                                         type="submit">Create User</button>

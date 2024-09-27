@@ -5,7 +5,7 @@ Sign
 
 @section('body')
 
-<section class="signin__area">
+<section class="login__area">
     <div class="sign__main-wrapper">
         <div class="sign__left">
             <div class="sign__header">
@@ -13,7 +13,7 @@ Sign
                             src="_next/static/media/color-logo.845aa965.svg" alt="image not found" /><img
                             class="logo-white" src="_next/static/media/color-logo-white.a79fee47.svg"
                             alt="image not found" /></a></div>
-                <div class="sign__link custome_link"><a href="signin">Sign in</a><a href="signup">Sign
+                <div class="sign__link custome_link"><a href="login">Login</a><a href="signup">Sign
                         Up</a></div>
             </div>
             <div class="sign__center-wrapper text-center mt-90">
@@ -22,7 +22,7 @@ Sign
                     <p>The faster you fill up. the faster you get a ticket</p>
                 </div>
                 <div class="sign__input-form text-center">
-                    <form action="{{ route('signin.action') }}" method="POST">
+                    <form action="{{ route('login.action') }}" method="POST">
                         @csrf
                         <div class="sign__input">
                             <input type="text" placeholder="Email" name="email" value="trivedinimesh6@gmail.com" />
@@ -44,7 +44,7 @@ Sign
                             </div>
                         </div>
                         <div class="sing__button mb-20"><button class="input__btn w-100 mb-20"
-                                type="submit">Sign in</button><button class="gamil__sign-btn w-100"
+                                type="submit">Login</button><button class="gamil__sign-btn w-100"
                                 type="submit"><span><svg width="20" height="20" viewBox="0 0 20 20"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_322_540)">
@@ -66,7 +66,7 @@ Sign
                                                 <rect width="20" height="20" fill="white"></rect>
                                             </clipPath>
                                         </defs>
-                                    </svg></span>Sign in With Google</button></div>
+                                    </svg></span>Login With Google</button></div>
                     </form>
                     <div class="if__account mt-85">
                         <p>Don’t Have An Account?<a href="{{ route('signup') }}"> Sign up</a></p>
@@ -76,7 +76,7 @@ Sign
         </div>
         <div class="sign__right">
             <div class="sign__input-thumb"
-                style="background-image:url(_next/static/media/signin.3bcc7c81.jpg)"></div>
+                style="background-image:url(_next/static/media/login.3bcc7c81.jpg)"></div>
         </div>
     </div>
 </section>

@@ -5,7 +5,7 @@ Signup
 
 @section('body')
 
-<section class="signin__area">
+<section class="login__area">
     <div class="sign__main-wrapper">
         <div class="sign__left">
             <div class="sign__header">
@@ -13,7 +13,7 @@ Signup
                             src="_next/static/media/color-logo.845aa965.svg" alt="image not found" /><img
                             class="logo-white" src="_next/static/media/color-logo-white.a79fee47.svg"
                             alt="image not found" /></a></div>
-                <div class="sign__link custome_link"><a href="signin">Sign in</a><a href="signup">Sign
+                <div class="sign__link custome_link"><a href="login">Login</a><a href="signup">Sign
                         Up</a></div>
             </div>
             <div class="sign__center-wrapper text-center mt-80">
@@ -74,7 +74,7 @@ Signup
                                     </svg></span>Sign Up With Google</button></div>
                     </form>
                     <div class="if__account mt-90">
-                        <p>Already have an account?<a href="{{ route('signin') }}">Sign in</a></p>
+                        <p>Already have an account?<a href="{{ route('login') }}">Login</a></p>
                     </div>
                 </div>
             </div>

@@ -11,19 +11,25 @@ use Hash;
 
 class AuthController extends Controller
 {
-    // code signin method
+    // code login method
     public function index()
     {
-        return view('frontend.auth.signin');
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
+        return view('frontend.auth.login');
     }
     // code registration method
     public function signup()
     {
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
         return view('frontend.auth.signup');
     }
  
-    // code action signin method
-    public function actionSignin(Request $request)
+    // code action login method
+    public function actionlogin(Request $request)
     {
         $request->validate([
             'email' => 'required',
@@ -32,10 +38,12 @@ class AuthController extends Controller
  
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->route('dashboard')
                 ->withSuccess('You have Successfully loggedin');
         }
-        return redirect("dashboard")->withSuccess('Please enter valid credentials');
+        return back()->withErrors([
+            'email' => 'Invalid credentials. Please try again.',
+        ])->withInput();
     }
  
     // code action registration method
@@ -50,7 +58,7 @@ class AuthController extends Controller
  
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("dashboard")->withSuccess('You have Successfully logged-in');
+        return redirect()->route('dashboard')->withSuccess('You have Successfully logged-in');
     }
  
     // code dashboard method
@@ -59,7 +67,7 @@ class AuthController extends Controller
         if (Auth::check()) {
             return view('frontend.dashboard.index');
         }
-        return redirect("signin")->withSuccess('You do not have access');
+        return redirect()->route('login')->withSuccess('You do not have access');
     }
  
     // code create method
@@ -78,6 +86,6 @@ class AuthController extends Controller
     {
         Session::flush();
         Auth::logout();
-        return Redirect('signin');
+        return Redirect()->route('login');
     }
 }
