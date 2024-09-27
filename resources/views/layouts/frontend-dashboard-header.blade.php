@@ -16,12 +16,22 @@
                                 <li class=""><a href="#" id="react-collapsed-toggle-:R56al6:"
                                         aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                         type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
-                                            class="nav-text">Manage Event</span></a>
+                                            class="nav-text">Manage Events</span></a>
+                                </li>
+                                <li class=""><a href="#" id="react-collapsed-toggle-:R56al6:"
+                                        aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                        type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                            class="nav-text">Manage Members</span></a>
                                 </li>
                                 <li class=""><a href="{{route('users.index')}}" id="react-collapsed-toggle-:R56al6:"
                                         aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                         type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                             class="nav-text">Manage Users</span></a>
+                                </li>
+                                <li class=""><a href="{{route('blogs.list')}}" id="react-collapsed-toggle-:R56al6:"
+                                        aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                        type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                            class="nav-text">Manage Blogs</span></a>
                                 </li>
                                 <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
                                         aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
@@ -39,7 +49,7 @@
                                 </li>
                             </ul>
                             
-                            <div class="sidebar__profile mb-50"><a href="{{ route('logout') }}"><i class="flaticon-log-out-3"></i><span
+                            <div class="sidebar__profile mt-25"><a href="{{ route('logout') }}"><i class="flaticon-log-out-3"></i><span
                                         class="links_name">Log out</span></a></div>
                             
                         </div>
@@ -60,9 +70,6 @@
                             <div class="app__header-right">
                                 <div class="nav-item p-relative"><button id="userportfolio">
                                         <div class="user__portfolio">
-                                            <div class="user__portfolio-thumb"><img
-                                                    src="_next/static/media/04.d91e8484.jpg" alt="imge not found" />
-                                            </div>
                                             <div class="user__content"><span>Jhon Smith</span></div>
                                         </div>
                                     </button>

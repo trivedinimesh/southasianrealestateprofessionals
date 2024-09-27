@@ -18,7 +18,7 @@ Dashboard
                                             <nav>
                                                 <ul>
                                                     <li><span><a href="dashboard"> Home </a></span></li>
-                                                    <li class="active"><span> User Management </span></li>
+                                                    <li class="active"><span> Blog Management </span></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -30,11 +30,11 @@ Dashboard
                         <div class="card__title-inner">
                             <div class="card__header-icon"><i class="flaticon-ticket-1"></i></div>
                             <div class="card__header-title">
-                                <h4>User Management</h4>
+                                <h4>Blog Management</h4>
                             </div>
                         </div>
                         <div class="card__header-dropdown">
-                            <a href="{{route('users.create')}}" class="btn btn-sm btn-success" >
+                            <a href="{{route('blogs.create')}}" class="btn btn-sm btn-success" >
                                 <i class="fas fa-plus"></i> Add New
                             </a>
                         </div>
@@ -49,50 +49,41 @@ Dashboard
                         <thead>
                             <tr>
                                 <th>ID No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th>Role</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Tags</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($blogs as $blog)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$user->id}}
+                                    <div class="attendant__serial"><span> #{{$blog->id}}
                                         </span></div>
                                 </td>
                                 <td>
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/'.$blog->image)}}" alt="">
+                                </td>
+                                <td>
                                     <div class="attendant__user-item">
-                                        <div class="attendant__user-title"><span> {{$user->first_name}} {{$user->last_name}} </span></div>
+                                        <div class="attendant__user-title"><span> {{$blog->title}} </span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$user->email}}</span></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="attendant__user-item">
-                                        
-                                        <div class="attendant__user-title"><span>{{$user->phone_number ?? '-'}}</span></div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div class="attendant__user-item">
-                                        
-                                        <div class="attendant__user-title"><span>Admin</span></div>
+                                        <div class="attendant__user-title"><span>{{$blog->tags}}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <a href="{{route('users.edit', $user->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                        <a href="{{route('blogs.show', $blog->id)}}" class="btn btn-sm btn-primary">View</a>
+                                        <a href="{{route('blogs.edit', $blog->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('blogs.destroy', $blog->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this User?');">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this blog?');">Delete</button>
                                         </form>
                                     </div>
                                 </td>
