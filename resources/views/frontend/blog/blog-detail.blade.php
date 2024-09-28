@@ -1,16 +1,16 @@
 @extends('layouts.frontend')
 @section('title')
-Blog
+Blog Details
 @endsection
 
 @section('body')
 <section class="dark_light_class">
-  <section class="page_banner text-center pt-150 pb-60">
+  <section class="page_banner text-center pt-90 pb-60">
     <div class="container decoration_wrap">
-      <h1 class="page_title mb-15">Top Factors to Consider When Investing in Real Estate</h1>
+      <h1 class="page_title mb-15 text__highlight">Top Factors to Consider When Investing in Real Estate</h1>
       <ul class="breadcrumb_nav unordered_list_center">
         <li><a href="{{ route('home') }}">Home</a></li>
-        <li><a href="{{ route('blog') }}">Blog</a></li>
+        <li><a href="{{ route('blogs') }}">Blogs</a></li>
         <li>Top Factors to Consider When Investing in Real Estate</li>
       </ul>
     </div>
@@ -32,7 +32,7 @@ Blog
         <div class="details_content">
           <div class="blog_post_meta">
             <ul class="category_list unordered_list">
-              <li><a href="/blog">Real Estate</a></li>
+              <li><a href="#">Real Estate</a></li>
             </ul>
             <span class="post_date">05 Aug, 2024</span>
           </div>
@@ -156,7 +156,7 @@ Blog
           
           <div class="social_actions">
             <ul class="tags_list unordered_list">
-              <li><a href="/blog">Real Estate</a></li>
+              <li><a href="#">Real Estate</a></li>
             </ul>
             <div class="footer__social">
               <a href="https://www.facebook.com/"
@@ -212,10 +212,10 @@ Blog
           <div class="sidebar_widget">
             <h3 class="widget_title">Categories</h3>
             <ul class="icon_list unordered_list_block">
-              <li><a href="blog">Marketing (03)</a></li>
-              <li><a href="blog">Digital Agency (04)</a></li>
-              <li><a href="blog">Real Estate Agency (06)</a></li>
-              <li><a href="blog">Business Consulting (03)</a></li>
+              <li><a href="#">Marketing (03)</a></li>
+              <li><a href="#">Digital Agency (04)</a></li>
+              <li><a href="#">Real Estate Agency (06)</a></li>
+              <li><a href="#">Business Consulting (03)</a></li>
             </ul>
           </div>
           <div class="sidebar_widget">
@@ -223,7 +223,7 @@ Blog
             <ul class="recent_post_list unordered_list_block">
               <li>
                 <div class="recent_post_item">
-                  <a class="item_image" href="blog-details/%5bid%5d-5"
+                  <a class="item_image" href="{{ route('blog-detail') }}"
                     ><img
                       src="{{ URL::asset('build/media/blog-1.00bb18f1.jpg') }}"
                       style="height: auto; width: 100%"
@@ -235,7 +235,7 @@ Blog
                       <li><span>05 Aug, 2024</span></li>
                     </ul>
                     <h3 class="item_title">
-                      <a href="blog-details/%5bid%5d-5"
+                      <a href="{{ route('blog-detail') }}"
                         >Top Factors to Consider When Invest ...</a
                       >
                     </h3>
@@ -247,10 +247,10 @@ Blog
           <div class="sidebar_widget">
             <h3 class="widget_title">Tags List</h3>
             <ul class="tags_list unordered_list">
-              <li><a href="blog">Business</a></li>
-              <li><a href="blog">Real Estate</a></li>
-              <li><a href="blog">Events</a></li>
-              <li><a href="blog">Social</a></li>
+              <li><a href="#">Business</a></li>
+              <li><a href="#">Real Estate</a></li>
+              <li><a href="#">Events</a></li>
+              <li><a href="#">Social</a></li>
             </ul>
           </div>
         </div>

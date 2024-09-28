@@ -5,14 +5,16 @@ Contact
 
 @section('body')
 
-<section class="page_banner text-center pt-150 pb-60">
-  <div class="container decoration_wrap">
-    <h1 class="page_title mb-15">Contact Us</h1>
-    <ul class="breadcrumb_nav unordered_list_center">
-      <li><a href="{{ route('home') }}">Home</a></li>
-      <li>Contact Us</li>
-    </ul>
-  </div>
+<section class="dark_light_class">
+  <section class="page_banner text-center pt-90 pb-60">
+    <div class="container decoration_wrap">
+      <h1 class="page_title mb-15 text__highlight">Contact Us</h1>
+      <ul class="breadcrumb_nav unordered_list_center">
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li>Contact Us</li>
+      </ul>
+    </div>
+  </section>
 </section>
 <section class="contact_section dark_light_class section_space_lg">
   <div class="container">
@@ -165,12 +167,12 @@ Contact
         <ul class="contact_info_list style_2 ps-lg-4 unordered_list_block">
           <li>
             <strong>Loaction:</strong
-            ><span>1989 Timber Ridge Road Sacramento CA, California</span>
+            ><span>Houston, Texas</span>
           </li>
-          <li><strong>Phone:</strong><span>+1-202-555-0149</span></li>
-          <li><strong>Email:</strong><span>contact@paradox.com</span></li>
+          <li><strong>Phone:</strong><span>832 723 5294</span></li>
+          <li><strong>Email:</strong><span>sarephouseton@gmail.com</span></li>
           <li>
-            <strong>Opening:</strong><span>10am - 6pm, Friday Close</span>
+            <strong>Opening:</strong><span>9am - 5pm, Saturday and Sunday Close</span>
           </li>
           <li>
             <strong>Follow Us:</strong>

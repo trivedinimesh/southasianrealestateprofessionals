@@ -39,14 +39,16 @@
 
         
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap"/>
+        <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
     </head>
     <body>
         
             
 
             <!-- header-section -->
+            
             @include('layouts.frontend-header')
-
+            
             @yield('body')
 
             @include('layouts.frontend-footer')

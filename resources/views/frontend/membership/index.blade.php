@@ -5,22 +5,23 @@ Membership
 
 @section('body')
 
-<section class="page_banner text-center pt-150 pb-60">
-  <div class="container decoration_wrap">
-    <h1 class="page_title mb-15">Membership</h1>
-    <ul class="breadcrumb_nav unordered_list_center">
-      <li><a href="{{ route('home') }}">Home</a></li>
-      <li>Membership</li>
-    </ul>
-  </div>
+<section class="dark_light_class">
+  <section class="page_banner text-center pt-90 pb-60">
+    <div class="container decoration_wrap">
+      <h1 class="page_title mb-15 text__highlight">Membership</h1>
+      <ul class="breadcrumb_nav unordered_list_center">
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li>Membership</li>
+      </ul>
+    </div>
+  </section>
 </section>
-<section class="pricing__area dark_light_class pt-185 pb-120">
+<section class="pricing__area dark_light_class pt-90 pb-120">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-xxl-5 col-xl-6 col-lg-6">
+      <div class="col-xxl-7 col-xl-7 col-lg-7">
         <div class="section__title-wrapper is-left mb-105">
-          <span class="section__back-title">R</span
-          ><span class="section__subtitle">REGISTRATION NOW</span>
+          <span class="section__subtitle">REGISTRATION NOW</span>
           <h2 class="section__title">
             Get
             <span class="text__highlight">
@@ -56,7 +57,7 @@ Membership
           </h2>
         </div>
       </div>
-      <div class="col-xxl-7 col-xl-6 col-lg-6">
+      <div class="col-xxl-5 col-xl-5 col-lg-5">
         <div
           class="price__short-details d-lg-flex justify-content-center mb-105"
         >

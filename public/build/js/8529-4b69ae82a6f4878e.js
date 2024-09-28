@@ -183,14 +183,14 @@
                 l = "/_next/static/media/logo-black.51edaff6.svg",
                 r = [
                     { text: "Home", link: "/" },
-                    { text: "Dashboard", link: "/signin" },
+                    { text: "Dashboard", link: "/login" },
                     { text: "About", link: "/about" },
                     { text: "Speakers", link: "/speaker-list-two" },
                     { text: "Events", link: "/event-list-two" },
                     { text: "Blog", link: "/blog" },
                     { text: "Pricing", link: "/pricing" },
                     { text: "Contact2", link: "/contact" },
-                    { text: "SignIn", link: "/signin" },
+                    { text: "login", link: "/login" },
                 ],
                 d = a(5893),
                 o = function () {
@@ -1302,7 +1302,7 @@
                                 },
                             },
                             {
-                                link: "/signin",
+                                link: "/login",
                                 style: {
                                     backgroundImage: "url(".concat(
                                         "/_next/static/media/dashboard.44ab482c.jpg",
@@ -1311,7 +1311,7 @@
                                 },
                             },
                             {
-                                link: "/signin",
+                                link: "/login",
                                 style: {
                                     backgroundImage: "url(".concat(
                                         "/_next/static/media/event.ac7ebef9.jpg",
@@ -1517,7 +1517,7 @@
                                                                                                             o.jsx)(
                                                                                                                 i(),
                                                                                                                 {
-                                                                                                                    href: "/signin",
+                                                                                                                    href: "/login",
                                                                                                                     children:
                                                                                                                         (0,
                                                                                                                         o.jsxs)(
@@ -1527,7 +1527,7 @@
                                                                                                                                     "fill__btn",
                                                                                                                                 children:
                                                                                                                                     [
-                                                                                                                                        "SignIn",
+                                                                                                                                        "login",
                                                                                                                                         (0,
                                                                                                                                         o.jsx)(
                                                                                                                                             "i",
