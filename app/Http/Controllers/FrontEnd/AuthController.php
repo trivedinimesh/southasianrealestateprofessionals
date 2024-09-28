@@ -49,17 +49,36 @@ class AuthController extends Controller
     // code action registration method
     public function actionSignup(Request $request)
     {
+        // Validate the request
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users',
+            'isd_code' => 'required',
+            'phone_number' => 'required|unique:users',
             'password' => 'required|min:6',
         ]);
- 
-        $data = $request->all();
-        $check = $this->create($data);
-        return redirect()->route('dashboard')->withSuccess('You have Successfully logged-in');
+
+        // Create a new user with the validated data
+        $user = User::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'email' => $request->input('email'),
+            'isd_code' => $request->input('isd_code'),
+            'phone_number' => $request->input('phone_number'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        // Assign the 'user' role to the newly created user
+        $user->assignRole('user');
+
+        // Log in the user automatically after registration (optional)
+        Auth::login($user);
+
+        // Redirect to the dashboard with a success message
+        return redirect()->route('dashboard')->withSuccess('You have Successfully logged in');
     }
+
  
     // code dashboard method
     public function dashboard()
@@ -77,6 +96,8 @@ class AuthController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
+            'isd_code' => $data['isd_code'],
+            'phone_number' => $data['phone_number'],
             'password' => Hash::make($data['password'])
         ]);
     }

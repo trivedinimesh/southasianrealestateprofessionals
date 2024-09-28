@@ -34,6 +34,16 @@ Signup
                                     @if ($errors->has('last_name'))
                                     <span class="text-danger">{{ $errors->first('last_name') }}</span>
                                     @endif
+                        <div class="sign__input"><input type="text" name="isd_code" placeholder="ISD Code" /><span><i
+                                    class="flaticon-user-2"></i></span></div>
+                                    @if ($errors->has('isd_code'))
+                                    <span class="text-danger">{{ $errors->first('isd_code') }}</span>
+                                    @endif
+                        <div class="sign__input"><input type="text" name="phone_number" placeholder="Phone Number" /><span><i
+                                    class="flaticon-user-2"></i></span></div>
+                                    @if ($errors->has('phone_number'))
+                                    <span class="text-danger">{{ $errors->first('phone_number') }}</span>
+                                    @endif
                         <div class="sign__input"><input type="email" name="email" placeholder="Email Address" /><span><i
                                     class="flaticon-user-2"></i></span></div>
                                     @if ($errors->has('email'))

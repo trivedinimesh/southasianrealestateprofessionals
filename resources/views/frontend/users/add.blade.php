@@ -73,6 +73,13 @@ Dashboard
 
                                     
                                     <div class="singel__input-field mb-15"><label
+                                            class="input__field-text">ISD Code</label>
+                                            <input name="isd_code" type="text" />
+                                            @error('isd_code')
+                                                <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                    </div>
+                                    <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Phone Number</label>
                                             <input name="phone_number" type="text" />
                                             @error('phone_number')

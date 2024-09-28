@@ -77,7 +77,7 @@ Dashboard
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$user->phone_number ?? '-'}}</span></div>
+                                        <div class="attendant__user-title"><span>{{$user->isd_code ?? ''}}-{{$user->phone_number ?? '-'}}</span></div>
                                     </div>
                                 </td>
                                 <td>

@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('id', 'email', 'first_name', 'last_name','phone_number')->paginate(10); // Paginate results
+        $users = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
 
         return view('frontend.users.index')->with('users', $users);
     }
@@ -40,6 +40,7 @@ class UserController extends Controller
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
+                'isd_code' => $request->isd_code,
                 'phone_number' => $request->phone_number,
                 'password' => Hash::make($request->password) // Use the user's password
             ]);
@@ -88,6 +89,7 @@ class UserController extends Controller
             $user = User::findOrFail($id);
             $user->first_name = $request->first_name;
             $user->last_name = $request->last_name;
+            $user->isd_code = $request->isd_code;
             $user->phone_number = $request->phone_number;
             $user->email = $request->email;
 
