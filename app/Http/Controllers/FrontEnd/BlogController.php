@@ -47,7 +47,7 @@ class BlogController extends Controller
         $blog = new Blog;
       
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images'), $file_name);
+        request()->image->move(public_path('images/blog/'), $file_name);
       
         $blog->title = $request->title;
         $blog->body = $request->body;

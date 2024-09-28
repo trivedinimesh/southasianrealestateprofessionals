@@ -10,6 +10,7 @@ use App\Http\Controllers\FrontEnd\GalleryController;
 use App\Http\Controllers\FrontEnd\MembershipController;
 use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\AuthController;
+use App\Http\Controllers\FrontEnd\BODController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
@@ -39,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     
     Route::resource('/admin/users', UserController::class);
+
+    Route::resource('/admin/board-of-director', BODController::class);
 
     Route::get('/admin/blogs-list', [BlogController::class, 'list'])->name('blogs.list');
     Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('blogs.create');

@@ -104,130 +104,36 @@ About
       </div>
     </div>
     <div class="row ">
-      <div class=" col-md-3">
-        <div class="speaker__list-item p-0 mb-30 ">
-          <div class="speaker__list-thumb">
-            <a href="#">
-              <img src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found">
-            </a>
-          </div>
-          <div class="speaker__list-content-inner">
-            <div class="speaker__list-content">
-              <h5 class="speaker__author-title">
-                <a href="#">Bruce S. Smith</a>
-              </h5>
-              <span class="speaker__author-info">Digital Marketer</span>
-            </div>
-            <div class="speaker__list-social">
-              <a href="https://www.facebook.com/">
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-              <a href="https://twitter.com/">
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-              <a href="https://bd.linkedin.com/">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="https://www.youtube.com/">
-                <i class="fa-brands fa-youtube"></i>
+      @foreach ($bods as $bod)
+        <div class=" col-md-3">
+          <div class="speaker__list-item p-0 mb-30 ">
+            <div class="speaker__list-thumb">
+              <a href="#">
+                <img src="{{ asset('images/bod/'.$bod->image)}}" alt="image not found">
               </a>
             </div>
-          </div>
-        </div>
-      </div>
-      <div class=" col-md-3">
-        <div class="speaker__list-item p-0 mb-30 ">
-          <div class="speaker__list-thumb">
-            <a href="#">
-              <img src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found">
-            </a>
-          </div>
-          <div class="speaker__list-content-inner">
-            <div class="speaker__list-content">
-              <h5 class="speaker__author-title">
-                <a href="#">Bruce S. Smith</a>
-              </h5>
-              <span class="speaker__author-info">Digital Marketer</span>
-            </div>
-            <div class="speaker__list-social">
-              <a href="https://www.facebook.com/">
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-              <a href="https://twitter.com/">
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-              <a href="https://bd.linkedin.com/">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="https://www.youtube.com/">
-                <i class="fa-brands fa-youtube"></i>
-              </a>
+            <div class="speaker__list-content-inner">
+              <div class="speaker__list-content">
+                <h5 class="speaker__author-title">
+                  <a href="#">{{$bod->first_name}} {{$bod->last_name}}</a>
+                </h5>
+                <span class="speaker__author-info">{{$bod->designation}}</span>
+              </div>
+              <div class="speaker__list-social">
+                <a href="{{$bod->fb_id}}">
+                  <i class="fa-brands fa-facebook"></i>
+                </a>
+                <a href="{{$bod->twitter_id}}">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="{{$bod->linkedin_id}}">
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class=" col-md-3">
-        <div class="speaker__list-item p-0 mb-30 ">
-          <div class="speaker__list-thumb">
-            <a href="#">
-              <img src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found">
-            </a>
-          </div>
-          <div class="speaker__list-content-inner">
-            <div class="speaker__list-content">
-              <h5 class="speaker__author-title">
-                <a href="#">Bruce S. Smith</a>
-              </h5>
-              <span class="speaker__author-info">Digital Marketer</span>
-            </div>
-            <div class="speaker__list-social">
-              <a href="https://www.facebook.com/">
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-              <a href="https://twitter.com/">
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-              <a href="https://bd.linkedin.com/">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="https://www.youtube.com/">
-                <i class="fa-brands fa-youtube"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class=" col-md-3">
-        <div class="speaker__list-item p-0 mb-30 ">
-          <div class="speaker__list-thumb">
-            <a href="#">
-              <img src="{{ URL::asset('build/media/03.7d6f5423.jpg') }}" alt="image not found">
-            </a>
-          </div>
-          <div class="speaker__list-content-inner">
-            <div class="speaker__list-content">
-              <h5 class="speaker__author-title">
-                <a href="#">Bruce S. Smith</a>
-              </h5>
-              <span class="speaker__author-info">Digital Marketer</span>
-            </div>
-            <div class="speaker__list-social">
-              <a href="https://www.facebook.com/">
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-              <a href="https://twitter.com/">
-                <i class="fa-brands fa-twitter"></i>
-              </a>
-              <a href="https://bd.linkedin.com/">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="https://www.youtube.com/">
-                <i class="fa-brands fa-youtube"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      @endforeach
     </div>
   </div>
   
