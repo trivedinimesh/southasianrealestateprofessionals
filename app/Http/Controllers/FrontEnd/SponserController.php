@@ -13,6 +13,10 @@ class SponserController extends Controller
 {
     public function index()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         $Sponser = Sponser::select('id', 'name', 'image')->get();
 
         return view('frontend.sponser.index')->with('sponsers', $Sponser);
@@ -20,11 +24,19 @@ class SponserController extends Controller
 
     public function create()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         return view('frontend.sponser.add');
     }
 
     public function store(Request $request)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         // validations
         $request->validate([
         'name' => 'required',
@@ -51,6 +63,10 @@ class SponserController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             $Sponser = Sponser::findOrFail($id);
             return view('frontend.sponser.edit')->with('sponser', $Sponser);
@@ -61,6 +77,10 @@ class SponserController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             // Retrieve the existing blog by ID
             $Sponser = Sponser::findOrFail($id);
@@ -105,6 +125,10 @@ class SponserController extends Controller
 
     public function destroy(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         DB::beginTransaction();
         try {
             $Sponser = Sponser::findOrFail($id);

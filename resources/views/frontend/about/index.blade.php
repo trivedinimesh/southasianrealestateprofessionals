@@ -44,7 +44,7 @@ About
               <p> Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aeneansollicitudin, lorem quis bibendum auctonisi elit consequat ipsum nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursusa sit amet mauris. Morbi accumsan ipsum velit.” Nam nec tellus a odio tincidunt. </p>
             </div>
           </div>
-          <div class="about__location-info mb-80">
+          <!-- <div class="about__location-info mb-80">
             <div class="about__location-inner">
               <div class="about__location-icon">
                 <a href="#">
@@ -60,7 +60,7 @@ About
               <span class="dot"></span>
               <span class="text">Online</span>
             </div>
-          </div>
+          </div> -->
           <a class="fill__btn" href="{{ route('membership') }}">Join Now <i class="fa-regular fa-angle-right"></i>
           </a>
         </div>
@@ -89,7 +89,7 @@ About
     <div class="row justify-content-center">
       <div class="col-xxl-6">
         <div class="section__title-wrapper is-center text-center mb-110">
-          <h2 class="section__title">TALENTED <span class="text__highlight"> SPEAKERS <svg class="title-underline" width="328" height="31" viewBox="0 0 328 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <h2 class="section__title">OUR <span class="text__highlight"> BOARD OF DIRECTORS <svg class="title-underline" width="328" height="31" viewBox="0 0 328 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 29C110 8.62517 326 -19.8996 326 29" stroke="url(#paint0_linear_47_128)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                 <defs>
                   <linearGradient id="paint0_linear_47_128" x1="2.50784" y1="22.0412" x2="322.486" y2="65.0473" gradientUnits="userSpaceOnUse">
