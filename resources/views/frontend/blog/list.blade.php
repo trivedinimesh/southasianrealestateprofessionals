@@ -63,7 +63,7 @@ Dashboard
                                         </span></div>
                                 </td>
                                 <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/'.$blog->image)}}" alt="">
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/blogs/'.$blog->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
