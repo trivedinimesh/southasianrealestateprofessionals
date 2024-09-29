@@ -40,7 +40,7 @@ class BODController extends Controller
         $bod = new BOD;
       
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images/bod'), $file_name);
+        request()->image->move(public_path('images/bods'), $file_name);
       
         $bod->first_name = $request->first_name;
         $bod->last_name = $request->last_name;
@@ -89,13 +89,13 @@ class BODController extends Controller
     
             if ($request->hasFile('image')) {
                 // Delete the old image if it exists
-                if ($bod->image && file_exists(public_path('images/bod' . $bod->image))) {
-                    unlink(public_path('images/bod' . $bod->image));
+                if ($bod->image && file_exists(public_path('images/bods' . $bod->image))) {
+                    unlink(public_path('images/bods' . $bod->image));
                 }
     
                 // Upload the new image
                 $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/bod'), $file_name);
+                $request->image->move(public_path('images/bods'), $file_name);
     
                 // Set the new image name
                 $bod->image = $file_name;
@@ -130,8 +130,8 @@ class BODController extends Controller
         try {
             $bod = BOD::findOrFail($id);
             
-            if ($bod->image && file_exists(public_path('images/bod/' . $bod->image))) {
-                unlink(public_path('images/bod/' . $bod->image));
+            if ($bod->image && file_exists(public_path('images/bods/' . $bod->image))) {
+                unlink(public_path('images/bods/' . $bod->image));
             }
             
             $bod->delete();

@@ -62,7 +62,7 @@ Sponser
                                         </span></div>
                                 </td>
                                 <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponser/'.$sponser->image)}}" alt="">
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponsers/'.$sponser->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">

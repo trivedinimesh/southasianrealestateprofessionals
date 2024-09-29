@@ -22,7 +22,7 @@
       <div class="blog_responsive col col-lg-8">
         <div class="details_image">
           <img
-            src="{{ asset('images/blog/'.$blog->image)}}"
+            src="{{ asset('images/blogs/'.$blog->image)}}"
             width="1170"
             height="751"
             alt="Paradox Blog Details Image"
@@ -106,7 +106,7 @@
                 <div class="recent_post_item">
                   <a class="item_image" href="{{route('blog-detail', $blog->id)}}"
                     ><img
-                      src="{{ asset('images/blog/'.$blog->image) }}"
+                      src="{{ asset('images/blogs/'.$blog->image) }}"
                       style="height: auto; width: 100%"
                       alt="Paradox Blog Image"
                   /></a>

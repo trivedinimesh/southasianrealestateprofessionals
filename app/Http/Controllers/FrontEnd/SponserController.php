@@ -34,7 +34,7 @@ class SponserController extends Controller
         $Sponser = new Sponser;
       
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images/sponser'), $file_name);
+        request()->image->move(public_path('images/sponsers'), $file_name);
       
         $Sponser->name = $request->name;
         $Sponser->image = $file_name;
@@ -73,13 +73,13 @@ class SponserController extends Controller
     
             if ($request->hasFile('image')) {
                 // Delete the old image if it exists
-                if ($Sponser->image && file_exists(public_path('images/sponser' . $Sponser->image))) {
-                    unlink(public_path('images/sponser' . $Sponser->image));
+                if ($Sponser->image && file_exists(public_path('images/sponsers' . $Sponser->image))) {
+                    unlink(public_path('images/sponsers' . $Sponser->image));
                 }
     
                 // Upload the new image
                 $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/sponser'), $file_name);
+                $request->image->move(public_path('images/sponsers'), $file_name);
     
                 // Set the new image name
                 $Sponser->image = $file_name;
@@ -109,8 +109,8 @@ class SponserController extends Controller
         try {
             $Sponser = Sponser::findOrFail($id);
             
-            if ($Sponser->image && file_exists(public_path('images/sponser/' . $Sponser->image))) {
-                unlink(public_path('images/sponser/' . $Sponser->image));
+            if ($Sponser->image && file_exists(public_path('images/sponsers/' . $Sponser->image))) {
+                unlink(public_path('images/sponsers/' . $Sponser->image));
             }
             
             $Sponser->delete();

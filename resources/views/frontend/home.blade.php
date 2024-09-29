@@ -509,7 +509,7 @@ Home
             <div class="col-md-4">
               <div class="blog_item about-blog">
                 <a class="item_image" href="{{route('blog-detail', $blog->id)}}">
-                  <img src="{{ asset('images/blog/'.$blog->image)}}" alt="Blog Image" style="height: 100%; width: 100%" />
+                  <img src="{{ asset('images/blogs/'.$blog->image)}}" alt="Blog Image" style="height: 100%; width: 100%" />
                 </a>
                 <div class="item_content">
                   <h3 class="item_title">

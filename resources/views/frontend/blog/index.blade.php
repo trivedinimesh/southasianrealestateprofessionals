@@ -26,7 +26,7 @@ Blogs
               <div class="blog_item">
                 <a class="item_image" href="{{route('blog-detail', $blog->id)}}"
                   ><img
-                    src="{{ asset('images/blog/'.$blog->image)}}"
+                    src="{{ asset('images/blogs/'.$blog->image)}}"
                     alt="Blog Image"
                     style="height: 100%; width: 100%"
                 /></a>
@@ -128,7 +128,7 @@ Blogs
                 <div class="recent_post_item">
                   <a class="item_image" href="{{route('blog-detail', $blog->id)}}"
                     ><img
-                      src="{{ asset('images/blog/'.$blog->image)}}"
+                      src="{{ asset('images/blogs/'.$blog->image)}}"
                       style="height: auto; width: 100%"
                       alt="Paradox Blog Image"
                   /></a>

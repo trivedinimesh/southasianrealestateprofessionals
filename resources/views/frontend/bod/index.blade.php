@@ -66,7 +66,7 @@ Board of Directors
                                         </span></div>
                                 </td>
                                 <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/bod/'.$bod->image)}}" alt="">
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/bods/'.$bod->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
