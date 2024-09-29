@@ -313,7 +313,7 @@
                                                         >Sugarland, Texas</span
                                                     >
                                                     <div class="header__btn">
-                                                        <a class="blog_custome_btn" href="{{ route('event-detail') }}">Read More<i class="fa-regular fa-angle-right"></i></a>
+                                                        <a class="blog_custome_btn" href="#">Read More<i class="fa-regular fa-angle-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -419,7 +419,7 @@
                                                         >Sugarland, Texas</span
                                                     >
                                                     <div class="header__btn">
-                                                        <a class="blog_custome_btn" href="{{ route('event-detail') }}">Read More<i class="fa-regular fa-angle-right"></i></a>
+                                                        <a class="blog_custome_btn" href="#">Read More<i class="fa-regular fa-angle-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>

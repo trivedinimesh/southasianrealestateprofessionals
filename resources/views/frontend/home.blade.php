@@ -393,86 +393,96 @@ Home
       <div class="">
           <div class="col-12">
           <div class="partner__grid-wrapper">
-              <div class="partner__item">
+            @foreach ($sponsers as $sponsor)
+            <div class="partner__item">
               <div class="partner__thumb">
                   <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_1.png') }}"
+                  src="{{ asset('images/sponsers/'.$sponsor->image)}}"
                   alt="image not found"
                   />
               </div>
+            </div>
+            @endforeach
+              <!-- <div class="partner__item">
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_1.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
               <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_2.png') }}"
-                  alt="image not found"
-                  />
-              </div>
-              </div>
-              <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_3.png') }}"
-                  alt="image not found"
-                  />
-              </div>
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_2.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
               <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_4.png') }}"
-                  alt="image not found"
-                  />
-              </div>
-              </div>
-              <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_5.png') }}"
-                  alt="image not found"
-                  />
-              </div>
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_3.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
               <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_6.png') }}"
-                  alt="image not found"
-                  />
-              </div>
-              </div>
-              <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_7.png') }}"
-                  alt="image not found"
-                  />
-              </div>
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_4.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
               <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_8.png') }}"
-                  alt="image not found"
-                  />
-              </div>
-              </div>
-              <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_9.png') }}"
-                  alt="image not found"
-                  />
-              </div>
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_5.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
               <div class="partner__item">
-              <div class="partner__thumb">
-                  <img class="w-90"
-                  src="{{ URL::asset('build/media/partner_10.png') }}"
-                  alt="image not found"
-                  />
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_6.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
+              <div class="partner__item">
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_7.png') }}"
+                    alt="image not found"
+                    />
+                </div>
               </div>
+              <div class="partner__item">
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_8.png') }}"
+                    alt="image not found"
+                    />
+                </div>
+              </div>
+              <div class="partner__item">
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_9.png') }}"
+                    alt="image not found"
+                    />
+                </div>
+              </div>
+              <div class="partner__item">
+                <div class="partner__thumb">
+                    <img class="w-90"
+                    src="{{ URL::asset('build/media/partner_10.png') }}"
+                    alt="image not found"
+                    />
+                </div>
+              </div> -->
           </div>
           </div>
       </div>  

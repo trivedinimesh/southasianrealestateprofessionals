@@ -74,7 +74,7 @@ Blogs
           @endforeach
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-xxl-12">
             <div
               class="pagination mt-40 ex-mmb-60 d-flex justify-content-center"
@@ -91,7 +91,7 @@ Blogs
               </nav>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="col col-lg-4">
         <div class="sidebar">
@@ -124,27 +124,29 @@ Blogs
           <div class="sidebar_widget">
             <h3 class="widget_title">Recent Post</h3>
             <ul class="recent_post_list unordered_list_block">
-              <li>
-                <div class="recent_post_item">
-                  <a class="item_image" href="{{route('blog-detail', $blog->id)}}"
-                    ><img
-                      src="{{ asset('images/blogs/'.$blog->image)}}"
-                      style="height: auto; width: 100%"
-                      alt="Paradox Blog Image"
-                  /></a>
-                  <div class="item_content">
-                    <ul class="meta_list unordered_list">
-                      <li><a href="{{route('blog-detail', $blog->id)}}">{{$blog->tags}}</a></li>
-                      <li><span>{{$blog->created_at}}</span></li>
-                    </ul>
-                    <h3 class="item_title">
-                      <a href="{{route('blog-detail', $blog->id)}}"
-                        >{{$blog->title}}</a
-                      >
-                    </h3>
+              @foreach ($blogs as $blog)
+                <li>
+                  <div class="recent_post_item">
+                    <a class="item_image" href="{{route('blog-detail', $blog->id)}}"
+                      ><img
+                        src="{{ asset('images/blogs/'.$blog->image)}}"
+                        style="height: auto; width: 100%"
+                        alt="Paradox Blog Image"
+                    /></a>
+                    <div class="item_content">
+                      <ul class="meta_list unordered_list">
+                        <li><a href="{{route('blog-detail', $blog->id)}}">{{$blog->tags}}</a></li>
+                        <li><span>{{$blog->created_at}}</span></li>
+                      </ul>
+                      <h3 class="item_title">
+                        <a href="{{route('blog-detail', $blog->id)}}"
+                          >{{$blog->title}}</a
+                        >
+                      </h3>
+                    </div>
                   </div>
-                </div>
-              </li>
+                </li>
+              @endforeach
             </ul>
           </div>
           <div class="sidebar_widget">

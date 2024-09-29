@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 
 
 class BlogController extends Controller
 {
     public function index()
-    {
+    {   
         try {
             $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
             return view('frontend.blog.index')
@@ -37,6 +38,10 @@ class BlogController extends Controller
 
     public function list()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10); // Paginate results
 
         return view('frontend.blog.list')->with('blogs', $blogs);
@@ -44,11 +49,19 @@ class BlogController extends Controller
 
     public function create()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         return view('frontend.blog.add');
     }
 
     public function store(Request $request)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         // validations
         $request->validate([
           'title' => 'required',
@@ -76,6 +89,10 @@ class BlogController extends Controller
 
     public function show(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             $blog = Blog::findOrFail($id);
             $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
@@ -92,6 +109,10 @@ class BlogController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             $blog = Blog::findOrFail($id);
             return view('frontend.blog.edit')->with('blog', $blog);
@@ -105,6 +126,10 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             // Retrieve the existing blog by ID
             $blog = Blog::findOrFail($id);
@@ -155,6 +180,10 @@ class BlogController extends Controller
 
     public function destroy(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         DB::beginTransaction();
         try {
             $blog = Blog::findOrFail($id);

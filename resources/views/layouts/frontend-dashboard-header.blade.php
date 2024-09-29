@@ -2,13 +2,74 @@
 <div class="page__full-wrapper">
                 <div class="expovent__sidebar  "
                     style="background-image:url(_next/static/media/dropdown-bg.7aece7fb.png)">
-                    <div class="logo-details"><span><a href="dashboard"><img class="logo__white"
+                    <div class="logo-details"><span><a href="{{ route('dashboard') }}"><img class="logo__white"
                                     src="_next/static/media/logo-small.547f3188.svg"
-                                    alt="logo not found" /></a></span><span><a href="dashboard"><img class="log__smnall"
+                                    alt="logo not found" /></a></span><span><a href="{{ route('dashboard') }}"><img class="log__smnall"
                                     src="_next/static/media/logo.6dd2592f.svg" alt="logo not found" /></a></span></div>
                     <div class="sidebar__inner simple-bar">
                         <div class="dlabnav">
-                            <ul class="metismenu" id="menu">
+                            @php
+                                $user = Auth::user();
+                                $userRoles = $user->getRoleNames();
+                            @endphp
+                            @foreach ($userRoles as $userRole) 
+                                @if ($userRole === "admin") 
+                                    <ul class="metismenu" id="menu">
+                                        <li><a href="{{route('dashboard')}}"><i class="flaticon-home"></i><span
+                                                    class="nav-text">Dashboard</span></a></li>
+                                        <li><a href="#"><i class="flaticon-user-1"></i><span
+                                                    class="nav-text">Attendant List</span></a></li>
+                                        <li class=""><a href="{{route('events.list')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Manage Events</span></a>
+                                        </li>
+                                        <li class=""><a href="#" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Manage Members</span></a>
+                                        </li>
+                                        <li class=""><a href="{{route('users.index')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Manage Users</span></a>
+                                        </li>
+                                        <li class=""><a href="{{route('blogs.list')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Manage Blogs</span></a>
+                                        </li>
+                                        <li class=""><a href="{{route('board-of-director.index')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Manage BOD</span></a>
+                                        </li>
+                                        <li class=""><a href="{{route('sponser.index')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Manage Sponsers</span></a>
+                                        </li>
+                                        <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
+                                                aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span
+                                                    class="nav-text">Profile</span></a>
+                                        </li>
+                                    </ul>
+                                    @break
+                                @else
+                                    <ul class="metismenu" id="menu">
+                                        <li><a href="{{route('dashboard')}}"><i class="flaticon-home"></i><span
+                                                    class="nav-text">Dashboard</span></a></li>
+                                        <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
+                                                aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span
+                                                    class="nav-text">Profile</span></a>
+                                        </li>
+                                    </ul>
+                                    @break
+                                @endif
+                            @endforeach
+                            <!-- <ul class="metismenu" id="menu">
                                 <li><a href="{{route('dashboard')}}"><i class="flaticon-home"></i><span
                                             class="nav-text">Dashboard</span></a></li>
                                 <li><a href="#"><i class="flaticon-user-1"></i><span
@@ -48,7 +109,7 @@
                                         type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span
                                             class="nav-text">Profile</span></a>
                                 </li>
-                            </ul>
+                            </ul> -->
                             
                             <div class="sidebar__profile mt-25"><a href="{{ route('logout') }}"><i class="flaticon-log-out-3"></i><span
                                         class="links_name">Log out</span></a></div>

@@ -31,53 +31,67 @@ class AuthController extends Controller
     // code action login method
     public function actionlogin(Request $request)
     {
+        // Validate input
         $request->validate([
-            'email' => 'required',
-            'password' => 'required',
+            'email' => 'required|email', // Added email format validation
+            'password' => 'required|min:6', // Added password length validation
         ]);
- 
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard')
-                ->withSuccess('You have Successfully loggedin');
+
+        // Attempt to log in the user
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $user = Auth::user();
+
+            // Check if the user has the "admin" role
+            if ($user->hasRole('admin')) {
+                return redirect()->route('dashboard')
+                    ->withSuccess('You have successfully logged in as admin.');
+            }
+
+            // Redirect non-admin users to the home route
+            return redirect()->route('home')
+                ->withSuccess('You have successfully logged in.');
         }
+
+        // Return error if credentials are invalid
         return back()->withErrors([
             'email' => 'Invalid credentials. Please try again.',
         ])->withInput();
     }
+
  
     // code action registration method
     public function actionSignup(Request $request)
     {
-        // Validate the request
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
+        // Validate the request data
+        $validatedData = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
-            'isd_code' => 'required',
-            'phone_number' => 'required|unique:users',
-            'password' => 'required|min:6',
+            'isd_code' => 'required|string|max:10', // Added max length validation
+            'phone_number' => 'required|string|unique:users|max:15', // Added max length validation
+            'password' => 'required|string|min:6|confirmed', // Added password confirmation
         ]);
 
-        // Create a new user with the validated data
+        // Create the user with validated data
         $user = User::create([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'email' => $request->input('email'),
-            'isd_code' => $request->input('isd_code'),
-            'phone_number' => $request->input('phone_number'),
-            'password' => bcrypt($request->input('password')),
+            'first_name' => $validatedData['first_name'],
+            'last_name' => $validatedData['last_name'],
+            'email' => $validatedData['email'],
+            'isd_code' => $validatedData['isd_code'],
+            'phone_number' => $validatedData['phone_number'],
+            'password' => bcrypt($validatedData['password']), // Encrypt password
         ]);
 
-        // Assign the 'user' role to the newly created user
+        // Assign the 'user' role
         $user->assignRole('user');
 
-        // Log in the user automatically after registration (optional)
+        // Auto-login the user after signup
         Auth::login($user);
 
-        // Redirect to the dashboard with a success message
-        return redirect()->route('dashboard')->withSuccess('You have Successfully logged in');
+        // Redirect to the dashboard with success message
+        return redirect()->route('dashboard')->withSuccess('You have successfully registered and logged in.');
     }
+
 
  
     // code dashboard method

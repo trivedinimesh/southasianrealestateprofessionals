@@ -8,14 +8,6 @@ Signup
 <section class="login__area">
     <div class="sign__main-wrapper">
         <div class="sign__left">
-            <div class="sign__header">
-                <div class="sign__logo"><a href="index.html"><img class="logo-black"
-                            src="_next/static/media/color-logo.845aa965.svg" alt="image not found" /><img
-                            class="logo-white" src="_next/static/media/color-logo-white.a79fee47.svg"
-                            alt="image not found" /></a></div>
-                <div class="sign__link custome_link"><a href="login">Login</a><a href="signup">Sign
-                        Up</a></div>
-            </div>
             <div class="sign__center-wrapper text-center mt-80">
                 <div class="sign__title-wrapper mb-40">
                     <h3 class="sign__title">Create An Account</h3>

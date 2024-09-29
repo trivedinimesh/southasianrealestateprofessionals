@@ -8,14 +8,20 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+
         $users = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
 
         return view('frontend.users.index')->with('users', $users);
@@ -26,6 +32,10 @@ class UserController extends Controller
      */
     public function create()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+
         return view('frontend.users.add');
     }
 
@@ -34,6 +44,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+
         DB::beginTransaction();
         try {
             $user = User::create([
@@ -58,6 +72,10 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+
         try {
             $user = User::findOrFail($id);
             return view('frontend.users.view')->with('user', $user);
@@ -71,6 +89,10 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+
         try {
             $user = User::findOrFail($id);
             return view('frontend.users.edit')->with('user', $user);
@@ -84,6 +106,10 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+
         DB::beginTransaction();
         try {
             $user = User::findOrFail($id);
@@ -113,6 +139,10 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         DB::beginTransaction();
         try {
             $user = User::findOrFail($id);

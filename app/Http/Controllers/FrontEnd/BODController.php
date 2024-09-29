@@ -14,6 +14,10 @@ class BODController extends Controller
 {
     public function index()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         $bod = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id')->get();
 
         return view('frontend.bod.index')->with('bods', $bod);
@@ -21,11 +25,19 @@ class BODController extends Controller
 
     public function create()
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         return view('frontend.bod.add');
     }
 
     public function store(Request $request)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         // validations
         $request->validate([
         'first_name' => 'required',
@@ -62,6 +74,10 @@ class BODController extends Controller
      */
     public function edit(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             $bod = BOD::findOrFail($id);
             return view('frontend.bod.edit')->with('bod', $bod);
@@ -72,6 +88,10 @@ class BODController extends Controller
 
     public function update(Request $request, $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         try {
             // Retrieve the existing blog by ID
             $bod = BOD::findOrFail($id);
@@ -126,6 +146,10 @@ class BODController extends Controller
 
     public function destroy(string $id)
     {
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
+        
         DB::beginTransaction();
         try {
             $bod = BOD::findOrFail($id);
