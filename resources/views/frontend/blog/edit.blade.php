@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Add Blog
+Edit Blog
 @endsection
 
 @section('body')
@@ -38,41 +38,58 @@ Add Blog
                         </div>
                         <div class="pt-25">
                             <div class="create__input-wrapper">
-                                <form method="POST" action="{{route('blogs.store')}}">
+                                <form method="POST" action="{{route('blogs.update', $blog->id )}}" enctype="multipart/form-data">
                                 @csrf
+                                @method('PATCH')
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text" >Title</label>
-                                        <input name="title" type="text" />
+                                        <input name="title" type="text" value="{{$blog->title}}"/>
                                         @error('title')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
                                     <div class="singel__input-field mb-15">
-                                        <label class="input__field-text" >Content</label>
-                                        <textarea class="form-control" name="body" id="floatingTextarea" cols="30" rows="10"></textarea>
-                                        <input name="body" type="text" />
-                                        @error('body')
-                                            <span class="text-danger">{{$message}}</span>
-                                        @enderror
-                                    </div>
+                                                        <label class="input__field-text">Content</label>
+                                                        <textarea name="body" id="editor">{{ old('body', $blog->body) }}</textarea>
+                                                        @error('body')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+
+                                                    <script>
+                                                        ClassicEditor
+                                                            .create(document.querySelector('#editor'))
+                                                            .then(editor => {
+                                                                console.log('Editor was initialized', editor);
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Error during initialization of the editor', error);
+                                                            });
+                                                    </script>
+                                                
                                     <div class="singel__input-field mb-15">
-                                        <label for="formFile" class="input__field-textlabel">Add Image</label>
-                                        <img src="" alt="" class="img-blog">
-                                        <input class="form-control" type="file" name="image">
-                                            @error('image')
-                                                <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                    </div>
+                                    <label for="formFile" class="input__field-textlabel">Add Image</label><br/>
+                                    
+                                    <!-- Show the previous image if available -->
+                                    @if($blog->image)
+                                        <img src="{{ asset('images/blogs/' . $blog->image) }}" alt="Blog Image" class="img-blog" width="200">
+                                    @endif
+
+                                    <input class="form-control" type="file" name="image">
+                                    @error('image')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text">keywords</label>
-                                        <input name="keywords" type="text" />
+                                        <input name="keywords" type="text" value="{{$blog->keywords}}"/>
                                         @error('keywords')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div>
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text">tags</label>
-                                        <input name="tags" type="text" />
+                                        <input name="tags" type="text" value="{{$blog->tags}}"/>
                                         @error('tags')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror

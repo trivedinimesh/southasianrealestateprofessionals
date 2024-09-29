@@ -22,10 +22,10 @@ Blog Details
       <div class="blog_responsive col col-lg-8">
         <div class="details_image">
           <img
-            src="{{ asset('images/'.$blog->image)}}"
+            src="{{ asset('images/blogs/'.$blog->image)}}"
             width="1170"
             height="751"
-            alt="Paradox Blog Details Image"
+            alt=" Blog Details Image"
             style="height: 100%"
           />
         </div>
@@ -60,7 +60,7 @@ Blog Details
           <div class="admin_image">
             <img
               src="{{ URL::asset('build/media/chat-1.b476fa36.png') }}"
-              alt="Paradox Blog Post Admin Image"
+              alt=" Blog Post Admin Image"
               style="width: auto; height: auto"
             />
           </div>
@@ -108,7 +108,7 @@ Blog Details
                     ><img
                       src="{{ asset('images/'.$blog->image) }}"
                       style="height: auto; width: 100%"
-                      alt="Paradox Blog Image"
+                      alt=" Blog Image"
                   /></a>
                   <div class="item_content">
                     <ul class="meta_list unordered_list">
