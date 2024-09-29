@@ -47,7 +47,7 @@ class BlogController extends Controller
         $blog = new Blog;
       
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images'), $file_name);
+        request()->image->move(public_path('images/blogs'), $file_name);
       
         $blog->title = $request->title;
         $blog->body = $request->body;
@@ -72,7 +72,71 @@ class BlogController extends Controller
         }
     }
 
+ /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        try {
+            $blog = Blog::findOrFail($id);
+            return view('frontend.blog.edit')->with('blog', $blog);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('blogs.index')->with('error', 'Blog not found.');
+        }
+    }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, $id)
+    {
+        try {
+            // Retrieve the existing blog by ID
+            $blog = Blog::findOrFail($id);
+    
+            // Validate the request data
+            $request->validate([
+                'title' => 'required',
+                'body' => 'required|string|max:16777215',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'keywords' => 'required',
+                'tags' => 'required',
+            ]);
+    
+            if ($request->hasFile('image')) {
+                // Delete the old image if it exists
+                if ($blog->image && file_exists(public_path('images/blogs/' . $blog->image))) {
+                    unlink(public_path('images/blogs/' . $blog->image));
+                }
+    
+                // Upload the new image
+                $file_name = time() . '.' . $request->image->getClientOriginalExtension();
+                $request->image->move(public_path('images/blogs'), $file_name);
+    
+                // Set the new image name
+                $blog->image = $file_name;
+            }
+    
+            // Update the blog data
+            $blog->title = $request->title;
+            $blog->body = $request->body;
+            $blog->keywords = $request->keywords;
+            $blog->tags = $request->tags;
+    
+            // Save the blog
+            $blog->save();
+    
+            return redirect()->route('blogs.list')->with('success', 'Blog updated successfully.');
+    
+        } catch (\Throwable $th) {
+            // Log any errors
+            \Log::error('Error updating blog: ' . $th->getMessage());
+            return back()->with('error', 'Something went wrong while updating Blog data.');
+        }
+    }
+    
+
+    
 
     public function destroy(string $id)
     {
