@@ -11,7 +11,7 @@ use App\Http\Controllers\FrontEnd\MembershipController;
 use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\FrontEnd\BODController;
-use App\Http\Controllers\FrontEnd\SponserController;
+use App\Http\Controllers\FrontEnd\SponsorController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
@@ -41,10 +41,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     
     Route::resource('/admin/users', UserController::class);
-
+    Route::get('/admin/member', [UserController::class, 'member'])->name('member');
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::get('/edit-update', [UserController::class, 'editProfile'])->name('edit-profile');
+    Route::put('/profile-update', [UserController::class, 'updateProfile'])->name('profile-update');
+    
     Route::resource('/admin/board-of-director', BODController::class);
 
-    Route::resource('/admin//sponser', SponserController::class);
+    Route::resource('/admin/sponsor', SponsorController::class);
 
     Route::get('/admin/blogs-list', [BlogController::class, 'list'])->name('blogs.list');
     Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('blogs.create');

@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Sponser
+Sponsor
 @endsection
 
 @section('body')
@@ -18,7 +18,7 @@ Sponser
                                             <nav>
                                                 <ul>
                                                     <li><span><a href="{{ route('dashboard') }}"> Home </a></span></li>
-                                                    <li class="active"><span> Sponser Management </span></li>
+                                                    <li class="active"><span> Sponsor Management </span></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -30,11 +30,11 @@ Sponser
                         <div class="card__title-inner">
                             <div class="card__header-icon"><i class="flaticon-ticket-1"></i></div>
                             <div class="card__header-title">
-                                <h4>Sponser Management</h4>
+                                <h4>Sponsor Management</h4>
                             </div>
                         </div>
                         <div class="card__header-dropdown">
-                            <a href="{{route('sponser.create')}}" class="btn btn-sm btn-success" >
+                            <a href="{{route('sponsor.create')}}" class="btn btn-sm btn-success" >
                                 <i class="fas fa-plus"></i> Add New
                             </a>
                         </div>
@@ -55,27 +55,27 @@ Sponser
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($sponsers as $sponser)
+                        @foreach ($sponsors as $sponsor)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$sponser->id}}
+                                    <div class="attendant__serial"><span> #{{$sponsor->id}}
                                         </span></div>
                                 </td>
                                 <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponsers/'.$sponser->image)}}" alt="">
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponsors/'.$sponsor->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
-                                        <div class="attendant__user-title"><span> {{$sponser->name}}</span></div>
+                                        <div class="attendant__user-title"><span> {{$sponsor->name}}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div>
-                                        <a href="{{route('sponser.edit', $sponser->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('sponser.destroy', $sponser->id) }}" method="POST" class="d-inline">
+                                        <a href="{{route('sponsor.edit', $sponsor->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('sponsor.destroy', $sponsor->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Sponser?');">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Sponsor?');">Delete</button>
                                         </form>
                                     </div>
                                 </td>

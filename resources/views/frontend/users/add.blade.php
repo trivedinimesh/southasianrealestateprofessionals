@@ -86,6 +86,18 @@ Add User
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Role</label>
+                                            <div class="contact__select">
+                                                <select name="role">
+                                                @foreach ($roles as $role)
+                                                    <option class="capitalize" value="{{$role->name}}">{{$role->name}}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Password</label>
                                             <input type="password" name="password" />

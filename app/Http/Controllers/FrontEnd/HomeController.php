@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Event;
-use App\Models\Sponser;
+use App\Models\Sponsor;
 
 class HomeController extends Controller
 {
@@ -17,8 +17,8 @@ class HomeController extends Controller
     {
         $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->get(); // Paginate results
         $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_at')->get();
-        $sponser = Sponser::select('id', 'name', 'image')->get();
+        $sponsor = Sponsor::select('id', 'name', 'image')->get();
 
-        return view('frontend.home')->with('events', $events)->with('blogs', $blogs)->with('sponsers', $sponser);
+        return view('frontend.home')->with('events', $events)->with('blogs', $blogs)->with('sponsors', $sponsor);
     }
 }
