@@ -30,7 +30,7 @@ Route::post('action-signup', [AuthController::class, 'actionSignup'])->name('sig
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/events', [EventsController::class, 'index'])->name('events');
-Route::get('/event-detail/{blog}', [EventsController::class, 'eventDetail'])->name('event-detail');
+Route::get('/event-detail/{event}', [EventsController::class, 'eventDetail'])->name('event-detail');
 
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
@@ -38,7 +38,7 @@ Route::get('/blog-detail/{blog}', [BlogController::class, 'blogDetail'])->name('
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/admin/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     
     Route::resource('/admin/users', UserController::class);
 

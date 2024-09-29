@@ -17,7 +17,7 @@ Dashboard
                                         <div class="breadcrumb__menu">
                                             <nav>
                                                 <ul>
-                                                    <li><span><a href="dashboard"> Home </a></span></li>
+                                                    <li><span><a href="{{ route('dashboard') }}"> Home </a></span></li>
                                                     <li class="active"><span> User Management </span></li>
                                                 </ul>
                                             </nav>
@@ -83,7 +83,7 @@ Dashboard
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>Admin</span></div>
+                                        <div class="attendant__user-title"><span>{{$user->getRoleNames()}}</span></div>
                                     </div>
                                 </td>
                                 <td>

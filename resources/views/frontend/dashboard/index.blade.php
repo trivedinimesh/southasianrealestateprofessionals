@@ -14,7 +14,7 @@ Dashboard
                                         <div class="breadcrumb__menu">
                                             <nav>
                                                 <ul>
-                                                    <li><span><a href="dashboard"> Home </a></span></li>
+                                                    <li><span><a href="{{ route('dashboard') }}"> Home </a></span></li>
                                                     <li class="active"><span> Dashboard </span></li>
                                                 </ul>
                                             </nav>
