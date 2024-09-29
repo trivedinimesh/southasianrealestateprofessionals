@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Add Sponser
+Add Sponsor
 @endsection
 
 @section('body')
@@ -13,8 +13,8 @@ Add Sponser
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
-                                    <li><span><a href="{{route('sponser.index')}}">Sponser</a></span></li>
-                                    <li class="active"><span>Create Sponser</span></li>
+                                    <li><span><a href="{{route('sponsor.index')}}">Sponsor</a></span></li>
+                                    <li class="active"><span>Create Sponsor</span></li>
                                 </ul>
                             </nav>
                         </div>
@@ -28,16 +28,16 @@ Add Sponser
                     <div class="body__card-wrapper">
                         <div class="card__header-top">
                             <div class="card__title-inner">
-                                <h4 class="event__information-title">Sponser Information</h4>
+                                <h4 class="event__information-title">Sponsor Information</h4>
                             </div>
                             <div class="card__header-dropdown">
-                                <a href="{{route('sponser.index')}}" class="btn btn-sm btn-primary" >
+                                <a href="{{route('sponsor.index')}}" class="btn btn-sm btn-primary" >
                                     <i class="fas fa-left-to-line"></i> Back
                                 </a>
                             </div>
                         </div>
                         <div class="pt-25">
-                            <form method="POST" action="{{route('sponser.store')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('sponsor.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="create__input-wrapper row">
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
@@ -59,7 +59,7 @@ Add Sponser
                                                 @enderror
                                         </div>
                                     </div>
-                                    <button class="input__btn w-100" type="submit">Create Sponser</button>
+                                    <button class="input__btn w-100" type="submit">Create Sponsor</button>
                                 </div>
                             </form>
                         </div>

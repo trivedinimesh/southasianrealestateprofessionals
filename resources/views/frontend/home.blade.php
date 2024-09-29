@@ -393,11 +393,11 @@ Home
       <div class="">
           <div class="col-12">
           <div class="partner__grid-wrapper">
-            @foreach ($sponsers as $sponsor)
+            @foreach ($sponsors as $sponsor)
             <div class="partner__item">
               <div class="partner__thumb">
                   <img class="w-90"
-                  src="{{ asset('images/sponsers/'.$sponsor->image)}}"
+                  src="{{ asset('images/sponsors/'.$sponsor->image)}}"
                   alt="image not found"
                   />
               </div>

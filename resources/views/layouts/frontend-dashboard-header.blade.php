@@ -24,7 +24,7 @@
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                                     class="nav-text">Manage Events</span></a>
                                         </li>
-                                        <li class=""><a href="#" id="react-collapsed-toggle-:R56al6:"
+                                        <li class=""><a href="{{route('member')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                                     class="nav-text">Manage Members</span></a>
@@ -44,12 +44,12 @@
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                                     class="nav-text">Manage BOD</span></a>
                                         </li>
-                                        <li class=""><a href="{{route('sponser.index')}}" id="react-collapsed-toggle-:R56al6:"
+                                        <li class=""><a href="{{route('sponsor.index')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
-                                                    class="nav-text">Manage Sponsers</span></a>
+                                                    class="nav-text">Manage Sponsors</span></a>
                                         </li>
-                                        <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
+                                        <li class=""><a href="{{route('profile')}}" id="react-collapsed-toggle-:R86al6:"
                                                 aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span
                                                     class="nav-text">Profile</span></a>
@@ -99,10 +99,10 @@
                                         type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                             class="nav-text">Manage BOD</span></a>
                                 </li>
-                                <li class=""><a href="{{route('sponser.index')}}" id="react-collapsed-toggle-:R56al6:"
+                                <li class=""><a href="{{route('sponsor.index')}}" id="react-collapsed-toggle-:R56al6:"
                                         aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                         type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
-                                            class="nav-text">Manage Sponsers</span></a>
+                                            class="nav-text">Manage Sponsors</span></a>
                                 </li>
                                 <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
                                         aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
