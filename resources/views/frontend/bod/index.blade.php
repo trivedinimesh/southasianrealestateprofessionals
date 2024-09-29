@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Events List
+Board of Directors
 @endsection
 
 @section('body')
@@ -18,7 +18,7 @@ Events List
                                             <nav>
                                                 <ul>
                                                     <li><span><a href="dashboard"> Home </a></span></li>
-                                                    <li class="active"><span> Event Management </span></li>
+                                                    <li class="active"><span> Board of Directors Management </span></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -30,11 +30,11 @@ Events List
                         <div class="card__title-inner">
                             <div class="card__header-icon"><i class="flaticon-ticket-1"></i></div>
                             <div class="card__header-title">
-                                <h4>Event Management</h4>
+                                <h4>Board of Directors Management</h4>
                             </div>
                         </div>
                         <div class="card__header-dropdown">
-                            <a href="{{route('events.create')}}" class="btn btn-sm btn-success" >
+                            <a href="{{route('board-of-director.create')}}" class="btn btn-sm btn-success" >
                                 <i class="fas fa-plus"></i> Add New
                             </a>
                         </div>
@@ -49,51 +49,62 @@ Events List
                         <thead>
                             <tr>
                                 <th>ID No</th>
-                                <th>Event Title</th>
-                                <th>Date</th>
-                                <th>Time</th>
-                                <th>Status</th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Designation</th>
+                                <th>Facebook</th>
+                                <th>Twitter</th>
+                                <th>Linkedin</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($events as $event)
+                        @foreach ($bods as $bod)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$event->id}}
+                                    <div class="attendant__serial"><span> #{{$bod->id}}
                                         </span></div>
                                 </td>
                                 <td>
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/bod/'.$bod->image)}}" alt="">
+                                </td>
+                                <td>
                                     <div class="attendant__user-item">
-                                        <div class="attendant__user-title"><span> {{$event->title}} </span></div>
+                                        <div class="attendant__user-title"><span> {{$bod->first_name}} {{$bod->last_name}} </span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$event->date}}</span></div>
+                                        <div class="attendant__user-title"><span>{{$bod->designation}}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$event->start_time}} - {{$event->end_time}}</span></div>
+                                        <div class="attendant__user-title"><span>{{$bod->fb_id}}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$event->status}}</span></div>
+                                        <div class="attendant__user-title"><span>{{$bod->twitter_id}}</span></div>
                                     </div>
                                 </td>
+                                <td>
+                                    <div class="attendant__user-item">
+                                        
+                                        <div class="attendant__user-title"><span>{{$bod->linkedin_id}}</span></div>
+                                    </div>
+                                </td>
+                                
                                 <td>
                                     <div>
-                                        <a href="{{route('events.show', $event->id)}}" class="btn btn-sm btn-primary">View</a>
-                                        <a href="{{route('events.edit', $event->id)}}" class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline">
+                                        <a href="{{route('board-of-director.edit', $bod->id)}}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('board-of-director.destroy', $bod->id) }}" method="POST" class="d-inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this Event?');">Delete</button>
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this BOD?');">Delete</button>
                                         </form>
                                     </div>
                                 </td>
@@ -103,7 +114,7 @@ Events List
                     </table>
                 </div>
                 
-                <div class="pagination__wrapper">
+                <!-- <div class="pagination__wrapper">
                     <div class="basic__pagination d-flex align-items-center justify-content-end">
                         <nav>
                             <ul>
@@ -116,7 +127,7 @@ Events List
                             </ul>
                         </nav>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

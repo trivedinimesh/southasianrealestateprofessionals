@@ -116,7 +116,7 @@ Blog Details
                       <li><span>{{$blog->created_at}}</span></li>
                     </ul>
                     <h3 class="item_title">
-                      <a href="{{ route('blog-detail') }}"
+                      <a href="{{route('blog-detail', $blog->id)}}"
                         >{{$blog->title}}</a
                       >
                     </h3>

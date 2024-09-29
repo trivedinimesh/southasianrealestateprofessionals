@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 @section('title')
-Annual Gala - Milano Event Center
+{{$event->title}}
 @endsection
 
 @section('body')

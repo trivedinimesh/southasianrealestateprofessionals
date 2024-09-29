@@ -11,14 +11,20 @@ class EventsController extends Controller
 {
     public function index()
     {
-        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->paginate(10); // Paginate results
+        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->get(); // Paginate results
 
         return view('frontend.events.index')->with('events', $events);
     }
 
-    public function eventDetail(Request $request)
+    public function eventDetail(Request $request, string $id)
     {
-        return view('frontend.events.event-detail');
+        try {
+            $event = Event::findOrFail($id);
+            return view('frontend.events.event-detail')
+                ->with('event', $event);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('home')->with('error', 'User not found.');
+        }
     }
 
     public function list()

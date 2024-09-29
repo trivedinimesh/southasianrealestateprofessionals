@@ -13,12 +13,26 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('frontend.blog.index');
+        try {
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
+            return view('frontend.blog.index')
+                ->with('blogs', $blogs);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('blogs.index')->with('error', 'Blog not found.');
+        }
     }
 
-    public function blogDetail(Request $request)
+    public function blogDetail(Request $request, string $id)
     {
-        return view('frontend.blog.blog-detail');
+        try {
+            $blog = Blog::findOrFail($id);
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
+            return view('frontend.blog.blog-detail')
+                ->with('blog', $blog)
+                ->with('blogs', $blogs);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('home')->with('error', 'Blog not found.');
+        }
     }
 
     public function list()
@@ -48,6 +62,7 @@ class BlogController extends Controller
       
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
         request()->image->move(public_path('images/blogs'), $file_name);
+
       
         $blog->title = $request->title;
         $blog->body = $request->body;

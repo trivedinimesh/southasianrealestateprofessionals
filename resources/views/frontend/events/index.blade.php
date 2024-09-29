@@ -203,7 +203,7 @@
                                                         ><i
                                                             class="flaticon-placeholder-1"
                                                         ></i
-                                                        >Sugarland, Texas</span
+                                                        >{{$event->city}}, {{$event->state}}, {{$event->country}}</span
                                                     >
                                                     <div class="header__btn">
                                                         <a class="blog_custome_btn" href="{{route('events.show', $event->id)}}">Read More<i class="fa-regular fa-angle-right"></i></a>
