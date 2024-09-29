@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Dashboard
+Edit User
 @endsection
 
 @section('body')
@@ -31,17 +31,16 @@ Dashboard
                                 <h4 class="event__information-title">User Information</h4>
                             </div>
                             <div class="card__header-dropdown">
-                            <a href="{{route('users.index')}}" class="btn btn-sm btn-primary" >
-                                <i class="fas fa-left-to-line"></i> Back
-                            </a>
-                        </div>
+                                <a href="{{route('users.index')}}" class="btn btn-sm btn-primary" >
+                                    <i class="fas fa-left-to-line"></i> Back
+                                </a>
+                            </div>
                         </div>
                         <div class="pt-25">
-                            <div class="create__input-wrapper">
-                                <form method="POST" action="{{route('users.update', $user->id)}}">
+                            <form method="POST" action="{{route('users.update', $user->id)}}">
                                 @csrf
                                 @method('PUT')
-                                
+                                <div class="create__input-wrapper">
                                     <div class="singel__input-field mb-15"><label
                                             class="input__field-text" >First Name</label>
                                             <input name="first_name" type="text" value="{{$user->first_name}}" />
@@ -64,23 +63,16 @@ Dashboard
                                             @enderror
                                     </div>
                                     <div class="singel__input-field mb-15"><label
-                                            class="input__field-text">ISD Code</label>
-                                            <input name="isd_code" type="text" value="{{$user->isd_code}}"/>
-                                            @error('isd_code')
-                                                <span class="text-danger">{{$message}}</span>
-                                            @enderror
-                                    </div>
-                                    <div class="singel__input-field mb-15"><label
                                             class="input__field-text">Phone Number</label>
                                             <input name="phone_number" type="text" value="{{$user->phone_number}}"/>
                                             @error('phone_number')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                     </div>
-                                    <button class="input__btn w-100"
-                                        type="submit">Create User</button>
-                                </form>
-                            </div>
+                                    <button class="input__btn w-100" type="submit">Create User</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

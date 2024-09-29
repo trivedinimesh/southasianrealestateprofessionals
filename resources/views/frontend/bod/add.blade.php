@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Add User
+Add Board of Director
 @endsection
 
 @section('body')
@@ -13,8 +13,8 @@ Add User
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
-                                    <li><span><a href="{{route('users.index')}}">Users</a></span></li>
-                                    <li class="active"><span>Create Users</span></li>
+                                    <li><span><a href="{{route('board-of-director.index')}}">Board of Director</a></span></li>
+                                    <li class="active"><span>Create Board of Director</span></li>
                                 </ul>
                             </nav>
                         </div>
@@ -28,16 +28,16 @@ Add User
                     <div class="body__card-wrapper">
                         <div class="card__header-top">
                             <div class="card__title-inner">
-                                <h4 class="event__information-title">User Information</h4>
+                                <h4 class="event__information-title">Board of Director Information</h4>
                             </div>
                             <div class="card__header-dropdown">
-                                <a href="{{route('users.index')}}" class="btn btn-sm btn-primary" >
+                                <a href="{{route('board-of-director.index')}}" class="btn btn-sm btn-primary" >
                                     <i class="fas fa-left-to-line"></i> Back
                                 </a>
                             </div>
                         </div>
                         <div class="pt-25">
-                            <form method="POST" action="{{route('users.store')}}">
+                            <form method="POST" action="{{route('board-of-director.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="create__input-wrapper row">
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
@@ -59,42 +59,53 @@ Add User
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                        <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Email</label>
-                                                <input name="email" type="text" />
-                                                @error('email')
+                                        <div>
+                                            <label for="formFile" class="input__field-text">Add Image</label>
+                                            <img src="" alt="" class="img-blog">
+                                            <input class="form-control" type="file" name="image">
+                                                @error('image')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                            class="input__field-text">ISD Code</label>
-                                            <input name="isd_code" type="text" />
-                                            @error('isd_code')
-                                                <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                class="input__field-text">Designation</label>
+                                                <input name="designation" type="text" />
+                                                @error('designation')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                            class="input__field-text">Phone Number</label>
-                                            <input name="phone_number" type="text" />
-                                            @error('phone_number')
-                                                <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                class="input__field-text">Facebook ID</label>
+                                                <input name="fb_id" type="text" />
+                                                @error('fb_id')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                            class="input__field-text">Password</label>
-                                            <input type="password" name="password" />
-                                            @if ($errors->has('password'))
-                                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                                            @endif
+                                                class="input__field-text">Twitter ID</label>
+                                                <input name="twitter_id" type="text" />
+                                                @error('twitter_id')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                         </div>
                                     </div>
-                                    <button class="input__btn w-100" type="submit">Create User</button>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="singel__input-field mb-15"><label
+                                                class="input__field-text">Linkedin ID</label>
+                                                <input name="linkedin_id" type="text" />
+                                                @error('linkedin_id')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="input__btn w-100" type="submit">Create BOD</button>
                                 </div>
                             </form>
                         </div>
