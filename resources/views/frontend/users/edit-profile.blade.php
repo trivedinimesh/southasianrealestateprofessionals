@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Edit User
+Edit Profile
 @endsection
 
 @section('body')
@@ -13,8 +13,8 @@ Edit User
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
-                                    <li><span><a href="{{route('users.index')}}">Users</a></span></li>
-                                    <li class="active"><span>Edit Users</span></li>
+                                    <li><span><a href="{{route('profile')}}">Profile</a></span></li>
+                                    <li class="active"><span>Edit Profile</span></li>
                                 </ul>
                             </nav>
                         </div>
@@ -31,13 +31,13 @@ Edit User
                                 <h4 class="event__information-title">User Information</h4>
                             </div>
                             <div class="card__header-dropdown">
-                                <a href="{{route('users.index')}}" class="btn btn-sm btn-primary" >
+                                <a href="{{route('profile')}}" class="btn btn-sm btn-primary" >
                                     <i class="fas fa-left-to-line"></i> Back
                                 </a>
                             </div>
                         </div>
                         <div class="pt-25">
-                            <form method="POST" action="{{route('users.update', $current_user->id)}}">
+                            <form method="POST" action="{{route('profile-update', $current_user->id)}}">
                                 @csrf
                                 @method('PUT')
                                 <div class="create__input-wrapper row">
@@ -81,22 +81,7 @@ Edit User
                                                 @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                        <div class="singel__input-field mb-15">
-                                            <label class="input__field-text">Role</label>
-                                            <div class="contact__select">
-                                                <select name="role">
-                                                @foreach ($current_user->roles as $role)
-                                                    <option value="{{$role->name}}" disable selected>{{$role->name}}</option>
-                                                @endforeach
-                                                @foreach ($roles as $role)
-                                                    <option value="{{$role->name}}">{{$role->name}}</option>
-                                                @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="input__btn w-100" type="submit">Create User</button>
+                                    <button class="input__btn w-100" type="submit">Update Profile</button>
                                 </div>
                             </form>
                         </div>

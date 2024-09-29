@@ -4,12 +4,12 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Sponser;
+use App\Models\Sponsor;
 use Illuminate\Support\Facades\Auth;    
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class SponserController extends Controller
+class SponsorController extends Controller
 {
     public function index()
     {
@@ -17,9 +17,9 @@ class SponserController extends Controller
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        $Sponser = Sponser::select('id', 'name', 'image')->get();
+        $Sponsor = Sponsor::select('id', 'name', 'image')->get();
 
-        return view('frontend.sponser.index')->with('sponsers', $Sponser);
+        return view('frontend.sponsor.index')->with('sponsors', $Sponsor);
     }
 
     public function create()
@@ -28,7 +28,7 @@ class SponserController extends Controller
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        return view('frontend.sponser.add');
+        return view('frontend.sponsor.add');
     }
 
     public function store(Request $request)
@@ -43,18 +43,18 @@ class SponserController extends Controller
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
       
-        $Sponser = new Sponser;
+        $Sponsor = new Sponsor;
       
         $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images/sponsers'), $file_name);
+        request()->image->move(public_path('images/sponsors'), $file_name);
       
-        $Sponser->name = $request->name;
-        $Sponser->image = $file_name;
-        $Sponser->created_by = Auth::user()->id;
-        $Sponser->updated_by = Auth::user()->id;
+        $Sponsor->name = $request->name;
+        $Sponsor->image = $file_name;
+        $Sponsor->created_by = Auth::user()->id;
+        $Sponsor->updated_by = Auth::user()->id;
       
-        $Sponser->save();
-        return redirect()->route('sponser.index')->with('success', 'Sponser created successfully.');
+        $Sponsor->save();
+        return redirect()->route('sponsor.index')->with('success', 'Sponsor created successfully.');
     }
 
 
@@ -68,10 +68,10 @@ class SponserController extends Controller
         }
         
         try {
-            $Sponser = Sponser::findOrFail($id);
-            return view('frontend.sponser.edit')->with('sponser', $Sponser);
+            $Sponsor = Sponsor::findOrFail($id);
+            return view('frontend.sponsor.edit')->with('sponsor', $Sponsor);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('sponser.index')->with('error', 'sponser not found.');
+            return redirect()->route('sponsor.index')->with('error', 'sponsor not found.');
         }
     }
 
@@ -83,7 +83,7 @@ class SponserController extends Controller
         
         try {
             // Retrieve the existing blog by ID
-            $Sponser = Sponser::findOrFail($id);
+            $Sponsor = Sponsor::findOrFail($id);
     
             // Validate the request data
             $request->validate([
@@ -93,33 +93,33 @@ class SponserController extends Controller
     
             if ($request->hasFile('image')) {
                 // Delete the old image if it exists
-                if ($Sponser->image && file_exists(public_path('images/sponsers' . $Sponser->image))) {
-                    unlink(public_path('images/sponsers' . $Sponser->image));
+                if ($Sponsor->image && file_exists(public_path('images/sponsors' . $Sponsor->image))) {
+                    unlink(public_path('images/sponsors' . $Sponsor->image));
                 }
     
                 // Upload the new image
                 $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/sponsers'), $file_name);
+                $request->image->move(public_path('images/sponsors'), $file_name);
     
                 // Set the new image name
-                $Sponser->image = $file_name;
+                $Sponsor->image = $file_name;
             }
     
             // Update the blog data
-            $Sponser->name = $request->name;
-            $Sponser->image = $file_name;
-            $Sponser->updated_by = Auth::user()->id;
+            $Sponsor->name = $request->name;
+            $Sponsor->image = $file_name;
+            $Sponsor->updated_by = Auth::user()->id;
     
             // Save the blog
-            $Sponser->save();
+            $Sponsor->save();
     
-            return redirect()->route('sponser.index')->with('success', 'Sponser updated successfully.');
+            return redirect()->route('sponsor.index')->with('success', 'Sponsor updated successfully.');
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('sponser.index')->with('error', 'Sponser not found.');
+            return redirect()->route('sponsor.index')->with('error', 'Sponsor not found.');
         } catch (\Throwable $th) {
             // Log any errors
-            \Log::error('Error updating sponser: ' . $th->getMessage());
-            return back()->with('error', 'Something went wrong while updating Sponser data.');
+            \Log::error('Error updating sponsor: ' . $th->getMessage());
+            return back()->with('error', 'Something went wrong while updating Sponsor data.');
         }
     }
 
@@ -131,19 +131,19 @@ class SponserController extends Controller
         
         DB::beginTransaction();
         try {
-            $Sponser = Sponser::findOrFail($id);
+            $Sponsor = Sponsor::findOrFail($id);
             
-            if ($Sponser->image && file_exists(public_path('images/sponsers/' . $Sponser->image))) {
-                unlink(public_path('images/sponsers/' . $Sponser->image));
+            if ($Sponsor->image && file_exists(public_path('images/sponsors/' . $Sponsor->image))) {
+                unlink(public_path('images/sponsors/' . $Sponsor->image));
             }
             
-            $Sponser->delete();
+            $Sponsor->delete();
 
             DB::commit();
-            return redirect()->route('sponser.index')->with('success', 'Sponser deleted successfully.');
+            return redirect()->route('sponsor.index')->with('success', 'Sponsor deleted successfully.');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return back()->with('error', 'Failed to delete sponser.');
+            return back()->with('error', 'Failed to delete sponsor.');
         }
     }
 }
