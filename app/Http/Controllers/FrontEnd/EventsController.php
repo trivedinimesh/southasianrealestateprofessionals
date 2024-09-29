@@ -16,9 +16,15 @@ class EventsController extends Controller
         return view('frontend.events.index')->with('events', $events);
     }
 
-    public function eventDetail(Request $request)
+    public function eventDetail(Request $request, string $id)
     {
-        return view('frontend.events.event-detail');
+        try {
+            $event = Event::findOrFail($id);
+            return view('frontend.events.event-detail')
+                ->with('event', $event);
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('home')->with('error', 'User not found.');
+        }
     }
 
     public function list()

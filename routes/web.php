@@ -11,6 +11,7 @@ use App\Http\Controllers\FrontEnd\MembershipController;
 use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\FrontEnd\BODController;
+use App\Http\Controllers\FrontEnd\SponserController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
@@ -29,11 +30,11 @@ Route::post('action-signup', [AuthController::class, 'actionSignup'])->name('sig
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/events', [EventsController::class, 'index'])->name('events');
-Route::get('/event-detail', [EventsController::class, 'eventDetail'])->name('event-detail');
+Route::get('/event-detail/{blog}', [EventsController::class, 'eventDetail'])->name('event-detail');
 
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
-Route::get('/blogs-detail', [BlogController::class, 'blogDetail'])->name('blog-detail');
+Route::get('/blog-detail/{blog}', [BlogController::class, 'blogDetail'])->name('blog-detail');
 
 Route::middleware('auth')->group(function () {
 
@@ -42,6 +43,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/users', UserController::class);
 
     Route::resource('/admin/board-of-director', BODController::class);
+
+    Route::resource('/admin//sponser', SponserController::class);
 
     Route::get('/admin/blogs-list', [BlogController::class, 'list'])->name('blogs.list');
     Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('blogs.create');
