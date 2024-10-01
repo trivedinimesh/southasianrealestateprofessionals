@@ -33,7 +33,11 @@ Blogs
                 <div class="item_content">
                   <div class="flex_wrap">
                     <ul class="category_list unordered_list">
-                      <li><a href="{{route('blog-detail', $blog->id)}}">{{$blog->tags}}</a></li>
+                    <li>
+                        @foreach($blog->tags as $tag)
+                            <a href="{{ route('blog-detail', $blog->id) }}">{{ $tag->tag }}</a>
+                        @endforeach
+                    </li>
                     </ul>
                     <span class="post_date"
                       ><span style="margin-right: 10px"
@@ -135,7 +139,11 @@ Blogs
                     /></a>
                     <div class="item_content">
                       <ul class="meta_list unordered_list">
-                        <li><a href="{{route('blog-detail', $blog->id)}}">{{$blog->tags}}</a></li>
+                      <li>
+                          @foreach($blog->tags as $tag)
+                              <a href="{{ route('blog-detail', $blog->id) }}">{{ $tag->tag }}</a>
+                          @endforeach
+                      </li>
                         <li><span>{{$blog->created_at}}</span></li>
                       </ul>
                       <h3 class="item_title">

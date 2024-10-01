@@ -5,6 +5,8 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Keyword;
+use App\Models\Tag;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,7 @@ class BlogController extends Controller
     public function index()
     {   
         try {
-            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords','tags'])->paginate(10);
             return view('frontend.blog.index')
                 ->with('blogs', $blogs);
         } catch (ModelNotFoundException $e) {
@@ -27,7 +29,7 @@ class BlogController extends Controller
     {
         try {
             $blog = Blog::findOrFail($id);
-            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords', 'tags'])->paginate(10);
             return view('frontend.blog.blog-detail')
                 ->with('blog', $blog)
                 ->with('blogs', $blogs);
@@ -38,13 +40,13 @@ class BlogController extends Controller
 
     public function list()
     {
+
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10); // Paginate results
-
-        return view('frontend.blog.list')->with('blogs', $blogs);
+        $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->paginate(10); // Paginate results
+        return view('frontend.blog.list')->with('blogs', $blogs)->with(['keywords', 'tags']);
     }
 
     public function create()
@@ -53,7 +55,9 @@ class BlogController extends Controller
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        return view('frontend.blog.add');
+        $keywords=Keyword::all();
+        $tags=Tag::all();
+        return view('frontend.blog.add')->with('keywords',$keywords)->with('tags', $tags);
     }
 
     public function store(Request $request)
@@ -61,29 +65,57 @@ class BlogController extends Controller
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
-        
+        $user= Auth::user();
         // validations
         $request->validate([
           'title' => 'required',
           'body' => 'required|string|max:16777215',
-          'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-          'keywords' => 'required',
-          'tags' => 'required',
+          'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'keywords' => 'sometimes|array',
+          'tags' => 'sometimes|array',
         ]);
       
         $blog = new Blog;
       
-        $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images/blogs'), $file_name);
+        if(request()->image){
+
+            $file_name = time() . '.' . request()->image->getClientOriginalExtension();
+            request()->image->move(public_path('images/blogs/'), $file_name);
+            $blog->image = $file_name;
+
+        }else{
+            $blog->image = null;
+
+        }
 
       
         $blog->title = $request->title;
         $blog->body = $request->body;
-        $blog->image = $file_name;
-        $blog->keywords = $request->keywords;
-        $blog->tags = $request->tags;
+        // $blog->keywords = implode(",",$request->keywords);
+        // $blog->tags = $request->tags; 
       
         $blog->save();
+
+        if ($request->has('keywords')) {
+            $keywordIds = [];
+            foreach ($request->input('keywords') as $keyword) {
+                $keywordRecord = Keyword::firstOrCreate(['keyword' => $keyword]);
+                $keywordIds[] = $keywordRecord->id;
+            }
+            // Sync keywords
+            $blog->keywords()->sync($keywordIds);
+        }
+        
+        if ($request->has('tags')) {
+            $tagIds = [];
+            foreach ($request->input('tags') as $tag) {
+                $tagRecord = Tag::firstOrCreate(['tag' => $tag]);
+                $tagIds[] = $tagRecord->id;
+            }
+            // Sync tags
+            $blog->tags()->sync($tagIds);
+        }
+
         return redirect()->route('blogs.list')->with('success', 'Blog created successfully.');
     }
 
@@ -95,10 +127,11 @@ class BlogController extends Controller
         
         try {
             $blog = Blog::findOrFail($id);
-            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'keywords', 'tags', 'created_by', 'updated_by')->paginate(10);
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->paginate(10);
             return view('frontend.blog.view')
                 ->with('blog', $blog)
-                ->with('blogs', $blogs);
+                ->with('blogs', $blogs)
+                ->with(['keywords,tags']);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('blogs.index')->with('error', 'User not found.');
         }
@@ -114,8 +147,10 @@ class BlogController extends Controller
         }
         
         try {
+            $keywords=Keyword::all();
+            $tags=Tag::all();
             $blog = Blog::findOrFail($id);
-            return view('frontend.blog.edit')->with('blog', $blog);
+            return view('frontend.blog.edit')->with('blog', $blog)->with('keywords',$keywords)->with('tags', $tags);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('blogs.index')->with('error', 'Blog not found.');
         }
@@ -139,8 +174,8 @@ class BlogController extends Controller
                 'title' => 'required',
                 'body' => 'required|string|max:16777215',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'keywords' => 'required',
-                'tags' => 'required',
+                 'keywords' => 'sometimes|array',
+                'tags' => 'sometimes|array',
             ]);
     
             if ($request->hasFile('image')) {
@@ -151,7 +186,7 @@ class BlogController extends Controller
     
                 // Upload the new image
                 $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/blogs'), $file_name);
+                $request->image->move(public_path('images/blogs/'), $file_name);
     
                 // Set the new image name
                 $blog->image = $file_name;
@@ -160,12 +195,31 @@ class BlogController extends Controller
             // Update the blog data
             $blog->title = $request->title;
             $blog->body = $request->body;
-            $blog->keywords = $request->keywords;
-            $blog->tags = $request->tags;
+           
     
             // Save the blog
             $blog->save();
-    
+
+            if ($request->has('keywords')) {
+                $keywordIds = [];
+                foreach ($request->input('keywords') as $keyword) {
+                    $keywordRecord = Keyword::firstOrCreate(['keyword' => $keyword]);
+                    $keywordIds[] = $keywordRecord->id;
+                }
+                // Sync keywords
+                $blog->keywords()->sync($keywordIds);
+            }
+            
+            if ($request->has('tags')) {
+                $tagIds = [];
+                foreach ($request->input('tags') as $tag) {
+                    $tagRecord = Tag::firstOrCreate(['tag' => $tag]);
+                    $tagIds[] = $tagRecord->id;
+                }
+                // Sync tags
+                $blog->tags()->sync($tagIds);
+            }
+
             return redirect()->route('blogs.list')->with('success', 'Blog updated successfully.');
     
         } catch (\Throwable $th) {

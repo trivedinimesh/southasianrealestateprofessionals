@@ -71,20 +71,33 @@ Add Blog
                                             @error('image')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
-                                    <div class="singel__input-field mb-15">
+                                    <!-- <div class="singel__input-field mb-15">
                                         <label class="input__field-text">keywords</label>
                                         <input name="keywords" type="text" />
                                         @error('keywords')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
-                                    </div>
-                                    <div class="singel__input-field mb-15">
+                                    </div> -->
+                                    <label for="formFile" class="input__field-text">Keywords</label>
+                                    <select class="tom-select-multiple form-control w-full" name="keywords[]" multiple>
+                                        @foreach($keywords as $keyword)
+                                            <option value="{{ $keyword->keyword }}">{{ $keyword->keyword }}</option>
+                                        @endforeach
+                                    </select>
+                                    <label for="formFile" class="input__field-text">Tags</label>
+                                    <select class="tom-select-multiple form-control w-full" name="tags[]" multiple>
+                                        @foreach($tags as $tag)
+                                            <option value="{{ $tag->tag }}">{{ $tag->tag }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    <!-- <div class="singel__input-field mb-15">
                                         <label class="input__field-text">tags</label>
                                         <input name="tags" type="text" />
                                         @error('tags')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
-                                    </div>
+                                    </div> -->
                                     <button class="input__btn w-100"
                                         type="submit">Create Blog</button>
                                 </form>

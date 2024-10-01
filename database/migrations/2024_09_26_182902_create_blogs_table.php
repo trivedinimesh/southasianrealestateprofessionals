@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('meta_tag')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('slug')->nullable();
-            $table->string('keywords')->nullable();
-            $table->string('tags')->nullable();
             $table->boolean('is_publish')->default(true);
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
