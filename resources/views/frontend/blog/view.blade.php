@@ -32,7 +32,11 @@ Blog Details
         <div class="details_content">
           <div class="blog_post_meta">
             <ul class="category_list unordered_list">
-              <li><a href="#">{{$blog->tags}}</a></li>
+             <li>
+                @foreach(json_decode($blog->tags) as $tag)
+                    <a href="#">{{ $tag->tag }}</a>
+                @endforeach
+            </li>
             </ul>
             <span class="post_date">{{$blog->created_at}}</span>
           </div>
@@ -41,7 +45,11 @@ Blog Details
           
           <div class="social_actions">
             <ul class="tags_list unordered_list">
-              <li><a href="#">{{$blog->tags}}</a></li>
+             <li>
+                @foreach(json_decode($blog->tags) as $tag)
+                    <a href="#">{{ $tag->tag }}</a>
+                @endforeach
+            </li>
             </ul>
             <div class="footer__social">
               <a href="https://www.facebook.com/"
@@ -106,13 +114,17 @@ Blog Details
                 <div class="recent_post_item">
                   <a class="item_image" href="{{route('blogs.show', $blog->id)}}"
                     ><img
-                      src="{{ asset('images/'.$blog->image) }}"
+                      src="{{ asset('images/blogs/'.$blog->image) }}"
                       style="height: auto; width: 100%"
                       alt=" Blog Image"
                   /></a>
                   <div class="item_content">
                     <ul class="meta_list unordered_list">
-                      <li><a href="#">{{$blog->tags}}</a></li>
+                    <li>
+                        @foreach(json_decode($blog->tags) as $tag)
+                            <a href="#">{{ $tag->tag }}</a>
+                        @endforeach
+                    </li>
                       <li><span>{{$blog->created_at}}</span></li>
                     </ul>
                     <h3 class="item_title">

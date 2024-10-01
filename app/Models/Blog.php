@@ -16,8 +16,6 @@ class Blog extends Model
         'meta_tag',
         'meta_description',
         'slug',
-        'keywords',
-        'tags',
         'created_by',
         'updated_by'
     ];
@@ -25,5 +23,15 @@ class Blog extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class,'blog_tags');
+    }
+
+    public function keywords()
+    {
+        return $this->belongsToMany(Keyword::class, 'blog_keywords');
     }
 }

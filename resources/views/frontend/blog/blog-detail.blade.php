@@ -32,7 +32,11 @@
         <div class="details_content">
           <div class="blog_post_meta">
             <ul class="category_list unordered_list">
-              <li><a href="#">{{$blog->tags}}</a></li>
+            <li>
+                @foreach($blog->tags as $index => $tag)
+                    <a href="#">{{ $tag->tag }}</a>{{ $index < $blog->tags->count() - 1 ? ',' : '' }}
+                @endforeach
+            </li>
             </ul>
             <span class="post_date">{{$blog->created_at}}</span>
           </div>
@@ -41,7 +45,11 @@
           
           <div class="social_actions">
             <ul class="tags_list unordered_list">
-              <li><a href="#">{{$blog->tags}}</a></li>
+            <li>
+                @foreach($blog->tags as $index => $tag)
+                    <a href="#">{{ $tag->tag }}</a>{{ $index < $blog->tags->count() - 1 ? ',' : '' }}
+                @endforeach
+            </li>
             </ul>
             <div class="footer__social">
               <a href="https://www.facebook.com/"
@@ -112,7 +120,11 @@
                   /></a>
                   <div class="item_content">
                     <ul class="meta_list unordered_list">
-                      <li><a href="#">{{$blog->tags}}</a></li>
+                    <li>
+                        @foreach($blog->tags as $index => $tag)
+                            <a href="#">{{ $tag->tag }}</a>{{ $index < $blog->tags->count() - 1 ? ',' : '' }}
+                        @endforeach
+                    </li>
                       <li><span>{{$blog->created_at}}</span></li>
                     </ul>
                     <h3 class="item_title">

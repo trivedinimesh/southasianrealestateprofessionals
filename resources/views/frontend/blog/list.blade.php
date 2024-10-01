@@ -72,8 +72,11 @@ Dashboard
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
-                                        
-                                        <div class="attendant__user-title"><span>{{$blog->tags}}</span></div>
+                                        <div class="attendant__user-title">
+                                            @foreach(json_decode($blog->tags) as $tag)
+                                                <span>{{ $tag->tag }}</span>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </td>
                                 <td>
