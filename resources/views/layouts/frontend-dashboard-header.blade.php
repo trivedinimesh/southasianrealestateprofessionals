@@ -17,8 +17,8 @@
                                     <ul class="metismenu" id="menu">
                                         <li><a href="{{route('dashboard')}}"><i class="flaticon-home"></i><span
                                                     class="nav-text">Dashboard</span></a></li>
-                                        <li><a href="#"><i class="flaticon-user-1"></i><span
-                                                    class="nav-text">Attendant List</span></a></li>
+                                        <!-- <li><a href="#"><i class="flaticon-user-1"></i><span
+                                                    class="nav-text">Event Attendees List</span></a></li> -->
                                         <li class=""><a href="{{route('events.list')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
@@ -60,6 +60,16 @@
                                     <ul class="metismenu" id="menu">
                                         <li><a href="{{route('dashboard')}}"><i class="flaticon-home"></i><span
                                                     class="nav-text">Dashboard</span></a></li>
+                                        <!-- <li class=""><a href="{{route('events.past-events')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Past Events</span></a>
+                                        </li> -->
+                                        <li class=""><a href="{{route('events.view-booking')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">View Booking</span></a>
+                                        </li>
                                         <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
                                                 aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span

@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Member Management
+Past Events List
 @endsection
 
 @section('body')
@@ -18,7 +18,7 @@ Member Management
                                             <nav>
                                                 <ul>
                                                     <li><span><a href="{{ route('dashboard') }}"> Home </a></span></li>
-                                                    <li class="active"><span> Member Management </span></li>
+                                                    <li class="active"><span> Past Events </span></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -30,13 +30,10 @@ Member Management
                         <div class="card__title-inner">
                             <div class="card__header-icon"><i class="flaticon-ticket-1"></i></div>
                             <div class="card__header-title">
-                                <h4>Member Management</h4>
+                                <h4>Past Events</h4>
                             </div>
                         </div>
                     </div>
-                    @if (session('success'))
-                        <span class="text-success">{{ session('success') }}</span>
-                    @endif
                 </div>
                 
                 <div class="attendant__wrapper mb-20">
@@ -44,40 +41,40 @@ Member Management
                         <thead>
                             <tr>
                                 <th>ID No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th>Expiry</th>
+                                <th>Event Title</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($members as $member)
+                        @foreach ($events as $event)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$member->id}}
+                                    <div class="attendant__serial"><span> #{{$event->id}}
                                         </span></div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
-                                        <div class="attendant__user-title"><span> {{$member->first_name}} {{$member->last_name}} </span></div>
+                                        <div class="attendant__user-title"><span> {{$event->title}} </span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$member->email}}</span></div>
+                                        <div class="attendant__user-title"><span>{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$member->isd_code ?? ''}}-{{$member->phone_number ?? '-'}}</span></div>
+                                        <div class="attendant__user-title"><span>{{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>-</span></div>
+                                        <div class="attendant__user-title"><span>{{$event->status}}</span></div>
                                     </div>
                                 </td>
                             </tr>

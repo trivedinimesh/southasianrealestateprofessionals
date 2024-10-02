@@ -28,7 +28,7 @@ Home
             </div>
             </div>
         </div>
-        @if($events)
+        @if(!empty($events) && count($events) > 0)
           <div class="col-xxl-5 col-xl-4 col-lg-6">
             <div
             class="banner__right-content d-flex justify-content-lg-end"

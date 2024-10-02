@@ -31,6 +31,7 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/events', [EventsController::class, 'index'])->name('events');
 Route::get('/event-detail/{event}', [EventsController::class, 'eventDetail'])->name('event-detail');
+Route::get('/booking-confirmation', [EventsController::class, 'bookingConfirmation'])->name('booking-confirmation');
 
 
 Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
@@ -66,4 +67,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/events/{event}/edit', [EventsController::class, 'edit'])->name('events.edit');
     Route::patch('/admin/events/{event}', [EventsController::class, 'update'])->name('events.update');
     Route::delete('/admin/events/{event}', [EventsController::class, 'destroy'])->name('events.destroy');
+    Route::get('/admin/events/{id}/book', [EventsController::class, 'bookEvent'])->name('events.book');
+    Route::get('/admin/events/attandee/{event}', [EventsController::class, 'attendeeList'])->name('events.attendee-list');
+    Route::get('/admin/events/attandee/verify/{bookingId}/{user}', [EventsController::class, 'verifyBooking'])->name('events.verifyBooking');
+    Route::get('/past-events', [EventsController::class, 'pastEvents'])->name('events.past-events');
+    Route::get('/view-bookings', [EventsController::class, 'viewBooking'])->name('events.view-booking');
 });

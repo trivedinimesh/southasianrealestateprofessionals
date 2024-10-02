@@ -69,7 +69,7 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'isd_code' => 'required|string|max:10', // Added max length validation
             'phone_number' => 'required|string|unique:users|max:15', // Added max length validation
-            'password' => 'required|string|min:6|confirmed', // Added password confirmation
+            'password' => 'required|string|min:6', // Added password confirmation
         ]);
 
         // Create the user with validated data

@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Member Management
+View Booking
 @endsection
 
 @section('body')
@@ -18,7 +18,7 @@ Member Management
                                             <nav>
                                                 <ul>
                                                     <li><span><a href="{{ route('dashboard') }}"> Home </a></span></li>
-                                                    <li class="active"><span> Member Management </span></li>
+                                                    <li class="active"><span> View Booking </span></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -30,54 +30,56 @@ Member Management
                         <div class="card__title-inner">
                             <div class="card__header-icon"><i class="flaticon-ticket-1"></i></div>
                             <div class="card__header-title">
-                                <h4>Member Management</h4>
+                                <h4>View Booking</h4>
                             </div>
                         </div>
                     </div>
-                    @if (session('success'))
-                        <span class="text-success">{{ session('success') }}</span>
-                    @endif
                 </div>
                 
                 <div class="attendant__wrapper mb-20">
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Contact</th>
-                                <th>Expiry</th>
+                                <th>Booking ID</th>
+                                <th>Event Title</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($members as $member)
+                        @foreach ($attendees as $attendee)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$member->id}}
+                                    <div class="attendant__serial"><span> {{$attendee->booking_id}}
                                         </span></div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
-                                        <div class="attendant__user-title"><span> {{$member->first_name}} {{$member->last_name}} </span></div>
+                                        <div class="attendant__user-title"><span> {{$attendee->event->title}} </span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$member->email}}</span></div>
+                                        <div class="attendant__user-title"><span>{{ \Carbon\Carbon::parse($attendee->event->date)->format('F d, Y') }}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>{{$member->isd_code ?? ''}}-{{$member->phone_number ?? '-'}}</span></div>
+                                        <div class="attendant__user-title"><span>{{ \Carbon\Carbon::parse($attendee->event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($attendee->event->end_time)->format('g:i A') }}</span></div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         
-                                        <div class="attendant__user-title"><span>-</span></div>
+                                    @if ($attendee->is_attended)
+                                    
+                                    Attended
+                                @else
+                                    Not Attended
+                                @endif
                                     </div>
                                 </td>
                             </tr>

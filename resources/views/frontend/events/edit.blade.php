@@ -74,7 +74,7 @@ Edit Event
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Details</label>
-                                            <textarea class="form-control" name="details" id="floatingTextarea" cols="30" rows="10" value="{!! $event->details !!}"></textarea>
+                                            <textarea class="form-control" name="details" id="floatingTextarea" cols="30" rows="10">{{ old('details', $event->details) }}</textarea>
                                             <script>
                                                 // Initialize CKEditor
                                                 ClassicEditor
@@ -138,11 +138,13 @@ Edit Event
                                     </div>
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
-                                        <label class="input__field-text">Status</label>
-    <input type="checkbox" name="is_active" value="1" {{ old('is_active', $event->is_active) ? 'checked' : '' }}> Active
-    @error('is_active')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
+                                            <label class="input__field-text">Status</label>
+                                            <!-- Hidden field to ensure the unchecked state is also handled -->
+                                            <input type="hidden" name="is_active" value="0">
+                                            <input type="checkbox" name="is_active" value="1" {{ $event->is_active ? 'checked' : '' }}> Active
+                                            @error('is_active')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
