@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -17,7 +19,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
@@ -25,8 +27,39 @@ class UserController extends Controller
 
         $users = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
 
-        return view('frontend.users.index')->with('users', $users);
+        $query = User::query();
+    
+    // Filter by roles if any are selected
+    if ($request->has('roles') && is_array($request->input('roles'))) {
+        $query->whereHas('roles', function($q) use ($request) {
+            $q->whereIn('name', $request->input('roles'));
+        });
     }
+
+    // Filter by search input (searching by name)
+    if ($request->filled('search')) {
+        $search = $request->input('search');
+        $searchTerms = explode(' ', $search); // Split the search input by spaces
+
+        // If there are multiple terms (e.g., first and last name)
+        if (count($searchTerms) == 2) {
+            $query->where('first_name', 'like', '%' . $searchTerms[0] . '%')
+                  ->where('last_name', 'like', '%' . $searchTerms[1] . '%');
+        } else {
+            // Single term search (first name or last name)
+            $query->where(function ($q) use ($search) {
+                $q->where('first_name', 'like', '%' . $search . '%')
+                  ->orWhere('last_name', 'like', '%' . $search . '%');
+            });
+        }
+    }
+
+    // Retrieve the filtered users
+    $users = $query->get();
+    $roles = Role::all(); // Assuming you have a Role model
+
+                return view('frontend.users.index')->with('users', $users)->with('roles', $roles);
+            }
 
     /**
      * Show the form for creating a new resource.
