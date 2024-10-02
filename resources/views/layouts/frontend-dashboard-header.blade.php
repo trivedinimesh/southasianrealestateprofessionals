@@ -135,9 +135,7 @@
                                 <button id="sidebar__active">
                                     <div class="bar-icon-2"><span></span><span></span><span></span></div>
                                 </button>
-                                <div class="app__herader-input p-relative"><input type="search"
-                                        placeholder="Search Here . . ." /><button><i
-                                            class="flaticon-loupe"></i></button></div>
+                               
                             </div>
                             <div class="app__header-right">
                                 <div class="nav-item p-relative"><button id="userportfolio">
