@@ -13,11 +13,15 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('booking_id')->unique();  // Unique booking ID for verification
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('event_id')->constrained();
-            $table->boolean('is_member');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('event_id');
+            $table->string('booking_id')->unique();
+            $table->boolean('is_attended')->default(false);
+            $table->decimal('amount', 8, 2); // Total amount paid after discounts
             $table->timestamps();
+        
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
         });
     }
 

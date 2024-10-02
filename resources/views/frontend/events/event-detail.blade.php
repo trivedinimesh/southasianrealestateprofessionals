@@ -167,9 +167,14 @@
                 <li><span>Venue : </span>{{$event->address}}, {{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</li>
               </ul>
               <div class="ticket__purchase-btn mt-30 text-center pb-20">
-                <a class="fill__btn" href="{{ route('membership') }}"
+                <a class="fill__btn" href="{{route('events.book', $event->id)}}"
                   >BUY TICKETS <i class="fa-regular fa-angle-right"></i
                 ></a>
+                <div>
+                  @if (session('error'))
+                      <span class="text-danger">{{ session('error') }}</span>
+                  @endif
+                </div>
               </div>
             </div>
           </div>

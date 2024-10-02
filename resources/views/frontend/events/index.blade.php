@@ -206,7 +206,7 @@
                                                         >{{$event->city}}, {{$event->state}}, {{$event->country}}</span
                                                     >
                                                     <div class="header__btn">
-                                                        <a class="blog_custome_btn" href="{{route('events.show', $event->id)}}">Read More<i class="fa-regular fa-angle-right"></i></a>
+                                                        <a class="blog_custome_btn" href="{{route('event-detail', $event->id)}}">Read More<i class="fa-regular fa-angle-right"></i></a>
                                                     </div>
                                                 </div>
                                             </div>
