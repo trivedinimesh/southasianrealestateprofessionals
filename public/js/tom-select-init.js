@@ -18,4 +18,12 @@ document.addEventListener('DOMContentLoaded', function() {
             maxItems: null
         });
     });
+
+var multipleElements = document.querySelectorAll('.tom-select-multiple-search');
+    multipleElements.forEach(function(element) {
+        new TomSelect(element, {
+            plugins: ['remove_button'],
+            maxItems: null
+        });
+    });
 });
