@@ -1,6 +1,6 @@
 @extends('layouts.frontend-dashboard')
 @section('title')
-Events List
+Booking List
 @endsection
 
 @section('body')
@@ -18,7 +18,7 @@ Events List
                                             <nav>
                                                 <ul>
                                                     <li><span><a href="{{ route('dashboard') }}"> Home </a></span></li>
-                                                    <li class="active"><span> Event Management </span></li>
+                                                    <li class="active"><span> Booking List </span></li>
                                                 </ul>
                                             </nav>
                                         </div>
@@ -30,13 +30,8 @@ Events List
                         <div class="card__title-inner">
                             <div class="card__header-icon"><i class="flaticon-ticket-1"></i></div>
                             <div class="card__header-title">
-                                <h4>Event Management</h4>
+                                <h4>Booking List</h4>
                             </div>
-                        </div>
-                        <div class="card__header-dropdown">
-                            <a href="{{route('events.create')}}" class="btn btn-sm btn-success" >
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
                         </div>
                     </div>
                     @if (session('success'))
@@ -51,16 +46,17 @@ Events List
                                 <th>ID No</th>
                                 <th>Event Title</th>
                                 <th>Date</th>
-                                <th>Time</th>
-                                <th>Status</th>
+                                <th>Booking Id</th>
+                                <th>User Name</th>
+                                <th>Is Member</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($events as $event)
+                        @foreach ($bookings as $booking)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$event->id}}
+                                    <div class="attendant__serial"><span> #{{$booking->id}}
                                         </span></div>
                                 </td>
                                 <td>

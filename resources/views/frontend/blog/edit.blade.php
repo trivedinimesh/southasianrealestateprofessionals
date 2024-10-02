@@ -81,25 +81,25 @@ Edit Blog
                                     @enderror
                                 </div>
                                 <label for="formFile" class="input__field-text">Keywords</label>
-                                    <select class="tom-select-multiple form-control w-full" name="keywords[]" multiple>
-                                        @foreach($keywords as $keyword)
-                                            <option value="{{ $keyword->keyword }}"
-                                                @if(in_array($keyword->keyword, $blog->keywords->pluck('keyword')->toArray())) selected @endif>
-                                                {{ $keyword->keyword }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <label for="formFile" class="input__field-text">Tags</label>
-                                        <select class="tom-select-multiple form-control w-full" name="tags[]" multiple>
-                                            @foreach($tags as $tag)
-                                                <option value="{{ $tag->tag }}"
-                                                    @if(in_array($tag->tag, $blog->tags->pluck('tag')->toArray())) selected @endif>
-                                                    {{ $tag->tag }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    <button class="input__btn w-100"
-                                        type="submit">Edit Blog</button>
+                                <select class="tom-select-multiple form-control w-full" name="keywords[]" multiple>
+                                    @foreach($keywords as $keyword)
+                                        <option value="{{ $keyword->keyword }}"
+                                            @if(in_array($keyword->keyword, $blog->keywords->pluck('keyword')->toArray())) selected @endif>
+                                            {{ $keyword->keyword }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <label for="formFile" class="input__field-text">Tags</label>
+                                <select class="tom-select-multiple form-control w-full" name="tags[]" multiple>
+                                    @foreach($tags as $tag)
+                                        <option value="{{ $tag->tag }}"
+                                            @if(in_array($tag->tag, $blog->tags->pluck('tag')->toArray())) selected @endif>
+                                            {{ $tag->tag }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <button class="input__btn w-100"
+                                    type="submit">Edit Blog</button>
                                 </form>
                             </div>
                     </div>

@@ -33,7 +33,7 @@
                     <div class="about__content mt-30">
                       <h4>About This Event</h4>
                       <p>
-                      {{$event->details}}
+                      {!! $event->details !!}
                       </p>
                     </div>
                 </div>
@@ -162,8 +162,8 @@
             <div class="event__meta-time">
               <ul>
                 <li><span>Price : </span>${{$event->price_member}} / ${{$event->price_non_member}}</li>
-                <li><span>Date : </span>{{$event->date}}</li>
-                <li><span>Time :</span>{{$event->start_time}} - {{$event->end_time}}</li>
+                <li><span>Date : </span>{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</li>
+                <li><span>Time :</span>{{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}</li>
                 <li><span>Venue : </span>{{$event->address}}, {{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</li>
               </ul>
               <div class="ticket__purchase-btn mt-30 text-center pb-20">

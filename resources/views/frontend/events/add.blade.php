@@ -31,10 +31,10 @@ Add Event
                                 <h4 class="event__information-title">Event Information</h4>
                             </div>
                             <div class="card__header-dropdown">
-                            <a href="{{route('events.list')}}" class="btn btn-sm btn-primary" >
-                                <i class="fas fa-left-to-line"></i> Back
-                            </a>
-                        </div>
+                                <a href="{{route('events.list')}}" class="btn btn-sm btn-primary" >
+                                    <i class="fas fa-left-to-line"></i> Back
+                                </a>
+                            </div>
                         </div>
                         <div class="pt-25">
                             <form method="POST" action="{{route('events.store')}}" enctype="multipart/form-data">
@@ -62,7 +62,18 @@ Add Event
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Details</label>
-                                            <textarea class="form-control" name="details" id="floatingTextarea" cols="30" rows="5"></textarea>
+                                            <textarea class="form-control" name="details" id="floatingTextarea" cols="30" rows="10"></textarea>
+                                            <script>
+                                                // Initialize CKEditor
+                                                ClassicEditor
+                                                    .create(document.querySelector('textarea'))
+                                                    .then(editor => {
+                                                        console.log('Editor was initialized', editor);
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error during initialization of the editor', error);
+                                                    });
+                                            </script>
                                             @error('details')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -116,7 +127,7 @@ Add Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Status</label>
-                                            <input type="checkbox" name="is_active" value="1"> Active
+                                            <input type="checkbox" name="is_active" checked value="1"> Active
                                             @error('title')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -169,8 +180,9 @@ Add Event
                                     </div>
                                     <button class="input__btn w-100"
                                         type="submit">Create Event</button>
-                                    </div>
-                                </form>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

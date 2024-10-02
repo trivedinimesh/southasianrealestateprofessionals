@@ -74,7 +74,18 @@ Edit Event
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Details</label>
-                                            <textarea class="form-control" name="details" value="{{$event->details}}" id="floatingTextarea" cols="30" rows="5">{{ old('details', $event->details) }}</textarea>
+                                            <textarea class="form-control" name="details" id="floatingTextarea" cols="30" rows="10" value="{!! $event->details !!}"></textarea>
+                                            <script>
+                                                // Initialize CKEditor
+                                                ClassicEditor
+                                                    .create(document.querySelector('textarea'))
+                                                    .then(editor => {
+                                                        console.log('Editor was initialized', editor);
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error during initialization of the editor', error);
+                                                    });
+                                            </script>
                                             @error('details')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -83,7 +94,7 @@ Edit Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Date</label>
-                                            <input name="date" type="date" value="{{$event->date}}"/>
+                                            <input name="date" type="date" value="{{ ($event->date) }}"/>
                                             @error('date')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -92,7 +103,7 @@ Edit Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Start Time</label>
-                                            <input name="start_time" type="time" value="{{$event->start_time}}" />
+                                            <input name="start_time" type="time" value="{{ ($event->start_time) }}" />
                                             @error('start_time')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -101,7 +112,7 @@ Edit Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">End Time</label>
-                                            <input name="end_time" type="time" value="{{$event->end_time}}"/>
+                                            <input name="end_time" type="time" value="{{ ($event->end_time) }}"/>
                                             @error('end_time')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
