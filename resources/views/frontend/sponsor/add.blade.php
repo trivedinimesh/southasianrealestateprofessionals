@@ -40,7 +40,7 @@ Add Sponsor
                             <form method="POST" action="{{route('sponsor.store')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="create__input-wrapper row">
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text" >Name</label>
                                                 <input name="name" type="text" />
@@ -49,7 +49,7 @@ Add Sponsor
                                                 @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div>
                                             <label for="formFile" class="input__field-text">Add Image</label>
                                             <img src="" alt="" class="img-blog">
@@ -59,6 +59,15 @@ Add Sponsor
                                                 @enderror
                                         </div>
                                     </div>
+                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                        <label for="formFile" class="input__field-text">Category</label>
+                                        <select class="tom-select-single form-control w-full" name="category" multiple>
+                                            @foreach($sponsors as $sponsor)
+                                                <option value="{{ $sponsor->category }}">{{ $sponsor->category }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+
                                     <button class="input__btn w-100" type="submit">Create Sponsor</button>
                                 </div>
                             </form>

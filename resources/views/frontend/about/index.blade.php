@@ -44,23 +44,6 @@ About
               <p> Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aeneansollicitudin, lorem quis bibendum auctonisi elit consequat ipsum nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursusa sit amet mauris. Morbi accumsan ipsum velit.” Nam nec tellus a odio tincidunt. </p>
             </div>
           </div>
-          <!-- <div class="about__location-info mb-80">
-            <div class="about__location-inner">
-              <div class="about__location-icon">
-                <a href="#">
-                  <i class="fa-solid fa-location-dot"></i>
-                </a>
-              </div>
-              <div class="about__location-address">
-                <h5>WHEN AND WHERE</h5>
-                <span>November 9–10 <br>The Midway SF, Zoom </span>
-              </div>
-            </div>
-            <div class="pluse__status">
-              <span class="dot"></span>
-              <span class="text">Online</span>
-            </div>
-          </div> -->
           <a class="fill__btn" href="{{ route('membership') }}">Join Now <i class="fa-regular fa-angle-right"></i>
           </a>
         </div>

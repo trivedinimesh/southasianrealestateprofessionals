@@ -50,6 +50,7 @@ class EventsController extends Controller
 
     public function store(Request $request)
     {
+
         // Ensure the checkbox is handled properly
         $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
 
@@ -70,10 +71,6 @@ class EventsController extends Controller
             'city' => 'required|string|max:255',
             'pincode' => 'required|string|max:10|regex:/^\d{4,10}$/',
         ]);
-
-        if ($validator->fails()) {
-            dd($validator->errors(), $request->all());
-        }
 
         try {
             // Image upload
@@ -96,7 +93,6 @@ class EventsController extends Controller
             $event->state = $request->state;
             $event->city = $request->city;
             $event->pincode = $request->pincode;
-
             $event->save();
             // Redirect on success
             return redirect()->route('events.list')->with('success', 'Event created successfully.');
@@ -245,6 +241,51 @@ class EventsController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             return back()->with('error', 'Failed to delete events.');
+        }
+    }
+
+
+    public function bookEvent(Request $request, $eventId)
+    {
+        $event = Event::findOrFail($eventId);
+        $user = Auth::user();
+
+        // Check if the user has a valid subscription
+        $subscription = $user->subscriptions()->where('valid_until', '>=', now())->first();
+        $isMember = $subscription ? true : false;
+
+        // Generate a unique booking ID (e.g., a combination of user ID and time hash)
+        $bookingId = strtoupper(uniqid('BOOK_'));
+
+        // Create the booking record
+        $booking = Booking::create([
+            'booking_id' => $bookingId,
+            'user_id' => $user->id,
+            'event_id' => $event->id,
+            'is_member' => $isMember, // Store membership status
+        ]);
+
+        // Show the booking ID to the user
+        return redirect()->route('events.show', $eventId)->with('success', "Event booked successfully. Your booking ID: $bookingId");
+    }
+
+    public function viewBookings()
+    {
+        $user = Auth::user();
+        $bookings = Booking::where('user_id', $user->id)->with('event')->get();
+
+        return view('frontend.bookings.index', compact('bookings'));
+    }
+
+    public function verifyBooking(Request $request)
+    {
+        $bookingId = $request->input('booking_id');
+        $booking = Booking::where('booking_id', $bookingId)->with('user', 'event')->first();
+
+        if ($booking) {
+            return view('frontend.bookings.verify', compact('booking'));
+        } else {
+            return back()->with('error', 'Invalid Booking ID.');
         }
     }
 }

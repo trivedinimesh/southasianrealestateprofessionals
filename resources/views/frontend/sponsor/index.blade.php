@@ -50,6 +50,7 @@ Sponsor
                             <tr>
                                 <th>ID No</th>
                                 <th>Name</th>
+                                <th>Category</th>
                                 <th>Photo</th>
                                 <th>Action</th>
                             </tr>
@@ -62,12 +63,17 @@ Sponsor
                                         </span></div>
                                 </td>
                                 <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponsors/'.$sponsor->image)}}" alt="">
-                                </td>
-                                <td>
                                     <div class="attendant__user-item">
                                         <div class="attendant__user-title"><span> {{$sponsor->name}}</span></div>
                                     </div>
+                                </td>
+                                <td>
+                                    <div class="attendant__user-item">
+                                        <div class="attendant__user-title"><span> {{$sponsor->category}}</span></div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponsors/'.$sponsor->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div>
