@@ -28,7 +28,8 @@ Home
             </div>
             </div>
         </div>
-        <div class="col-xxl-5 col-xl-4 col-lg-6">
+        @if($events)
+          <div class="col-xxl-5 col-xl-4 col-lg-6">
             <div
             class="banner__right-content d-flex justify-content-lg-end"
             >
@@ -48,8 +49,8 @@ Home
                 <div class="banner__card-info">
                     <span>WHEN AND WHERE</span>
                     <h4>
-                    November 9–10 <br />
-                    The Midway SF
+                    {{ \Carbon\Carbon::parse($events[0]->date)->format('F d') }} <br />
+                    {{$events[0]->city}}{{$events[0]->state}} <br />
                     </h4>
                 </div>
                 <div class="pluse__status">
@@ -60,6 +61,7 @@ Home
             </div>
             </div>
         </div>
+        @endif
         </div>
     </div>
     </div>
@@ -304,7 +306,7 @@ Home
                             </clipPath>
                           </defs>
                         </svg>
-                      </span>{{$event->date}}</span>
+                      </span>{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</span>
                   </div>
                   <div class="header__btn">
                     <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail', $event->id) }}">Signup Now <i class="fa-regular fa-angle-right"></i>
@@ -403,86 +405,6 @@ Home
               </div>
             </div>
             @endforeach
-              <!-- <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_1.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_2.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_3.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_4.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_5.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_6.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_7.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_8.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_9.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div>
-              <div class="partner__item">
-                <div class="partner__thumb">
-                    <img class="w-90"
-                    src="{{ URL::asset('build/media/partner_10.png') }}"
-                    alt="image not found"
-                    />
-                </div>
-              </div> -->
           </div>
           </div>
       </div>  

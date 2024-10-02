@@ -12,6 +12,7 @@ class Sponsor extends Model
     protected $fillable = [
         'name',
         'image',
+        'category',
         'created_by',
         'updated_by'
     ];

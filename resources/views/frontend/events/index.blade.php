@@ -177,7 +177,7 @@
                                                     class="accordion__title-inner mb-25"
                                                 >
                                                     <p>
-                                                    {{$event->details}}
+                                                    {!! $event->details !!}
                                                     </p>
                                                 </div>
                                                 <div
@@ -193,12 +193,12 @@
                                                         ><i
                                                             class="fa-light fa-clock"
                                                         ></i>
-                                                        {{$event->start_time}} - {{$event->end_time}}</span
+                                                        {{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-calendar"
                                                         ></i
-                                                        >{{$event->date}}</span
+                                                        >{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</span
                                                     ><span
                                                         ><i
                                                             class="flaticon-placeholder-1"

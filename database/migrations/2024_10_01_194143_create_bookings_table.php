@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sponsors', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('image')->nullable();
-            $table->string('category')->nullable();
-            $table->string('created_by')->nullable();
-            $table->string('updated_by')->nullable();
+            $table->string('booking_id')->unique();  // Unique booking ID for verification
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('event_id')->constrained();
+            $table->boolean('is_member');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sponsors');
+        Schema::dropIfExists('bookings');
     }
 };

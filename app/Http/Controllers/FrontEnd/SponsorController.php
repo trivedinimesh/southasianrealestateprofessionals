@@ -17,9 +17,9 @@ class SponsorController extends Controller
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        $Sponsor = Sponsor::select('id', 'name', 'image')->get();
+        $sponsor = Sponsor::select('id', 'name', 'category', 'image')->get();
 
-        return view('frontend.sponsor.index')->with('sponsors', $Sponsor);
+        return view('frontend.sponsor.index')->with('sponsors', $sponsor);
     }
 
     public function create()
@@ -27,8 +27,9 @@ class SponsorController extends Controller
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
-        
-        return view('frontend.sponsor.add');
+
+        $sponsors = Sponsor::select('id', 'name', 'category', 'image')->get();
+        return view('frontend.sponsor.add')->with('sponsors', $sponsors);
     }
 
     public function store(Request $request)
@@ -40,6 +41,7 @@ class SponsorController extends Controller
         // validations
         $request->validate([
         'name' => 'required',
+        'category' => 'required',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
       
@@ -49,6 +51,7 @@ class SponsorController extends Controller
         request()->image->move(public_path('images/sponsors'), $file_name);
       
         $Sponsor->name = $request->name;
+        $Sponsor->category = $request->category;
         $Sponsor->image = $file_name;
         $Sponsor->created_by = Auth::user()->id;
         $Sponsor->updated_by = Auth::user()->id;
@@ -68,8 +71,10 @@ class SponsorController extends Controller
         }
         
         try {
-            $Sponsor = Sponsor::findOrFail($id);
-            return view('frontend.sponsor.edit')->with('sponsor', $Sponsor);
+            $sponsors = Sponsor::select('id', 'name', 'category', 'image')->get();
+            $categories = Sponsor::distinct()->pluck('category');
+            $sponsor = Sponsor::findOrFail($id);
+            return view('frontend.sponsor.edit')->with('sponsor', $sponsor)->with('sponsors', $sponsors)->with('categories', $categories);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('sponsor.index')->with('error', 'sponsor not found.');
         }
@@ -84,11 +89,12 @@ class SponsorController extends Controller
         try {
             // Retrieve the existing blog by ID
             $Sponsor = Sponsor::findOrFail($id);
-    
+            
             // Validate the request data
             $request->validate([
-                'name' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'name' => 'sometimes',
+                'category' => 'sometimes',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
     
             if ($request->hasFile('image')) {
@@ -107,7 +113,7 @@ class SponsorController extends Controller
     
             // Update the blog data
             $Sponsor->name = $request->name;
-            $Sponsor->image = $file_name;
+            $Sponsor->category = $request->category;
             $Sponsor->updated_by = Auth::user()->id;
     
             // Save the blog
