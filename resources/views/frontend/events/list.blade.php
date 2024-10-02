@@ -48,7 +48,6 @@ Events List
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
                                 <th>Event Title</th>
                                 <th>Date</th>
                                 <th>Time</th>
@@ -59,10 +58,6 @@ Events List
                         <tbody>
                         @foreach ($events as $event)
                             <tr>
-                                <td>
-                                    <div class="attendant__serial"><span> #{{$event->id}}
-                                        </span></div>
-                                </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         <div class="attendant__user-title"><span> {{$event->title}} </span></div>
@@ -82,12 +77,17 @@ Events List
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
-                                        
-                                        <div class="attendant__user-title"><span>{{$event->status}}</span></div>
+                                    @if ($event->is_active)
+                                    
+                                    Active
+                                @else
+                                    Inactive
+                                @endif
                                     </div>
                                 </td>
                                 <td>
                                     <div>
+                                        <a href="{{route('events.attendee-list', $event->id)}}" class="btn btn-sm btn-primary">List</a>
                                         <a href="{{route('events.show', $event->id)}}" class="btn btn-sm btn-primary">View</a>
                                         <a href="{{route('events.edit', $event->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                         <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline">

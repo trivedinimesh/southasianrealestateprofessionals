@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Event;
+use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
@@ -151,14 +152,16 @@ class EventsController extends Controller
             // Retrieve the existing event by ID
             $event = Event::findOrFail($id);
     
-            // Ensure the checkbox is handled properly
-            $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
-    
             // Validate the request data
             $validator = \Validator::make($request->all(), [
-                'title' => 'required|string|max:255',
-                'details' => 'required|string|max:16777215',
+                'title' => 'sometimes|string|max:255',
+                'details' => 'sometimes|string|max:16777215',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'date' => 'sometimes|date',
+                'start_time' => 'sometimes',
+                'end_time' => 'sometimes|after:start_time',
+                'price_member' => 'nullable|numeric',
+                'price_non_member' => 'nullable|numeric',
                 // other fields...
             ]);
     
@@ -250,42 +253,79 @@ class EventsController extends Controller
         $event = Event::findOrFail($eventId);
         $user = Auth::user();
 
-        // Check if the user has a valid subscription
-        $subscription = $user->subscriptions()->where('valid_until', '>=', now())->first();
-        $isMember = $subscription ? true : false;
+        // Check if the user has already booked
+        if (Booking::where('event_id', $eventId)->where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'You have already booked this event.');
+        }
 
-        // Generate a unique booking ID (e.g., a combination of user ID and time hash)
-        $bookingId = strtoupper(uniqid('BOOK_'));
+        // Generate a unique booking ID
+        $bookingId = 'BOOK-' . strtoupper(uniqid());
 
-        // Create the booking record
+        // Calculate the amount with a membership discount (if applicable)
+        $isMember = $user->hasRole('member'); // Assuming a 'is_subscribed' flag in users table
+        $amount = $isMember ? $event->price_member : $event->price_non_member; // 20% discount for members
+
+        // Store the booking
         $booking = Booking::create([
-            'booking_id' => $bookingId,
             'user_id' => $user->id,
-            'event_id' => $event->id,
-            'is_member' => $isMember, // Store membership status
+            'event_id' => $eventId,
+            'booking_id' => $bookingId,
+            'amount' => $amount,
+            'is_member' => $isMember,
         ]);
 
-        // Show the booking ID to the user
-        return redirect()->route('events.show', $eventId)->with('success', "Event booked successfully. Your booking ID: $bookingId");
+        return redirect()->route('booking-confirmation')->with('success', 'Event booked successfully! Your booking ID is ' . $bookingId);
     }
 
-    public function viewBookings()
+    public function bookingConfirmation()
+    {
+
+        return view('frontend.events.booking-confirmation');
+    }
+    
+    public function attendeeList(String $eventId)
+    {
+        $event = Event::findOrFail($eventId);
+        $user = Auth::user();
+        $attendees = Booking::where('event_id', $eventId)->with('event')->with('user')->get();
+        return view('frontend.events.attendee-list')->with('attendees', $attendees)->with('event', $event);
+    }
+
+    public function verifyBooking(Request $request, String $bookingId, String $userId)
+    {
+
+        // Fetch the booking for the specific user and booking ID
+        $booking = Booking::where('booking_id', $bookingId)
+            ->where('user_id', $userId)
+            ->first();
+
+            
+        // Check if booking exists
+        if (!$booking) {
+            return back()->with('error', 'Booking not found or invalid user.');
+        }
+
+        // Only update if the booking hasn't been marked as attended
+        // if (!$booking->is_attended) {
+            $booking->update([
+                'is_attended' => true
+            ]);
+        // }
+
+        return back()->with('success', 'Booking verified successfully.');
+    }
+
+    public function pastEvents()
+    {
+        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode')->where('is_active', false)->paginate(10); // Paginate results
+
+        return view('frontend.events.past-event')->with('events', $events);
+    }
+
+    public function viewBooking()
     {
         $user = Auth::user();
-        $bookings = Booking::where('user_id', $user->id)->with('event')->get();
-
-        return view('frontend.bookings.index', compact('bookings'));
-    }
-
-    public function verifyBooking(Request $request)
-    {
-        $bookingId = $request->input('booking_id');
-        $booking = Booking::where('booking_id', $bookingId)->with('user', 'event')->first();
-
-        if ($booking) {
-            return view('frontend.bookings.verify', compact('booking'));
-        } else {
-            return back()->with('error', 'Invalid Booking ID.');
-        }
+        $attendees = Booking::where('user_id', $user->id)->with('event')->with('user')->get();
+        return view('frontend.events.view-booking')->with('attendees', $attendees);
     }
 }
