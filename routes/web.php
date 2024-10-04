@@ -12,6 +12,7 @@ use App\Http\Controllers\FrontEnd\UserController;
 use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\FrontEnd\BODController;
 use App\Http\Controllers\FrontEnd\SponsorController;
+use App\Http\Controllers\FrontEnd\SubscriptionController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
@@ -72,4 +73,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/events/attandee/verify/{bookingId}/{user}', [EventsController::class, 'verifyBooking'])->name('events.verifyBooking');
     Route::get('/past-events', [EventsController::class, 'pastEvents'])->name('events.past-events');
     Route::get('/view-bookings', [EventsController::class, 'viewBooking'])->name('events.view-booking');
+
+    Route::get('/plans', [SubscriptionController::class, 'showPlans'])->name('plans');
+    Route::post('/subscribe/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+    Route::get('/membership/details', [SubscriptionController::class, 'subscriptionDetails'])->name('subscription.details');
+    Route::get('/admin/membership/list', [SubscriptionController::class, 'listMembership'])->name('subscription.list');
+    Route::post('/subscription/{id}/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
+    Route::post('/subscription/{id}/renew', [SubscriptionController::class, 'renewSubscription'])->name('subscription.renew');
+    Route::post('/subscription/{id}/extend', [SubscriptionController::class, 'extendSubscription'])->name('subscription.extend');
 });

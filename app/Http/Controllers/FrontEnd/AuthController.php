@@ -89,7 +89,8 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Redirect to the dashboard with success message
-        return redirect()->route('dashboard')->withSuccess('You have successfully registered and logged in.');
+        return redirect()->route('home')
+                ->withSuccess('You have successfully registered and logged in.');
     }
 
 
