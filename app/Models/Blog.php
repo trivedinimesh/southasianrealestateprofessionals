@@ -34,4 +34,17 @@ class Blog extends Model
     {
         return $this->belongsToMany(Keyword::class, 'blog_keywords');
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($blog) {
+            $blog->slug = Str::slug($blog->title);
+        });
+
+        static::updating(function ($blog) {
+            $blog->slug = Str::slug($blog->title);
+        });
+    }
 }
