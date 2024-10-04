@@ -33,6 +33,32 @@ Sponsor
                                 <h4>Sponsor Management</h4>
                             </div>
                         </div>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                            <form action="{{ route('sponsor.index') }}" method="GET">
+                                <div class="singel__input-field mb-15">
+                                    <label class="input__field-text">Category</label>
+                                    <div class="contact__select">
+                                        <select class="tom-select-multiple-search form-control w-full" name="category[]" multiple>
+                                            <option value="" disabled>Select Category</option>
+                                            @foreach ($sponsorData as $sponsorCategory)
+                                                <option value="{{ $sponsorCategory->category }}" >
+                                                    {{ $sponsorCategory->category }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Search button -->
+                                <button type="submit" class="btn btn-primary">
+                                    Search
+                                </button>
+                            </form>
+                            <div class="card__header-dropdown">
+                                <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">
+                                    <i class="fas fa-plus"></i> Add New
+                                </a>
+                            </div>
+                        </div>
                         <div class="card__header-dropdown">
                             <a href="{{route('sponsor.create')}}" class="btn btn-sm btn-success" >
                                 <i class="fas fa-plus"></i> Add New

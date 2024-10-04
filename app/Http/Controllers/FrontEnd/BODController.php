@@ -12,14 +12,33 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class BODController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
         $bod = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id')->get();
+        $query = BOD::query();
+         // Filter by search input (searching by name)
+    if ($request->filled('search')) {
+        $search = $request->input('search');
+        $searchTerms = explode(' ', $search); // Split the search input by spaces
 
+        // If there are multiple terms (e.g., first and last name)
+        if (count($searchTerms) == 2) {
+            $query->where('first_name', 'like', '%' . $searchTerms[0] . '%')
+                  ->where('last_name', 'like', '%' . $searchTerms[1] . '%');
+        } else {
+            // Single term search (first name or last name)
+            $query->where(function ($q) use ($search) {
+                $q->where('first_name', 'like', '%' . $search . '%')
+                  ->orWhere('last_name', 'like', '%' . $search . '%');
+            });
+        }
+    }
+     // Retrieve the filtered users
+     $bod = $query->get();
         return view('frontend.bod.index')->with('bods', $bod);
     }
 

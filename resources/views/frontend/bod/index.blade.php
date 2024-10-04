@@ -33,6 +33,12 @@ Board of Directors
                                 <h4>Board of Directors Management</h4>
                             </div>
                         </div>
+                        <form action="{{ route('board-of-director.index') }}" class="app__herader-input p-relative" method="GET">
+                                <input type="search" name="search" value="{{ request('search') }}" placeholder="Search Here . . ." />
+                                <button type="submit">
+                                    <i class="flaticon-loupe"></i>
+                                </button>
+                            </form>
                         <div class="card__header-dropdown">
                             <a href="{{route('board-of-director.create')}}" class="btn btn-sm btn-success" >
                                 <i class="fas fa-plus"></i> Add New
