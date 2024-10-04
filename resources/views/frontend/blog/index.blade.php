@@ -34,13 +34,25 @@ Blogs
                   <div class="flex_wrap">
                     <ul class="category_list unordered_list">
                     <li>
-                        @foreach($blog->tags as $tag)
-                            <a href="{{ route('blog-detail', $blog->id) }}">{{ $tag->tag }}</a>
+                        @foreach($blog->keywords as $keyword)
+                            <a href="{{ route('blog-detail', $blog->id) }}">{{ $keyword->keyword }}</a>
                         @endforeach
                     </li>
                     </ul>
+                    
+                  </div>
+                  <h3 class="item_title">
+                    <a class="text-black" href="{{route('blog-detail', $blog->id)}}"
+                      >{{$blog->title}}</a
+                    >
+                  </h3>
+                  <div class="header__btn">
+                    <a class="blog_custome_btn" href="{{route('blog-detail', $blog->id)}}"
+                      >Read More<i class="fa-regular fa-angle-right"></i
+                    ></a>
+
                     <span class="post_date"
-                      ><span style="margin-right: 10px"
+                      ><span style="margin-left: 80px"
                         ><svg
                           width="20"
                           height="20"
@@ -58,19 +70,9 @@ Blogs
                             <clipPath id="clip0_8vcvc9_209">
                               <rect width="20" height="20" fill="white"></rect>
                             </clipPath>
-                          </defs></svg></span
-                      >{{$blog->created_at}}</span
+                          </defs></svg>
+                          </span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span
                     >
-                  </div>
-                  <h3 class="item_title">
-                    <a class="text-black" href="{{route('blog-detail', $blog->id)}}"
-                      >{{$blog->title}}</a
-                    >
-                  </h3>
-                  <div class="header__btn">
-                    <a class="blog_custome_btn" href="{{route('blog-detail', $blog->id)}}"
-                      >Read More<i class="fa-regular fa-angle-right"></i
-                    ></a>
                   </div>
                 </div>
               </div>

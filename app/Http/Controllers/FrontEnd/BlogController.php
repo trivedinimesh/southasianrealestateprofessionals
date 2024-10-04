@@ -17,7 +17,9 @@ class BlogController extends Controller
     public function index()
     {   
         try {
-            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords','tags'])->paginate(10);
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at','updated_at','created_by', 'updated_by')->with(['keywords','tags'])->paginate(10);
+          
+           
             return view('frontend.blog.index')
                 ->with('blogs', $blogs);
         } catch (ModelNotFoundException $e) {
@@ -30,9 +32,14 @@ class BlogController extends Controller
         try {
             $blog = Blog::findOrFail($id);
             $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords', 'tags'])->paginate(10);
+            $allblogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords', 'tags'])->paginate(10);
+           
+           
             return view('frontend.blog.blog-detail')
                 ->with('blog', $blog)
-                ->with('blogs', $blogs);
+                ->with('blogs', $blogs)
+                ->with('blogs', $allblogs);
+                
         } catch (ModelNotFoundException $e) {
             return redirect()->route('home')->with('error', 'Blog not found.');
         }
