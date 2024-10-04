@@ -33,6 +33,36 @@ Events List
                                 <h4>Event Management</h4>
                             </div>
                         </div>
+                        <div class="btn-group mb-4" role="group" aria-label="Event Status Toggle">
+                                <a 
+                                    href="{{ route('events.list', ['status' => 'active']) }}" 
+                                    class="btn btn-outline-primary {{ $status == 'active' ? 'active' : '' }}">
+                                    Active Events
+                                </a>
+                                <a 
+                                    href="{{ route('events.list', ['status' => 'inactive']) }}" 
+                                    class="btn btn-outline-primary {{ $status == 'inactive' ? 'active' : '' }}">
+                                    Inactive Events
+                                </a>
+                            </div>
+                            <div class="">
+                                    <form method="GET" action="{{ route('events.list') }}">
+                                        <div class="form-row">
+                                            <div class="col">
+                                                <input type="date" class="form-control" name="start_date" value="{{ $start_date ?? '' }}" placeholder="Start Date">
+                                            </div>
+                                            <div class="col">
+                                                <input type="date" class="form-control" name="end_date" value="{{ $end_date ?? '' }}" placeholder="End Date">
+                                            </div>
+                                            <div class="col">
+                                                <button type="submit" class="btn btn-primary">Filter</button>
+                                            </div>
+                                        </div>
+                                        <!-- Pass along the status filter when applying the date filter -->
+                                        <input type="hidden" name="status" value="{{ $status }}">
+                                    </form>
+                                </div>
+                            </div>
                         <div class="card__header-dropdown">
                             <a href="{{route('events.create')}}" class="btn btn-sm btn-success" >
                                 <i class="fas fa-plus"></i> Add New
