@@ -83,16 +83,45 @@ class BlogController extends Controller
         }
     }
 
-    public function list()
+    public function list(Request $request)
     {
-
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
-        
-        $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->paginate(10); // Paginate results
-        return view('frontend.blog.list')->with('blogs', $blogs)->with(['keywords', 'tags']);
+
+        // Start a query to fetch blogs
+        $query = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at', 'updated_at', 'created_by', 'updated_by')
+            ->with(['keywords' => function ($query) {
+                // Ensure each blog is returned with its associated keywords
+                $query->withCount('blogs'); // Assuming a blogs() relation exists on the Keyword model
+            }]);
+
+        // Filter blogs by keyword
+        $selectedKeyword = $request->input('keywords');
+        if ($selectedKeyword) {
+            $query->whereHas('keywords', function ($q) use ($selectedKeyword) {
+                $q->where('keyword', $selectedKeyword);
+            });
+        }
+
+        // Get paginated blogs after applying the filter
+        $blogs = $query->paginate(10);
+
+        // Ensure that query parameters like `keyword` persist in pagination links
+        $blogs->appends($request->all());
+
+        // Fetch all keywords for sidebar display
+        $allkeywords = Keyword::all();
+
+        // Return the view with the blogs and filter data
+        return view('frontend.blog.list')
+            ->with('blogs', $blogs)
+            ->with('allkeywords', $allkeywords)
+            ->with('selectedKeyword', $selectedKeyword);
     }
+
+
+
 
     public function create()
     {

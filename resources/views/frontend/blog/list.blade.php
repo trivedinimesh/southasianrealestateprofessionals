@@ -34,13 +34,13 @@ Dashboard
                             </div>
                         </div>
                         <div class="col-xxl-6 col-xl-6 col-lg-6">
-                            <form action="{{ route('blogs') }}" method="GET">
+                            <form action="{{ route('blogs.list') }}" method="GET">
                                 <div class="singel__input-field mb-15">
                                     <label class="input__field-text">Keywords</label>
                                     <div class="contact__select">
                                         <select class="tom-select-multiple-search form-control w-full" name="keywords[]" multiple>
                                             <option value="" disabled>Select Keyword</option>
-                                            @foreach ($keywords as $keyword)
+                                            @foreach ($allkeywords as $keyword)
                                                 <option value="{{ $keyword->keyword }}" >
                                                     {{ $keyword->keyword }}
                                                 </option>
