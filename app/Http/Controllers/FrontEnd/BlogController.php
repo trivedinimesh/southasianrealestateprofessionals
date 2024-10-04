@@ -45,6 +45,7 @@ class BlogController extends Controller
                 $allkeywords = Keyword::withCount('blogs')->get();
                 $alltags = Tag::all();
         
+
             return view('frontend.blog.index')
                 ->with('blogs', $blogs)
                 ->with('alltags', $alltags)
@@ -65,6 +66,7 @@ class BlogController extends Controller
         try {
             $blog = Blog::findOrFail($id);
             $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords', 'tags'])->paginate(10);
+
             
             // Fetch all keywords and tags for sidebar display
             $allkeywords = Keyword::withCount('blogs')->get();
@@ -75,6 +77,7 @@ class BlogController extends Controller
                 ->with('blogs', $blogs)
                 ->with('alltags', $alltags)
                 ->with('allkeywords', $allkeywords);
+
         } catch (ModelNotFoundException $e) {
             return redirect()->route('home')->with('error', 'Blog not found.');
         }

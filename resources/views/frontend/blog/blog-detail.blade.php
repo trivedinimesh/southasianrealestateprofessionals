@@ -37,6 +37,7 @@
                   <a href="{{ route('blogs', ['keyword' => $keyword->keyword]) }}">
                     {{ $keyword->keyword }} 
                   </a>
+
                 @endforeach
             </li>
             </ul>
@@ -80,6 +81,7 @@
           </div>
           </div>
         </div>
+
         
         
       </div>
@@ -137,6 +139,7 @@
               @foreach($alltags as $tag)
                 <li><a href="{{ route('blogs', ['tag' => $tag->tag]) }}">{{ $tag->tag }}</a></li>
               @endforeach  
+
             </ul>
           </div>
         </div>
