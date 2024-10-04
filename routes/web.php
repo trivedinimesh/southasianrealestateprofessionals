@@ -35,7 +35,7 @@ Route::get('/event-detail/{event}', [EventsController::class, 'eventDetail'])->n
 Route::get('/booking-confirmation', [EventsController::class, 'bookingConfirmation'])->name('booking-confirmation');
 
 
-Route::get('/blogs', [BlogController::class, 'index'])->name('blogs');
+Route::get('/blogs/{request?}', [BlogController::class, 'index'])->name('blogs');
 Route::get('/blog-detail/{blog}', [BlogController::class, 'blogDetail'])->name('blog-detail');
 
 Route::middleware('auth')->group(function () {
@@ -59,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/blogs/{blog}/edit', [BlogController::class, 'edit'])->name('blogs.edit');
     Route::patch('/admin/blogs/{blog}', [BlogController::class, 'update'])->name('blogs.update');
     Route::delete('/admin/blogs/{blog}', [BlogController::class, 'destroy'])->name('blogs.destroy');
+    
     
 
     Route::get('/admin/events-list', [EventsController::class, 'list'])->name('events.list');

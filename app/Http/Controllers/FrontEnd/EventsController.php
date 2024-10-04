@@ -29,16 +29,41 @@ class EventsController extends Controller
         }
     }
 
-    public function list()
+    public function list(Request $request)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
-        
-        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->paginate(10); // Paginate results
-
-        return view('frontend.events.list')->with('events', $events);
+    
+        $query = Event::select(
+            'id', 'title', 'details', 'image', 'price_member', 'price_non_member', 
+            'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 
+            'state', 'city', 'pincode', 'created_by', 'updated_by'
+        );
+    
+        // Filter by status (active or inactive)
+        if ($request->has('status')) {
+            $status = $request->input('status') == 'active' ? 1 : 0;
+            $query->where('is_active', $status);
+        }
+    
+        // Filter by date range
+        if ($request->filled('start_date') && $request->filled('end_date')) {
+            $query->whereBetween('date', [$request->input('start_date'), $request->input('end_date')]);
+        }
+    
+        // Paginate results
+        $events = $query->paginate(10);
+    
+        return view('frontend.events.list', [
+            'events' => $events,
+            'status' => $request->input('status', 'active'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date')
+        ]);
     }
+    
+
 
     public function create()
     {

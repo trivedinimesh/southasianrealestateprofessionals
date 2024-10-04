@@ -33,11 +33,33 @@ Dashboard
                                 <h4>Blog Management</h4>
                             </div>
                         </div>
-                        <div class="card__header-dropdown">
-                            <a href="{{route('blogs.create')}}" class="btn btn-sm btn-success" >
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
+                        <div class="col-xxl-6 col-xl-6 col-lg-6">
+                            <form action="{{ route('blogs') }}" method="GET">
+                                <div class="singel__input-field mb-15">
+                                    <label class="input__field-text">Keywords</label>
+                                    <div class="contact__select">
+                                        <select class="tom-select-multiple-search form-control w-full" name="keywords[]" multiple>
+                                            <option value="" disabled>Select Keyword</option>
+                                            @foreach ($keywords as $keyword)
+                                                <option value="{{ $keyword->keyword }}" >
+                                                    {{ $keyword->keyword }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Search button -->
+                                <button type="submit" class="btn btn-primary">
+                                    Search
+                                </button>
+                            </form>
+                            <div class="card__header-dropdown">
+                                <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">
+                                    <i class="fas fa-plus"></i> Add New
+                                </a>
+                            </div>
                         </div>
+                      
                     </div>
                     @if (session('success'))
                         <span class="text-success">{{ session('success') }}</span>
@@ -51,7 +73,7 @@ Dashboard
                                 <th>ID No</th>
                                 <th>Image</th>
                                 <th>Title</th>
-                                <th>Tags</th>
+                                <th>Keywords</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -73,8 +95,8 @@ Dashboard
                                 <td>
                                     <div class="attendant__user-item">
                                         <div class="attendant__user-title">
-                                            @foreach(json_decode($blog->tags) as $tag)
-                                                <span>{{ $tag->tag }}</span>
+                                            @foreach(json_decode($blog->keywords) as $keyword)
+                                                <span>{{ $keyword->keyword }}</span>
                                             @endforeach
                                         </div>
                                     </div>

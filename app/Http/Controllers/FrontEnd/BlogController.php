@@ -14,32 +14,70 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {   
         try {
-            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at','updated_at','created_by', 'updated_by')->with(['keywords','tags'])->paginate(10);
-          
-           
+            // Retrieve blogs with keywords and paginate
+            $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at', 'updated_at', 'created_by', 'updated_by')
+                ->with(['keywords' => function ($query) {
+                    // This ensures each blog is returned with its associated keywords
+                    $query->withCount('blogs'); // Assuming a blogs() relation exists on the Keyword model
+                }])
+                ->paginate(10);
+        
+                $selectedTag = $request->input('tag');
+                $selectedKeyword = $request->input('keyword');
+
+                if ($selectedTag) {
+                    // Filter blogs by the selected tag
+                    $blogs = Blog::whereHas('tags', function ($query) use ($selectedTag) {
+                        $query->where('tag', $selectedTag);
+                    })->get();
+                } 
+                if ($selectedKeyword) {
+                    // Filter blogs by the selected tag
+                    $blogs = Blog::whereHas('keywords', function ($query) use ($selectedKeyword) {
+                        $query->where('keyword', $selectedKeyword);
+                    })->get();
+                } 
+            
+                // Fetch all keywords and tags for sidebar display
+                $allkeywords = Keyword::withCount('blogs')->get();
+                $alltags = Tag::all();
+        
+
             return view('frontend.blog.index')
-                ->with('blogs', $blogs);
+                ->with('blogs', $blogs)
+                ->with('alltags', $alltags)
+                ->with('allkeywords', $allkeywords)
+                ->with('selectedTag', $selectedTag)
+                ->with('selectedKeyword', $selectedKeyword);
+        
         } catch (ModelNotFoundException $e) {
             return redirect()->route('blogs.index')->with('error', 'Blog not found.');
         }
+        
     }
+
+   
 
     public function blogDetail(Request $request, string $id)
     {
         try {
             $blog = Blog::findOrFail($id);
             $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords', 'tags'])->paginate(10);
-            $allblogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_by', 'updated_by')->with(['keywords', 'tags'])->paginate(10);
-           
-           
+
+            
+            // Fetch all keywords and tags for sidebar display
+            $allkeywords = Keyword::withCount('blogs')->get();
+            $alltags = Tag::all();
+            
             return view('frontend.blog.blog-detail')
                 ->with('blog', $blog)
                 ->with('blogs', $blogs)
-                ->with('blogs', $allblogs);
-                
+                ->with('alltags', $alltags)
+                ->with('allkeywords', $allkeywords);
+
         } catch (ModelNotFoundException $e) {
             return redirect()->route('home')->with('error', 'Blog not found.');
         }

@@ -11,15 +11,39 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SponsorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
         $sponsor = Sponsor::select('id', 'name', 'category', 'image')->get();
+        $query = Sponsor::query();
+        
+        // Filter by category if any are selected
+        if ($request->has('category') && is_array($request->input('category'))) {
+            // Assuming 'category' is a column in your sponsors table
+            $query->whereIn('category', $request->input('category'));
+        }
+        
+        // Filter by search input (searching by name or category)
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $searchTerms = explode(' ', $search); // Split the search input by spaces
+        
+            $query->where(function ($q) use ($searchTerms) {
+                foreach ($searchTerms as $term) {
+                    $q->orWhere('name', 'like', '%' . $term . '%')
+                      ->orWhere('category', 'like', '%' . $term . '%'); // Adjust 'category' if it's a column
+                }
+            });
+        }
+        
+        // Retrieve the filtered sponsors
+        $sponsor = $query->get();
+        $sponsorData = Sponsor::all();
 
-        return view('frontend.sponsor.index')->with('sponsors', $sponsor);
+        return view('frontend.sponsor.index')->with('sponsors', $sponsor)->with('sponsorData',$sponsorData);
     }
 
     public function create()
