@@ -33,12 +33,12 @@
           <div class="blog_post_meta">
             <ul class="category_list unordered_list">
             <li>
-                @foreach($blog->tags as $index => $tag)
-                    <a href="#">{{ $tag->tag }}</a>{{ $index < $blog->tags->count() - 1 ? ',' : '' }}
+                @foreach($blog->keywords as $index => $keyword)
+                    <a href="#">{{ $keyword->keyword }}</a>{{ $index < $blog->keywords->count() - 1 ? ',' : '' }}
                 @endforeach
             </li>
             </ul>
-            <span class="post_date">{{$blog->created_at}}</span>
+            <span class="post_date">{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span>
           </div>
           
           {!! $blog->body !!}
@@ -64,18 +64,7 @@
             </div>
           </div>
         </div>
-        <div class="post_admin">
-          <div class="admin_image">
-            <img
-              src="{{ URL::asset('build/media/chat-1.b476fa36.png') }}"
-              alt="Paradox Blog Post Admin Image"
-              style="width: auto; height: auto"
-            />
-          </div>
-          <div class="admin_content">
-            <h3 class="admin_name">{{$blog->created_by}}</h3>
-          </div>
-        </div>
+      
         
       </div>
       <div class="col col-lg-4">
@@ -141,10 +130,9 @@
           <div class="sidebar_widget">
             <h3 class="widget_title">Tags List</h3>
             <ul class="tags_list unordered_list">
-              <li><a href="#">Business</a></li>
-              <li><a href="#">Real Estate</a></li>
-              <li><a href="#">Events</a></li>
-              <li><a href="#">Social</a></li>
+            @foreach($allblogs->tags as $index => $tag)
+              <li> <a href="#">{{ $tag->tag }}</a></li>
+              @endforeach
             </ul>
           </div>
         </div>
