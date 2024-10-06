@@ -1,6 +1,6 @@
 
 <div class="page__full-wrapper">
-                <div class="expovent__sidebar  "
+                <div class="expovent__sidebar"
                     style="background-image:url(_next/static/media/dropdown-bg.7aece7fb.png)">
                     <div class="logo-details"><span><a href="{{ route('dashboard') }}"><img class="logo__white"
                                     src="_next/static/media/logo-small.547f3188.svg"
