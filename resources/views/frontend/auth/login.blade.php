@@ -29,15 +29,14 @@ Sign
                                     <span class="text-danger">{{ $errors->first('password') }}</span>
                                     @endif
                         <div class="sign__action">
-                            <div class="sign__check"><input class="e-check-input" type="checkbox"
-                                    id="signup" /><label class="sign__check-text"
-                                    for="signup"><span>Remember Me</span></label></div>
-                            <div class="sign__forget"><span><a href="#">Forget Password?</a></span>
+                            <div class="sign__forget"><span><a href="{{ route('forgot.password') }}">Forget Password?</a></span>
                             </div>
                         </div>
-                        <div class="sing__button mb-20"><button class="input__btn w-100 mb-20"
-                                type="submit">Login</button><button class="gamil__sign-btn w-100"
-                                type="submit"><span><svg width="20" height="20" viewBox="0 0 20 20"
+                        <div class="sing__button mb-20">
+                            <button class="input__btn w-100 mb-20" type="submit">Login</button>
+                            <!-- <button class="gamil__sign-btn w-100" type="submit">
+                                <span>
+                                    <svg width="20" height="20" viewBox="0 0 20 20"
                                         fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_322_540)">
                                             <path
@@ -58,7 +57,11 @@ Sign
                                                 <rect width="20" height="20" fill="white"></rect>
                                             </clipPath>
                                         </defs>
-                                    </svg></span>Login With Google</button></div>
+                                    </svg>
+                                </span>
+                                Login With Google
+                            </button> -->
+                        </div>
                     </form>
                     <div class="if__account mt-85">
                         <p>Don’t Have An Account?<a href="{{ route('signup') }}"> Sign up</a></p>

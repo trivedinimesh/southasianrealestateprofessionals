@@ -59,11 +59,7 @@ Sponsor
                                 </a>
                             </div>
                         </div>
-                        <div class="card__header-dropdown">
-                            <a href="{{route('sponsor.create')}}" class="btn btn-sm btn-success" >
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
-                        </div>
+                        
                     </div>
                     @if (session('success'))
                         <span class="text-success">{{ session('success') }}</span>

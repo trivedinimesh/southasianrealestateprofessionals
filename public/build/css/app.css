@@ -31419,6 +31419,7 @@ fieldset:disabled .btn {
     --bs-accordion-body-padding-y: 1rem;
     --bs-accordion-active-color: var(--bs-primary-text-emphasis);
     --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
+    margin-bottom: 16px;
 }
 .accordion-button {
     position: relative;
