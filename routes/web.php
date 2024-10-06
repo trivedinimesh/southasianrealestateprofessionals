@@ -14,6 +14,9 @@ use App\Http\Controllers\FrontEnd\BODController;
 use App\Http\Controllers\FrontEnd\SponsorController;
 use App\Http\Controllers\FrontEnd\SubscriptionController;
 
+use App\Http\Controllers\FrontEnd\ForgotPasswordController;
+use App\Http\Controllers\FrontEnd\ResetPasswordController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
 
@@ -28,6 +31,11 @@ Route::post('action-login', [AuthController::class, 'actionlogin'])->name('login
 Route::get('signup', [AuthController::class, 'signup'])->name('signup');
 Route::post('action-signup', [AuthController::class, 'actionSignup'])->name('signup.action');
 
+Route::get('/forgot_password', [ForgotPasswordController::class, 'Index'])->name('forgot.password');
+Route::post('/forgot_password_post', [ForgotPasswordController::class, 'submitForgotPasswordForm'])->name('forgot.password.post');
+Route::get('/reset_password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.form');
+Route::post('/reset_password_post', [ForgotPasswordController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/events', [EventsController::class, 'index'])->name('events');
@@ -41,6 +49,9 @@ Route::get('/blog-detail/{blog}', [BlogController::class, 'blogDetail'])->name('
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('/password/change', [AuthController::class, 'showChangePasswordForm'])->name('password.change');
+    Route::post('/password/change', [AuthController::class, 'changePassword'])->name('password.update');
     
     Route::resource('/admin/users', UserController::class);
     Route::get('/admin/member', [UserController::class, 'member'])->name('member');

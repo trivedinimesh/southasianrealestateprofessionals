@@ -33,7 +33,7 @@ class SubscriptionController extends Controller
         // Assume payment is processed here...
 
         // Create the subscription
-        Subscription::create([
+        $subscription = Subscription::create([
             'user_id' => $user->id,
             'plan_id' => $plan->id,
             'starts_at' => Carbon::now(),
@@ -42,6 +42,11 @@ class SubscriptionController extends Controller
         ]);
 
         $user->assignRole('member');
+
+        $admins = \App\Models\User::role('admin')->get(); // Get all users with the "admin" role
+        foreach ($admins as $admin) {
+            \Mail::to($admin->email)->send(new \App\Mail\AdminSubscriptionNotification($subscription));
+        }
 
         return redirect()->route('subscription.details')->with('success', 'Subscription successful');
     }
@@ -95,7 +100,31 @@ class SubscriptionController extends Controller
             $subscription->user->assignRole('user');
 
         }
-
-        return 'Expired subscriptions updated successfully.';
     }
+
+
+    public function checkDaysLeft()
+    {
+        $subscriptions = Subscription::where('status', 'active')
+                                    ->where('ends_at', '>', Carbon::now())
+                                    ->get();
+
+        // Define the day intervals when reminders should be sent
+        $reminderDays = [30, 15, 7, 1];
+
+        foreach ($subscriptions as $subscription) {
+            // Calculate days left
+            $daysLeft = Carbon::now()->diffInDays(Carbon::parse($subscription->ends_at), false);
+
+            if (in_array($daysLeft, $reminderDays)) {
+                // Send email notification if the days left match the reminder days
+                $user = $subscription->user;
+                \Mail::to($user->email)->send(new \App\Mail\SubscriptionReminder($user, $daysLeft));
+
+                // Log the reminder
+                \Log::info("Reminder sent to user {$user->email} with {$daysLeft} days left.");
+            }
+        }
+    }
+
 }

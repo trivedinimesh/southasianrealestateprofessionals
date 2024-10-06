@@ -65,11 +65,11 @@
                                     <ul class="metismenu" id="menu">
                                         <li><a href="{{route('dashboard')}}"><i class="flaticon-home"></i><span
                                                     class="nav-text">Dashboard</span></a></li>
-                                        <!-- <li class=""><a href="{{route('events.past-events')}}" id="react-collapsed-toggle-:R56al6:"
+                                        <li class=""><a href="{{route('subscription.details')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
-                                                    class="nav-text">Past Events</span></a>
-                                        </li> -->
+                                                    class="nav-text">Membership Details</span></a>
+                                        </li>
                                         <li class=""><a href="{{route('events.view-booking')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span

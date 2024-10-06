@@ -124,4 +124,31 @@ class AuthController extends Controller
         Auth::logout();
         return Redirect()->route('login');
     }
+
+    public function showChangePasswordForm()
+    {
+        return view('frontend.auth.change'); // This view will contain the form
+    }
+
+    // Method to handle password change request
+    public function changePassword(Request $request)
+    {
+        // Validate the input
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8|confirmed', // confirmed checks if new_password and new_password_confirmation match
+        ]);
+
+        // Check if the current password matches
+        if (!Hash::check($request->current_password, Auth::user()->password)) {
+            return back()->withErrors(['current_password' => 'The current password does not match']);
+        }
+
+        // Update the password
+        Auth::user()->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        return redirect()->back()->with('success', 'Password changed successfully!');
+    }
 }

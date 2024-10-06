@@ -120,11 +120,20 @@ class EventsController extends Controller
             $event->city = $request->city;
             $event->pincode = $request->pincode;
             $event->save();
+
+            $users = \App\Models\User::role('user')->get(); // Get all users with the "admin" role
+
+            foreach ($users as $user) {
+                \Mail::to($user->email)->send(new \App\Mail\UserEventNotification($event));
+            }
+
+
             // Redirect on success
             return redirect()->route('events.list')->with('success', 'Event created successfully.');
         } catch (\Throwable $th) {
             // Handle error\
-            return back()->with('error', 'Failed to create event.');
+            // return back()->with('error', 'Failed to create event.');
+            return $th;
         }
     }
 
@@ -298,6 +307,12 @@ class EventsController extends Controller
             'amount' => $amount,
             'is_member' => $isMember,
         ]);
+
+
+        $admins = \App\Models\User::role('admin')->get(); // Get all users with the "admin" role
+        foreach ($admins as $admin) {
+            \Mail::to($admin->email)->send(new \App\Mail\AdminBookingNotification($booking));
+        }
 
         return redirect()->route('booking-confirmation')->with('success', 'Event booked successfully! Your booking ID is ' . $bookingId);
     }

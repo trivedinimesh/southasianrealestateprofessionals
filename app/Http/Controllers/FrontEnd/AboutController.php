@@ -10,13 +10,15 @@ use App\Models\Blog;
 class AboutController extends Controller
 {
     /**
-     * Show About page to the users
+     * Show About page to the users.
      */
     public function index()
     {
-        $bod = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id')->get();
+        // Fetch necessary data for BOD and Blog
+        $bods = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id')->get();
         $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at')->get();
 
-        return view('frontend.about.index')->with('bods', $bod)->with('blogs', $blogs);
+        // Return the view with both BODs and Blogs
+        return view('frontend.about.index', compact('bods', 'blogs'));
     }
 }
