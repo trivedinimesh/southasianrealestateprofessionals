@@ -92,43 +92,41 @@
         <!-- <script src="{{ URL::asset('build/js/8529-4b69ae82a6f4878e.js') }}"></script> -->
         <script src="{{ URL::asset('build/js/index-338f7080ea9bc9b0.js') }}"></script>
         <script>
-            var box = document.querySelector('.bar-icon');
-            var offcanvas__info = document.querySelector('.offcanvas__info');
-            var offcanvas__overlay = document.querySelector('.offcanvas__overlay');
-            var closeButton = document.querySelector('.offcanvas__close');
+            // var box = document.querySelector('.bar-icon');
+            var box_mobile = document.querySelector('.bar-icon-2');
+            var expovent__sidebar = document.querySelector('.expovent__sidebar');
 
-            // Function to toggle classes
-            function toggleClasses(add) {
+            function toggleOffset(add) {
                 if (add) {
-                    offcanvas__info.classList.add('info-open');
-                    offcanvas__overlay.classList.add('overlay-open');
+                    expovent__sidebar.style.insetInlineStart = "0";
                 } else {
-                    offcanvas__info.classList.remove('info-open');
-                    offcanvas__overlay.classList.remove('overlay-open');
+                    expovent__sidebar.style.insetInlineStart = "-260px";
                 }
             }
 
-            // Add classes when users click on the box
-            box.addEventListener('click', function () {
-                toggleClasses(true);
+            // Function to toggle based on the visibility state
+            function handleToggle() {
+                var isVisible = expovent__sidebar.style.insetInlineStart === "0";
+                toggleOffset(!isVisible);
+            }
+
+            // Click event on the toggle button
+            box_mobile.addEventListener('click', function (event) {
+                event.stopPropagation(); // Prevent the click from bubbling up to the document
+                handleToggle();
             });
-            
-            // Handle click events
+
+            // Click event on the document to close the sidebar if clicked outside
             document.addEventListener('click', function (event) {
-                // Close offcanvas if clicking outside the box and close button
-                if (event.target !== box && !box.contains(event.target) && !offcanvas__info.contains(event.target)) {
-                    toggleClasses(false);
+                if (!expovent__sidebar.contains(event.target) && !box_mobile.contains(event.target)) {
+                    // Only close if the sidebar is open
+                    if (expovent__sidebar.style.insetInlineStart === "0px") {
+                        toggleOffset(false);
+                    }
                 }
             });
 
-            // Prevent clicks inside offcanvas__info from closing it
-            offcanvas__info.addEventListener('click', function (event) {
-                event.stopPropagation();
-            });
 
-            closeButton.addEventListener('click', function () {
-                toggleClasses(false);
-            });
         </script>
     </body>
   <!-- Mirrored from expovent-react.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 May 2024 16:03:10 GMT -->

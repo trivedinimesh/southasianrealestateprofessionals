@@ -1,11 +1,11 @@
 
 <div class="page__full-wrapper">
-                <div class="expovent__sidebar  "
+                <div class="expovent__sidebar"
                     style="background-image:url(_next/static/media/dropdown-bg.7aece7fb.png)">
-                    <div class="logo-details"><span><a href="{{ route('dashboard') }}"><img class="logo__white"
-                                    src="_next/static/media/logo-small.547f3188.svg"
-                                    alt="logo not found" /></a></span><span><a href="{{ route('dashboard') }}"><img class="log__smnall"
-                                    src="_next/static/media/logo.6dd2592f.svg" alt="logo not found" /></a></span></div>
+                    <div class="logo-details"><span><a href="{{ route('home') }}"><img class="logo__white"
+                                    src="{{ URL::asset('build/media/logo.png') }}"
+                                    alt="logo not found" /></a></span><span><a href="{{ route('home') }}"><img class="log__smnall"
+                                    src="{{ URL::asset('build/media/logo.png') }}" alt="logo not found" /></a></span></div>
                     <div class="sidebar__inner simple-bar">
                         <div class="dlabnav">
                             @php

@@ -77,9 +77,9 @@ Membership Details
                                         </div>
                                     </td>
                                     <td>
-                                        <form action="{{ route('subscription.extend', $subscription->id) }}" method="POST">
+                                        <form class= "submit_input" action="{{ route('subscription.extend', $subscription->id) }}" method="POST">
                                             @csrf
-                                            <input type="number" name="days" value="30" min="1" class="form-control mb-2" placeholder="Extend by days">
+                                            <input type="number" name="days" value="30" min="1" class="form-control form-control-input" placeholder="Extend by days">
                                             <button type="submit" class="btn btn-success">Extend Subscription</button>
                                         </form>
                                     </td>
