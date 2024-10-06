@@ -34,11 +34,11 @@ Dashboard
                             </div>
                         </div>
                         <div class="col-xxl-6 col-xl-6 col-lg-6">
-                            <form action="{{ route('blogs.list') }}" method="GET">
+                            <form action="{{ route('blogs.list') }}" class= "form-search" method="GET">
                                 <div class="singel__input-field mb-15">
                                     <label class="input__field-text">Keywords</label>
-                                    <div class="contact__select">
-                                        <select class="tom-select-multiple-search form-control w-full" name="keywords[]" multiple>
+                                    <div class="submit_input">
+                                        <select class="tom-select-multiple-search  w-full" name="keywords[]" multiple>
                                             <option value="" disabled>Select Keyword</option>
                                             @foreach ($allkeywords as $keyword)
                                                 <option value="{{ $keyword->keyword }}" >
@@ -46,12 +46,13 @@ Dashboard
                                                 </option>
                                             @endforeach
                                         </select>
+                                        <button type="submit" class="btn btn-primary">
+                                    Search
+                                </button>
                                     </div>
                                 </div>
                                 <!-- Search button -->
-                                <button type="submit" class="btn btn-primary">
-                                    Search
-                                </button>
+                                
                             </form>
                             <div class="card__header-dropdown">
                                 <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">

@@ -81,12 +81,12 @@ Profile
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                        <div class="profile__user-item">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12 form-search">
+                                        
                                             <a href="{{route('password.change')}}" class="btn btn-sm btn-success" >
                                                 <i class="fas fa-left-to-line"></i> Change Password
                                             </a>
-                                        </div>
+                                        
                                     </div>
                                     
                                 </div>

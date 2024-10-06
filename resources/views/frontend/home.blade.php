@@ -23,7 +23,7 @@ Home
             </h2>
             <div class="slider__btdn">
                 <a class="fill__btn" href="#"
-                >Signup Now<i class="fa-regular fa-angle-right"></i
+                >View More<i class="fa-regular fa-angle-right"></i
                 ></a>
             </div>
             </div>
@@ -50,7 +50,7 @@ Home
                     <span>WHEN AND WHERE</span>
                     <h4>
                     {{ \Carbon\Carbon::parse($events[0]->date)->format('F d') }} <br />
-                    {{$events[0]->city}}{{$events[0]->state}} <br />
+                    {{$events[0]->city}}, {{$events[0]->state}} <br />
                     </h4>
                 </div>
                 <div class="pluse__status">
@@ -309,7 +309,7 @@ Home
                       </span>{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</span>
                   </div>
                   <div class="header__btn">
-                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail', $event->id) }}">Signup Now <i class="fa-regular fa-angle-right"></i>
+                    <a class="blog_custome_btn w-100 justify-content-center" href="{{ route('event-detail', $event->id) }}">View More <i class="fa-regular fa-angle-right"></i>
                     </a>
                   </div>
                 </div>

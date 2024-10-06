@@ -45,21 +45,25 @@ Dashboard
                             <form action="{{ route('users.index') }}" method="GET">
                                 <div class="singel__input-field mb-15">
                                     <label class="input__field-text">Roles</label>
-                                    <div class="contact__select">
-                                        <select class="tom-select-multiple-search form-control w-full" name="roles[]" multiple>
-                                            <option value="" disabled>Select Roles</option>
-                                            @foreach ($roles as $role)
-                                                <option value="{{ $role->name }}" >
-                                                    {{ $role->name }}
-                                                </option>
-                                            @endforeach
-                                        </select>
+                                    <div class="submit_input">
+                                    <select class="tom-select-multiple-search  w-full" name="roles[]" multiple>
+                                          
+                                          @foreach ($roles as $role)
+                                              <option  value="{{ $role->name }}" >
+                                                  {{ $role->name }}
+                                              </option>
+                                          @endforeach
+                                      </select>
+                                      <button type="submit" class="btn btn-primary">
+                                  Search
+                              </button>
+
+                                    </div>
+                                        
                                     </div>
                                 </div>
                                 <!-- Search button -->
-                                <button type="submit" class="btn btn-primary">
-                                    Search
-                                </button>
+                                
                             </form>
                             <div class="card__header-dropdown">
                                 <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">
