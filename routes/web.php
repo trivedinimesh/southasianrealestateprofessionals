@@ -93,4 +93,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/subscription/{id}/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
     Route::post('/subscription/{id}/renew', [SubscriptionController::class, 'renewSubscription'])->name('subscription.renew');
     Route::post('/subscription/{id}/extend', [SubscriptionController::class, 'extendSubscription'])->name('subscription.extend');
+
+    Route::get('/admin/gallery-list', [GalleryController::class, 'list'])->name('gallery.list');
+    Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('/admin/gallery', [GalleryController::class, 'store'])->name('gallery.store');
+    // Route::get('/admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
+    // Route::put('/admin/gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
+    Route::delete('/admin/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
 });

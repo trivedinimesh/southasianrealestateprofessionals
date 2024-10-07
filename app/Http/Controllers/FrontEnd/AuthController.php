@@ -5,13 +5,14 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use App\Models\User;
-use Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    // code login method
+    // Show login form
     public function index()
     {
         if (Auth::check()) {
@@ -19,7 +20,8 @@ class AuthController extends Controller
         }
         return view('frontend.auth.login');
     }
-    // code registration method
+
+    // Show registration form
     public function signup()
     {
         if (Auth::check()) {
@@ -27,116 +29,109 @@ class AuthController extends Controller
         }
         return view('frontend.auth.signup');
     }
- 
-    // code action login method
+
+    // Handle login action
     public function actionlogin(Request $request)
     {
-        // Validate input
-        $request->validate([
-            'email' => 'required|email', // Added email format validation
-            'password' => 'required|min:6', // Added password length validation
+        // Validate input with stricter rules
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
         ]);
 
-        // Attempt to log in the user
-        if (Auth::attempt($request->only('email', 'password'))) {
-            $user = Auth::user();
+        // Attempt login
+        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
+            $user = Auth::user(); // Cached user
 
-            // Check if the user has the "admin" role
             if ($user->hasRole('admin')) {
                 return redirect()->route('dashboard')
                     ->withSuccess('You have successfully logged in as admin.');
             }
 
-            // Redirect non-admin users to the home route
             return redirect()->route('home')
                 ->withSuccess('You have successfully logged in.');
         }
 
-        // Return error if credentials are invalid
+        // Log failed login attempt
+        \Log::warning('Login attempt failed for email: ' . $request->email);
+
+        // Invalid credentials
         return back()->withErrors([
             'email' => 'Invalid credentials. Please try again.',
         ])->withInput();
     }
 
- 
-    // code action registration method
+    // Handle registration action
     public function actionSignup(Request $request)
     {
-        // Validate the request data
+        // Validate user input
         $validatedData = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
+            'isd_code' => 'required|string|max:10',
+            'phone_number' => 'required|string|max:15|unique:users',
             'email' => 'required|email|unique:users',
-            'isd_code' => 'required|string|max:10', // Added max length validation
-            'phone_number' => 'required|string|unique:users|max:15', // Added max length validation
-            'password' => 'required|string|min:6', // Added password confirmation
+            'password' => 'required|min:6', // Password confirmation
         ]);
 
-        // Create the user with validated data
+        // Create the user
         $user = User::create([
             'first_name' => $validatedData['first_name'],
             'last_name' => $validatedData['last_name'],
             'email' => $validatedData['email'],
             'isd_code' => $validatedData['isd_code'],
             'phone_number' => $validatedData['phone_number'],
-            'password' => bcrypt($validatedData['password']), // Encrypt password
+            'password' => bcrypt($validatedData['password']),
         ]);
 
-        // Assign the 'user' role
+        // Assign default role
         $user->assignRole('user');
 
-        // Auto-login the user after signup
+        // Auto login
         Auth::login($user);
 
-        // Redirect to the dashboard with success message
+        // Log user registration
+        \Log::info('New user registered: ' . $user->email);
+
+        // Redirect with success message
         return redirect()->route('home')
-                ->withSuccess('You have successfully registered and logged in.');
+            ->withSuccess('You have successfully registered and logged in.');
     }
 
-
- 
-    // code dashboard method
+    // Show the dashboard
     public function dashboard()
     {
         if (Auth::check()) {
             return view('frontend.dashboard.index');
         }
-        return redirect()->route('login')->withSuccess('You do not have access');
+        return redirect()->route('login')->with('error', 'You do not have access');
     }
- 
-    // code create method
-    public function create(array $data)
-    {
-        return User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'isd_code' => $data['isd_code'],
-            'phone_number' => $data['phone_number'],
-            'password' => Hash::make($data['password'])
-        ]);
-    }
- 
-    // code logout method
+
+    // Logout method
     public function logout()
     {
         Session::flush();
         Auth::logout();
-        return Redirect()->route('login');
+
+        // Log the logout action
+        \Log::info('User logged out.');
+
+        return redirect()->route('login');
     }
 
+    // Show password change form
     public function showChangePasswordForm()
     {
-        return view('frontend.auth.change'); // This view will contain the form
+        return view('frontend.auth.change');
     }
 
-    // Method to handle password change request
+    // Handle password change
     public function changePassword(Request $request)
     {
         // Validate the input
         $request->validate([
             'current_password' => 'required',
-            'new_password' => 'required|min:8|confirmed', // confirmed checks if new_password and new_password_confirmation match
+            'new_password' => 'required|min:8|confirmed', // Confirmed validation
         ]);
 
         // Check if the current password matches
@@ -148,6 +143,9 @@ class AuthController extends Controller
         Auth::user()->update([
             'password' => Hash::make($request->new_password),
         ]);
+
+        // Log the password change
+        \Log::info('Password changed for user: ' . Auth::user()->email);
 
         return redirect()->back()->with('success', 'Password changed successfully!');
     }
