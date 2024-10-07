@@ -24,11 +24,11 @@
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                                     class="nav-text">Manage Events</span></a>
                                         </li>
-                                        <!-- <li class=""><a href="{{route('member')}}" id="react-collapsed-toggle-:R56al6:"
+                                        <li class=""><a href="{{route('gallery.list')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
-                                                    class="nav-text">Manage Members</span></a>
-                                        </li> -->
+                                                    class="nav-text">Manage Gallery</span></a>
+                                        </li>
                                         <li class=""><a href="{{route('subscription.list')}}" id="react-collapsed-toggle-:R56al6:"
                                                 aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
