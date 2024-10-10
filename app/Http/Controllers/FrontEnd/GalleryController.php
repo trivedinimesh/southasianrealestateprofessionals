@@ -36,9 +36,11 @@ class GalleryController extends Controller
         }
 
         $events = Event::all();
+        $galleries = Gallery::all();
         
         return view('frontend.gallery.add', [
-            'events' => $events
+            'events' => $events,
+            'galleries' => $galleries
         ]);
     }
 

@@ -46,6 +46,9 @@ Add Gallery
                                     @foreach($events as $event)
                                         <option value="{{ $event->title }}">{{ $event->title }}</option>
                                     @endforeach
+                                    @foreach($galleries as $gallery)
+                                        <option value="{{ $gallery->title }}">{{ $gallery->title }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

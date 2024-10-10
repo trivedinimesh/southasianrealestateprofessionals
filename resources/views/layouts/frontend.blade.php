@@ -118,6 +118,61 @@
                 toggleClasses(false);
             });
         </script>
+
+
+
+
+<script>
+let slideIndices = {}; // To store slide indices for each gallery
+
+function openModal(groupIndex) {
+    document.getElementById("myModal-" + groupIndex).style.display = "block";
+}
+
+function closeModal(groupIndex) {
+    document.getElementById("myModal-" + groupIndex).style.display = "none";
+}
+
+function plusSlides(n, groupIndex) {
+    if (!slideIndices[groupIndex]) {
+        slideIndices[groupIndex] = 1;
+    }
+    showSlides(slideIndices[groupIndex] += n, groupIndex);
+}
+
+function currentSlide(n, groupIndex) {
+    if (!slideIndices[groupIndex]) {
+        slideIndices[groupIndex] = 1;
+    }
+    showSlides(slideIndices[groupIndex] = n, groupIndex);
+}
+
+function showSlides(n, groupIndex) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides-" + groupIndex);
+    var dots = document.getElementsByClassName("demo-" + groupIndex);
+    var captionText = document.getElementById("caption-" + groupIndex);
+    
+    if (n > slides.length) {
+        slideIndices[groupIndex] = 1;
+    }
+    if (n < 1) {
+        slideIndices[groupIndex] = slides.length;
+    }
+
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+
+    slides[slideIndices[groupIndex] - 1].style.display = "block";
+    dots[slideIndices[groupIndex] - 1].className += " active";
+    captionText.innerHTML = dots[slideIndices[groupIndex] - 1].alt;
+}
+
+</script>
     </body>
   <!-- Mirrored from expovent-react.vercel.app/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 May 2024 16:03:10 GMT -->
 </html>
