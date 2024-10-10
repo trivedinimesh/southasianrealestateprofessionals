@@ -14,7 +14,7 @@ Edit Event
                             <nav>
                                 <ul>
                                     <li><span><a href="{{route('events.list')}}">Events</a></span></li>
-                                    <li class="active"><span>Create Events</span></li>
+                                    <li class="active"><span>Edit Events</span></li>
                                 </ul>
                             </nav>
                         </div>
@@ -136,7 +136,7 @@ Edit Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Status</label>
                                             <!-- Hidden field to ensure the unchecked state is also handled -->
@@ -144,6 +144,16 @@ Edit Event
                                             <input type="checkbox" name="is_active" value="1" {{ $event->is_active ? 'checked' : '' }}> Active
                                             @error('is_active')
                                                 <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text" >Members Only</label>
+                                            <input type="hidden" name="members_only" value="0">
+                                            <input type="checkbox" name="members_only" value="1" {{ $event->members_only ? 'checked' : '' }}> Active
+                                            @error('members_only')
+                                                <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
                                     </div>

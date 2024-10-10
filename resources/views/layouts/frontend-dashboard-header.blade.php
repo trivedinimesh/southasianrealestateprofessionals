@@ -75,7 +75,16 @@
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                                     class="nav-text">View Booking</span></a>
                                         </li>
-                                        <li class=""><a href="#" id="react-collapsed-toggle-:R86al6:"
+                                        @if($user->hasRole('member'))
+                                            <li class=""><a href="{{route('event.members-only')}}" id="react-collapsed-toggle-:R86al6:"
+                                                aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span
+                                                class="nav-text">Members Only Events</span></a>
+                                            </li>
+                                        
+                                        @endif
+                                        
+                                        <li class=""><a href="{{route('profile')}}" id="react-collapsed-toggle-:R86al6:"
                                                 aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span
                                                     class="nav-text">Profile</span></a>

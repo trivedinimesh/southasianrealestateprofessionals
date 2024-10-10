@@ -124,11 +124,20 @@ Add Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Status</label>
                                             <input type="checkbox" name="is_active" checked value="1"> Active
-                                            @error('title')
+                                            @error('is_active')
+                                                <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text" >Members Only</label>
+                                            <input type="checkbox" name="members_only" value="1"> Active
+                                            @error('members_only')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
