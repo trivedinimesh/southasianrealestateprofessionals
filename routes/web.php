@@ -58,6 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
     Route::get('/edit-update', [UserController::class, 'editProfile'])->name('edit-profile');
     Route::put('/profile-update', [UserController::class, 'updateProfile'])->name('profile-update');
+    Route::get('/membership-upselling', [UserController::class, 'membershipUpselling'])->name('membership-upselling');
+    Route::get('/event-reminder', [UserController::class, 'eventReminder'])->name('event-reminder');
     
     Route::resource('/admin/board-of-director', BODController::class);
 
