@@ -68,7 +68,9 @@ class BlogController extends Controller
 
     public function list(Request $request)
     {
-        $this->authorize('isAdmin');
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
 
         $blogs = Blog::with(['keywords'])
             ->when($request->input('keywords'), function ($query, $keyword) {
@@ -90,7 +92,10 @@ class BlogController extends Controller
 
     public function create()
     {
-        $this->authorize('isAdmin');
+         if (!Auth::user()->hasRole('admin')) {
+                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+            }
+            
         $keywords = Keyword::all();
         $tags = Tag::all();
 
@@ -99,7 +104,10 @@ class BlogController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorize('isAdmin');
+         if (!Auth::user()->hasRole('admin')) {
+                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+            }
+            
 
         $validated = $request->validate([
             'title' => 'required',
@@ -132,7 +140,10 @@ class BlogController extends Controller
 
     public function edit(string $id)
     {
-        $this->authorize('isAdmin');
+         if (!Auth::user()->hasRole('admin')) {
+                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+            }
+            
 
         $blog = Blog::findOrFail($id);
         $keywords = Keyword::all();
@@ -143,7 +154,10 @@ class BlogController extends Controller
 
     public function update(Request $request, string $id)
     {
-        $this->authorize('isAdmin');
+         if (!Auth::user()->hasRole('admin')) {
+                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+            }
+            
 
         $validated = $request->validate([
             'title' => 'required',
@@ -178,7 +192,10 @@ class BlogController extends Controller
 
     public function destroy(string $id)
     {
-        $this->authorize('isAdmin');
+         if (!Auth::user()->hasRole('admin')) {
+                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+            }
+            
 
         DB::beginTransaction();
 
