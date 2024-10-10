@@ -48,7 +48,16 @@ class SubscriptionController extends Controller
             \Mail::to($admin->email)->send(new \App\Mail\AdminSubscriptionNotification($subscription));
         }
 
+
+       
+
+      
+            \Mail::to($user->email)->send(new \App\Mail\UserSubscriptionNotification($subscription));
+
+   
         return redirect()->route('subscription.details')->with('success', 'Subscription successful');
+
+
     }
 
     public function listMembership()

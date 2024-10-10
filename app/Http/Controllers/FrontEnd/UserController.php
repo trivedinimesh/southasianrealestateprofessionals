@@ -5,12 +5,16 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest; // Use the Form Request for validation
 use App\Models\User;
+use App\Models\Booking;
+
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+
 
 
 class UserController extends Controller
@@ -93,9 +97,21 @@ class UserController extends Controller
                 'isd_code' => $request->isd_code,
                 'phone_number' => $request->phone_number,
                 'password' => bcrypt($request->password) // Use the user's password
-            ])->assignRole($request->role);;
+            ])->assignRole($request->role);
 
+         
             DB::commit();
+
+           
+            try {
+                \Mail::to($user->email)->send(new \App\Mail\UserWelcomeNotification($user));
+                \Log::message('\welcome email to user: ' . $user->email . '. Error: ' . $e->getMessage());
+                echo"user mail send".$user->email;
+            } catch (\Exception $e) {
+                \Log::error('Failed to send welcome email to user: ' . $user->email . '. Error: ' . $e->getMessage());
+            }
+
+
             return redirect()->route('users.index')->with('success', 'User stored successfully.');
         } catch (\Throwable $th) {
             DB::rollBack();
@@ -203,6 +219,57 @@ class UserController extends Controller
 
         return view('frontend.users.member')->with('members', $members);
     }
+
+
+    public function membershipUpselling()
+{
+    // Get the currently authenticated user
+    $user = Auth::user();
+
+    // Check if the user has the 'user' role
+    if ($user && $user->hasRole('user')) {
+        // Prepare data for the email
+        $emailData = [
+            'first_name' => $user->first_name,
+            'last_name' => $user->last_name,
+            'email' => $user->email,
+            // 'message' => 'We have some great membership upgrades available for you!',
+        ];
+
+        // Send the email using the Mailable
+        \Mail::to($user->email)->send(new \App\Mail\MembershipUpsellNotification($emailData));
+
+        // Return a response (you can redirect or return a view)
+        return redirect()->route('dashboard')->with('success', 'Upselling email sent successfully!');
+    } else {
+        // Redirect if the user does not have the 'user' role
+        return redirect()->route('dashboard')->with('error', 'Access denied. You are not eligible for upselling.');
+    }
+}
+
+public function eventReminder(){
+
+   
+   // Get the current date + 2 days
+   $reminderDate = Carbon::now()->addDays(2)->format('Y-m-d');
+
+   // Fetch active events happening in the next 2 days
+   $bookings = Booking::get();
+
+    
+
+    
+   foreach ($bookings as $booking) {
+    $event=$booking->event->where('date',$reminderDate );
+echo"hello".$event;
+    $user_data=User::findOrFail($booking->user_id);
+       
+       // Send reminder email to the user
+       \Mail::to($user_data->email)->send(new EventReminderNotification($bookings));
+   }
+
+   return response()->json(['message' => 'Event reminders sent successfully!']);
+}
 
     public function profile()
     {
