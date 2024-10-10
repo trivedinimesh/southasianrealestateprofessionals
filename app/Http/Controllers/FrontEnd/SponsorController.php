@@ -66,7 +66,7 @@ class SponsorController extends Controller
         $request->validate([
         'name' => 'required',
         'category' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
         ]);
       
         $Sponsor = new Sponsor;
@@ -118,7 +118,7 @@ class SponsorController extends Controller
             $request->validate([
                 'name' => 'sometimes',
                 'category' => 'sometimes',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
             ]);
     
             if ($request->hasFile('image')) {

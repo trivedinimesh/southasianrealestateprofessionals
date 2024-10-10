@@ -90,6 +90,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/subscribe/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscribe');
     Route::get('/membership/details', [SubscriptionController::class, 'subscriptionDetails'])->name('subscription.details');
     Route::get('/admin/membership/list', [SubscriptionController::class, 'listMembership'])->name('subscription.list');
+
+    Route::get('/members-only-event', [EventsController::class, 'membersOnly'])->name('event.members-only');
+
     Route::post('/subscription/{id}/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
     Route::post('/subscription/{id}/renew', [SubscriptionController::class, 'renewSubscription'])->name('subscription.renew');
     Route::post('/subscription/{id}/extend', [SubscriptionController::class, 'extendSubscription'])->name('subscription.extend');
