@@ -34,12 +34,6 @@ Events List
                             </div>
                         </div>
                         
-                            
-                        <div class="card__header-dropdown">
-                            <a href="{{route('events.create')}}" class="btn btn-sm btn-success" >
-                                <i class="fas fa-plus"></i> Add New
-                            </a>
-                        </div>
                     </div>
                     @if (session('success'))
                         <span class="text-success">{{ session('success') }}</span>
@@ -54,7 +48,6 @@ Events List
                                 <th>Date</th>
                                 <th>Time</th>
                                 <th>Status</th>
-                                <th>Members Only?</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -89,19 +82,8 @@ Events List
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="attendant__user-item">
-                                    @if ($event->members_only)
-                                    
-                                    Members Only
-                                @else
-                                    All
-                                @endif
-                                    </div>
-                                </td>
-                                <td>
                                     <div>
-                                        <a href="{{route('events.attendee-list', $event->id)}}" class="btn btn-sm btn-primary">List</a>
-                                        <a href="{{route('events.show', $event->id)}}" class="btn btn-sm btn-primary">View</a>
+                                        <a href="{{route('event-detail', $event->id)}}" class="btn btn-sm btn-primary">View</a>
                                         <a href="{{route('events.edit', $event->id)}}" class="btn btn-sm btn-primary">Edit</a>
                                         <form action="{{ route('events.destroy', $event->id) }}" method="POST" class="d-inline">
                                             @csrf

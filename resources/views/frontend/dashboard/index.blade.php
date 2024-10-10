@@ -20,6 +20,13 @@ Dashboard
                                             </nav>
                                         </div>
                                     </div>
+                                    <form action="{{ route('membership-upselling') }}" method="GET">
+    <button type="submit">Upgrade Membership</button>
+</form>
+
+<form action="{{ route('event-reminder') }}" method="GET">
+    <button type="submit">Event Reminder</button>
+</form>
                                 </div>
                             </div>
                         </div>

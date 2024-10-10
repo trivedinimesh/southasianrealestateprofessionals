@@ -13,7 +13,7 @@ class EventsController extends Controller
 {
     public function index()
     {
-        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->get(); // Paginate results
+        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->where('members_only', 0)->get(); // Paginate results
 
         return view('frontend.events.index')->with('events', $events);
     }
@@ -37,7 +37,7 @@ class EventsController extends Controller
     
         $query = Event::select(
             'id', 'title', 'details', 'image', 'price_member', 'price_non_member', 
-            'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 
+            'is_active', 'members_only', 'date', 'start_time', 'end_time', 'address', 'country', 
             'state', 'city', 'pincode', 'created_by', 'updated_by'
         );
     
@@ -78,16 +78,18 @@ class EventsController extends Controller
     {
 
         // Ensure the checkbox is handled properly
-        $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
+        // $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
+        // $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
 
         // Validations
         $validator = \Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'details' => 'required|string|max:16777215',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
             'price_member' => 'nullable|numeric',
             'price_non_member' => 'nullable|numeric',
             'is_active' => 'required|boolean',
+            'members_only' => 'required|boolean',
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
             'end_time' => 'required|date_format:H:i|after:start_time',
@@ -111,6 +113,7 @@ class EventsController extends Controller
             $event->price_member = $request->price_member;
             $event->price_non_member = $request->price_non_member;
             $event->is_active = $request->is_active;
+            $event->members_only = $request->members_only;
             $event->date = $request->date;
             $event->start_time = $request->start_time; 
             $event->end_time = $request->end_time; 
@@ -180,9 +183,13 @@ class EventsController extends Controller
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        DB::beginTransaction();
-    
+        // $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
+        // $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
+        
+        // DB::beginTransaction();
+        
         try {
+            
             // Retrieve the existing event by ID
             $event = Event::findOrFail($id);
     
@@ -190,13 +197,19 @@ class EventsController extends Controller
             $validator = \Validator::make($request->all(), [
                 'title' => 'sometimes|string|max:255',
                 'details' => 'sometimes|string|max:16777215',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'date' => 'sometimes|date',
-                'start_time' => 'nullable|date_format:H:i',
-                'end_time' => 'nullable|date_format:H:i|after:start_time',
+                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
                 'price_member' => 'nullable|numeric',
                 'price_non_member' => 'nullable|numeric',
-                // other fields...
+                'is_active' => 'sometimes|boolean',
+                'members_only' => 'sometimes|boolean',
+                'date' => 'sometimes|date',
+                'start_time' => 'sometimes',
+                'end_time' => 'sometimes|after:start_time',
+                'address' => 'sometimes|string|max:255',
+                'country' => 'sometimes|string|max:255',
+                'state' => 'sometimes|string|max:255',
+                'city' => 'sometimes|string|max:255',
+                'pincode' => 'sometimes|string|max:10|regex:/^\d{4,10}$/',
             ]);
     
             if ($validator->fails()) {
@@ -232,6 +245,7 @@ class EventsController extends Controller
             $event->price_member = $request->price_member;
             $event->price_non_member = $request->price_non_member;
             $event->is_active = $request->is_active;
+            $event->members_only = $request->members_only;
             $event->date = $request->date;
             $event->start_time = $request->start_time;
             $event->end_time = $request->end_time;
@@ -245,11 +259,12 @@ class EventsController extends Controller
             $event->save();
     
             // Commit the transaction
-            DB::commit();
+            // DB::commit();
     
             // Redirect on success
             return redirect()->route('events.list')->with('success', 'Event updated successfully.');
         } catch (\Throwable $th) {
+            
             // Rollback the transaction in case of an error
             DB::rollBack();
             return back()->with('error', 'Failed to update event.');
@@ -285,6 +300,10 @@ class EventsController extends Controller
         }
     }
 
+    public function membersOnly(){
+        $events = Event::where('is_active', 1)->where('members_only', 1)->get();
+        return view('frontend.events.members-only', ['events' => $events]);
+    }
 
     public function bookEvent(Request $request, $eventId)
     {

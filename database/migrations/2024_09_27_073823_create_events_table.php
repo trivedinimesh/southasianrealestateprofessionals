@@ -19,6 +19,7 @@ return new class extends Migration
             $table->float('price_member')->nullable();
             $table->float('price_non_member')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->boolean('members_only')->default(false);
             $table->date('date')->nullable();  
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
