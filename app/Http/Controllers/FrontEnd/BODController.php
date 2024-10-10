@@ -5,185 +5,175 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BOD;
-use Illuminate\Support\Facades\Auth;    
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 
 class BODController extends Controller
 {
+    // Middleware to restrict access to admins
+    public function __construct()
+    {
+        
+            if (!Auth::user()->hasRole('admin')) {
+                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+            }
+    }
+
     public function index(Request $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-        
-        $bod = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id')->get();
-        $query = BOD::query();
-         // Filter by search input (searching by name)
-        if ($request->filled('search')) {
-            $search = $request->input('search');
-            $searchTerms = explode(' ', $search); // Split the search input by spaces
+        $query = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id');
 
-            // If there are multiple terms (e.g., first and last name)
-            if (count($searchTerms) == 2) {
-                $query->where('first_name', 'like', '%' . $searchTerms[0] . '%')
-                    ->where('last_name', 'like', '%' . $searchTerms[1] . '%');
-            } else {
-                // Single term search (first name or last name)
-                $query->where(function ($q) use ($search) {
-                    $q->where('first_name', 'like', '%' . $search . '%')
-                    ->orWhere('last_name', 'like', '%' . $search . '%');
-                });
-            }
+        // Filter by search input (searching by name)
+        if ($request->filled('search')) {
+            $searchTerms = explode(' ', $request->input('search'));
+
+            $query->where(function ($q) use ($searchTerms) {
+                if (count($searchTerms) == 2) {
+                    // Search by both first and last name
+                    $q->where('first_name', 'like', '%' . $searchTerms[0] . '%')
+                      ->where('last_name', 'like', '%' . $searchTerms[1] . '%');
+                } else {
+                    // Single term search (first name or last name)
+                    $q->where('first_name', 'like', '%' . $searchTerms[0] . '%')
+                      ->orWhere('last_name', 'like', '%' . $searchTerms[0] . '%');
+                }
+            });
         }
-     // Retrieve the filtered users
-     $bod = $query->get();
-        return view('frontend.bod.index')->with('bods', $bod);
+
+        $bods = $query->get();
+        return view('frontend.bod.index', ['bods' => $bods]);
     }
 
     public function create()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-        
         return view('frontend.bod.add');
     }
 
     public function store(Request $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-        
-        // validations
+        // Validations
         $request->validate([
-        'first_name' => 'required',
-        'last_name' => 'required',
-        'designation' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        'fb_id' => 'required',
-        'twitter_id' => 'required',
-        'linkedin_id' => 'required',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'designation' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'fb_id' => 'nullable|url',
+            'twitter_id' => 'nullable|url',
+            'linkedin_id' => 'nullable|url',
         ]);
-      
-        $bod = new BOD;
-      
-        $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images/bods'), $file_name);
-      
-        $bod->first_name = $request->first_name;
-        $bod->last_name = $request->last_name;
-        $bod->designation = $request->designation;
-        $bod->image = $file_name;
-        $bod->fb_id = $request->fb_id;
-        $bod->twitter_id = $request->twitter_id;
-        $bod->linkedin_id = $request->linkedin_id;
-        $bod->created_by = Auth::user()->id;
-        $bod->updated_by = Auth::user()->id;
-      
-        $bod->save();
-        return redirect()->route('board-of-director.index')->with('success', 'BOD created successfully.');
+
+        try {
+            // Store the image securely
+            $file_name = $this->uploadImage($request->file('image'));
+
+            // Save BOD details to database
+            BOD::create([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'designation' => $request->designation,
+                'image' => $file_name,
+                'fb_id' => $request->fb_id,
+                'twitter_id' => $request->twitter_id,
+                'linkedin_id' => $request->linkedin_id,
+                'created_by' => Auth::id(),
+                'updated_by' => Auth::id(),
+            ]);
+
+            return redirect()->route('board-of-director.index')->with('success', 'BOD created successfully.');
+        } catch (\Exception $e) {
+            Log::error('Error creating BOD: ' . $e->getMessage());
+            return back()->with('error', 'Failed to create BOD. Please try again.');
+        }
     }
 
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-        
         try {
             $bod = BOD::findOrFail($id);
-            return view('frontend.bod.edit')->with('bod', $bod);
+            return view('frontend.bod.edit', ['bod' => $bod]);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('board-of-director.index')->with('error', 'bod not found.');
+            return redirect()->route('board-of-director.index')->with('error', 'BOD not found.');
         }
     }
 
     public function update(Request $request, $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-        
         try {
-            // Retrieve the existing blog by ID
             $bod = BOD::findOrFail($id);
-    
-            // Validate the request data
+
+            // Validations
             $request->validate([
-                'first_name' => 'required',
-                'last_name' => 'required',
-                'designation' => 'required',
-                'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-                'fb_id' => 'required',
-                'twitter_id' => 'required',
-                'linkedin_id' => 'required',
+                'first_name' => 'required|string|max:255',
+                'last_name' => 'required|string|max:255',
+                'designation' => 'required|string|max:255',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'fb_id' => 'nullable|url',
+                'twitter_id' => 'nullable|url',
+                'linkedin_id' => 'nullable|url',
             ]);
-    
+
+            // Update image if provided
             if ($request->hasFile('image')) {
-                // Delete the old image if it exists
-                if ($bod->image && file_exists(public_path('images/bods' . $bod->image))) {
-                    unlink(public_path('images/bods' . $bod->image));
-                }
-    
-                // Upload the new image
-                $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/bods'), $file_name);
-    
-                // Set the new image name
-                $bod->image = $file_name;
+                $this->deleteOldImage($bod->image); // Delete old image
+                $bod->image = $this->uploadImage($request->file('image'));
             }
-    
-            // Update the blog data
-            $bod->first_name = $request->first_name;
-            $bod->last_name = $request->last_name;
-            $bod->designation = $request->designation;
-            $bod->image = $file_name;
-            $bod->fb_id = $request->fb_id;
-            $bod->twitter_id = $request->twitter_id;
-            $bod->linkedin_id = $request->linkedin_id;
-            $bod->updated_by = Auth::user()->id;
-    
-            // Save the blog
-            $bod->save();
-    
+
+            // Update other fields
+            $bod->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'designation' => $request->designation,
+                'fb_id' => $request->fb_id,
+                'twitter_id' => $request->twitter_id,
+                'linkedin_id' => $request->linkedin_id,
+                'updated_by' => Auth::id(),
+            ]);
+
             return redirect()->route('board-of-director.index')->with('success', 'BOD updated successfully.');
         } catch (ModelNotFoundException $e) {
             return redirect()->route('board-of-director.index')->with('error', 'BOD not found.');
-        } catch (\Throwable $th) {
-            // Log any errors
-            \Log::error('Error updating bod: ' . $th->getMessage());
-            return back()->with('error', 'Something went wrong while updating BOD data.');
+        } catch (\Exception $e) {
+            Log::error('Error updating BOD: ' . $e->getMessage());
+            return back()->with('error', 'Failed to update BOD. Please try again.');
         }
     }
 
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-        
         DB::beginTransaction();
         try {
             $bod = BOD::findOrFail($id);
-            
-            if ($bod->image && file_exists(public_path('images/bods/' . $bod->image))) {
-                unlink(public_path('images/bods/' . $bod->image));
-            }
-            
+            $this->deleteOldImage($bod->image); // Delete image
             $bod->delete();
 
             DB::commit();
             return redirect()->route('board-of-director.index')->with('success', 'BOD deleted successfully.');
-        } catch (\Throwable $th) {
+        } catch (ModelNotFoundException $e) {
             DB::rollBack();
-            return back()->with('error', 'Failed to delete bod.');
+            return redirect()->route('board-of-director.index')->with('error', 'BOD not found.');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('Error deleting BOD: ' . $e->getMessage());
+            return back()->with('error', 'Failed to delete BOD. Please try again.');
+        }
+    }
+
+    // Helper function to upload image
+    private function uploadImage($image)
+    {
+        $file_name = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('images/bods'), $file_name);
+        return $file_name;
+    }
+
+    // Helper function to delete old image
+    private function deleteOldImage($image)
+    {
+        if ($image && File::exists(public_path('images/bods/' . $image))) {
+            File::delete(public_path('images/bods/' . $image));
         }
     }
 }

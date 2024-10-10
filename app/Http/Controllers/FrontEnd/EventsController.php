@@ -85,12 +85,12 @@ class EventsController extends Controller
             'title' => 'required|string|max:255',
             'details' => 'required|string|max:16777215',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'price_member' => 'numeric',
-            'price_non_member' => 'numeric',
+            'price_member' => 'nullable|numeric',
+            'price_non_member' => 'nullable|numeric',
             'is_active' => 'required|boolean',
             'date' => 'required|date',
             'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i|after:start_time',
             'address' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'state' => 'required|string|max:255',
@@ -192,8 +192,8 @@ class EventsController extends Controller
                 'details' => 'sometimes|string|max:16777215',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                 'date' => 'sometimes|date',
-                'start_time' => 'sometimes',
-                'end_time' => 'sometimes|after:start_time',
+                'start_time' => 'nullable|date_format:H:i',
+                'end_time' => 'nullable|date_format:H:i|after:start_time',
                 'price_member' => 'nullable|numeric',
                 'price_non_member' => 'nullable|numeric',
                 // other fields...
@@ -271,6 +271,10 @@ class EventsController extends Controller
         DB::beginTransaction();
         try {
             $event = Event::findOrFail($id);
+            // Delete event image securely
+            if ($event->image && File::exists(storage_path("app/public/images/events/{$event->image}"))) {
+                File::delete(storage_path("app/public/images/events/{$event->image}"));
+            }
             $event->delete();
 
             DB::commit();
