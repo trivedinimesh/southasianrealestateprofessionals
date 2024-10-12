@@ -94,7 +94,13 @@ class SubscriptionController extends Controller
         $days = $request->input('days', 30); // Default 30 days if not provided
         $subscription->extend($days);
 
-        return redirect()->route('subscription.details')->with('success', 'Subscription extended by ' . $days . ' days.');
+        return redirect()->route('subscription.list')->with('success', 'Subscription extended by ' . $days . ' days.');
+    }
+
+    public function renewSubscription($id){
+        $subscription = Subscription::findOrFail($id);
+        $subscription->renew();
+        return redirect()->route('subscription.details')->with('success');
     }
 
     public function checkExpired()
@@ -109,6 +115,8 @@ class SubscriptionController extends Controller
             $subscription->user->assignRole('user');
 
         }
+
+        var_dump("expiry check");
     }
 
 

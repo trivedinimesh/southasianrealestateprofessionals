@@ -77,15 +77,19 @@ Membership Details
                                     </div>
                                 </td>
                                 <td>
-                                    <form action="{{ route('subscription.cancel', $subscription->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger">Cancel Subscription</button>
-                                    </form>
+                                    @if($subscription->status == "active")
+                                        <form action="{{ route('subscription.cancel', $subscription->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-danger">Cancel Subscription</button>
+                                        </form>
+                                    @endif
 
-                                    <form action="{{ route('subscription.renew', $subscription->id) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="btn btn-primary">Renew Subscription</button>
-                                    </form>
+                                    @if($subscription->status != "active")
+                                        <form action="{{ route('subscription.renew', $subscription->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary">Renew Subscription</button>
+                                        </form>
+                                    @endif
                                 </td>
                             </tr>
                         </tbody>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Subscription extends Model
 {
@@ -42,7 +43,8 @@ class Subscription extends Model
     // Extend subscription by a certain number of days
     public function extend($days)
     {
-        $this->ends_at = $this->ends_at->addDays($days);
+        $endsAt = Carbon::parse($this->ends_at);
+        $this->ends_at = $endsAt->addDays((int) $days);
         $this->save();
     }
 
@@ -57,7 +59,6 @@ class Subscription extends Model
     public function renew()
     {
         $this->status = 'active';
-        $this->starts_at = Carbon::now();
         $this->ends_at = Carbon::now()->addDays($this->plan->duration);
         $this->save();
     }

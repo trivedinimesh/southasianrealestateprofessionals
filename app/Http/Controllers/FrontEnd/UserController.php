@@ -5,6 +5,7 @@ namespace App\Http\Controllers\FrontEnd;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest; // Use the Form Request for validation
 use App\Models\User;
+use App\Models\Event;
 use App\Models\Booking;
 
 use Spatie\Permission\Models\Role;
@@ -251,24 +252,22 @@ public function eventReminder(){
 
    
    // Get the current date + 2 days
-   $reminderDate = Carbon::now()->addDays(2)->format('Y-m-d');
-
-   // Fetch active events happening in the next 2 days
-   $bookings = Booking::get();
-
-    
-
-    
-   foreach ($bookings as $booking) {
-    $event=$booking->event->where('date',$reminderDate );
-echo"hello".$event;
-    $user_data=User::findOrFail($booking->user_id);
-       
-       // Send reminder email to the user
-       \Mail::to($user_data->email)->send(new EventReminderNotification($bookings));
+   $reminderDate = Carbon::now('Asia/Kolkata')->addDays(2)->format('Y-m-d');
+   $events = Event::where('date',$reminderDate)->get();
+   
+   foreach ($events as $event) {
+       $bookings = Booking::where('event_id', $event->id)->get();
+       foreach ($bookings as $booking) {
+           $user = $booking->user;
+            if ($user) {
+                \Mail::to($user->email)->send(new \App\Mail\EventReminderNotification($booking));
+            } else {
+                \Log::warning("User not found for booking ID: {$booking->id}");
+            }
+        }
    }
 
-   return response()->json(['message' => 'Event reminders sent successfully!']);
+
 }
 
     public function profile()

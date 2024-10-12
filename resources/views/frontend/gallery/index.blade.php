@@ -5,16 +5,32 @@ Gallery
 
 @section('body')
 
-<div class="mt-100">
+
+<section class="dark_light_class">
+    <section class="page_banner text-center pt-90 pb-60">
+        <div class="container decoration_wrap">
+            <h1 class="page_title mb-15 text__highlight">Gallery</h1>
+            <ul class="breadcrumb_nav unordered_list_center">
+                <li><a href="{{ route('home') }}">Home</a></li>
+                <li>Gallery</li>
+            </ul>
+        </div>
+    </section>
+    <section id="homeschedule" class="event__schedule-area dark_light_class pt-90 pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    
+<div class="">
     @foreach($galleries->groupBy('title') as $title => $groupedImages)
     @php $num = 1; @endphp
-    <h2>{{ $title }}</h2>
+    <h2 class="section__title mb-20">{{ $title }}</h2>
 
 
-    <div class="d-flex">
-        @foreach($groupedImages as $image)
+    <div class="d-flex mb-20">
+        @foreach($groupedImages->take(5) as $image) <!-- Limit to 5 images -->
         <div class="column">
-            <img class="demo-{{ $loop->parent->index }} cursor" src="{{ asset($image->image_path) }}" style="width:100%"
+            <img class="demo-{{ $loop->parent->index }} cursor" src="{{ asset($image->image_path) }}" style="width:100%; height: auto;"
                 onclick="openModal({{ $loop->parent->index }}); currentSlide({{$num++}}, {{ $loop->parent->index }})"
                 alt="Nature and sunrise">
         </div>
@@ -52,5 +68,14 @@ Gallery
     </div>
     @endforeach
 </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+
+
+
+
 
 @endsection
