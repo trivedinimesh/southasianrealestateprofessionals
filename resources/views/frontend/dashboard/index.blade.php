@@ -27,6 +27,10 @@ Dashboard
 <form action="{{ route('event-reminder') }}" method="GET">
     <button type="submit">Event Reminder</button>
 </form>
+<form action="{{ route('subscription.checkExpired') }}" method="POST">
+    @csrf
+    <button type="submit">Check Expiry</button>
+</form>
                                 </div>
                             </div>
                         </div>
