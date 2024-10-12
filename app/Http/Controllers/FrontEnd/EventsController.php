@@ -316,7 +316,7 @@ class EventsController extends Controller
         }
 
         // Generate a unique booking ID
-        $bookingId = 'BOOK-' . strtoupper(uniqid());
+        $bookingId = 'SAREP-' . strtoupper(uniqid());
 
         // Calculate the amount with a membership discount (if applicable)
         $isMember = $user->hasRole('member'); // Assuming a 'is_subscribed' flag in users table

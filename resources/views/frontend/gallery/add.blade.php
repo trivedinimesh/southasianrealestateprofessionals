@@ -42,7 +42,7 @@ Add Gallery
                             <div class="form-group">
                                 <label for="title">Title</label>
 
-                                <select class="tom-select-single form-control w-full" name="title" multiple>
+                                <select class="tom-select-single " name="title" >
                                     @foreach($events as $event)
                                         <option value="{{ $event->title }}">{{ $event->title }}</option>
                                     @endforeach

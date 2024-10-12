@@ -8,17 +8,18 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Booking;
 
 class EventReminderNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
    
-    public $event;
+    public $booking;
 
-    public function __construct(Event $event)
+    public function __construct(Booking $booking)
     {
-        $this->event = $event;
+        $this->booking = $booking;
     }
 
     public function build()
@@ -26,9 +27,10 @@ class EventReminderNotification extends Mailable
         return $this->subject('Upcoming Event Reminder')
                     ->view('mails.user.eventreminder')
                     ->with([
-                        'event_name' => $this->event->name,
-                        'event_date' => $this->event->event_date,
-                        'user_name' => $this->event->user->name
+                        'event_title' => $this->booking->event->title,
+                        'event_date' => $this->booking->event->date,
+                        'first_name' => $this->booking->user->first_name,
+                        'last_name' => $this->booking->user->last_name
                     ]);
     }
 }

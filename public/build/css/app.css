@@ -59975,7 +59975,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: black;
   }
   
@@ -59985,8 +59985,9 @@ body {
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    width: 90%;
+    width: 55%;
     max-width: 1200px;
+    top: -50px;
   }
   
   /* The Close Button */

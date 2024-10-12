@@ -98,6 +98,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/subscription/{id}/cancel', [SubscriptionController::class, 'cancelSubscription'])->name('subscription.cancel');
     Route::post('/subscription/{id}/renew', [SubscriptionController::class, 'renewSubscription'])->name('subscription.renew');
     Route::post('/subscription/{id}/extend', [SubscriptionController::class, 'extendSubscription'])->name('subscription.extend');
+    Route::post('/subscription/check-expiry', [SubscriptionController::class, 'checkExpired'])->name('subscription.checkExpired');
 
     Route::get('/admin/gallery-list', [GalleryController::class, 'list'])->name('gallery.list');
     Route::get('/admin/gallery/create', [GalleryController::class, 'create'])->name('gallery.create');
