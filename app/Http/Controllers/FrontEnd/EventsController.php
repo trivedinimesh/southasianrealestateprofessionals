@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Event;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\EventRequest;
 
 class EventsController extends Controller
 {
@@ -74,32 +75,8 @@ class EventsController extends Controller
         return view('frontend.events.add');
     }
 
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-
-        // Ensure the checkbox is handled properly
-        // $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
-        // $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
-
-        // Validations
-        $validator = \Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'details' => 'required|string|max:16777215',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'price_member' => 'nullable|numeric',
-            'price_non_member' => 'nullable|numeric',
-            'is_active' => 'required|boolean',
-            'members_only' => 'required|boolean',
-            'date' => 'required|date',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
-            'address' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'pincode' => 'required|string|max:10|regex:/^\d{4,10}$/',
-        ]);
-
         try {
             // Image upload
             $file_name = time() . '.' . $request->image->getClientOriginalExtension();
@@ -177,7 +154,7 @@ class EventsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
@@ -192,33 +169,7 @@ class EventsController extends Controller
             
             // Retrieve the existing event by ID
             $event = Event::findOrFail($id);
-    
-            // Validate the request data
-            $validator = \Validator::make($request->all(), [
-                'title' => 'sometimes|string|max:255',
-                'details' => 'sometimes|string|max:16777215',
-                'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-                'price_member' => 'nullable|numeric',
-                'price_non_member' => 'nullable|numeric',
-                'is_active' => 'sometimes|boolean',
-                'members_only' => 'sometimes|boolean',
-                'date' => 'sometimes|date',
-                'start_time' => 'sometimes',
-                'end_time' => 'sometimes|after:start_time',
-                'address' => 'sometimes|string|max:255',
-                'country' => 'sometimes|string|max:255',
-                'state' => 'sometimes|string|max:255',
-                'city' => 'sometimes|string|max:255',
-                'pincode' => 'sometimes|string|max:10|regex:/^\d{4,10}$/',
-            ]);
-    
-            if ($validator->fails()) {
-                return back()->withErrors($validator)->withInput();
-            }
-    
-            // Debug the request data to check if image is being received
-            // dd($request->all());
-    
+
             // Check if a new image is uploaded
             if ($request->hasFile('image')) {
                 // Log image processing
@@ -287,8 +238,8 @@ class EventsController extends Controller
         try {
             $event = Event::findOrFail($id);
             // Delete event image securely
-            if ($event->image && File::exists(storage_path("app/public/images/events/{$event->image}"))) {
-                File::delete(storage_path("app/public/images/events/{$event->image}"));
+            if (file_exists(public_path("storage/images/events/{$event->image}"))) {
+                unlink(public_path("storage/images/events/{$event->image}"));
             }
             $event->delete();
 

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\BODRequest;
 
 class BODController extends Controller
 {
@@ -17,9 +18,9 @@ class BODController extends Controller
     public function __construct()
     {
         
-            if (!Auth::user()->hasRole('admin')) {
-                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-            }
+        if (!Auth::user()->hasRole('admin')) {
+            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
+        }
     }
 
     public function index(Request $request)
@@ -52,18 +53,8 @@ class BODController extends Controller
         return view('frontend.bod.add');
     }
 
-    public function store(Request $request)
+    public function store(BODRequest $request)
     {
-        // Validations
-        $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'designation' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'fb_id' => 'nullable|url',
-            'twitter_id' => 'nullable|url',
-            'linkedin_id' => 'nullable|url',
-        ]);
 
         try {
             // Store the image securely
@@ -99,22 +90,11 @@ class BODController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(BODRequest $request, $id)
     {
         try {
             $bod = BOD::findOrFail($id);
-
-            // Validations
-            $request->validate([
-                'first_name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'designation' => 'required|string|max:255',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-                'fb_id' => 'nullable|url',
-                'twitter_id' => 'nullable|url',
-                'linkedin_id' => 'nullable|url',
-            ]);
-
+            
             // Update image if provided
             if ($request->hasFile('image')) {
                 $this->deleteOldImage($bod->image); // Delete old image
