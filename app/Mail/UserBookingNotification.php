@@ -10,13 +10,15 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Booking;
 
-class EventReminderNotification extends Mailable
+class UserBookingNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
-   
     public $booking;
 
+    /**
+     * Create a new message instance.
+     */
     public function __construct(Booking $booking)
     {
         $this->booking = $booking;
@@ -24,15 +26,14 @@ class EventReminderNotification extends Mailable
 
     public function build()
     {
-        return $this->subject('Upcoming Event Reminder')
-                    ->view('mails.user.eventreminder')
+        return $this->subject('Event Booking Confirmation')
+                    ->view('mails.user.booking')
                     ->with([
-                        'event_title' => $this->booking->event->title,
-                        'event_date' => $this->booking->event->date,
                         'first_name' => $this->booking->user->first_name,
                         'last_name' => $this->booking->user->last_name,
-                        'image'=>$this->booking->event->image
-
+                        'email' => $this->booking->user->email,
+                        'eventName' => $this->booking->event->title,
+                        'date' => $this->booking->event->date,
                     ]);
     }
 }
