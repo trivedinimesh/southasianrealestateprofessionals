@@ -59,7 +59,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit-update', [UserController::class, 'editProfile'])->name('edit-profile');
     Route::put('/profile-update', [UserController::class, 'updateProfile'])->name('profile-update');
     Route::get('/membership-upselling', [UserController::class, 'membershipUpselling'])->name('membership-upselling');
-    Route::get('/event-reminder', [UserController::class, 'eventReminder'])->name('event-reminder');
     
     Route::resource('/admin/board-of-director', BODController::class);
 
@@ -87,6 +86,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/events/attandee/verify/{bookingId}/{user}', [EventsController::class, 'verifyBooking'])->name('events.verifyBooking');
     Route::get('/past-events', [EventsController::class, 'pastEvents'])->name('events.past-events');
     Route::get('/view-bookings', [EventsController::class, 'viewBooking'])->name('events.view-booking');
+    Route::get('/send-feedback', [EventsController::class, 'sendFeedbackRequest'])->name('send-feedback');
+    Route::get('/event-reminder', [EventsController::class, 'eventReminder'])->name('event-reminder');
+
+
 
     Route::get('/plans', [SubscriptionController::class, 'showPlans'])->name('plans');
     Route::post('/subscribe/{plan}', [SubscriptionController::class, 'subscribe'])->name('subscribe');

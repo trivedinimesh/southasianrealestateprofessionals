@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Event Booking Alert</title>
+    <title>Membership Expired</title>
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9;">
@@ -23,36 +23,28 @@
                     <!-- Greeting Section -->
                     <tr>
                         <td style="text-align: center;">
-                            <h1 style="font-size: 26px; color: #333333;">New Event Booking Alert</h1>
+                            <h1 style="font-size: 26px; color: #333333;">Hi {{ $user->first_name }},</h1>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: center;">
-                            <p style="font-size: 16px; color: #666666;">User <strong>{{ $first_name }} {{ $last_name }}</strong> has booked the event <strong>{{ $eventName }}</strong>.</p>
-                        </td>
-                    </tr>
-
-                    <!-- Event Details Section -->
-                    <tr>
-                        <td style="padding-top: 20px; text-align: center;">
-                            <p style="font-size: 16px; color: #666666;">Email ID: {{ $email }}</p>
-                            <p style="font-size: 16px; color: #666666;">Event Date: {{ \Carbon\Carbon::parse($date)->format('F d, Y') }}</p>
+                            <p style="font-size: 16px; color: #666666;">We wanted to inform you that your membership has expired as of <strong>{{ \Carbon\Carbon::now()->format('d M Y') }}</strong>.</p>
                         </td>
                     </tr>
 
                     <!-- Call to Action -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <a href="#" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Booking Details</a>
+                            <a href="#" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Renew Your Membership</a>
                         </td>
                     </tr>
 
-                    <!-- Footer Section -->
+                    <!-- Message and Footer Section -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <p style="font-size: 16px; color: #666666;">Thank you for using our services!</p>
+                            <p style="font-size: 16px; color: #666666;">Thank you for being with us!</p>
                             <p style="font-size: 14px; color: #999999;">Best regards,</p>
-                            <p style="font-size: 14px; color: #999999;"><strong>The Event Team</strong></p>
+                            <p style="font-size: 14px; color: #999999;"><strong>The SAREP Team</strong></p>
                         </td>
                     </tr>
 

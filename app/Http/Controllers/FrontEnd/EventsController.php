@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Event;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class EventsController extends Controller
 {
@@ -320,7 +321,7 @@ class EventsController extends Controller
 
         // Calculate the amount with a membership discount (if applicable)
         $isMember = $user->hasRole('member'); // Assuming a 'is_subscribed' flag in users table
-        $amount = $isMember ? $event->price_member : $event->price_non_member; // 20% discount for members
+        $amount = $isMember ? $event->price_member : $event->price_non_member; 
 
         // Store the booking
         $booking = Booking::create([
@@ -336,6 +337,9 @@ class EventsController extends Controller
         foreach ($admins as $admin) {
             \Mail::to($admin->email)->send(new \App\Mail\AdminBookingNotification($booking));
         }
+        $user=$booking->user;
+        \Mail::to($user->email)->send(new \App\Mail\UserBookingNotification($booking));
+
 
         return redirect()->route('booking-confirmation')->with('success', 'Event booked successfully! Your booking ID is ' . $bookingId);
     }
@@ -391,4 +395,57 @@ class EventsController extends Controller
         $attendees = Booking::where('user_id', $user->id)->with('event')->with('user')->get();
         return view('frontend.events.view-booking')->with('attendees', $attendees);
     }
+
+    public function eventReminder(){
+
+   
+        // Get the current date + 2 days
+        $reminderDate = Carbon::now('Asia/Kolkata')->addDays(2)->format('Y-m-d');
+        $events = Event::where('date',$reminderDate)->get();
+        
+        foreach ($events as $event) {
+            $bookings = Booking::where('event_id', $event->id)->get();
+            foreach ($bookings as $booking) {
+                $user = $booking->user;
+                 if ($user) {
+                     \Mail::to($user->email)->send(new \App\Mail\EventReminderNotification($booking));
+                 } else {
+                     \Log::warning("User not found for booking ID: {$booking->id}");
+                 }
+             }
+        }
+     
+     
+     }
+
+     public function sendFeedbackRequest()
+{
+    // Get the current date - 2 days (events that ended 2 days ago)
+    $feedbackDate = Carbon::now('Asia/Kolkata')->subDays(2)->format('Y-m-d');
+    
+    // Retrieve events that ended 2 days ago
+    $events = Event::where('date', $feedbackDate)->get();
+    
+    foreach ($events as $event) {
+        // Get all bookings for the event
+        $bookings = Booking::where('event_id', $event->id)->get();
+
+        foreach ($bookings as $booking) {
+            // Get the user associated with the booking
+            $user = $booking->user;
+
+            // Check if user exists
+            if ($user) {
+                // Send feedback email to user
+                \Mail::to($user->email)->send(new \App\Mail\FeedbackFormNotification($booking));
+            } else {
+                // Log if user is not found
+                \Log::warning("User not found for booking ID: {$booking->id}");
+            }
+        }
+    }
+}
+
+
+
 }
