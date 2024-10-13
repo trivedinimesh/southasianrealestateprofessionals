@@ -16,13 +16,13 @@ class GalleryController extends Controller
         return view('frontend.gallery.index', ['galleries' => $galleries]);
     }
 
-    public function list(Request $request)
+    public function list()
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
     
-        $galleries = Gallery::all();
+        $galleries = Gallery::paginate(10);
     
         return view('frontend.gallery.list', [
             'galleries' => $galleries

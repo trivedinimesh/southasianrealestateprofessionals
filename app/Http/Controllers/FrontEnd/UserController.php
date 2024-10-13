@@ -60,7 +60,7 @@ class UserController extends Controller
     }
 
     // Retrieve the filtered users
-    $users = $query->get();
+    $users = $query->paginate(10);
     $roles = Role::all(); // Assuming you have a Role model
 
                 return view('frontend.users.index')->with('users', $users)->with('roles', $roles);
@@ -216,7 +216,7 @@ class UserController extends Controller
         }
 
         // $members = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
-        $members = User::role('member')->get(); // Paginate results
+        $members = User::role('member')->paginate(10); // Paginate results
 
         return view('frontend.users.member')->with('members', $members);
     }

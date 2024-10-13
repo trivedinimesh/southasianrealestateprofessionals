@@ -62,7 +62,7 @@ class SubscriptionController extends Controller
 
     public function listMembership()
     {
-        $subscriptions = Subscription::get();
+        $subscriptions = Subscription::paginate(10);
 
         return view('frontend.membership.list')->with('subscriptions', $subscriptions);
     }

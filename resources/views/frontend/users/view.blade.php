@@ -432,20 +432,7 @@
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div class="pagination__wrapper">
-                                        <div class="basic__pagination d-flex align-items-center justify-content-end">
-                                            <nav>
-                                                <ul>
-                                                    <li><a href="#">1</a></li>
-                                                    <li><span class="current">2</span></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#"><i class="fa-regular fa-arrow-right-long"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                    </div>
+                                    {{ $blog->links('pagination::bootstrap-5') }}
                                 </div>
                             </div>
                         </div>

@@ -86,20 +86,7 @@ Member Management
                     </table>
                 </div>
                 
-                <div class="pagination__wrapper">
-                    <div class="basic__pagination d-flex align-items-center justify-content-end">
-                        <nav>
-                            <ul>
-                                <li><span class="current">1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa-regular fa-arrow-right-long"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                {{ $members->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

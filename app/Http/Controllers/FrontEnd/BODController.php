@@ -44,7 +44,7 @@ class BODController extends Controller
             });
         }
 
-        $bods = $query->get();
+        $bods = $query->paginate(10);
         return view('frontend.bod.index', ['bods' => $bods]);
     }
 

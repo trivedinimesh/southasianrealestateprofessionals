@@ -39236,9 +39236,9 @@ fieldset:disabled .btn {
     display: block;
     padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
     font-size: var(--bs-pagination-font-size);
-    color: var(--bs-pagination-color);
+    color: var(--clr-text-primary);
     text-decoration: none;
-    background-color: var(--bs-pagination-bg);
+    background-color: var(--clr-bg-14);
     border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
         border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -48399,7 +48399,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     margin-inline-start: 15px;
 }
 
-.basic__pagination ul li a {
+.page-item {
     width: 30px;
     height: 30px;
     display: flex;
@@ -48414,9 +48414,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     background-color: var(--clr-bg-14);
     overflow: hidden;
     z-index: 5;
+    margin-left: 8px;
 }
 
-.basic__pagination ul li a:before {
+.page-item:before {
     position: absolute;
     content: "";
     height: 100%;
@@ -48428,21 +48429,21 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     transition: all 0.3s ease-out 0s;
 }
 
-.basic__pagination ul li a:hover {
+.page-item:hover {
     border-color: #0049AD;
     color: var(--clr-text-primary);
 }
 
-.bd-theme-dark .basic__pagination ul li a:hover {
+.bd-theme-dark .page-item:hover {
     color: var(--clr-common-white);
 }
 
-.basic__pagination ul li a:hover:before {
+.page-item:hover:before {
     opacity: 1;
     visibility: visible;
 }
 
-.basic__pagination ul li span {
+,page-item {
     width: 30px;
     height: 30px;
     display: flex;
@@ -48460,7 +48461,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     z-index: 5;
 }
 
-.bd-theme-dark .basic__pagination ul li span {
+.bd-theme-dark ,page-item {
     color: var(--clr-common-white);
 }
 
@@ -51305,21 +51306,6 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
     position: relative;
 }
 
-.user__portfolio:after {
-    position: absolute;
-    content: "";
-    width: 0.5em;
-    height: 0.5em;
-    border-width: 1px 0 0 1px;
-    border-style: solid;
-    border-color: initial;
-    inset-inline-end: 0;
-    transform: rotate(-135deg) translateY(-50%);
-    transform-origin: top;
-    top: 50%;
-    transition: all 0.3s ease-out;
-    border-color: var(--clr-text-secondary);
-}
 
 @media (max-width: 575px),
 only screen and (min-width: 992px) and (max-width: 1199px) {

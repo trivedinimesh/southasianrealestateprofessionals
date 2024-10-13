@@ -41,7 +41,7 @@ class SponsorController extends Controller
         }
         
         // Retrieve the filtered sponsors
-        $sponsor = $query->get();
+        $sponsor = $query->paginate(10);
         $sponsorData = Sponsor::all();
 
         return view('frontend.sponsor.index')->with('sponsors', $sponsor)->with('sponsorData',$sponsorData);
