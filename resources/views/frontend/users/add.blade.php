@@ -67,17 +67,15 @@ Add User
                                                 @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                        <div class="singel__input-field mb-15"><label
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6 row">
+                                        <div class="col-sm-3 singel__input-field mb-15"><label
                                             class="input__field-text">ISD Code</label>
                                             <input name="isd_code" type="text" />
                                             @error('isd_code')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
-                                    </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                        <div class="singel__input-field mb-15"><label
+                                        <div class="col-sm-9 singel__input-field mb-15"><label
                                             class="input__field-text">Phone Number</label>
                                             <input name="phone_number" type="text" />
                                             @error('phone_number')

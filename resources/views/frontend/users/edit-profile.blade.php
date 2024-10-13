@@ -71,14 +71,21 @@ Edit Profile
                                                 @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
 
-                                        <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Phone Number</label>
-                                                <input name="phone_number" type="text" value="{{$current_user->phone_number}}"/>
-                                                @error('phone_number')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                @enderror
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6 row">
+                                        <div class="col-sm-3 singel__input-field mb-15"><label
+                                            class="input__field-text">ISD Code</label>
+                                            <input name="isd_code" type="text" value="{{$current_user->isd_code}}"/>
+                                            @error('isd_code')
+                                                <span class="text-danger">{{$message}}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-sm-9 singel__input-field mb-15"><label
+                                            class="input__field-text">Phone Number</label>
+                                            <input name="phone_number" type="text" value="{{$current_user->phone_number}}"/>
+                                            @error('phone_number')
+                                                <span class="text-danger">{{$message}}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <button class="input__btn w-100" type="submit">Update Profile</button>
