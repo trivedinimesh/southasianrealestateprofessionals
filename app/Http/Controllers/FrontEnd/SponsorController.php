@@ -4,6 +4,7 @@ namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\SponsorRequest;
 use App\Models\Sponsor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -40,7 +41,7 @@ class SponsorController extends Controller
         }
         
         // Retrieve the filtered sponsors
-        $sponsor = $query->get();
+        $sponsor = $query->paginate(10);
         $sponsorData = Sponsor::all();
 
         return view('frontend.sponsor.index')->with('sponsors', $sponsor)->with('sponsorData',$sponsorData);
@@ -56,32 +57,33 @@ class SponsorController extends Controller
         return view('frontend.sponsor.add')->with('sponsors', $sponsors);
     }
 
-    public function store(Request $request)
+    public function store(SponsorRequest $request)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        // validations
-        $request->validate([
-        'name' => 'required',
-        'category' => 'required',
-        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-        ]);
-      
-        $Sponsor = new Sponsor;
-      
-        $file_name = time() . '.' . request()->image->getClientOriginalExtension();
-        request()->image->move(public_path('images/sponsors'), $file_name);
-      
-        $Sponsor->name = $request->name;
-        $Sponsor->category = $request->category;
-        $Sponsor->image = $file_name;
-        $Sponsor->created_by = Auth::user()->id;
-        $Sponsor->updated_by = Auth::user()->id;
-      
-        $Sponsor->save();
-        return redirect()->route('sponsor.index')->with('success', 'Sponsor created successfully.');
+        try {
+            $Sponsor = new Sponsor;
+        
+            $file_name = time() . '.' . request()->image->getClientOriginalExtension();
+            request()->image->move(public_path('images/sponsors'), $file_name);
+        
+            $Sponsor->name = $request->name;
+            $Sponsor->category = $request->category;
+            $Sponsor->image = $file_name;
+            $Sponsor->created_by = Auth::user()->id;
+            $Sponsor->updated_by = Auth::user()->id;
+        
+            $Sponsor->save();
+            return redirect()->route('sponsor.index')->with('success', 'Sponsor created successfully.');
+        } catch (ModelNotFoundException $e) {
+            return redirect()->route('sponsor.index')->with('error', 'Sponsor not found.');
+        } catch (\Throwable $th) {
+            // Log any errors
+            \Log::error('Error updating sponsor: ' . $th->getMessage());
+            return back()->with('error', 'Something went wrong while updating Sponsor data.');
+        }
     }
 
 
@@ -104,7 +106,7 @@ class SponsorController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
+    public function update(SponsorRequest $request, $id)
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
@@ -113,13 +115,6 @@ class SponsorController extends Controller
         try {
             // Retrieve the existing blog by ID
             $Sponsor = Sponsor::findOrFail($id);
-            
-            // Validate the request data
-            $request->validate([
-                'name' => 'sometimes',
-                'category' => 'sometimes',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            ]);
     
             if ($request->hasFile('image')) {
                 // Delete the old image if it exists

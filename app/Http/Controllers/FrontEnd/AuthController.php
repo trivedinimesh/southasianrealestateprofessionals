@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\SignupRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use App\Mail\UserWelcomeNotification;
 
 
@@ -23,6 +25,28 @@ class AuthController extends Controller
         return view('frontend.auth.login');
     }
 
+    
+    // Handle login action
+    public function actionlogin(LoginRequest $request)
+    {
+
+        if (Auth::attempt(['email' => $request['email'], 'password' => $request['password']])) {
+            $user = Auth::user();
+
+            if ($user->hasRole('admin')) {
+                return redirect()->route('dashboard')
+                ->withSuccess('You have successfully logged in as admin.');
+            }
+            
+            return redirect()->route('home')
+                ->withSuccess('You have successfully logged in.');
+        }
+
+        return back()->withErrors([
+            'email' => 'Invalid credentials. Please try again.',
+        ])->withInput();
+    }
+        
     // Show registration form
     public function signup()
     {
@@ -32,57 +56,17 @@ class AuthController extends Controller
         return view('frontend.auth.signup');
     }
 
-    // Handle login action
-    public function actionlogin(Request $request)
-    {
-        // Validate input with stricter rules
-        $validated = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
-
-        // Attempt login
-        if (Auth::attempt(['email' => $validated['email'], 'password' => $validated['password']])) {
-            $user = Auth::user(); // Cached user
-
-            if ($user->hasRole('admin')) {
-                return redirect()->route('dashboard')
-                    ->withSuccess('You have successfully logged in as admin.');
-            }
-
-            return redirect()->route('home')
-                ->withSuccess('You have successfully logged in.');
-        }
-
-    
-
-        // Invalid credentials
-        return back()->withErrors([
-            'email' => 'Invalid credentials. Please try again.',
-        ])->withInput();
-    }
-
     // Handle registration action
-    public function actionSignup(Request $request)
+    public function actionSignup(SignupRequest $request)
     {
-        // Validate user input
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'isd_code' => 'required|string|max:10',
-            'phone_number' => 'required|string|max:15|unique:users',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|min:6', // Password confirmation
-        ]);
-
         // Create the user
         $user = User::create([
-            'first_name' => $validatedData['first_name'],
-            'last_name' => $validatedData['last_name'],
-            'email' => $validatedData['email'],
-            'isd_code' => $validatedData['isd_code'],
-            'phone_number' => $validatedData['phone_number'],
-            'password' => bcrypt($validatedData['password']),
+            'first_name' => $request['first_name'],
+            'last_name' => $request['last_name'],
+            'email' => $request['email'],
+            'isd_code' => $request['isd_code'],
+            'phone_number' => $request['phone_number'],
+            'password' => bcrypt($request['password']),
         ]);
 
         // Assign default role
@@ -134,13 +118,8 @@ class AuthController extends Controller
     }
 
     // Handle password change
-    public function changePassword(Request $request)
+    public function changePassword(ChangePasswordRequest $request)
     {
-        // Validate the input
-        $request->validate([
-            'current_password' => 'required',
-            'new_password' => 'required|min:8|confirmed', // Confirmed validation
-        ]);
 
         // Check if the current password matches
         if (!Hash::check($request->current_password, Auth::user()->password)) {

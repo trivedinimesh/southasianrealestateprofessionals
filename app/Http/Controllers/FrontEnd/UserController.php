@@ -60,7 +60,7 @@ class UserController extends Controller
     }
 
     // Retrieve the filtered users
-    $users = $query->get();
+    $users = $query->paginate(10);
     $roles = Role::all(); // Assuming you have a Role model
 
                 return view('frontend.users.index')->with('users', $users)->with('roles', $roles);
@@ -218,7 +218,7 @@ class UserController extends Controller
         }
 
         // $members = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
-        $members = User::role('member')->get(); // Paginate results
+        $members = User::role('member')->paginate(10); // Paginate results
 
         return view('frontend.users.member')->with('members', $members);
     }
@@ -289,28 +289,4 @@ class UserController extends Controller
             return back()->with('error', 'Something went wrong while updating the profile.');
         }
     }
-
-    // public function changePassword(Request $request)
-    // {
-    //     // Validate current and new password
-    //     $request->validate([
-    //         'current_password' => 'required',
-    //         'new_password' => 'required|min:6|confirmed',
-    //     ]);
-
-    //     $user = Auth::user();
-
-    //     // Check if current password matches
-    //     if (!Hash::check($request->current_password, $user->password)) {
-    //         return back()->withErrors(['current_password' => 'Your current password does not match our records.']);
-    //     }
-
-    //     // Update password
-    //     $user->password = bcrypt($request->new_password);
-    //     $user->save();
-
-    //     return redirect()->route('profile')->with('success', 'Password changed successfully.');
-    // }
-
-    
 }

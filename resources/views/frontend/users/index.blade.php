@@ -81,7 +81,7 @@ Dashboard
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
@@ -90,10 +90,11 @@ Dashboard
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
                         @foreach ($users as $user)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$user->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>
@@ -133,21 +134,8 @@ Dashboard
                         </tbody>
                     </table>
                 </div>
+                {{ $users->links('pagination::bootstrap-5') }}
                 
-                <div class="pagination__wrapper">
-                    <div class="basic__pagination d-flex align-items-center justify-content-end">
-                        <nav>
-                            <ul>
-                                <li><span class="current">1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa-regular fa-arrow-right-long"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

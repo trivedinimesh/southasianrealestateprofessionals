@@ -23,6 +23,14 @@ class SubscriptionController extends Controller
             return redirect()->back()->with('error', 'You are a admin, you dont need membership');
         }
 
+        if (Subscription::where('user_id', $user->id)->where('status', 'active')->exists()) {
+            return redirect()->back()->with('error', 'You already have an active membership.');
+        }
+
+        if (Subscription::where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'You were our member in past please renew your cancelled or expired membership.');
+        }
+
         $activeSubscription = Subscription::where('user_id', $user->id)
                                        ->where('status', 'active')
                                        ->where('ends_at', '>', Carbon::now()) // Check if the subscription is still valid
@@ -65,7 +73,7 @@ class SubscriptionController extends Controller
 
     public function listMembership()
     {
-        $subscriptions = Subscription::get();
+        $subscriptions = Subscription::paginate(10);
 
         return view('frontend.membership.list')->with('subscriptions', $subscriptions);
     }
@@ -73,12 +81,12 @@ class SubscriptionController extends Controller
     public function subscriptionDetails()
     {
         $user= Auth::user();
-        $subscription = Subscription::where('user_id', $user->id)
+        $subscriptions = Subscription::where('user_id', $user->id)
                                     ->with('plan')
                                     ->latest()
-                                    ->first();
+                                    ->paginate(10);
 
-        return view('frontend.membership.details')->with('subscription', $subscription);
+        return view('frontend.membership.details')->with('subscriptions', $subscriptions);
     }
 
     public function cancelSubscription($id)

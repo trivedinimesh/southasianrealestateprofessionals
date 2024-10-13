@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\GalleryRequest;
 use App\Models\Gallery;
 use App\Models\Event;
 use Illuminate\Support\Facades\Auth;
@@ -16,13 +16,13 @@ class GalleryController extends Controller
         return view('frontend.gallery.index', ['galleries' => $galleries]);
     }
 
-    public function list(Request $request)
+    public function list()
     {
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
     
-        $galleries = Gallery::all();
+        $galleries = Gallery::paginate(10);
     
         return view('frontend.gallery.list', [
             'galleries' => $galleries
@@ -45,14 +45,8 @@ class GalleryController extends Controller
     }
 
     // Store multiple images in the gallery
-    public function store(Request $request)
+    public function store(GalleryRequest $request)
     {
-        // Validate the request to ensure files and title are provided
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-        ]);
-
         // Loop through each image, save to storage and database
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -79,11 +73,6 @@ class GalleryController extends Controller
 
     // Update image
     // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-    //     ]);
-
     //     $gallery = Gallery::findOrFail($id);
 
     //     if ($request->hasFile('image')) {
