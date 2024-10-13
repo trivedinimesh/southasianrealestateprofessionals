@@ -71,27 +71,29 @@ Dashboard
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
-                                <th>Image</th>
+                                <th>Sr. No.</th>
                                 <th>Title</th>
+                                <th>Image</th>
                                 <th>Keywords</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
                         @foreach ($blogs as $blog)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$blog->id}}
-                                        </span></div>
-                                </td>
-                                <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/blogs/'.$blog->image)}}" alt="">
+                                    <div class="attendant__user-item">
+                                        <div class="attendant__user-title"><span> #{{$i++}} </span></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         <div class="attendant__user-title"><span> {{$blog->title}} </span></div>
                                     </div>
+                                </td>
+                                <td>
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/blogs/'.$blog->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
@@ -119,20 +121,7 @@ Dashboard
                     </table>
                 </div>
                 
-                <div class="pagination__wrapper">
-                    <div class="basic__pagination d-flex align-items-center justify-content-end">
-                        <nav>
-                            <ul>
-                                <li><span class="current">1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa-regular fa-arrow-right-long"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                {{ $blogs->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

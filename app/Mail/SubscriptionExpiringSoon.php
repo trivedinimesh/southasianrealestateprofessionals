@@ -29,7 +29,7 @@ class SubscriptionExpiringSoon extends Mailable
 
     public function build()
     {
-        return $this->subject('Your Subscription is Expiring Soon!')
+        return $this->subject('Your Membership is Expiring Soon!')
                     ->view('mails.user.expiring-soon')
                     ->with([
                         'first_name' => $this->user->first_name,

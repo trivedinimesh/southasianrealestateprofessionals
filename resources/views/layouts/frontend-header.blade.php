@@ -13,13 +13,6 @@
                 <button><i class="fal fa-times"></i></button>
               </div>
             </div>
-            <div class="offcanvas__search mb-25">
-              <form action="#">
-                <input type="text" placeholder="" /><button type="submit">
-                  <i class="far fa-search"></i>
-                </button>
-              </form>
-            </div>
             <div class="mobile-menu fix mb-40 mean-container">
               <div class="mean-bar">
                 <nav class="mean-nav">

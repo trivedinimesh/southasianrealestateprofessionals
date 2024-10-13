@@ -25,12 +25,14 @@ class EventReminderNotification extends Mailable
     public function build()
     {
         return $this->subject('Upcoming Event Reminder')
-                    ->view('mails.user.eventreminder')
+                    ->view('mails.user.event-reminder')
                     ->with([
                         'event_title' => $this->booking->event->title,
                         'event_date' => $this->booking->event->date,
                         'first_name' => $this->booking->user->first_name,
-                        'last_name' => $this->booking->user->last_name
+                        'last_name' => $this->booking->user->last_name,
+                        'image'=>$this->booking->event->image
+
                     ]);
     }
 }

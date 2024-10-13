@@ -104,7 +104,7 @@
           <div class="sidebar_widget">
             <h3 class="widget_title">Recent Post</h3>
             <ul class="recent_post_list unordered_list_block">
-            @foreach ($blogs as $blog)
+            @foreach ($blogs->take(5) as $blog)
               <li>
                 <div class="recent_post_item">
                   <a class="item_image" href="{{route('blog-detail', $blog->id)}}"

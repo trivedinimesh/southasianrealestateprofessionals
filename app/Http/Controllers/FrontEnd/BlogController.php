@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Requests\BlogRequest;
 
 class BlogController extends Controller
 {
@@ -102,32 +103,24 @@ class BlogController extends Controller
         return view('frontend.blog.add', compact('keywords', 'tags'));
     }
 
-    public function store(Request $request)
+    public function store(BlogRequest $request)
     {
          if (!Auth::user()->hasRole('admin')) {
                 return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
             }
             
 
-        $validated = $request->validate([
-            'title' => 'required',
-            'body' => 'required|string|max:16777215',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'keywords' => 'sometimes|array',
-            'tags' => 'sometimes|array',
-        ]);
-
         DB::beginTransaction();
 
         try {
             $blog = new Blog();
-            $blog->title = $validated['title'];
-            $blog->body = $validated['body'];
+            $blog->title = $request['title'];
+            $blog->body = $request['body'];
             $blog->image = $this->uploadImage($request);
 
             $blog->save();
 
-            $this->syncKeywordsAndTags($blog, $validated['keywords'] ?? [], $validated['tags'] ?? []);
+            $this->syncKeywordsAndTags($blog, $request['keywords'] ?? [], $request['tags'] ?? []);
 
             DB::commit();
             return redirect()->route('blogs.list')->with('success', 'Blog created successfully.');
@@ -152,34 +145,25 @@ class BlogController extends Controller
         return view('frontend.blog.edit', compact('blog', 'keywords', 'tags'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(BlogRequest $request, string $id)
     {
          if (!Auth::user()->hasRole('admin')) {
                 return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
             }
             
-
-        $validated = $request->validate([
-            'title' => 'required',
-            'body' => 'required|string|max:16777215',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'keywords' => 'sometimes|array',
-            'tags' => 'sometimes|array',
-        ]);
-
         DB::beginTransaction();
 
         try {
             $blog = Blog::findOrFail($id);
-            $blog->title = $validated['title'];
-            $blog->body = $validated['body'];
+            $blog->title = $request['title'];
+            $blog->body = $request['body'];
             if ($request->hasFile('image')) {
                 $blog->image = $this->uploadImage($request, $blog->image);
             }
 
             $blog->save();
 
-            $this->syncKeywordsAndTags($blog, $validated['keywords'] ?? [], $validated['tags'] ?? []);
+            $this->syncKeywordsAndTags($blog, $request['keywords'] ?? [], $request['tags'] ?? []);
 
             DB::commit();
             return redirect()->route('blogs.list')->with('success', 'Blog updated successfully.');

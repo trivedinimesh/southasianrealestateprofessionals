@@ -26,7 +26,7 @@ class UserSubscriptionNotification extends Mailable
 
     public function build()
     {
-        return $this->subject('Plan Subscribed Successfully')
+        return $this->subject('Membership Subscribed Successfully')
                     ->view('mails.user.subscription')
                     ->with([
                         'first_name' => $this->subscription->user->first_name,

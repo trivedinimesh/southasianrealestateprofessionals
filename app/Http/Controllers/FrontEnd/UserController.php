@@ -60,7 +60,7 @@ class UserController extends Controller
     }
 
     // Retrieve the filtered users
-    $users = $query->get();
+    $users = $query->paginate(10);
     $roles = Role::all(); // Assuming you have a Role model
 
                 return view('frontend.users.index')->with('users', $users)->with('roles', $roles);
@@ -85,12 +85,15 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
+         // Check if the logged-in user has admin role
+         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
 
+        // Begin a database transaction
         DB::beginTransaction();
         try {
+            // Create the user and assign a role
             $user = User::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
@@ -100,24 +103,23 @@ class UserController extends Controller
                 'password' => bcrypt($request->password) // Use the user's password
             ])->assignRole($request->role);
 
-         
+            // Commit the transaction after user creation
             DB::commit();
 
-           
-            try {
-                \Mail::to($user->email)->send(new \App\Mail\UserWelcomeNotification($user));
-                \Log::message('\welcome email to user: ' . $user->email . '. Error: ' . $e->getMessage());
-                echo"user mail send".$user->email;
-            } catch (\Exception $e) {
-                \Log::error('Failed to send welcome email to user: ' . $user->email . '. Error: ' . $e->getMessage());
-            }
+          
 
-
+            // Redirect back with success message if user creation and email sending is successful
             return redirect()->route('users.index')->with('success', 'User stored successfully.');
+
         } catch (\Throwable $th) {
+            // Rollback the transaction if something goes wrong
             DB::rollBack();
+            // Log the error for debugging
+            Log::error('Error storing user: ' . $th->getMessage());
+            // Redirect back with error message
             return back()->with('error', 'Something went wrong while saving user data.');
         }
+    
     }
 
     /**
@@ -216,7 +218,7 @@ class UserController extends Controller
         }
 
         // $members = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
-        $members = User::role('member')->get(); // Paginate results
+        $members = User::role('member')->paginate(10); // Paginate results
 
         return view('frontend.users.member')->with('members', $members);
     }
@@ -248,27 +250,7 @@ class UserController extends Controller
     }
 }
 
-public function eventReminder(){
 
-   
-   // Get the current date + 2 days
-   $reminderDate = Carbon::now('Asia/Kolkata')->addDays(2)->format('Y-m-d');
-   $events = Event::where('date',$reminderDate)->get();
-   
-   foreach ($events as $event) {
-       $bookings = Booking::where('event_id', $event->id)->get();
-       foreach ($bookings as $booking) {
-           $user = $booking->user;
-            if ($user) {
-                \Mail::to($user->email)->send(new \App\Mail\EventReminderNotification($booking));
-            } else {
-                \Log::warning("User not found for booking ID: {$booking->id}");
-            }
-        }
-   }
-
-
-}
 
     public function profile()
     {
@@ -307,28 +289,4 @@ public function eventReminder(){
             return back()->with('error', 'Something went wrong while updating the profile.');
         }
     }
-
-    // public function changePassword(Request $request)
-    // {
-    //     // Validate current and new password
-    //     $request->validate([
-    //         'current_password' => 'required',
-    //         'new_password' => 'required|min:6|confirmed',
-    //     ]);
-
-    //     $user = Auth::user();
-
-    //     // Check if current password matches
-    //     if (!Hash::check($request->current_password, $user->password)) {
-    //         return back()->withErrors(['current_password' => 'Your current password does not match our records.']);
-    //     }
-
-    //     // Update password
-    //     $user->password = bcrypt($request->new_password);
-    //     $user->save();
-
-    //     return redirect()->route('profile')->with('success', 'Password changed successfully.');
-    // }
-
-    
 }

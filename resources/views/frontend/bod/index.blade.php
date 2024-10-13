@@ -54,9 +54,9 @@ Board of Directors
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
-                                <th>Photo</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
+                                <th>Photo</th>
                                 <th>Designation</th>
                                 <th>Facebook</th>
                                 <th>Twitter</th>
@@ -65,19 +65,22 @@ Board of Directors
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
+
                         @foreach ($bods as $bod)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$bod->id}}
-                                        </span></div>
-                                </td>
-                                <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/bods/'.$bod->image)}}" alt="">
+                                    <div class="attendant__user-item">
+                                        <div class="attendant__user-title"><span> #{{$i++}}</span></div>
+                                    </div>
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
                                         <div class="attendant__user-title"><span> {{$bod->first_name}} {{$bod->last_name}} </span></div>
                                     </div>
+                                </td>
+                                <td>
+                                    <img class="" style="max-width:60px;" src="{{ asset('images/bods/'.$bod->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div class="attendant__user-item">
@@ -120,20 +123,7 @@ Board of Directors
                     </table>
                 </div>
                 
-                <!-- <div class="pagination__wrapper">
-                    <div class="basic__pagination d-flex align-items-center justify-content-end">
-                        <nav>
-                            <ul>
-                                <li><span class="current">1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa-regular fa-arrow-right-long"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div> -->
+                {{ $bods->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

@@ -39,7 +39,7 @@ Membership Details
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Plan Name</th>
                                 <th>Price</th>
                                 <th>Status</th>
@@ -48,9 +48,11 @@ Membership Details
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
+                        @foreach ($subscriptions as $subscription)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$subscription->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>
@@ -92,24 +94,13 @@ Membership Details
                                     @endif
                                 </td>
                             </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
                 
-                <div class="pagination__wrapper">
-                    <div class="basic__pagination d-flex align-items-center justify-content-end">
-                        <nav>
-                            <ul>
-                                <li><span class="current">1</span></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="fa-regular fa-arrow-right-long"></i></a>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                {{ $subscriptions->links('pagination::bootstrap-5') }}
             </div>
         </div>
     </div>

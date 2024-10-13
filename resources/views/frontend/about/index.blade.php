@@ -24,7 +24,7 @@ About
       <div class="col-xxl-6 col-xl-6 col-lg-6">
         <div class="about__content-wrapper mb-60">
           <div class="section__title-wrapper mb-80">
-            <span class="section__subtitle">ABOUT THIS EVENT</span>
+            <span class="section__subtitle">ABOUT SARP</span>
             <h2 class="section__title"> EXPERIENCE A TRUE DIGITAL <span class="text__highlight">CONFERENCE <svg class="title-underline" width="328" height="31" viewBox="0 0 328 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M2 29C110 8.62517 326 -19.8996 326 29" stroke="url(#paint0_linear_47_128)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
                   <defs>
@@ -39,10 +39,41 @@ About
           </div>
           <div class="about__content">
             <div class="about__text">
-              <h4> How you transform your business as technology, consumer habits industry dynamic </h4>
-              <p class="mb-30"> Velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh. </p>
-              <p> Lorem ipsum proin gravida nibh vel velit auctor aliquet. Aeneansollicitudin, lorem quis bibendum auctonisi elit consequat ipsum nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursusa sit amet mauris. Morbi accumsan ipsum velit.” Nam nec tellus a odio tincidunt. </p>
-            </div>
+              <p class="mb-35">Think of SAREP as the toolbox that equips you with the right tools to build your success in real estate. From first-time agents to seasoned veterans, everyone finds something to boost their career here.</p>
+              <h3 class="mb-25">
+              What We Offer
+              </h3>
+              <ul>
+                <li class="d-flex align-items-center mb-25">
+                  <div class="offcanvas__contact-icon mr-15">
+                    <i class="fal fa-map-marker-alt"></i>
+                  </div>
+                  <div class="offcanvas__contact-text">
+                    <h4>Networking Goldmine</h4>
+                    <p>Meet industry pioneers, form lasting partnerships, and expand your reach within the South Asian real estate community.</p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-center mb-25">
+                  <div class="offcanvas__contact-icon mr-15">
+                  <i class="fal fa-map-marker-alt"></i>
+                  </div>
+                  <div class="offcanvas__contact-text">
+                    <h4>Learn from the Best</h4>
+                    <p>Access cutting-edge workshops, expert webinars, and mentorship from top real estate professionals. No more wondering where to get reliable information—SAREP is your one-stop learning hub.</p>
+                  </div>
+                </li>
+                <li class="d-flex align-items-center mb-25">
+                  <div class="offcanvas__contact-icon mr-15">
+                  <i class="fal fa-map-marker-alt"></i>
+                  </div>
+                  <div class="offcanvas__contact-text">
+                    <h4>Grow Your Business</h4>
+                    <p>Our members d͏on͏’t just close d͏e͏al͏s—they build lasti͏ng re͏lationships and achieve͏ su͏stain͏able g͏rowth. With SAREP, you get the ͏tools and guidance͏ to͏ turn potential int͏o p͏rofit.</p>
+                  </div>
+                </li>
+              </ul>
+
+              </div>
           </div>
           <a class="fill__btn" href="{{ route('membership') }}">Join Now <i class="fa-regular fa-angle-right"></i>
           </a>
@@ -58,10 +89,7 @@ About
             <img src="{{ URL::asset('build/media/about/img2.jpg') }}" alt="image not found" />
             <div class="panel wow"></div>
           </div>
-          <span class="about__play-btn">
-            <button type="button" class="video__play-btn popup-video">
-              <i class="fa-solid fa-play"></i>PLAY TRAILER </button>
-          </span>
+          
         </div>
       </div>
     </div>
@@ -139,13 +167,7 @@ About
               </span>
             </h2>
           </div>
-          <div class="blog__pagination">
-            <div class="testimonial-slider-dot bd-swiper-dot swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal">
-              <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-              <span class="swiper-pagination-bullet"></span>
-              <span class="swiper-pagination-bullet"></span>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
