@@ -31,6 +31,10 @@ Dashboard
     @csrf
     <button type="submit">Check Expiry</button>
 </form>
+<form action="{{ route('send-feedback') }}" method="GET">
+    @csrf
+    <button type="submit">Send Feedback Form</button>
+</form>
                                 </div>
                             </div>
                         </div>

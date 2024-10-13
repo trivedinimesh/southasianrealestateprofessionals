@@ -9,6 +9,9 @@ use App\Models\Subscription;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
+use App\Mail\MembershipExpiredNotification;
+use Illuminate\Support\Facades\Mail;
+
 class SubscriptionController extends Controller
 {
     public function subscribe(Request $request, $planId)
@@ -122,9 +125,18 @@ class SubscriptionController extends Controller
             $subscription->save();
             $subscription->user->assignRole('user');
 
+            
+            $user=$subscription->user;
+              // Send the email notification to the user
+        try {
+            \Mail::to($user->email)->send(new \App\Mail\MembershipExpiredNotification($user));
+        } catch (\Exception $e) {
+            // Log any error encountered during the email sending process
+            echo $e;
         }
 
-        var_dump("expiry check");
+        }
+
     }
 
 

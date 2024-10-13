@@ -85,12 +85,15 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
+         // Check if the logged-in user has admin role
+         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
 
+        // Begin a database transaction
         DB::beginTransaction();
         try {
+            // Create the user and assign a role
             $user = User::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
@@ -100,24 +103,23 @@ class UserController extends Controller
                 'password' => bcrypt($request->password) // Use the user's password
             ])->assignRole($request->role);
 
-         
+            // Commit the transaction after user creation
             DB::commit();
 
-           
-            try {
-                \Mail::to($user->email)->send(new \App\Mail\UserWelcomeNotification($user));
-                \Log::message('\welcome email to user: ' . $user->email . '. Error: ' . $e->getMessage());
-                echo"user mail send".$user->email;
-            } catch (\Exception $e) {
-                \Log::error('Failed to send welcome email to user: ' . $user->email . '. Error: ' . $e->getMessage());
-            }
+          
 
-
+            // Redirect back with success message if user creation and email sending is successful
             return redirect()->route('users.index')->with('success', 'User stored successfully.');
+
         } catch (\Throwable $th) {
+            // Rollback the transaction if something goes wrong
             DB::rollBack();
+            // Log the error for debugging
+            Log::error('Error storing user: ' . $th->getMessage());
+            // Redirect back with error message
             return back()->with('error', 'Something went wrong while saving user data.');
         }
+    
     }
 
     /**
@@ -248,27 +250,7 @@ class UserController extends Controller
     }
 }
 
-public function eventReminder(){
 
-   
-   // Get the current date + 2 days
-   $reminderDate = Carbon::now('Asia/Kolkata')->addDays(2)->format('Y-m-d');
-   $events = Event::where('date',$reminderDate)->get();
-   
-   foreach ($events as $event) {
-       $bookings = Booking::where('event_id', $event->id)->get();
-       foreach ($bookings as $booking) {
-           $user = $booking->user;
-            if ($user) {
-                \Mail::to($user->email)->send(new \App\Mail\EventReminderNotification($booking));
-            } else {
-                \Log::warning("User not found for booking ID: {$booking->id}");
-            }
-        }
-   }
-
-
-}
 
     public function profile()
     {

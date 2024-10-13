@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Mail\UserWelcomeNotification;
+
 
 class AuthController extends Controller
 {
@@ -39,9 +41,7 @@ class AuthController extends Controller
             return redirect()->route('home')
                 ->withSuccess('You have successfully logged in.');
         }
-        
-        \Log::warning('Login attempt failed for email: ' . $request->email);
-        
+
         return back()->withErrors([
             'email' => 'Invalid credentials. Please try again.',
         ])->withInput();
@@ -76,7 +76,15 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Log user registration
-        \Log::info('New user registered: ' . $user->email);
+
+          // Send the welcome email
+          try {
+            \Mail::to($user->email)->send(new UserWelcomeNotification($user));
+        } catch (\Exception $e) {
+            // Log the error if email sending fails
+            // You can show a warning if mail fails
+            return redirect()->route('users.index')->with('warning', 'User created, but email sending failed.');
+        }
 
         // Redirect with success message
         return redirect()->route('home')
@@ -99,7 +107,6 @@ class AuthController extends Controller
         Auth::logout();
 
         // Log the logout action
-        \Log::info('User logged out.');
 
         return redirect()->route('login');
     }
@@ -125,7 +132,6 @@ class AuthController extends Controller
         ]);
 
         // Log the password change
-        \Log::info('Password changed for user: ' . Auth::user()->email);
 
         return redirect()->back()->with('success', 'Password changed successfully!');
     }
