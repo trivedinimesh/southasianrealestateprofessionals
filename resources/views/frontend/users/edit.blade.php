@@ -37,7 +37,7 @@ Edit User
                             </div>
                         </div>
                         <div class="pt-25">
-                            <form method="POST" action="{{route('users.update', $current_user->id)}}">
+                            <form method="POST" action="{{route('users.update', $user->id)}}">
                                 @csrf
                                 @method('PUT')
                                 <div class="create__input-wrapper row">
@@ -45,7 +45,7 @@ Edit User
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text" >First Name</label>
-                                                <input name="first_name" type="text" value="{{$current_user->first_name}}" />
+                                                <input name="first_name" type="text" value="{{$user->first_name}}" />
                                                 @error('first_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -55,7 +55,7 @@ Edit User
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Last Name</label>
-                                                <input name="last_name" type="text" value="{{$current_user->last_name}}"/>
+                                                <input name="last_name" type="text" value="{{$user->last_name}}"/>
                                                 @error('last_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -65,7 +65,7 @@ Edit User
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Email</label>
-                                                <input name="email" type="text" value="{{$current_user->email}}"/>
+                                                <input name="email" type="text" value="{{$user->email}}"/>
                                                 @error('email')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -75,7 +75,7 @@ Edit User
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Phone Number</label>
-                                                <input name="phone_number" type="text" value="{{$current_user->phone_number}}"/>
+                                                <input name="phone_number" type="text" value="{{$user->phone_number}}"/>
                                                 @error('phone_number')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -86,7 +86,7 @@ Edit User
                                             <label class="input__field-text">Role</label>
                                             <div class="contact__select">
                                                 <select name="role">
-                                                @foreach ($current_user->roles as $role)
+                                                @foreach ($user->roles as $role)
                                                     <option value="{{$role->name}}" disable selected>{{$role->name}}</option>
                                                 @endforeach
                                                 @foreach ($roles as $role)

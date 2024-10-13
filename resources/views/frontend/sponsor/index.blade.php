@@ -71,7 +71,7 @@ Sponsor
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Photo</th>
@@ -79,10 +79,11 @@ Sponsor
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
                         @foreach ($sponsors as $sponsor)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$sponsor->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>

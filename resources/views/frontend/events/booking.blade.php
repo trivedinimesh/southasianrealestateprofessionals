@@ -43,7 +43,7 @@ Booking List
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Event Title</th>
                                 <th>Date</th>
                                 <th>Booking Id</th>
@@ -53,10 +53,12 @@ Booking List
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
+
                         @foreach ($bookings as $booking)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$booking->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>

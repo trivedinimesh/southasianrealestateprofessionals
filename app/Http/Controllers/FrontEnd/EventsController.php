@@ -77,6 +77,8 @@ class EventsController extends Controller
 
     public function store(EventRequest $request)
     {
+        $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
+        $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
         try {
             // Image upload
             $file_name = time() . '.' . $request->image->getClientOriginalExtension();
@@ -160,8 +162,9 @@ class EventsController extends Controller
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
         
-        // $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
-        // $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
+        $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
+        $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
+        
         
         // DB::beginTransaction();
         
@@ -301,7 +304,7 @@ class EventsController extends Controller
     {
         $event = Event::findOrFail($eventId);
         $user = Auth::user();
-        $attendees = Booking::where('event_id', $eventId)->with('event')->with('user')->get();
+        $attendees = Booking::where('event_id', $eventId)->with('event')->with('user')->paginate(10);
         return view('frontend.events.attendee-list')->with('attendees', $attendees)->with('event', $event);
     }
 
@@ -339,7 +342,7 @@ class EventsController extends Controller
     public function viewBooking()
     {
         $user = Auth::user();
-        $attendees = Booking::where('user_id', $user->id)->with('event')->with('user')->get();
+        $attendees = Booking::where('user_id', $user->id)->with('event')->with('user')->paginate(10);
         return view('frontend.events.view-booking')->with('attendees', $attendees);
     }
 }

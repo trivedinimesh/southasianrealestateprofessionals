@@ -140,7 +140,7 @@ Edit Event
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Status</label>
                                             <!-- Hidden field to ensure the unchecked state is also handled -->
-                                            <input type="hidden" name="is_active" value="0">
+                                            <!-- <input type="hidden" name="is_active" value="0"> -->
                                             <input type="checkbox" name="is_active" value="1" {{ $event->is_active ? 'checked' : '' }}> Active
                                             @error('is_active')
                                                 <span class="text-danger">{{ $message }}</span>
@@ -150,7 +150,7 @@ Edit Event
                                     <div class="col-xxl-2 col-xl-2 col-lg-2">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Members Only</label>
-                                            <input type="hidden" name="members_only" value="0">
+                                            <!-- <input type="hidden" name="members_only" value="0"> -->
                                             <input type="checkbox" name="members_only" value="1" {{ $event->members_only ? 'checked' : '' }}> Active
                                             @error('members_only')
                                                 <span class="text-danger">{{$message}}</span>

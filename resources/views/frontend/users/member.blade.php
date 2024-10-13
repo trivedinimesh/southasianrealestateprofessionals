@@ -43,7 +43,7 @@ Member Management
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
@@ -51,10 +51,11 @@ Member Management
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
                         @foreach ($members as $member)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$member->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>

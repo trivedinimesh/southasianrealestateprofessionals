@@ -81,7 +81,7 @@ Dashboard
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Contact</th>
@@ -90,10 +90,11 @@ Dashboard
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
                         @foreach ($users as $user)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$user->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>

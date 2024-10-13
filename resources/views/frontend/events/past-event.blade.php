@@ -40,7 +40,7 @@ Past Events List
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Event Title</th>
                                 <th>Date</th>
                                 <th>Time</th>
@@ -48,10 +48,12 @@ Past Events List
                             </tr>
                         </thead>
                         <tbody>
+                        @php $i = 1; @endphp
+
                         @foreach ($events as $event)
                             <tr>
                                 <td>
-                                    <div class="attendant__serial"><span> #{{$event->id}}
+                                    <div class="attendant__serial"><span> #{{$i++}}
                                         </span></div>
                                 </td>
                                 <td>

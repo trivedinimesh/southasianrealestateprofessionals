@@ -39,7 +39,7 @@ Membership Details
                     <table>
                         <thead>
                             <tr>
-                                <th>ID No</th>
+                                <th>Sr. No.</th>
                                 <th>Name</th>
                                 <th>Plan Name</th>
                                 <th>Status</th>
@@ -48,10 +48,11 @@ Membership Details
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i = 1; @endphp
                             @foreach ($subscriptions as $subscription)
                                 <tr>
                                     <td>
-                                        <div class="attendant__serial"><span> #{{$subscription->id}}
+                                        <div class="attendant__serial"><span> #{{$i++}}
                                             </span></div>
                                     </td>
                                     <td>

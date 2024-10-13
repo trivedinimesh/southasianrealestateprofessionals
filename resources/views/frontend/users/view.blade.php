@@ -34,7 +34,7 @@
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>ID No</th>
+                                                    <th>Sr. No.</th>
                                                     <th>Name</th>
                                                     <th>Seminar</th>
                                                     <th>Time</th>
