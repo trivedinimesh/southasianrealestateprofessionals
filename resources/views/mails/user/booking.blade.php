@@ -39,7 +39,7 @@
                     <tr>
                         <td style="padding-top: 20px; text-align: center;">
                             <p style="font-size: 16px; color: #666666;">Event Date: <strong>{{ \Carbon\Carbon::parse($date)->format('F d, Y') }}</strong></p>
-                            <p style="font-size: 16px; color: #666666;">We have sent the booking details to your email ID: <strong>{{ $email }}</strong>.</p>
+                            <p style="font-size: 16px; color: #666666;">Your booking ID is: <strong>{{ $booking_id }}</strong>.</p>
                         </td>
                     </tr>
 

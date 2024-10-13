@@ -10,7 +10,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\Subscription;
 
-class UserSubscriptionNotification extends Mailable
+class UserSubscriptionRenewalNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,8 +26,8 @@ class UserSubscriptionNotification extends Mailable
 
     public function build()
     {
-        return $this->subject('Membership Subscribed Successfully')
-                    ->view('mails.user.subscription')
+        return $this->subject('Membership Renewal Successful')
+                    ->view('mails.user.subscription-renewal')
                     ->with([
                         'first_name' => $this->subscription->user->first_name,
                         'last_name' => $this->subscription->user->last_name,

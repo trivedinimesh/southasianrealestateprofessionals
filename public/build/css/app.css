@@ -1276,27 +1276,27 @@ i[class^="flaticon-"]:before {
 }
 
 .mb-10 {
-    margin-bottom: 10px;
+    margin-bottom: 10px !important;
 }
 
 .mb-15 {
-    margin-bottom: 15px;
+    margin-bottom: 15px !important;
 }
 
 .mb-20 {
-    margin-bottom: 20px;
+    margin-bottom: 20px !important;
 }
 
 .mb-25 {
-    margin-bottom: 25px;
+    margin-bottom: 25px !important;
 }
 
 .mb-30 {
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
 }
 
 .mb-35 {
-    margin-bottom: 35px;
+    margin-bottom: 35px !important;
 }
 
 .mb-40 {

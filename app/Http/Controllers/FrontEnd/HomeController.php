@@ -15,8 +15,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->get(); // Paginate results
-        $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at')->get();
+        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')
+        ->take(4)
+        ->get(); // Paginate results
+        $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at')
+        ->take(4)
+        ->get();
         $sponsor = Sponsor::select('id', 'name', 'image')->get();
 
         return view('frontend.home')->with('events', $events)->with('blogs', $blogs)->with('sponsors', $sponsor);

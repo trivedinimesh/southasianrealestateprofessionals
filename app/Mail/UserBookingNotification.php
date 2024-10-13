@@ -34,6 +34,7 @@ class UserBookingNotification extends Mailable
                         'email' => $this->booking->user->email,
                         'eventName' => $this->booking->event->title,
                         'date' => $this->booking->event->date,
+                        'booking_id' => $this->booking->booking_id,
                     ]);
     }
 }

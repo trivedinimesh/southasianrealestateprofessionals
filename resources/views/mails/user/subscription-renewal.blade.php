@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Membership Successful</title>
+    <title>Membership Renewal Successful</title>
 </head>
 
 <body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f9f9f9;">
@@ -23,12 +23,12 @@
                     <!-- Greeting Section -->
                     <tr>
                         <td style="text-align: center;">
-                            <h1 style="font-size: 26px; color: #333333;">Membership Subscription Successful!</h1>
+                            <h1 style="font-size: 26px; color: #333333;">Membership Renewal Successful!</h1>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: center;">
-                            <p style="font-size: 16px; color: #666666;">Dear <strong>{{ $first_name }} {{ $last_name }}</strong>, you have successfully subscribed to the membership plan <strong>{{ $planName }}</strong>.</p>
+                            <p style="font-size: 16px; color: #666666;">Dear <strong>{{ $first_name }} {{ $last_name }}</strong>, you have successfully renewed your membership plan <strong>{{ $planName }}</strong>.</p>
                         </td>
                     </tr>
 

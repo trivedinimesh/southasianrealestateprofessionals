@@ -111,6 +111,9 @@ class SubscriptionController extends Controller
     public function renewSubscription($id){
         $subscription = Subscription::findOrFail($id);
         $subscription->renew();
+        $user=$subscription->user;
+        \Mail::to($user->email)->send(new \App\Mail\UserSubscriptionRenewalNotification($subscription));
+
         return redirect()->route('subscription.details')->with('success');
     }
 

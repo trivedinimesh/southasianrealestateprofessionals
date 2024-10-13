@@ -24,7 +24,7 @@ class MembershipExpiredNotification extends Mailable
 
     public function build()
     {
-        return $this->subject('Your Membership Has Expired')
+        return $this->subject('Your Membership Has Expired!')
         ->view('mails.user.membership-expired')
                     ->with([
                         'first_name' => $this->user->first_name,
