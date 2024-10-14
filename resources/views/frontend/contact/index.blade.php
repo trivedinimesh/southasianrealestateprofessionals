@@ -54,14 +54,15 @@ Contact
     <div class="row g-4">
       <div class="col-12 col-lg-6">
         <div class="contact_form">
-          <form>
+          <form action="{{ route('contact.send') }}" method="POST">
+            @csrf
             <div class="row">
               <div class="col-12 col-md-6 contact_div">
                 <div class="form-group m-0">
                   <input
                     class="form-control"
                     type="text"
-                    name="firstname"
+                    name="first_name"
                     placeholder="First Name"
                   />
                 </div>
@@ -71,7 +72,7 @@ Contact
                   <input
                     class="form-control"
                     type="text"
-                    name="lastname"
+                    name="last_name"
                     placeholder="Last Name"
                   />
                 </div>
@@ -86,64 +87,40 @@ Contact
                   />
                 </div>
               </div>
-              <div class="col-12 col-md-6 contact_div">
-                <div class="select_option m-0">
-                  <div class="nice-select false" role="button" tabindex="0">
-                    <span class="current">Select Subject</span>
-                    <ul class="list" role="menubar">
-                      <li
-                        data-value="Select Subject"
-                        class="option selected focus"
-                        role="menuitem"
-                      >
-                        Select Subject
-                      </li>
-                      <li
-                        data-value="Website Development"
-                        class="option false"
-                        role="menuitem"
-                      >
-                        Website Development
-                      </li>
-                      <li
-                        data-value="UX/UI Design"
-                        class="option false"
-                        role="menuitem"
-                      >
-                        UX/UI Design
-                      </li>
-                      <li
-                        data-value="App Development"
-                        class="option false"
-                        role="menuitem"
-                      >
-                        App Development
-                      </li>
-                      <li
-                        data-value="Video Editing"
-                        class="option false"
-                        role="menuitem"
-                      >
-                        Video Editing
-                      </li>
-                      <li
-                        data-value="Programming &amp; Tech"
-                        class="option false"
-                        role="menuitem"
-                      >
-                        Programming &amp; Tech
-                      </li>
-                      <li
-                        data-value="Business Consuting"
-                        class="option false"
-                        role="menuitem"
-                      >
-                        Business Consuting
-                      </li>
-                    </ul>
+              <div class="row">
+                  <div class="col-3 col-md-3 contact_div">
+                    <div class="form-group m-0">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="isd_code"
+                        placeholder="ISD Code"
+                        value="{{ old('isd_code') }}"
+                      />
+                    </div>
+                    @if ($errors->has('isd_code'))
+                                    <span class="text-danger">{{ $errors->first('isd_code') }}</span>
+                                @endif
+                               
                   </div>
-                </div>
+                  <div class="col-9 col-md-9 contact_div">
+                    <div class="form-group m-0">
+                      <input
+                        class="form-control"
+                        type="text"
+                        name="phone_number"
+                        placeholder="Phone Number"
+                         value="{{ old('phone_number') }}"
+                      />
+                    </div>
+                    @if ($errors->has('phone_number'))
+                                <span class="text-danger">{{ $errors->first('phone_number') }}</span>
+                            @endif
+                               
+                  </div>
+
               </div>
+         
               <div class="col contact_div">
                 <div class="form-group">
                   <textarea
@@ -153,7 +130,7 @@ Contact
                   ></textarea>
                 </div>
                 <div class="header__btn">
-                  <button type="button" class="blog_custome_btn">
+                  <button type="submit" class="blog_custome_btn">
                     Send Message
                     <i class="fa-regular fa-angle-right"></i>
                   </button>
