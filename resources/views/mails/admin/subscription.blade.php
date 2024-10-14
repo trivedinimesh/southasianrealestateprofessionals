@@ -16,7 +16,7 @@
                     <!-- Logo Section -->
                     <tr>
                         <td style="text-align: center; padding-bottom: 20px;">
-                            <img src="https://your-logo-url.com/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
+                            <img src="https://sarep.aliabcybersecurity.co.in/build/media/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
                         </td>
                     </tr>
 

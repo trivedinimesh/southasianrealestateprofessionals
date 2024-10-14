@@ -2,6 +2,16 @@
   <td style="background-color:#ffffff" bgcolor="#FFFFFF" class="grid__col">
     <table cellpadding="0" cellspacing="0" border="0" align="left" style="border-collapse:collapse;border-spacing:0;border:0;padding:0;width:100%" class="default-table">
       <tbody>
+        <!-- Logo section -->
+        <tr bgcolor="#FFFFFF">
+          <td width="20" bgcolor="#FFFFFF"></td>
+          <td align="center" style="padding-top:20px;">
+            <img src="https://sarep.aliabcybersecurity.co.in/build/media/logo.png" alt="Company Logo" width="150" style="display:block;">
+          </td>
+          <td width="20" bgcolor="#FFFFFF"></td>
+        </tr>
+
+        <!-- Main content -->
         <tr bgcolor="#FFFFFF">
           <td width="20" bgcolor="#FFFFFF" align="left"></td>
           <td style="text-align:left;background-color:#ffffff" align="left">
@@ -20,7 +30,7 @@
                       We are excited to have you join us!
                     </p>
                     <div style="text-align:center;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;padding:0">
-                      <a href="https://example.com/dashboard" style="background-color:#f05537;color:#ffffff;border-color:#f05537;display:inline-block;line-height:22px;font-weight:normal;font-size:15px;text-align:center;text-decoration:none;padding:8px 28px 12px;border-radius:4px;border-style:solid;border-width:2px;margin-bottom:16px">
+                      <a href="https://sarep.aliabcybersecurity.co.in/dashboard" style="background-color:#f05537;color:#ffffff;border-color:#f05537;display:inline-block;line-height:22px;font-weight:normal;font-size:15px;text-align:center;text-decoration:none;padding:8px 28px 12px;border-radius:4px;border-style:solid;border-width:2px;margin-bottom:16px">
                         Go to Your Dashboard
                       </a>
                     </div>
@@ -34,18 +44,8 @@
                 </tr>
                 <tr bgcolor="">
                   <td style="padding:0;padding-left:8px;padding-right:8px;text-align:left" align="left" bgcolor="" width="100%" height="">
-                    <hr style="height:1;border:none;border-top:1px solid #eeedf2;margin:40px 0;padding:0">
-                    <h2 style="padding:0;margin:12px 0;font-size:23px;line-height:32px;color:#1e0a3c;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">
-                      Next Steps
-                    </h2>
-                    <p style="font-size:15px;line-height:21px;color:#6f7287;">
-                      Here are some resources to help you get started:
-                    </p>
-                    <ul style="list-style-type:circle;font-size:15px;color:#6f7287;">
-                      <li><a href="https://example.com/tutorials" style="color:#3f60e7;text-decoration:none">Watch tutorials</a></li>
-                      <li><a href="https://example.com/resources" style="color:#3f60e7;text-decoration:none">Explore our knowledge base</a></li>
-                      <li><a href="https://example.com/community" style="color:#3f60e7;text-decoration:none">Join our community forum</a></li>
-                    </ul>
+                   
+                   
                     <hr style="height:1;border:none;border-top:1px solid #eeedf2;margin:40px 0">
                     <h2 style="font-size:23px;line-height:32px;color:#1e0a3c;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif">
                       Stay Connected
@@ -68,7 +68,7 @@
                   <td style="padding:0;padding-left:8px;padding-right:8px;text-align:left" align="left" bgcolor="" width="100%" height="">
                     <hr style="height:1;border:none;border-top:1px solid #eeedf2;margin:40px 0;padding:0">
                     <p style="text-align:center;font-size:12px;color:#6f7287;">
-                      © 2024 Example Company. All rights reserved.
+                      © 2024 South Asian Real Estate Professionals. All rights reserved.
                     </p>
                   </td>
                 </tr>

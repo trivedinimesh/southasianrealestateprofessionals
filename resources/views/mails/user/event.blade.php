@@ -16,7 +16,7 @@
                     <!-- Logo Section -->
                     <tr>
                         <td style="text-align: center; padding-bottom: 20px;">
-                            <img src="https://your-logo-url.com/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
+                            <img src="https://sarep.aliabcybersecurity.co.in/build/media/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
                         </td>
                     </tr>
 
@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: center;">
-                            <p style="font-size: 16px; color: #666666;">A new event has been added: <strong>{{ $eventTitle }}</strong>.</p>
+                            <p style="font-size: 16px; color: #666666;">A new event has been added: <strong>{{ $event_title }}</strong>.</p>
                         </td>
                     </tr>
 
@@ -36,7 +36,7 @@
                     <tr>
                         <td style="padding-top: 20px; text-align: center;">
                             <div style="background-color: #f9f9f9; border: 1px solid #dddddd; border-radius: 8px; padding: 20px; display: inline-block;">
-                                <img src="https://your-event-image-url.com/event-image.jpg" alt="Event Image" width="100%" height="auto" style="border-radius: 8px; margin-bottom: 10px;">
+                                <img src="{{$image}}" alt="Event Image" width="100%" height="auto" style="border-radius: 8px; margin-bottom: 10px;">
                                 <h2 style="font-size: 22px; color: #333333;">Event Details</h2>
                                 <p style="font-size: 16px; color: #666666;">Location: {{ $address }}, {{ $city }}, {{ $state }}, {{ $country }}, {{ $pincode }}</p>
                                 <p style="font-size: 16px; color: #666666;">Date: {{ \Carbon\Carbon::parse($date)->format('F d, Y') }}</p>
@@ -54,7 +54,7 @@
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
                             <p style="font-size: 16px; color: #666666;">Book your seats now!</p>
-                            <a href="#" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Book Now</a>
+                            <a href="{{$event_link}}" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Book Now</a>
                         </td>
                     </tr>
 
