@@ -16,7 +16,7 @@
                     <!-- Logo Section -->
                     <tr>
                         <td style="text-align: center; padding-bottom: 20px;">
-                            <img src="https://your-logo-url.com/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
+                            <img src="https://sarep.aliabcybersecurity.co.in/build/media/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
                         </td>
                     </tr>
 
@@ -40,10 +40,10 @@
                         </td>
                     </tr>
 
-                    <!-- Call to Action -->
+                    <!-- Call to Action with concatenated URL -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <a href="#" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Booking Details</a>
+                            <a href="https://sarep.aliabcybersecurity.co.in/admin/events/attandee/{{ $eventId }}" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Booking Details</a>
                         </td>
                     </tr>
 
