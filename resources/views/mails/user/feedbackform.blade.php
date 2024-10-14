@@ -16,7 +16,7 @@
                     <!-- Logo Section -->
                     <tr>
                         <td style="text-align: center; padding-bottom: 20px;">
-                            <img src="https://your-logo-url.com/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
+                            <img src="https://sarep.aliabcybersecurity.co.in/build/media/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
                         </td>
                     </tr>
 
@@ -52,7 +52,7 @@
                         <td style="text-align: center; padding-top: 20px;">
                             <p style="font-size: 16px; color: #666666;">Your feedback is very important to us. Thank you for your time!</p>
                             <p style="font-size: 14px; color: #999999;">Best regards,</p>
-                            <p style="font-size: 14px; color: #999999;"><strong>The Event Team</strong></p>
+                            <p style="font-size: 14px; color: #999999;"><strong>The SAREP Event Team</strong></p>
                         </td>
                     </tr>
 

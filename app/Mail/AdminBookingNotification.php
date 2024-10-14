@@ -32,8 +32,9 @@ class AdminBookingNotification extends Mailable
                         'first_name' => $this->booking->user->first_name,
                         'last_name' => $this->booking->user->last_name,
                         'email' => $this->booking->user->email,
-                        'eventName' => $this->booking->event->title,
+                        'event_title' => $this->booking->event->title,
                         'date' => $this->booking->event->date,
+                        'eventId' => $this->booking->event->id, // Pass event ID
                     ]);
     }
 }

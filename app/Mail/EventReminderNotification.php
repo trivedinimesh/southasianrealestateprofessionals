@@ -31,8 +31,8 @@ class EventReminderNotification extends Mailable
                         'event_date' => $this->booking->event->date,
                         'first_name' => $this->booking->user->first_name,
                         'last_name' => $this->booking->user->last_name,
-                        'image'=>$this->booking->event->image
-
+                        'image' => asset('images/events/' . $this->event->image),
+                        'event_link' => url('/events/' . $this->event->id) 
                     ]);
     }
 }

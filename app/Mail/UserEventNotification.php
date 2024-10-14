@@ -29,14 +29,16 @@ class UserEventNotification extends Mailable
         return $this->subject('New Event Alert')
                     ->view('mails.user.event')
                     ->with([
-                        'eventTitle' => $this->event->title,
+                        'event_title' => $this->event->title,
                         'date' => $this->event->date,
                         'address' => $this->event->address,
                         'city' => $this->event->city,
                         'state' => $this->event->state,
                         'country' => $this->event->country,
                         'pincode' => $this->event->pincode,
-                        'image'=>$this->event->image,
+                        'image' => asset('images/events/' . $this->event->image),
+                        'event_link' => url('/event-detail/' . $this->event->id) 
+
                     ]);
     }
 }

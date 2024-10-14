@@ -16,7 +16,7 @@
                     <!-- Logo Section -->
                     <tr>
                         <td style="text-align: center; padding-bottom: 20px;">
-                            <img src="https://your-logo-url.com/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
+                            <img src="https://sarep.aliabcybersecurity.co.in/build/media/logo.png" alt="Your Company Logo" width="150px" style="border-radius: 8px;">
                         </td>
                     </tr>
 
@@ -53,7 +53,7 @@
                     <!-- Call to Action -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <a href="#" style="background-color: #3f60e7; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Manage Your Account</a>
+                            <a href="https://sarep.aliabcybersecurity.co.in/events" style="background-color: #3f60e7; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Explore Events</a>
                         </td>
                     </tr>
 

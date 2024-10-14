@@ -21,6 +21,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about-us', [AboutController::class, 'index'])->name('aboutUs');
 
 Route::get('/contact-us', [ContactController::class, 'index'])->name('contactUs');
+Route::post('/contact-send', [ContactController::class, 'contactMailSend'])->name('contact.send');
+
 
 Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 Route::get('/membership', [MembershipController::class, 'index'])->name('membership');
