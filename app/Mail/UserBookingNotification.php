@@ -32,9 +32,12 @@ class UserBookingNotification extends Mailable
                         'first_name' => $this->booking->user->first_name,
                         'last_name' => $this->booking->user->last_name,
                         'email' => $this->booking->user->email,
-                        'eventName' => $this->booking->event->title,
+                        'event_title' => $this->booking->event->title,
                         'date' => $this->booking->event->date,
+                        'image' => asset('images/events/' . $this->booking->event->image),
                         'booking_id' => $this->booking->booking_id,
+                        'event_link' => url('/event-detail/' . $this->booking->event->id) 
+
                     ]);
     }
 }

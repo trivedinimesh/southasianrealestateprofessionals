@@ -35,7 +35,7 @@
                     <!-- Call to Action -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <a href="https://sarep.aliabcybersecurity.co.in/membership" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Renew Your Membership</a>
+                            <a href="https://sarep.aliabcybersecurity.co.in/membership/details" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Renew Your Membership</a>
                         </td>
                     </tr>
 

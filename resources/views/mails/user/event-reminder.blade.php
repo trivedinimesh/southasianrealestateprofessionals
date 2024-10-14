@@ -54,7 +54,7 @@
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
                             <p style="font-size: 16px; color: #666666;">Don't forget to attend the event!</p>
-                            <a href="https://sarep.aliabcybersecurity.co.in/{{ $event_link }}" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Event Details</a>
+                            <a href="{{ $event_link }}" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Event Details</a>
                         </td>
                     </tr>
 

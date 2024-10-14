@@ -28,7 +28,7 @@
                     </tr>
                     <tr>
                         <td style="text-align: center;">
-                            <p style="font-size: 16px; color: #666666;">User <strong>{{ $first_name }} {{ $last_name }}</strong> has booked the event <strong>{{ $eventName }}</strong>.</p>
+                            <p style="font-size: 16px; color: #666666;">User <strong>{{ $first_name }} {{ $last_name }}</strong> has booked the event <strong>{{ $event_title }}</strong>.</p>
                         </td>
                     </tr>
 

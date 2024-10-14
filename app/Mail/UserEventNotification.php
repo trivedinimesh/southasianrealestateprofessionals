@@ -37,7 +37,7 @@ class UserEventNotification extends Mailable
                         'country' => $this->event->country,
                         'pincode' => $this->event->pincode,
                         'image' => asset('images/events/' . $this->event->image),
-                        'event_link' => url('/events/' . $this->event->id) 
+                        'event_link' => url('/event-detail/' . $this->event->id) 
 
                     ]);
     }

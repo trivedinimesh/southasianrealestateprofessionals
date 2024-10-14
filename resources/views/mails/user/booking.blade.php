@@ -31,7 +31,7 @@
                     <tr>
                         <td style="text-align: center;">
                             <p style="font-size: 16px; color: #666666;">Hello <strong>{{ $first_name }} {{ $last_name }}</strong>,</p>
-                            <p style="font-size: 16px; color: #666666;">Thank you for booking your spot at <strong>{{ $eventName }}</strong>.</p>
+                            <p style="font-size: 16px; color: #666666;">Thank you for booking your spot at <strong>{{ $event_title }}</strong>.</p>
                         </td>
                     </tr>
 
@@ -48,7 +48,7 @@
                     <!-- Call to Action -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <a href="https://sarep.aliabcybersecurity.co.in/{{ $event_link }}" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Event Details</a>
+                            <a href="{{ $event_link }}" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">View Event Details</a>
                         </td>
                     </tr>
 
