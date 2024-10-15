@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Booking;
+use App\Models\Subscription;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Mail\UserWelcomeNotification;
+use Carbon\Carbon;
+
 
 
 class AuthController extends Controller
@@ -95,7 +100,39 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('frontend.dashboard.index');
+            $currentUser = Auth::user();
+            if($currentUser->hasRole('admin')){
+                $usersCount = User::count();
+                $membersCount = User::role('member')->count();
+                $eventsCount = Event::count();
+                $bookingsCount = Booking::count();
+                $subscriptions = Subscription::take(10)->get();
+                $events = Event::withCount('bookings')->take(10)->get();
+                $bookings = Booking::take(10)->get();
+
+                return view('frontend.dashboard.index', [
+                    'usersCount' => $usersCount,
+                    'membersCount' => $membersCount,
+                    'eventsCount' => $eventsCount,
+                    'bookingsCount' => $bookingsCount,
+                    'subscriptions' => $subscriptions,
+                    'events' => $events,
+                    'bookings' => $bookings,
+                ]);
+            } else {
+
+                $subscriptions = Subscription::where('user_id', $currentUser->id)
+                                       ->where('status', 'active')
+                                       ->where('ends_at', '>', Carbon::now()) // Check if the subscription is still valid
+                                       ->get();
+                $events = Event::take(10)->get();
+                $bookings = Booking::where('user_id', $currentUser->id)->with('event')->with('user')->take(10)->get();
+                return view('frontend.dashboard.user', [
+                    'subscriptions' => $subscriptions,
+                    'events' => $events,
+                    'bookings' => $bookings,
+                ]);
+            }
         }
         return redirect()->route('login')->with('error', 'You do not have access');
     }

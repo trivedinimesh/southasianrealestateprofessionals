@@ -43,7 +43,7 @@ Add Event
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Title</label>
-                                            <input name="title" type="text" />
+                                            <input name="title" type="text" value="{{ old('title') }}"/>
                                             @error('title')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -82,7 +82,7 @@ Add Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Date</label>
-                                            <input name="date" type="date" />
+                                            <input name="date" type="date" value="{{ old('date') }}"/>
                                             @error('date')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -91,7 +91,7 @@ Add Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">Start Time</label>
-                                            <input name="start_time" type="time" />
+                                            <input name="start_time" type="time" value="{{ old('start_time') }}" />
                                             @error('start_time')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -100,7 +100,7 @@ Add Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text">End Time</label>
-                                            <input name="end_time" type="time" />
+                                            <input name="end_time" type="time" value="{{ old('last_name') }}" />
                                             @error('end_time')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -109,7 +109,7 @@ Add Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Member Price</label>
-                                            <input name="price_member" type="number" />
+                                            <input name="price_member" type="number" value="{{ old('price_member') }}" />
                                             @error('price_member')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -118,7 +118,7 @@ Add Event
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Non Member Price</label>
-                                            <input name="price_non_member" type="number" />
+                                            <input name="price_non_member" type="number" value="{{ old('price_non_member') }}" />
                                             @error('price_non_member')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -143,9 +143,17 @@ Add Event
                                         </div>
                                     </div>
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
+                                        <label for="formFile" class="input__field-text">Features</label>
+                                        <select class="tom-select-multiple w-full" name="features[]" multiple>
+                                            @foreach($features as $feature)
+                                                <option value="{{ $feature->feature }}">{{ $feature->feature }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Address</label>
-                                            <input name="address" type="text" />
+                                            <input name="address" type="text" value="{{ old('address') }}" />
                                             @error('address')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -154,7 +162,7 @@ Add Event
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Country</label>
-                                            <input name="country" type="text" />
+                                            <input name="country" type="text" value="{{ old('country') }}" />
                                             @error('country')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -163,7 +171,7 @@ Add Event
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >State</label>
-                                            <input name="state" type="text" />
+                                            <input name="state" type="text" value="{{ old('state') }}"/>
                                             @error('state')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -172,7 +180,7 @@ Add Event
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >City</label>
-                                            <input name="city" type="text" />
+                                            <input name="city" type="text" value="{{ old('city') }}"/>
                                             @error('city')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -181,7 +189,7 @@ Add Event
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Zip Code</label>
-                                            <input name="pincode" type="text" />
+                                            <input name="pincode" type="text" value="{{ old('pincode') }}"/>
                                             @error('pincode')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror

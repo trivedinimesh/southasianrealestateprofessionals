@@ -10,6 +10,7 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EventRequest;
 use Carbon\Carbon;
+use App\Models\Feature;
 
 
 class EventsController extends Controller
@@ -24,9 +25,12 @@ class EventsController extends Controller
     public function eventDetail(Request $request, string $id)
     {
         try {
-            $event = Event::findOrFail($id);
-            return view('frontend.events.event-detail')
-                ->with('event', $event);
+            $event = Event::findOrFail($id);  
+            $user = Auth::user();
+            return view('frontend.events.event-detail', [
+                'event' => $event,
+                'user' => $user,
+            ]);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('home')->with('error', 'User not found.');
         }
@@ -73,8 +77,9 @@ class EventsController extends Controller
         if (!Auth::user()->hasRole('admin')) {
             return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
         }
+        $features = Feature::all();
         
-        return view('frontend.events.add');
+        return view('frontend.events.add', compact('features'));
     }
 
     public function store(EventRequest $request)
@@ -103,7 +108,10 @@ class EventsController extends Controller
             $event->state = $request->state;
             $event->city = $request->city;
             $event->pincode = $request->pincode;
+
             $event->save();
+
+            $this->syncFeatures($event, $request['features']);
 
             $users = \App\Models\User::role('user')->get(); // Get all users with the "admin" role
 
@@ -111,16 +119,29 @@ class EventsController extends Controller
                 \Mail::to($user->email)->send(new \App\Mail\UserEventNotification($event));
             }
 
+            
 
             // Redirect on success
-            return redirect()->route('events.list')->with('success', 'Event created successfully.');
+        $features = Feature::all();
+        return redirect()->route('events.list')->with('features',$features)->with('success', 'Event created successfully.');
         } catch (\Throwable $th) {
             // Handle error\
             // return back()->with('error', 'Failed to create event.');
             return $th;
         }
     }
+    private function syncFeatures(Event $event, array $features)
+    {
+        if (!empty($features)) {
+            $featureIds = [];
+            foreach ($features as $feature) {
+                $featureRecord = Feature::firstOrCreate(['feature' => $feature]);
+                $featureIds[] = $featureRecord->id;
+            }
+            $event->features()->sync($featureIds);
+        }
 
+    }
 
     public function show(string $id)
     {
@@ -130,8 +151,12 @@ class EventsController extends Controller
         
         try {
             $event = Event::findOrFail($id);
+            $features = Feature::all();
+
             return view('frontend.events.view')
-                ->with('event', $event);
+                ->with('event', $event)->with('features',$features);
+
+
         } catch (ModelNotFoundException $e) {
             return redirect()->route('events.index')->with('error', 'User not found.');
         }
@@ -149,7 +174,9 @@ class EventsController extends Controller
         
         try {
             $event = Event::findOrFail($id);
-            return view('frontend.events.edit')->with('event', $event);
+             $features = Feature::all();
+
+            return view('frontend.events.edit')->with('event', $event)->with('features',$features);
         } catch (ModelNotFoundException $e) {
             return redirect()->route('events.index')->with('error', 'Event not found.');
         }
@@ -213,6 +240,7 @@ class EventsController extends Controller
     
             // Save the updated event
             $event->save();
+            $this->syncFeatures($event, $request['features']);
     
             // Commit the transaction
             // DB::commit();

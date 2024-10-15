@@ -43,7 +43,7 @@ Add Sponsor
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text" >Name</label>
-                                                <input name="name" type="text" />
+                                                <input name="name" type="text" value="{{ old('name') }}"/>
                                                 @error('name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -61,7 +61,7 @@ Add Sponsor
                                     </div>
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <label for="formFile" class="input__field-text">Category</label>
-                                        <select class="tom-select-single form-control w-full" name="category" multiple>
+                                        <select class="tom-select-single w-full" name="category" multiple>
                                             @foreach($sponsors as $sponsor)
                                                 <option value="{{ $sponsor->category }}">{{ $sponsor->category }}</option>
                                             @endforeach

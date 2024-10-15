@@ -120,7 +120,7 @@
                             <a href="#">{{ $tag->tag }}</a>{{ $index < $blog->tags->count() - 1 ? ',' : '' }}
                         @endforeach
                     </li>
-                      <li><span>{{$blog->created_at}}</span></li>
+                      <li><span>{{ \Carbon\Carbon::parse($blog->created_at)->format('F d, Y') }}</span></li>
                     </ul>
                     <h3 class="item_title">
                       <a href="{{route('blog-detail', $blog->id)}}"

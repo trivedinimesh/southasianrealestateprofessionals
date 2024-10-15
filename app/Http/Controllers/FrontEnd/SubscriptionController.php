@@ -94,7 +94,7 @@ class SubscriptionController extends Controller
         $user= Auth::user();
         $subscription = Subscription::where('user_id', $user->id)->findOrFail($id);
         $subscription->cancel();
-        $user->assignRole('user');
+        $user->removeRole('member');
 
         return redirect()->route('subscription.details')->with('success', 'Subscription canceled.');
     }
