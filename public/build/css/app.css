@@ -55180,6 +55180,8 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     margin-bottom: 20px;
     position: relative;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .bd-theme-dark .card__wrapper {
