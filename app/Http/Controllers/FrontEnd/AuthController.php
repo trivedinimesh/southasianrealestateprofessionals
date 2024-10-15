@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
+use App\Models\Event;
+use App\Models\Booking;
+use App\Models\Subscription;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ChangePasswordRequest;
@@ -95,7 +98,28 @@ class AuthController extends Controller
     public function dashboard()
     {
         if (Auth::check()) {
-            return view('frontend.dashboard.index');
+            $currentUser = Auth::user();
+            if($currentUser->hasRole('admin')){
+                $usersCount = User::count();
+                $membersCount = User::role('member')->count();
+                $eventsCount = Event::count();
+                $bookingsCount = Booking::count();
+                $subscriptions = Subscription::all();
+                $events = Event::withCount('bookings')->get();
+                $bookings = Booking::all();
+
+                return view('frontend.dashboard.index', [
+                    'usersCount' => $usersCount,
+                    'membersCount' => $membersCount,
+                    'eventsCount' => $eventsCount,
+                    'bookingsCount' => $bookingsCount,
+                    'subscriptions' => $subscriptions,
+                    'events' => $events,
+                    'bookings' => $bookings,
+                ]);
+            } else {
+                return view('frontend.dashboard.user');
+            }
         }
         return redirect()->route('login')->with('error', 'You do not have access');
     }

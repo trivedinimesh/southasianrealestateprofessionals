@@ -53093,11 +53093,11 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .expovent__count-item:hover {
-    filter: drop-shadow(0 4px 35px rgba(247, 66, 111, 0.3));
+    filter: drop-shadow(0 4px 35px rgba(182, 0, 0, 0.5));
 }
 
 .expovent__count-item:hover .expovent__count-number {
-    color: var(--clr-common-white);
+    color: #0049AD;
 }
 
 .expovent__count-item:hover .expovent__count-thumb {
@@ -53105,16 +53105,16 @@ only screen and (min-width: 992px) and (max-width: 1199px) {
 }
 
 .expovent__count-item:hover .expovent__count-text {
-    color: var(--clr-common-white);
+    color: #0049AD;
 }
 
 .expovent__count-item:hover .expovent__count-icon {
-    background-color: transparent;
-    border-color: var(--clr-common-white);
+    /* background-color: transparent;
+    border-color: var(--clr-common-white); */
 }
 
 .expovent__count-item:hover .expovent__count-icon i {
-    color: var(--clr-common-white);
+    color: #0049AD;
 }
 
 .expovent__count-thumb {
@@ -60068,4 +60068,8 @@ body {
   
   .hover-shadow:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+
+  .justify-self-end{
+      justify-self: end;
   }

@@ -41,44 +41,35 @@ Dashboard
                         <div class="row g-20">
                             <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
                                 <div class="expovent__count-item mb-20">
-                                    <div class="expovent__count-thumb include__bg transition-3"
-                                        style="background-image:url(_next/static/media/count-bg.17e2200d.png)"></div>
                                     <div class="expovent__count-content">
-                                        <h3 class="expovent__count-number">1250+</h3><span
-                                            class="expovent__count-text">Total Registration</span>
+                                        <h3 class="expovent__count-number">{{ $usersCount }}</h3><span
+                                            class="expovent__count-text">Total Users</span>
                                     </div>
                                     <div class="expovent__count-icon"><i class="flaticon-group"></i></div>
                                 </div>
                             </div>
                             <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
                                 <div class="expovent__count-item mb-20">
-                                    <div class="expovent__count-thumb include__bg transition-3"
-                                        style="background-image:url(_next/static/media/count-bg.17e2200d.png)"></div>
                                     <div class="expovent__count-content">
-                                        <h3 class="expovent__count-number">125+</h3><span
-                                            class="expovent__count-text">Total Speakers</span>
+                                        <h3 class="expovent__count-number">{{ $membersCount }}</h3><span
+                                            class="expovent__count-text">Total Members</span>
                                     </div>
                                     <div class="expovent__count-icon"><i class="flaticon-speaker"></i></div>
                                 </div>
                             </div>
                             <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
                                 <div class="expovent__count-item mb-20">
-                                    <div class="expovent__count-thumb include__bg transition-3"
-                                        style="background-image:url(_next/static/media/count-bg.17e2200d.png)"></div>
                                     <div class="expovent__count-content">
-                                        <h3 class="expovent__count-number">35</h3><span class="expovent__count-text">New
-                                            Events</span>
+                                        <h3 class="expovent__count-number">{{ $eventsCount }}</h3><span class="expovent__count-text">Scheduled Events</span>
                                     </div>
                                     <div class="expovent__count-icon"><i class="flaticon-reminder"></i></div>
                                 </div>
                             </div>
                             <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6">
                                 <div class="expovent__count-item mb-20">
-                                    <div class="expovent__count-thumb include__bg transition-3"
-                                        style="background-image:url(_next/static/media/count-bg.17e2200d.png)"></div>
                                     <div class="expovent__count-content">
-                                        <h3 class="expovent__count-number">2560+</h3><span
-                                            class="expovent__count-text">Total Ticket Sold</span>
+                                        <h3 class="expovent__count-number">{{ $bookingsCount }}</h3><span
+                                            class="expovent__count-text">Total Bookings</span>
                                     </div>
                                     <div class="expovent__count-icon"><i class="flaticon-ticket-1"></i></div>
                                 </div>
@@ -98,263 +89,38 @@ Dashboard
                                                             fill="#ADADAD"></path>
                                                     </svg></div>
                                                 <div class="card__header-title">
-                                                    <h4>Ticket Sold</h4>
+                                                    <h4>Scheduled Event Booking</h4>
                                                 </div>
                                             </div>
                                             <div class="card__header-right">
-                                                <div class="card__button">
-                                                    <div class="traffic__tab">
-                                                        <nav>
-                                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                                                <button class="nav-link active" id="tricke-1-tab"
-                                                                    type="button" role="tab" aria-controls="tricke-1"
-                                                                    aria-selected="false">This Week</button><button
-                                                                    class="nav-link" id="nav-tricke-2-tab" type="button"
-                                                                    role="tab" aria-controls="nav-tricke-2"
-                                                                    aria-selected="false">Previous Week</button></div>
-                                                        </nav>
-                                                    </div>
-                                                </div>
-                                                <div class="card__header-dropdown">
-                                                    <div class="dropdown"><button><svg class="attendant__dot" width="14"
-                                                                height="4" viewBox="0 0 14 4" fill="none"
-                                                                xmlns="http://www.w3.org/2000/svg">
-                                                                <path
-                                                                    d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                    fill="white"></path>
-                                                                <path
-                                                                    d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                    fill="white"></path>
-                                                                <path
-                                                                    d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                    fill="white"></path>
-                                                            </svg></button>
-                                                        <div class="dropdown-list" style="display:none"><button
-                                                                class="dropdown__item">Edit</button><button
-                                                                class="dropdown__item">Delete</button></div>
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="scroll-w-2 card__scroll">
                                         <div class="card__inner">
-                                            <div class="tricket__sold-item">
-                                                <div class="news__item-inner bb-0">
-                                                    <div class="news__thumb"><a href="event-list"><img
-                                                                src="_next/static/media/01.b5f50ead.png"
-                                                                alt="image not found" /></a></div>
-                                                    <div class="news__content">
-                                                        <h4 class="news__title"><a href="schedule-list"> Digital
-                                                                Business Summit - 2023</a></h4>
-                                                        <div class="news__meta">
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-user"></i></span><span>Andru
-                                                                    Hebo</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-clock"></i></span><span>9:00am-
-                                                                    5:00 pm</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                    92677</span></div>
+                                            @foreach ($events as $event)
+                                                <div class="tricket__sold-item">
+                                                    <div class="news__item-inner bb-0">
+                                                        <div class="news__content">
+                                                            <h4 class="news__title"><a href="schedule-list">{{ $event->title }}</a></h4>
+                                                            <div class="news__meta">
+                                                                <div class="news__meta-status"><span>
+                                                                    <i class="flaticon-calendar"></i></span><span>{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</span></div>
+                                                                <div class="news__meta-status"><span>
+                                                                    <i class="flaticon-clock"></i></span><span>{{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}</span></div>
+                                                                <div class="news__meta-status"><span>
+                                                                    <i class="flaticon-placeholder-1"></i></span><span>{{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</span></div>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="sold__progress-item">
-                                                    <div class="sold__bar-top"><span>350</span><span
-                                                            class="devider">/</span><span class="active">175</span>
-                                                    </div>
-                                                    <div class="sold__progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow slideInLeft"
-                                                                data-wow-delay="0s" data-wow-duration=".4s"
-                                                                role="progressbar" aria-label="Example with label"
-                                                                style="width:65%" aria-valuenow="65" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
+                                                    
+                                                    <div class="justify-self-end"><i
+                                                    class="flaticon-ticket mr-10"></i><span class="active">{{ $event->bookings_count }}</span>
                                                         </div>
-                                                    </div>
+                                                        
                                                 </div>
-                                            </div>
-                                            <div class="tricket__sold-item">
-                                                <div class="news__item-inner bb-0">
-                                                    <div class="news__thumb"><a href="event-list"><img
-                                                                src="_next/static/media/02.3af8ebb9.png"
-                                                                alt="image not found" /></a></div>
-                                                    <div class="news__content">
-                                                        <h4 class="news__title"><a href="schedule-list">NASA Space Apps
-                                                                Challenge Summit - 2023</a></h4>
-                                                        <div class="news__meta">
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-user"></i></span><span>Tom
-                                                                    Cruse</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-clock"></i></span><span>9:00am-
-                                                                    5:00 pm</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                    92677</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="sold__progress-item">
-                                                    <div class="sold__bar-top"><span>250</span><span
-                                                            class="devider">/</span><span class="active">225</span>
-                                                    </div>
-                                                    <div class="sold__progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow slideInLeft"
-                                                                data-wow-delay="0s" data-wow-duration=".4s"
-                                                                role="progressbar" aria-label="Example with label"
-                                                                style="width:65%" aria-valuenow="65" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tricket__sold-item">
-                                                <div class="news__item-inner bb-0">
-                                                    <div class="news__thumb"><a href="event-list"><img
-                                                                src="_next/static/media/02.3af8ebb9.png"
-                                                                alt="image not found" /></a></div>
-                                                    <div class="news__content">
-                                                        <h4 class="news__title"><a href="schedule-list">Digital Product
-                                                                Design &amp; Interaction Seminar -2023</a></h4>
-                                                        <div class="news__meta">
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-user"></i></span><span>Andru
-                                                                    Hebo</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-clock"></i></span><span>9:00am-
-                                                                    5:00 pm</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                    92677</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="sold__progress-item">
-                                                    <div class="sold__bar-top"><span>163</span><span
-                                                            class="devider">/</span><span class="active">110</span>
-                                                    </div>
-                                                    <div class="sold__progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow slideInLeft"
-                                                                data-wow-delay="0s" data-wow-duration=".4s"
-                                                                role="progressbar" aria-label="Example with label"
-                                                                style="width:65%" aria-valuenow="65" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tricket__sold-item">
-                                                <div class="news__item-inner bb-0">
-                                                    <div class="news__thumb"><a href="event-list"><img
-                                                                src="_next/static/media/03.c23e54cb.png"
-                                                                alt="image not found" /></a></div>
-                                                    <div class="news__content">
-                                                        <h4 class="news__title"><a href="schedule-list">NASA Space Apps
-                                                                Challenge Summit - 2023</a></h4>
-                                                        <div class="news__meta">
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-user"></i></span><span>B.
-                                                                    Parker</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-clock"></i></span><span>9:00am-
-                                                                    5:00 pm</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                    92677</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="sold__progress-item">
-                                                    <div class="sold__bar-top"><span>350</span><span
-                                                            class="devider">/</span><span class="active">175</span>
-                                                    </div>
-                                                    <div class="sold__progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow slideInLeft"
-                                                                data-wow-delay="0s" data-wow-duration=".4s"
-                                                                role="progressbar" aria-label="Example with label"
-                                                                style="width:65%" aria-valuenow="65" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tricket__sold-item">
-                                                <div class="news__item-inner bb-0">
-                                                    <div class="news__thumb"><a href="event-list"><img
-                                                                src="_next/static/media/02.3af8ebb9.png"
-                                                                alt="image not found" /></a></div>
-                                                    <div class="news__content">
-                                                        <h4 class="news__title"><a href="schedule-list">Digital Business
-                                                                Summit - 2023</a></h4>
-                                                        <div class="news__meta">
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-user"></i></span><span>Andru
-                                                                    Hebo</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-clock"></i></span><span>9:00am-
-                                                                    5:00 pm</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                    92677</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="sold__progress-item">
-                                                    <div class="sold__bar-top"><span>250</span><span
-                                                            class="devider">/</span><span class="active">225</span>
-                                                    </div>
-                                                    <div class="sold__progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow slideInLeft"
-                                                                data-wow-delay="0s" data-wow-duration=".4s"
-                                                                role="progressbar" aria-label="Example with label"
-                                                                style="width:65%" aria-valuenow="65" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tricket__sold-item">
-                                                <div class="news__item-inner bb-0">
-                                                    <div class="news__thumb"><a href="event-list"><img
-                                                                src="_next/static/media/03.c23e54cb.png"
-                                                                alt="image not found" /></a></div>
-                                                    <div class="news__content">
-                                                        <h4 class="news__title"><a href="schedule-list">NASA Space Apps
-                                                                Challenge Summit - 2023</a></h4>
-                                                        <div class="news__meta">
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-user"></i></span><span>Mica
-                                                                    Alex</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-clock"></i></span><span>9:00am-
-                                                                    5:00 pm</span></div>
-                                                            <div class="news__meta-status"><span><i
-                                                                        class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                    92677</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="sold__progress-item">
-                                                    <div class="sold__bar-top"><span>163</span><span
-                                                            class="devider">/</span><span class="active">110</span>
-                                                    </div>
-                                                    <div class="sold__progress">
-                                                        <div class="progress">
-                                                            <div class="progress-bar wow slideInLeft"
-                                                                data-wow-delay="0s" data-wow-duration=".4s"
-                                                                role="progressbar" aria-label="Example with label"
-                                                                style="width:65%" aria-valuenow="65" aria-valuemin="0"
-                                                                aria-valuemax="100"></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -366,247 +132,35 @@ Dashboard
                                             <div class="card__title-inner">
                                                 <div class="card__header-icon"><i class="flaticon-reminder"></i></div>
                                                 <div class="card__header-title">
-                                                    <h4>Schedule Events</h4>
+                                                    <h4>Recent Membership</h4>
                                                 </div>
                                             </div>
                                             <div class="card__header-dropdown">
-                                                <div class="dropdown"><button><svg class="attendant__dot" width="14"
-                                                            height="4" viewBox="0 0 14 4" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                fill="white"></path>
-                                                            <path
-                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                fill="white"></path>
-                                                            <path
-                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                fill="white"></path>
-                                                        </svg></button>
-                                                    <div class="dropdown-list" style="display:none"><button
-                                                            class="dropdown__item">Edit</button><button
-                                                            class="dropdown__item">Delete</button></div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="scroll-w-1 card__scroll">
                                         <div class="card__inner">
                                             <div class="card-body">
+
+                                                @foreach ($subscriptions as $subscription)
                                                 <div class="news__item">
                                                     <div class="news__item-inner">
-                                                        <div class="news__thumb"><a href="schdule-details/%5bid%5d"><img
-                                                                    src="_next/static/media/01.b5f50ead.png"
-                                                                    alt="image not found" /></a></div>
                                                         <div class="news__content">
-                                                            <h4 class="news__title"><a href="schdule-details/%5bid%5d">
-                                                                    Digital Business Summit - 2023</a></h4>
+                                                            <h4 class="news__title">
+                                                            {{ $subscription->user->first_name}} {{ $subscription->user->last_name}}</h4>
                                                             <div class="news__meta">
                                                                 <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Andru
-                                                                        Hebo</span></div>
+                                                                            class="flaticon-calendar"></i></span><span>{{ \Carbon\Carbon::parse($subscription->starts_at)->format('F d, Y') }} - {{ \Carbon\Carbon::parse($subscription->ends_at)->format('F d, Y') }}</span></div>
                                                                 <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
+                                                                            class="flaticon-trophy"></i></span><span>{{ $subscription->plan->name }}</span></div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-2"><img
-                                                                    src="_next/static/media/02.3af8ebb9.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-2">NASA Space Apps
-                                                                    Challenge Summit - 2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Tom
-                                                                        Cruse</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-3"><img
-                                                                    src="_next/static/media/02.3af8ebb9.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-3">Digital Product
-                                                                    Design &amp; Interaction Seminar -2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Andru
-                                                                        Hebo</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-4"><img
-                                                                    src="_next/static/media/03.c23e54cb.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-4">NASA Space Apps
-                                                                    Challenge Summit - 2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>B.
-                                                                        Parker</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-5"><img
-                                                                    src="_next/static/media/02.3af8ebb9.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-5">Digital Business
-                                                                    Summit - 2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Andru
-                                                                        Hebo</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-6"><img
-                                                                    src="_next/static/media/03.c23e54cb.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-6">NASA Space Apps
-                                                                    Challenge Summit - 2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Mica
-                                                                        Alex</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-7"><img
-                                                                    src="_next/static/media/01.b5f50ead.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-7">Digital Business
-                                                                    Summit - 2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Mariya
-                                                                        Luica</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-8"><img
-                                                                    src="_next/static/media/03.c23e54cb.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-8">Digital Product
-                                                                    Design &amp; Interaction Seminar -2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Andru
-                                                                        Hebo</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="news__item">
-                                                    <div class="news__item-inner">
-                                                        <div class="news__thumb"><a
-                                                                href="schdule-details/%5bid%5d-9"><img
-                                                                    src="_next/static/media/02.3af8ebb9.png"
-                                                                    alt="image not found" /></a></div>
-                                                        <div class="news__content">
-                                                            <h4 class="news__title"><a
-                                                                    href="schdule-details/%5bid%5d-9">NASA Space Apps
-                                                                    Challenge Summit - 2023</a></h4>
-                                                            <div class="news__meta">
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-user"></i></span><span>Kabir
-                                                                        shing</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-clock"></i></span><span>9:00am-
-                                                                        5:00 pm</span></div>
-                                                                <div class="news__meta-status"><span><i
-                                                                            class="flaticon-placeholder-1"></i></span><span>California(CA),
-                                                                        92677</span></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                @endforeach
+
                                             </div>
                                         </div>
                                     </div>
@@ -625,23 +179,7 @@ Dashboard
                                                 </div>
                                             </div>
                                             <div class="card__header-dropdown">
-                                                <div class="dropdown"><button><svg class="attendant__dot" width="14"
-                                                            height="4" viewBox="0 0 14 4" fill="none"
-                                                            xmlns="http://www.w3.org/2000/svg">
-                                                            <path
-                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                fill="white"></path>
-                                                            <path
-                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                fill="white"></path>
-                                                            <path
-                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                fill="white"></path>
-                                                        </svg></button>
-                                                    <div class="dropdown-list" style="display:none"><button
-                                                            class="dropdown__item">Edit</button><button
-                                                            class="dropdown__item">Delete</button></div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -649,401 +187,40 @@ Dashboard
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>ID No</th>
                                                     <th>Name</th>
-                                                    <th>Seminar</th>
+                                                    <th>Event</th>
                                                     <th>Time</th>
                                                     <th>Date</th>
-                                                    <th>Status</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #3265
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/01.b0e8d099.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> Harry
-                                                                    Porter </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Digital Product Design Seminar -
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>25 Jun 20230</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag bg-green">Approved</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
+                                                @foreach ($bookings as $booking)
+                                                    <tr>
+                                                        <td>
+                                                            <div class="attendant__user-item">
+                                                                
+                                                                <div class="attendant__user-title">{{ $booking->user->first_name }} {{ $booking->user->first_name }}<span></span></div>
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #6259
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/02.1d865c53.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> Lary
-                                                                    go </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Graphic Design Innovation Seminar-
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>28 Jun 20230</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag warning-bg">Pending</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="attendant__seminer"><span><a href="event-details">
+                                                            {{ $booking->event->title }}</a></span></div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="attendant__time"><span>{{ \Carbon\Carbon::parse($booking->event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($booking->event->end_time)->format('g:i A') }}</span></div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="attendant__date"><span>{{ \Carbon\Carbon::parse($booking->event->date)->format('F d, Y') }}</span></div>
+                                                        </td>
+                                                        
+                                                        <td>
+                                                            <div class="attendant__action">
+                                                                
                                                             </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #0326
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/03.fe63c5b0.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> Sumona
-                                                                    Gang </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Digital Product Design Seminar -
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>30 Jun 2023</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag teal-bg">Paid</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #9236
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/04.8a37fa1e.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> David
-                                                                    Morph </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Digital Product Design Seminar -
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>02 Feb 20230</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag bg-warn">Unpaid</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #0032
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/01.b0e8d099.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> Willium
-                                                                    Cany </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Digital Product Design Seminar -
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>05 Feb 20230</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag bg-green">Approved</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #0003
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/02.1d865c53.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> Keny
-                                                                    Dinen </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Product &amp; Interaction Seminar -
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>15 Mar 2023</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag teal-bg">Approved</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="attendant__serial"><span> #1985
-                                                            </span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__user-item">
-                                                            <div class="registration__user-thumb"><img
-                                                                    src="_next/static/media/03.fe63c5b0.png"
-                                                                    alt="image not found" /></div>
-                                                            <div class="attendant__user-title"><span> Frintim
-                                                                    Zomata </span></div>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__seminer"><span><a href="event-details">
-                                                                    Digital Product Design Seminar -
-                                                                    2023 </a></span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__time"><span>9:00am- 5:00 p m</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__date"><span>25 Mar 2023</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__status"><span
-                                                                class="status__tag warning-bg">Pending</span></div>
-                                                    </td>
-                                                    <td>
-                                                        <div class="attendant__action">
-                                                            <div class="card__header-dropdown">
-                                                                <div class="dropdown"><button><svg
-                                                                            class="attendant__dot" width="14" height="4"
-                                                                            viewBox="0 0 14 4" fill="none"
-                                                                            xmlns="http://www.w3.org/2000/svg">
-                                                                            <path
-                                                                                d="M2 0.75C2.69036 0.75 3.25 1.30964 3.25 2C3.25 2.69036 2.69036 3.25 2 3.25C1.30964 3.25 0.75 2.69036 0.75 2C0.75 1.30964 1.30964 0.75 2 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M7 0.75C7.69036 0.75 8.25 1.30964 8.25 2C8.25 2.69036 7.69036 3.25 7 3.25C6.30964 3.25 5.75 2.69036 5.75 2C5.75 1.30964 6.30964 0.75 7 0.75Z"
-                                                                                fill="white"></path>
-                                                                            <path
-                                                                                d="M13.25 2C13.25 1.30964 12.6904 0.75 12 0.75C11.3096 0.75 10.75 1.30964 10.75 2C10.75 2.69036 11.3096 3.25 12 3.25C12.6904 3.25 13.25 2.69036 13.25 2Z"
-                                                                                fill="white"></path>
-                                                                        </svg></button>
-                                                                    <div class="dropdown-list" style="display:none">
-                                                                        <button
-                                                                            class="dropdown__item">Edit</button><button
-                                                                            class="dropdown__item">Delete</button></div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
