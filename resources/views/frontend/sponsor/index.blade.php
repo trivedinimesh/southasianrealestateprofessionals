@@ -55,7 +55,7 @@ Sponsor
                                 
                             </form>
                             <div class="card__header-dropdown">
-                                <a href="{{ route('users.create') }}" class="btn btn-sm btn-success">
+                                <a href="{{ route('sponsor.create') }}" class="btn btn-sm btn-success">
                                     <i class="fas fa-plus"></i> Add New
                                 </a>
                             </div>

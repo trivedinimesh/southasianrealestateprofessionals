@@ -40112,13 +40112,13 @@ fieldset:disabled .btn {
 }
 
 .modal-backdrop {
-    --bs-backdrop-zindex: 1050;
+    /* --bs-backdrop-zindex: 1050; */
     --bs-backdrop-bg: #000;
     --bs-backdrop-opacity: 0.5;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: var(--bs-backdrop-zindex);
+    /* z-index: var(--bs-backdrop-zindex); */
     width: 100vw;
     height: 100vh;
     background-color: var(--bs-backdrop-bg);
@@ -40128,9 +40128,9 @@ fieldset:disabled .btn {
     opacity: 0;
 }
 
-.modal-backdrop.show {
+/* .modal-backdrop.show {
     opacity: var(--bs-backdrop-opacity);
-}
+} */
 
 .modal-header {
     display: flex;
@@ -59124,6 +59124,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     color: #5d636a;
 }
 
+.img-blog{
+    margin: 10px 0;
+}
+
 .meta_list a:hover {
     color: #0049AD;
 }
@@ -59964,7 +59968,7 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: black;
+    background-color: rgb(0 0 0 / 40%);
   }
   
   /* Modal Content */
@@ -59973,7 +59977,7 @@ body {
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    width: 55%;
+    width: 100%;
     max-width: 1200px;
     top: -50px;
   }

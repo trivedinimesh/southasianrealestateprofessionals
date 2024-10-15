@@ -20,7 +20,7 @@ Blogs
   <div class="container">
     <div class="blog_grouped row justify-content-center">
       <div class="blog_responsive col-lg-8">
-        <div class="blog_wrapper">
+        <div class="blog_wrapper pb-20">
           <!-- Show selected tag if set -->
           @if(isset($selectedTag))
             <h2 class="text-center mb-4">Showing blogs for tag: {{ $selectedTag }}</h2>
@@ -71,6 +71,7 @@ Blogs
           @endforeach
           </div>
         </div>
+        {{ $blogs->links('pagination::bootstrap-5') }}
       </div>
 
       <!-- Sidebar Section -->

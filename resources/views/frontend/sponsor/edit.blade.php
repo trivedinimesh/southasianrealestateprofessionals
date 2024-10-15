@@ -42,7 +42,7 @@ Edit Sponsor
                                 @csrf
                                 @method('PATCH')
                                     <div class="create__input-wrapper row">
-                                        <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                        <div class="col-xxl-6 col-xl-6 col-lg-6 mb-20">
                                             <div class="singel__input-field mb-15"><label
                                                     class="input__field-text" >Name</label>
                                                     <input name="name" type="text" value="{{$sponsor->name}}"/>
@@ -51,21 +51,9 @@ Edit Sponsor
                                                     @enderror
                                             </div>
                                         </div>
-                                        <div class="col-xxl-4 col-xl-4 col-lg-4">
-                                            <div>
-                                                <label for="formFile" class="input__field-textlabel">Add Image</label>
-                                                @if($sponsor->image)
-                                                    <img src="{{ asset('images/sponsors/' . $sponsor->image) }}" alt="sponsor Image" class="img-blog" width="200">
-                                                @endif
-                                                <input class="form-control" type="file" name="image">
-                                                    @error('image')
-                                                        <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                        <div class="col-xxl-6 col-xl-6 col-lg-6  mb-20">
                                             <label for="formFile" class="input__field-text">Category</label>
-                                            <select class="tom-select-single form-control w-full" name="category">
+                                            <select class="tom-select-single w-full" name="category">
                                             @foreach($categories as $category)
                                                 <option value="{{ $category }}" 
                                                     @if($sponsor->category == $category) selected @endif>
@@ -76,6 +64,19 @@ Edit Sponsor
                                             @error('category')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
+                                        </div>
+                                        <div class="col-xxl-6 col-xl-6 col-lg-6  mb-20">
+                                            @if($sponsor->image)
+                                                    <img src="{{ asset('images/sponsors/' . $sponsor->image) }}" alt="sponsor Image" class="img-blog w-100">
+                                                @endif
+                                           
+                                                <!-- <label for="formFile" class="input__field-textlabel">Add Image</label> -->
+                                               
+                                                <input class="form-control" type="file" name="image">
+                                                    @error('image')
+                                                        <span class="text-danger">{{$message}}</span>
+                                                    @enderror
+                                         
                                         </div>
                                         <button class="input__btn w-100" type="submit">Create Sponsor</button>
                                     </div>

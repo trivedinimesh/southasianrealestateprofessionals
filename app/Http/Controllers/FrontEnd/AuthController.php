@@ -15,6 +15,8 @@ use App\Http\Requests\LoginRequest;
 use App\Http\Requests\SignupRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Mail\UserWelcomeNotification;
+use Carbon\Carbon;
+
 
 
 class AuthController extends Controller
@@ -104,9 +106,9 @@ class AuthController extends Controller
                 $membersCount = User::role('member')->count();
                 $eventsCount = Event::count();
                 $bookingsCount = Booking::count();
-                $subscriptions = Subscription::all();
-                $events = Event::withCount('bookings')->get();
-                $bookings = Booking::all();
+                $subscriptions = Subscription::take(10)->get();
+                $events = Event::withCount('bookings')->take(10)->get();
+                $bookings = Booking::take(10)->get();
 
                 return view('frontend.dashboard.index', [
                     'usersCount' => $usersCount,
@@ -118,7 +120,18 @@ class AuthController extends Controller
                     'bookings' => $bookings,
                 ]);
             } else {
-                return view('frontend.dashboard.user');
+
+                $subscriptions = Subscription::where('user_id', $currentUser->id)
+                                       ->where('status', 'active')
+                                       ->where('ends_at', '>', Carbon::now()) // Check if the subscription is still valid
+                                       ->get();
+                $events = Event::take(10)->get();
+                $bookings = Booking::where('user_id', $currentUser->id)->with('event')->with('user')->take(10)->get();
+                return view('frontend.dashboard.user', [
+                    'subscriptions' => $subscriptions,
+                    'events' => $events,
+                    'bookings' => $bookings,
+                ]);
             }
         }
         return redirect()->route('login')->with('error', 'You do not have access');

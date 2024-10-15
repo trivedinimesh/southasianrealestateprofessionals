@@ -37,6 +37,7 @@ class EventRequest extends FormRequest
             'state' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'pincode' => 'required|string|max:10|regex:/^\d{4,10}$/',
+            'features' => 'sometimes|array',
         ];
     }
 }

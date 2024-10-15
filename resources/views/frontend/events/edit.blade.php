@@ -158,6 +158,17 @@ Edit Event
                                         </div>
                                     </div>
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
+                                    <label for="formFile" class="input__field-text">Features</label>
+                                <select class="tom-select-multiple w-full" name="features[]" multiple>
+                                    @foreach($features as $feature)
+                                        <option value="{{ $feature->feature }}"
+                                            @if(in_array($feature->feature, $event->features->pluck('feature')->toArray())) selected @endif>
+                                            {{ $feature->feature }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                    </div>
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Address</label>
                                             <input name="address" type="text" value="{{$event->address}}"/>

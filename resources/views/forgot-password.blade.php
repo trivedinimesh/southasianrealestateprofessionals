@@ -9,7 +9,7 @@ Sign
     @csrf
     <div class="mb-5">
         <label class="label block mb-2" for="email">Email</label>
-        <input id="email" type="text" class="form-control" placeholder="example@example.com" name="email">
+        <input id="email" type="text" class="form-control" placeholder="example@example.com" name="email" value="{{ old('email') }}">
     </div>
     @error('email')
     <div class="alert alert_outlined alert_primary mt-5 mb-5">

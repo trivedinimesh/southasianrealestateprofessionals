@@ -43,7 +43,7 @@ Add Board of Director
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text" >First Name</label>
-                                                <input name="first_name" type="text" />
+                                                <input name="first_name" type="text" value="{{ old('first_name') }}"/>
                                                 @error('first_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -52,7 +52,7 @@ Add Board of Director
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Last Name</label>
-                                                <input name="last_name" type="text" />
+                                                <input name="last_name" type="text" value="{{ old('last_name') }}"/>
                                                 @error('last_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -71,7 +71,7 @@ Add Board of Director
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Designation</label>
-                                                <input name="designation" type="text" />
+                                                <input name="designation" type="text" value="{{ old('designation') }}"/>
                                                 @error('designation')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -80,7 +80,7 @@ Add Board of Director
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Facebook ID</label>
-                                                <input name="fb_id" type="text" />
+                                                <input name="fb_id" type="text" value="{{ old('fb_id') }}"/>
                                                 @error('fb_id')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -89,7 +89,7 @@ Add Board of Director
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Twitter ID</label>
-                                                <input name="twitter_id" type="text" />
+                                                <input name="twitter_id" type="text" value="{{ old('twitter_id') }}"/>
                                                 @error('twitter_id')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -98,7 +98,7 @@ Add Board of Director
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Linkedin ID</label>
-                                                <input name="linkedin_id" type="text" />
+                                                <input name="linkedin_id" type="text" value="{{ old('linkedin_id') }}"/>
                                                 @error('linkedin_id')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror

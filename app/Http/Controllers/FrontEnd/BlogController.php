@@ -55,9 +55,11 @@ class BlogController extends Controller
             $blog = Blog::findOrFail($id);
             $allkeywords = Keyword::withCount('blogs')->get();
             $alltags = Tag::all();
+            $blogs = Blog::get();
 
             return view('frontend.blog.blog-detail', [
                 'blog' => $blog,
+                'blogs' => $blogs,
                 'alltags' => $alltags,
                 'allkeywords' => $allkeywords
             ]);

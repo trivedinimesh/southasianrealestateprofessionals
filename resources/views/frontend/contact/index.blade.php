@@ -64,6 +64,7 @@ Contact
                     type="text"
                     name="first_name"
                     placeholder="First Name"
+                    value="{{ old('first_name') }}"
                   />
                 </div>
               </div>
@@ -74,6 +75,7 @@ Contact
                     type="text"
                     name="last_name"
                     placeholder="Last Name"
+                    value="{{ old('last_name') }}"
                   />
                 </div>
               </div>
@@ -84,6 +86,7 @@ Contact
                     type="email"
                     name="email"
                     placeholder="Email Address"
+                    value="{{ old('email') }}"
                   />
                 </div>
               </div>

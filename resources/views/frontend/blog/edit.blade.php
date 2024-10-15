@@ -81,7 +81,7 @@ Edit Blog
                                     @enderror
                                 </div>
                                 <label for="formFile" class="input__field-text">Keywords</label>
-                                <select class="tom-select-multiple form-control w-full" name="keywords[]" multiple>
+                                <select class="tom-select-multiple w-full" name="keywords[]" multiple>
                                     @foreach($keywords as $keyword)
                                         <option value="{{ $keyword->keyword }}"
                                             @if(in_array($keyword->keyword, $blog->keywords->pluck('keyword')->toArray())) selected @endif>
@@ -90,7 +90,7 @@ Edit Blog
                                     @endforeach
                                 </select>
                                 <label for="formFile" class="input__field-text">Tags</label>
-                                <select class="tom-select-multiple form-control w-full" name="tags[]" multiple>
+                                <select class="tom-select-multiple w-full" name="tags[]" multiple>
                                     @foreach($tags as $tag)
                                         <option value="{{ $tag->tag }}"
                                             @if(in_array($tag->tag, $blog->tags->pluck('tag')->toArray())) selected @endif>
