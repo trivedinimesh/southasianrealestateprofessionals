@@ -25,7 +25,7 @@ class BODRequest extends FormRequest
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:8192',
             'fb_id' => 'nullable|url',
             'twitter_id' => 'nullable|url',
             'linkedin_id' => 'nullable|url',

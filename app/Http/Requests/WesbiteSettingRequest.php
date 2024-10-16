@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class BlogRequest extends FormRequest
+class WesbiteSettingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,10 @@ class BlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'body' => 'required|string|max:16777215',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:8192',
-            'keywords' => 'sometimes|array',
-            'tags' => 'sometimes|array',
+            'header_image' => 'nullable|image|mimes:jpeg,png,jpg',
+            'header_title' => 'required|string|max:255',
+            'contact_form_email' => 'required|email',
+            'feedback_form_email' => 'required|email',
         ];
     }
 }

@@ -157,7 +157,7 @@ Edit Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12">
                                     <label for="formFile" class="input__field-text">Features</label>
                                 <select class="tom-select-multiple w-full" name="features[]" multiple>
                                     @foreach($features as $feature)

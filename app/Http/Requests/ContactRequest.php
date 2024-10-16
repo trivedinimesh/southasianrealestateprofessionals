@@ -24,10 +24,10 @@ class ContactRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'message' => 'required|string',
+            'email' => 'required|email|max:255',
             'isd_code' => 'required|string|max:10',
             'phone_number' => 'required|string|max:15',
+            'message' => 'nullable|string',
         ];
     }
 }

@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             PermissionTableSeeder::class,
             SponsorSeeder::class,
             PlanSeeder::class,
+            SettingSeeder::class,
         ]);
     }
 }

@@ -55159,7 +55159,7 @@ only screen and (min-width: 768px) and (max-width: 991px) {
     overflow: visible !important;
     align-items: center !important;
     flex-wrap: nowrap !important;
-    width: 243px !important;
+    /* width: 243px !important; */
 
 }
 
@@ -59977,9 +59977,9 @@ body {
     background-color: #fefefe;
     margin: auto;
     padding: 0;
-    width: 100%;
+    width: 60vw;
     max-width: 1200px;
-    top: -50px;
+    top: -100px;
   }
   
   /* The Close Button */
@@ -60076,4 +60076,8 @@ body {
 
   .justify-self-end{
       justify-self: end;
+  }
+
+  .ts-control > input {
+    min-width: 20rem !important;
   }

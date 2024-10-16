@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest; // Use the Form Request for validation
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\EditProfileRequest;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Booking;
@@ -266,7 +267,7 @@ class UserController extends Controller
         return view('frontend.users.edit-profile')->with('current_user', $current_user);
     }
 
-    public function updateProfile(UserRequest $request, $id)
+    public function updateProfile(EditProfileRequest $request, $id)
     {
         DB::beginTransaction();
         try {

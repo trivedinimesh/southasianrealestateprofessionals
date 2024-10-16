@@ -24,7 +24,7 @@ class EventRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'details' => 'required|string|max:16777215',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:8192',
             'price_member' => 'nullable|numeric',
             'price_non_member' => 'nullable|numeric',
             'is_active' => 'sometimes|boolean',

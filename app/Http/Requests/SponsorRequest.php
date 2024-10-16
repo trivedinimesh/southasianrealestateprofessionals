@@ -24,7 +24,7 @@ class SponsorRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:8192',
         ];
     }
 }

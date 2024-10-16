@@ -67,6 +67,9 @@ Contact
                     value="{{ old('first_name') }}"
                   />
                 </div>
+                @if ($errors->has('first_name'))
+                                    <span class="text-danger">{{ $message }}</span>
+                                @endif
               </div>
               <div class="col-12 col-md-6 contact_div">
                 <div class="form-group m-0">
@@ -78,6 +81,9 @@ Contact
                     value="{{ old('last_name') }}"
                   />
                 </div>
+                @if ($errors->has('last_name'))
+                                    <span class="text-danger">{{ $message }}</span>
+                                @endif
               </div>
               <div class="col-12 col-md-6 contact_div">
                 <div class="form-group m-0">
@@ -102,7 +108,7 @@ Contact
                       />
                     </div>
                     @if ($errors->has('isd_code'))
-                                    <span class="text-danger">{{ $errors->first('isd_code') }}</span>
+                                    <span class="text-danger">{{ $message }}</span>
                                 @endif
                                
                   </div>
@@ -117,7 +123,7 @@ Contact
                       />
                     </div>
                     @if ($errors->has('phone_number'))
-                                <span class="text-danger">{{ $errors->first('phone_number') }}</span>
+                                <span class="text-danger">{{ $message }}</span>
                             @endif
                                
                   </div>

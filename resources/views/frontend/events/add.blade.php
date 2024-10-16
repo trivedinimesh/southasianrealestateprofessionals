@@ -106,7 +106,7 @@ Add Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
+                                    <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Member Price</label>
                                             <input name="price_member" type="number" value="{{ old('price_member') }}" />
@@ -115,7 +115,7 @@ Add Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
+                                    <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Non Member Price</label>
                                             <input name="price_non_member" type="number" value="{{ old('price_non_member') }}" />
@@ -124,7 +124,7 @@ Add Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
+                                    <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Status</label>
                                             <input type="checkbox" name="is_active" checked value="1"> Active
@@ -133,7 +133,7 @@ Add Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-2 col-xl-2 col-lg-2">
+                                    <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
                                             <label class="input__field-text" >Members Only</label>
                                             <input type="checkbox" name="members_only" value="1"> Active
@@ -142,7 +142,7 @@ Add Event
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-4 col-xl-4 col-lg-4">
+                                    <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <label for="formFile" class="input__field-text">Features</label>
                                         <select class="tom-select-multiple w-full" name="features[]" multiple>
                                             @foreach($features as $feature)
