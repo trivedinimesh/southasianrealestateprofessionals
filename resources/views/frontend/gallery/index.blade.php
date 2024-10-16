@@ -32,7 +32,7 @@ Gallery
         <div class="column">
             <img class="demo-{{ $loop->parent->index }} cursor" src="{{ asset($image->image_path) }}" style="width:100%; height: auto;"
                 onclick="openModal({{ $loop->parent->index }}); currentSlide({{$num++}}, {{ $loop->parent->index }})"
-                alt="Nature and sunrise">
+                alt="{{ $image->title }}">
         </div>
         @endforeach
     </div>
@@ -60,7 +60,7 @@ Gallery
                 <div class="column">
                     <img class="demo-{{ $loop->parent->index }} cursor" src="{{ asset($image->image_path) }}"
                         style="width:100%" onclick="currentSlide({{ $num++ }}, {{ $loop->parent->index }})"
-                        alt="Nature and sunrise">
+                        alt="{{ $image->title }}">
                 </div>
                 @endforeach
             </div>

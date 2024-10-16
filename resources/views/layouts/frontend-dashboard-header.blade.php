@@ -54,6 +54,11 @@
                                                 type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
                                                     class="nav-text">Manage Sponsors</span></a>
                                         </li>
+                                        <li class=""><a href="{{route('websiteSetting.edit')}}" id="react-collapsed-toggle-:R56al6:"
+                                                aria-controls="react-collapsed-panel-:R56al6:" aria-expanded="false"
+                                                type="button" role="button" tabindex="0"><i class="flaticon-reminder"></i><span
+                                                    class="nav-text">Website Setting</span></a>
+                                        </li>
                                         <li class=""><a href="{{route('profile')}}" id="react-collapsed-toggle-:R86al6:"
                                                 aria-controls="react-collapsed-panel-:R86al6:" aria-expanded="false"
                                                 type="button" role="button" tabindex="0"><i class="flaticon-user-1"></i><span

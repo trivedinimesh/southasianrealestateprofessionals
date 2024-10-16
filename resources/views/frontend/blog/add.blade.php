@@ -78,18 +78,26 @@ Add Blog
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
                                     </div> -->
-                                    <label for="formFile" class="input__field-text">Keywords</label>
-                                    <select class="tom-select-multiple w-full" name="keywords[]" multiple>
-                                        @foreach($keywords as $keyword)
-                                            <option value="{{ $keyword->keyword }}">{{ $keyword->keyword }}</option>
-                                        @endforeach
-                                    </select>
-                                    <label for="formFile" class="input__field-text">Tags</label>
-                                    <select class="tom-select-multiple w-full" name="tags[]" multiple>
-                                        @foreach($tags as $tag)
-                                            <option value="{{ $tag->tag }}">{{ $tag->tag }}</option>
-                                        @endforeach
-                                    </select>
+                                    <div class="row pb-20 pt-20">
+                                        <div class="col-md-6">
+                                            <label for="formFile" class="input__field-text">Keywords</label>
+                                            <select class="tom-select-multiple w-full" name="keywords[]" multiple>
+                                                @foreach($keywords as $keyword)
+                                                    <option value="{{ $keyword->keyword }}">{{ $keyword->keyword }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="formFile" class="input__field-text">Tags</label>
+                                            <select class="tom-select-multiple w-full" name="tags[]" multiple>
+                                                @foreach($tags as $tag)
+                                                    <option value="{{ $tag->tag }}">{{ $tag->tag }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    
 
                                     <button class="input__btn w-100"
                                         type="submit">Create Blog</button>

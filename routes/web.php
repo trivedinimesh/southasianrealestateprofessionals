@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontEnd\AuthController;
 use App\Http\Controllers\FrontEnd\BODController;
 use App\Http\Controllers\FrontEnd\SponsorController;
 use App\Http\Controllers\FrontEnd\SubscriptionController;
+use App\Http\Controllers\FrontEnd\WebsiteSettingController;
 
 use App\Http\Controllers\FrontEnd\ForgotPasswordController;
 use App\Http\Controllers\FrontEnd\ResetPasswordController;
@@ -58,13 +59,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('/admin/users', UserController::class);
     Route::get('/admin/member', [UserController::class, 'member'])->name('member');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::get('/edit-update', [UserController::class, 'editProfile'])->name('edit-profile');
+    Route::get('/edit-profile', [UserController::class, 'editProfile'])->name('edit-profile');
     Route::put('/profile-update', [UserController::class, 'updateProfile'])->name('profile-update');
     Route::get('/membership-upselling', [UserController::class, 'membershipUpselling'])->name('membership-upselling');
     
     Route::resource('/admin/board-of-director', BODController::class);
 
     Route::resource('/admin/sponsor', SponsorController::class);
+
+    Route::get('/admin/website-setting/edit', [WebsiteSettingController::class, 'edit'])->name('websiteSetting.edit');
+    Route::put('/admin/website-setting', [WebsiteSettingController::class, 'update'])->name('websiteSetting.update');
 
     Route::get('/admin/blogs-list', [BlogController::class, 'list'])->name('blogs.list');
     Route::get('/admin/blogs/create', [BlogController::class, 'create'])->name('blogs.create');

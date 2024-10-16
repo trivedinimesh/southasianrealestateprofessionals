@@ -8,7 +8,7 @@ Home
 <section
     id="homeindex"
     class="banner__area banner__area-1 banner__height-1 d-flex align-items-center"
-    style="background-image: url('{{ URL::asset('build/media/banner.png') }}'); background-repeat: no-repeat; background-size: cover; background-position: center;"
+  style="background-image: url('{{ asset('images/header/' . $websiteSetting->header_image) }}'); background-repeat: no-repeat; background-size: cover; background-position: center;"
     >
     <div class="spotlight"></div>
     <div class="banner__shape">
@@ -18,8 +18,7 @@ Home
         <div class="col-xxl-7 col-xl-8 col-lg-6">
             <div class="banner__content">
             <h2 class="banner__title">
-                Digital Thinkers<!-- -->
-                <span class="text__highlight"> Conference </span>
+                {{ $websiteSetting->header_title }}
             </h2>
             <div class="slider__btdn">
                 <a class="fill__btn" href="#"
