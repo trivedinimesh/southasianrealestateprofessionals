@@ -285,7 +285,7 @@ class EventsController extends Controller
     }
 
     public function membersOnly(){
-        $events = Event::where('is_active', 1)->where('members_only', 1)->get();
+        $events = Event::where('is_active', 1)->where('members_only', 1)->paginate(10);
         return view('frontend.events.members-only', ['events' => $events]);
     }
 

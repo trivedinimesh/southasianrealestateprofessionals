@@ -88,14 +88,19 @@
                 <li><span>Venue : </span>{{$event->address}}, {{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</li>
               </ul>
               <div class="ticket__purchase-btn mt-30 text-center pb-20">
-                @if($user->hasRole('member'))
-                <a href="{{route('events.book', $event->id)}}" class="fill__btn">BUY TICKETS <i class="fa-regular fa-angle-right"></i></a>
-
-                @else
-                <button type="button" class="fill__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  BUY TICKETS <i class="fa-regular fa-angle-right"></i>
-                </button>
-                @endif
+              @if(Auth::check())
+                  @if(Auth::user()->hasRole('member'))
+                      <a href="{{ route('events.book', $event->id) }}" class="fill__btn">BUY TICKETS <i class="fa-regular fa-angle-right"></i></a>
+                  @else
+                      <button type="button" class="fill__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          BUY TICKETS <i class="fa-regular fa-angle-right"></i>
+                      </button>
+                  @endif
+              @else
+                  <button type="button" class="fill__btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      BUY TICKETS <i class="fa-regular fa-angle-right"></i>
+                  </button>
+              @endif
                 <div>
                   @if (session('error'))
                       <span class="text-danger">{{ session('error') }}</span>

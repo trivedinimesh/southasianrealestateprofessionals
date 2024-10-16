@@ -53,15 +53,18 @@ Dashboard
                                         <div class="tricket__sold-item">
                                             <div class="news__item-inner bb-0">
                                                 <div class="news__content">
-                                                    <h4 class="news__title"><a href="schedule-list">{{ $event->title }}</a></h4>
+                                                    <h4 class="news__title">{{ $event->title }}</h4>
                                                     <div class="news__meta">
                                                         <div class="news__meta-status"><span>
                                                             <i class="flaticon-calendar"></i></span><span>{{ \Carbon\Carbon::parse($event->date)->format('F d, Y') }}</span></div>
                                                         <div class="news__meta-status"><span>
                                                             <i class="flaticon-clock"></i></span><span>{{ \Carbon\Carbon::parse($event->start_time)->format('g:i A') }} - {{ \Carbon\Carbon::parse($event->end_time)->format('g:i A') }}</span></div>
-                                                        <div class="news__meta-status"><span>
-                                                            <i class="flaticon-placeholder-1"></i></span><span>{{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</span></div>
-                                                    </div>
+                                                            <div class="news__meta-status d-flex justify-content-between align-items-center"><span>
+                                                                    <i class="flaticon-placeholder-1"></i></span><span>{{$event->city}}, {{$event->state}}, {{$event->country}}, {{$event->pincode}}</span></div>
+                                                                    @if($event->members_only)
+                                                                        <span class="badge bg-primary ms-2">Members Only</span>
+                                                                    @endif
+                                                        </div>
                                                 </div>
                                             </div>
                                             

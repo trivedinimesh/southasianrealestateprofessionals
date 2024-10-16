@@ -16,6 +16,8 @@ class HomeController extends Controller
     public function index()
     {
         $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')
+        ->where('members_only', 0)
+        ->where('is_active', 1)
         ->take(4)
         ->get(); // Paginate results
         $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at')

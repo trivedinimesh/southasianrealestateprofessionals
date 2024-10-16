@@ -44,7 +44,7 @@ Membership Details
                                 <th>Price</th>
                                 <th>Status</th>
                                 <th>Ends At</th>
-                                <th>Action</th>
+                              
                             </tr>
                         </thead>
                         <tbody>
@@ -78,21 +78,7 @@ Membership Details
                                         <div class="attendant__user-title"><span>{{ \Carbon\Carbon::parse($subscription->ends_at)->format('F d, Y') }}</span></div>
                                     </div>
                                 </td>
-                                <td>
-                                    @if($subscription->status == "active")
-                                        <form action="{{ route('subscription.cancel', $subscription->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-danger">Cancel Subscription</button>
-                                        </form>
-                                    @endif
-
-                                    @if($subscription->status != "active")
-                                        <form action="{{ route('subscription.renew', $subscription->id) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-primary">Renew Subscription</button>
-                                        </form>
-                                    @endif
-                                </td>
+                               
                             </tr>
                             @endforeach
 

@@ -95,8 +95,8 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingOne">
                                         <span class="accordion-button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
+                                            data-bs-target="#{{$event->id}}" aria-expanded="true"
+                                            aria-controls="{{$event->id}}">
                                             <span class="accordion__heading">
                                                 <span class="accordion__meta accordion__meta-field">
                                                     <span class="accordion__meta-contet  d-flex column-gap-lg-5">
@@ -126,7 +126,7 @@
                                                             {{$event->pincode}}</span></span></span><span
                                                     class="accordion__title_inner"></span></span>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                    <div id="{{$event->id}}" class="accordion-collapse collapse show"
                                         aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             <div class="accordiong__inner">
@@ -160,219 +160,7 @@
                                 </div>
                             </div>
                             @endforeach
-                            <!-- </div> -->
-                            <!-- <div
-                            class="tab-pane fade"
-                            id="nav-july"
-                            role="tabpanel"
-                            aria-labelledby="nav-july-tab"
-                            tabindex="0">
-                            <div class="accordion" id="accordionExample-p">
-                                <div class="accordion-item">
-                                    <h2
-                                        class="accordion-header"
-                                        id="headingOne"
-                                    >
-                                        <span
-                                            class="accordion-button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne"
-                                            aria-expanded="true"
-                                            aria-controls="collapseOne"
-                                            >
-                                            <span class="accordion__heading">
-                                                <span class="accordion__meta accordion__meta-field">
-                                                    <span class="accordion__meta-contet  d-flex column-gap-lg-5">
-                                                        <span class="accordion__meta-contet-wrap">
-                                                            <span class="title">
-                                                                $85
-                                                            </span>
-                                                            <button type="button" class="accordion__meta-contet-url">
-                                                                Members
-                                                            </button>
-                                                        </span>
-                                                        <span class="accordion__meta-contet-wrap">
-                                                            <span class="title">
-                                                                $95
-                                                            </span>
-                                                            <button type="button" class="accordion__meta-contet-url">
-                                                                Non-Members
-                                                            </button>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                                <span
-                                                    class="accordion__meta accordion-border"
-                                                    ><span
-                                                        class="accordion__meta-contet"
-                                                        ><span class="title"
-                                                            >Annual Gala - Milano Event Center</span
-                                                        ><span class="info"
-                                                            >16555 Creekbend Dr; Sugarland, TX 77478</span
-                                                        ></span
-                                                    ></span
-                                                ><span
-                                                    class="accordion__title_inner"
-                                                    ></span
-                                            ></span
-                                        >
-                                    </h2>
-                                    <div
-                                        id="collapseOne"
-                                        class="accordion-collapse collapse show"
-                                        aria-labelledby="headingOne"
-                                        data-bs-parent="#accordionExample"
-                                    >
-                                        <div class="accordion-body">
-                                            <div class="accordiong__inner">
-                                                <div
-                                                    class="accordion__title-inner mb-25"
-                                                >
-                                                    <p>
-                                                        Join us for an evening filled with networking, industry updates, delicious food, drinks, exiting casino entertainment, a silent auction, and much more!
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="accordion__thumb w-img"
-                                                >
-                                                    <img
-                                                        src="{{ URL::asset('build/media/schedule-thumb.jpg') }}"
-                                                        alt="image not found"
-                                                    />
-                                                </div>
-                                                <div class="accordiong__meta">
-                                                    <span class="info"
-                                                        ><i
-                                                            class="fa-light fa-clock"
-                                                        ></i>
-                                                        6:00PM-9.00PM</span
-                                                    ><span
-                                                        ><i
-                                                            class="flaticon-calendar"
-                                                        ></i
-                                                        >July 24</span
-                                                    ><span
-                                                        ><i
-                                                            class="flaticon-placeholder-1"
-                                                        ></i
-                                                        >Sugarland, Texas</span
-                                                    >
-                                                    <div class="header__btn">
-                                                        <a class="blog_custome_btn" href="#">Read More<i class="fa-regular fa-angle-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            class="tab-pane fade"
-                            id="nav-august"
-                            role="tabpanel"
-                            aria-labelledby="nav-august-tab"
-                            tabindex="0">
-                            <div class="accordion" id="accordionExample-c">
-                                <div class="accordion-item">
-                                    <h2
-                                        class="accordion-header"
-                                        id="headingOne"
-                                    >
-                                        <span
-                                            class="accordion-button"
-                                            data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne"
-                                            aria-expanded="true"
-                                            aria-controls="collapseOne"
-                                            >
-                                            <span class="accordion__heading">
-                                                <span class="accordion__meta accordion__meta-field">
-                                                    <span class="accordion__meta-contet  d-flex column-gap-lg-5">
-                                                        <span class="accordion__meta-contet-wrap">
-                                                            <span class="title">
-                                                                $85
-                                                            </span>
-                                                            <button type="button" class="accordion__meta-contet-url">
-                                                                Members
-                                                            </button>
-                                                        </span>
-                                                        <span class="accordion__meta-contet-wrap">
-                                                            <span class="title">
-                                                                $95
-                                                            </span>
-                                                            <button type="button" class="accordion__meta-contet-url">
-                                                                Non-Members
-                                                            </button>
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                                <span
-                                                    class="accordion__meta accordion-border"
-                                                    ><span
-                                                        class="accordion__meta-contet"
-                                                        ><span class="title"
-                                                            >Annual Gala - Milano Event Center</span
-                                                        ><span class="info"
-                                                            >16555 Creekbend Dr; Sugarland, TX 77478</span
-                                                        ></span
-                                                    ></span
-                                                ><span
-                                                    class="accordion__title_inner"
-                                                    ></span
-                                            ></span
-                                        >
-                                    </h2>
-                                    <div
-                                        id="collapseOne"
-                                        class="accordion-collapse collapse show"
-                                        aria-labelledby="headingOne"
-                                        data-bs-parent="#accordionExample"
-                                    >
-                                        <div class="accordion-body">
-                                            <div class="accordiong__inner">
-                                                <div
-                                                    class="accordion__title-inner mb-25"
-                                                >
-                                                    <p>
-                                                        Join us for an evening filled with networking, industry updates, delicious food, drinks, exiting casino entertainment, a silent auction, and much more!
-                                                    </p>
-                                                </div>
-                                                <div
-                                                    class="accordion__thumb w-img"
-                                                >
-                                                    <img
-                                                        src="{{ URL::asset('build/media/schedule-thumb.jpg') }}"
-                                                        alt="image not found"
-                                                    />
-                                                </div>
-                                                <div class="accordiong__meta">
-                                                    <span class="info"
-                                                        ><i
-                                                            class="fa-light fa-clock"
-                                                        ></i>
-                                                        6:00PM-9.00PM</span
-                                                    ><span
-                                                        ><i
-                                                            class="flaticon-calendar"
-                                                        ></i
-                                                        >August 24</span
-                                                    ><span
-                                                        ><i
-                                                            class="flaticon-placeholder-1"
-                                                        ></i
-                                                        >Sugarland, Texas</span
-                                                    >
-                                                    <div class="header__btn">
-                                                        <a class="blog_custome_btn" href="#">Read More<i class="fa-regular fa-angle-right"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+                            
                         </div>
                     </div>
                 </div>

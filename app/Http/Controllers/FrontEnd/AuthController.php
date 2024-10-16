@@ -106,8 +106,8 @@ class AuthController extends Controller
                 $membersCount = User::role('member')->count();
                 $eventsCount = Event::count();
                 $bookingsCount = Booking::count();
-                $subscriptions = Subscription::take(10)->get();
-                $events = Event::withCount('bookings')->take(10)->get();
+                $subscriptions = Subscription::take(5)->get();
+                $events = Event::withCount('bookings')->take(5)->get();
                 $bookings = Booking::take(10)->get();
 
                 return view('frontend.dashboard.index', [
@@ -120,12 +120,19 @@ class AuthController extends Controller
                     'bookings' => $bookings,
                 ]);
             } else {
-
+                
                 $subscriptions = Subscription::where('user_id', $currentUser->id)
                                        ->where('status', 'active')
                                        ->where('ends_at', '>', Carbon::now()) // Check if the subscription is still valid
                                        ->get();
-                $events = Event::take(10)->get();
+                 if($currentUser->hasRole('member')){
+
+                    $events = Event::take(5)->get();
+
+                 }else{
+                    $events = Event::where('members_only', 0)->take(5)->get();
+
+                 }                      
                 $bookings = Booking::where('user_id', $currentUser->id)->with('event')->with('user')->take(10)->get();
                 return view('frontend.dashboard.user', [
                     'subscriptions' => $subscriptions,

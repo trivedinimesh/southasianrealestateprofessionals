@@ -53,7 +53,7 @@
                     <!-- Call to Action -->
                     <tr>
                         <td style="text-align: center; padding-top: 20px;">
-                            <a href="#" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Manage Subscription</a>
+                            <a href="https://sarep.aliabcybersecurity.co.in/admin/membership/list" style="background-color: #f05537; color: white; padding: 10px 20px; border-radius: 4px; text-decoration: none; display: inline-block;">Manage Subscription</a>
                         </td>
                     </tr>
 
