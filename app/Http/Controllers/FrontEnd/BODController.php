@@ -14,17 +14,11 @@ use App\Http\Requests\BODRequest;
 
 class BODController extends Controller
 {
-    // Middleware to restrict access to admins
-    public function __construct()
-    {
-        
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-    }
-
+    
     public function index(Request $request)
     {
+        $this->authorizeAdmin();
+
         $query = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id');
 
         // Filter by search input (searching by name)
@@ -50,11 +44,15 @@ class BODController extends Controller
 
     public function create()
     {
+        $this->authorizeAdmin();
+
         return view('frontend.bod.add');
     }
 
     public function store(BODRequest $request)
     {
+        $this->authorizeAdmin();
+
 
         try {
             // Store the image securely
@@ -82,6 +80,8 @@ class BODController extends Controller
 
     public function edit($id)
     {
+        $this->authorizeAdmin();
+
         try {
             $bod = BOD::findOrFail($id);
             return view('frontend.bod.edit', ['bod' => $bod]);
@@ -92,6 +92,8 @@ class BODController extends Controller
 
     public function update(BODRequest $request, $id)
     {
+        $this->authorizeAdmin();
+
         try {
             $bod = BOD::findOrFail($id);
             
@@ -123,6 +125,8 @@ class BODController extends Controller
 
     public function destroy($id)
     {
+        $this->authorizeAdmin();
+
         DB::beginTransaction();
         try {
             $bod = BOD::findOrFail($id);
@@ -154,6 +158,13 @@ class BODController extends Controller
     {
         if ($image && File::exists(public_path('images/bods/' . $image))) {
             File::delete(public_path('images/bods/' . $image));
+        }
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
         }
     }
 }

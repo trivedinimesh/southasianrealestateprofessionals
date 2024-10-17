@@ -78,7 +78,7 @@ Edit Sponsor
                                                     @enderror
                                          
                                         </div>
-                                        <button class="input__btn w-100" type="submit">Create Sponsor</button>
+                                        <button class="input__btn w-100" type="submit">Update Sponsor</button>
                                     </div>
                                 </form>
                             </div>

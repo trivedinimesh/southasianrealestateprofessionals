@@ -25,7 +25,7 @@ class HomeController extends Controller
         $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at')
         ->take(4)
         ->get();
-        $sponsor = Sponsor::select('id', 'name', 'image')->get();
+        $sponsor = Sponsor::select('id', 'name', 'image', 'category')->get();
 
         return view('frontend.home')->with('events', $events)->with('blogs', $blogs)->with('sponsors', $sponsor)->with('websiteSetting', $websiteSetting);
     }

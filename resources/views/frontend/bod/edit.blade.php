@@ -107,7 +107,7 @@ Edit Board of Director
                                             </div>
                                         </div>
                                         
-                                        <button class="input__btn w-100" type="submit">Create BOD</button>
+                                        <button class="input__btn w-100" type="submit">Update BOD</button>
                                     </div>
                                 </form>
                             </div>

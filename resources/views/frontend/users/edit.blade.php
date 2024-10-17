@@ -96,7 +96,7 @@ Edit User
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="input__btn w-100" type="submit">Create User</button>
+                                    <button class="input__btn w-100" type="submit">Update User</button>
                                 </div>
                             </form>
                         </div>

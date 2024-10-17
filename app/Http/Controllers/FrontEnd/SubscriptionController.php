@@ -101,6 +101,8 @@ class SubscriptionController extends Controller
 
     public function extendSubscription(Request $request, $id)
     {
+        $this->authorizeAdmin();
+
         $subscription = Subscription::findOrFail($id);
         $days = $request->input('days', 30); // Default 30 days if not provided
         $subscription->extend($days);
@@ -164,6 +166,13 @@ class SubscriptionController extends Controller
                 // Log the reminder
                 \Log::info("Reminder sent to user {$user->email} with {$daysLeft} days left.");
             }
+        }
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
         }
     }
 
