@@ -214,7 +214,7 @@ Edit Event
                                         </div>
                                     </div>
                                     <button class="input__btn w-100"
-                                        type="submit">Edit Event</button>
+                                        type="submit">Update Event</button>
                                     </div>
                                 </form>
                         </div>

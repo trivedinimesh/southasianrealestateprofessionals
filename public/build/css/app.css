@@ -50717,6 +50717,7 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .body-area {
     background: var(--clr-bg-10);
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .bd-theme-dark.body-area {

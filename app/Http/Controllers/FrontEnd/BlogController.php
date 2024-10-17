@@ -71,9 +71,7 @@ class BlogController extends Controller
 
     public function list(Request $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
 
         $blogs = Blog::with(['keywords'])
             ->when($request->input('keywords'), function ($query, $keyword) {
@@ -95,9 +93,7 @@ class BlogController extends Controller
 
     public function create()
     {
-         if (!Auth::user()->hasRole('admin')) {
-                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-            }
+        $this->authorizeAdmin();
             
         $keywords = Keyword::all();
         $tags = Tag::all();
@@ -107,9 +103,7 @@ class BlogController extends Controller
 
     public function store(BlogRequest $request)
     {
-         if (!Auth::user()->hasRole('admin')) {
-                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-            }
+        $this->authorizeAdmin();
             
 
         DB::beginTransaction();
@@ -135,9 +129,7 @@ class BlogController extends Controller
 
     public function edit(string $id)
     {
-         if (!Auth::user()->hasRole('admin')) {
-                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-            }
+        $this->authorizeAdmin();
             
 
         $blog = Blog::findOrFail($id);
@@ -149,9 +141,7 @@ class BlogController extends Controller
 
     public function update(BlogRequest $request, string $id)
     {
-         if (!Auth::user()->hasRole('admin')) {
-                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-            }
+        $this->authorizeAdmin();
             
         DB::beginTransaction();
 
@@ -178,15 +168,14 @@ class BlogController extends Controller
 
     public function destroy(string $id)
     {
-         if (!Auth::user()->hasRole('admin')) {
-                return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-            }
+        $this->authorizeAdmin();
             
 
         DB::beginTransaction();
 
         try {
             $blog = Blog::findOrFail($id);
+            $this->deleteExistingImage($blog->image); 
             $blog->delete();
 
             DB::commit();
@@ -200,9 +189,7 @@ class BlogController extends Controller
     private function uploadImage(Request $request, $existingImage = null)
     {
         if ($request->hasFile('image')) {
-            if ($existingImage && file_exists(public_path('images/blogs/' . $existingImage))) {
-                unlink(public_path('images/blogs/' . $existingImage));
-            }
+            $this->deleteExistingImage($existingImage);
 
             $fileName = time() . '.' . $request->image->getClientOriginalExtension();
             $request->image->move(public_path('images/blogs/'), $fileName);
@@ -231,6 +218,20 @@ class BlogController extends Controller
                 $tagIds[] = $tagRecord->id;
             }
             $blog->tags()->sync($tagIds);
+        }
+    }
+
+    private function deleteExistingImage($image)
+    {
+        if ($image && file_exists(public_path('images/blogs/' . $image))) {
+            unlink(public_path('images/blogs/' . $image));
+        }
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
         }
     }
 }

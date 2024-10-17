@@ -106,7 +106,7 @@ Edit Blog
                                 </div>
 
                                 <button class="input__btn w-100"
-                                    type="submit">Edit Blog</button>
+                                    type="submit">Update Blog</button>
                                 </form>
                             </div>
                     </div>

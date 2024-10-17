@@ -14,9 +14,8 @@ class SponsorController extends Controller
 {
     public function index(Request $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         
         $sponsor = Sponsor::select('id', 'name', 'category', 'image')->get();
         $query = Sponsor::query();
@@ -49,9 +48,8 @@ class SponsorController extends Controller
 
     public function create()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
 
         $sponsors = Sponsor::select('id', 'name', 'category', 'image')->get();
         return view('frontend.sponsor.add')->with('sponsors', $sponsors);
@@ -59,9 +57,8 @@ class SponsorController extends Controller
 
     public function store(SponsorRequest $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         
         try {
             $Sponsor = new Sponsor;
@@ -92,9 +89,8 @@ class SponsorController extends Controller
      */
     public function edit(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         
         try {
             $sponsors = Sponsor::select('id', 'name', 'category', 'image')->get();
@@ -108,9 +104,8 @@ class SponsorController extends Controller
 
     public function update(SponsorRequest $request, $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         
         try {
             // Retrieve the existing blog by ID
@@ -150,9 +145,8 @@ class SponsorController extends Controller
 
     public function destroy(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         
         DB::beginTransaction();
         try {
@@ -169,6 +163,15 @@ class SponsorController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             return back()->with('error', 'Failed to delete sponsor.');
+        }
+    }
+
+    
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
         }
     }
 }
