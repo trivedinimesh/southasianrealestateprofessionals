@@ -42,8 +42,8 @@ Add User
                                 <div class="create__input-wrapper row">
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                                class="input__field-text" >First Name</label>
-                                                <input name="first_name" type="text" value="{{ old('first_name') }}" />
+                                                class="input__field-text" >First Name<span class="text-danger">*</span></label>
+                                                <input name="first_name" type="text" required value="{{ old('first_name') }}" />
                                                 @error('first_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -51,8 +51,8 @@ Add User
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Last Name</label>
-                                                <input name="last_name" type="text" value="{{ old('last_name') }}" />
+                                                class="input__field-text">Last Name<span class="text-danger">*</span></label>
+                                                <input name="last_name" type="text" required  value="{{ old('last_name') }}" />
                                                 @error('last_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -60,8 +60,8 @@ Add User
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Email</label>
-                                                <input name="email" type="text" value="{{ old('email') }}"/>
+                                                class="input__field-text">Email<span class="text-danger">*</span></label>
+                                                <input name="email" type="email" required  value="{{ old('email') }}"/>
                                                 @error('email')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -69,15 +69,15 @@ Add User
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6 row">
                                         <div class="col-sm-3 singel__input-field mb-15"><label
-                                            class="input__field-text">ISD Code</label>
-                                            <input name="isd_code" type="text" value="{{ old('isd_code') }}"/>
+                                            class="input__field-text">ISD Code<span class="text-danger">*</span></label>
+                                            <input name="isd_code" type="text" required  value="{{ old('isd_code') }}"/>
                                             @error('isd_code')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
                                         <div class="col-sm-9 singel__input-field mb-15"><label
-                                            class="input__field-text">Phone Number</label>
-                                            <input name="phone_number" type="text" value="{{ old('phone_number') }}"/>
+                                            class="input__field-text">Phone Number<span class="text-danger">*</span></label>
+                                            <input name="phone_number" type="text" required  value="{{ old('phone_number') }}"/>
                                             @error('phone_number')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -85,7 +85,7 @@ Add User
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text">Role</label>
+                                            <label class="input__field-text">Role<span class="text-danger">*</span></label>
                                             <div class="contact__select">
                                                 <select name="role">
                                                 @foreach ($roles as $role)
@@ -97,8 +97,8 @@ Add User
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15"><label
-                                            class="input__field-text">Password</label>
-                                            <input type="password" name="password" />
+                                            class="input__field-text">Password<span class="text-danger">*</span></label>
+                                            <input type="password" name="password" required  />
                                             @if ($errors->has('password'))
                                             <span class="text-danger">{{ $errors->first('password') }}</span>
                                             @endif

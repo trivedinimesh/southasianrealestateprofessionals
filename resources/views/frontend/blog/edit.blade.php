@@ -43,7 +43,7 @@ Edit Blog
                                 @method('PATCH')
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text" >Title</label>
-                                        <input name="title" type="text" value="{{$blog->title}}"/>
+                                        <input name="title" type="text" value="{{ old('title', $blog->title)}}"/>
                                         @error('title')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -72,10 +72,10 @@ Edit Blog
                                     
                                     <!-- Show the previous image if available -->
                                     @if($blog->image)
-                                        <img src="{{ asset('images/blogs/' . $blog->image) }}" alt="Blog Image" class="img-blog" width="200">
+                                        <img id="imagePreview" src="{{ asset('images/blogs/' . $blog->image) }}" alt="Blog Image" class="img-blog" width="200">
                                     @endif
 
-                                    <input class="form-control" type="file" name="image">
+                                    <input class="form-control" type="file" name="image" id="imageInput">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -91,6 +91,9 @@ Edit Blog
                                                 </option>
                                             @endforeach
                                         </select>
+                                        @error('keywords')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                     <div class="col-md-6">
                                         <label for="formFile" class="input__field-text">Tags</label>
@@ -102,6 +105,9 @@ Edit Blog
                                                 </option>
                                             @endforeach
                                         </select>
+                                        @error('tags')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -114,5 +120,14 @@ Edit Blog
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('imageInput').onchange = function (event) {
+            const [file] = event.target.files;
+            if (file) {
+                document.getElementById('imagePreview').src = URL.createObjectURL(file);
+            }
+        };
+    </script>
 
 @endsection
