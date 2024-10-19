@@ -38,57 +38,57 @@ Edit Website Setting
                         </div>
                         <div class="pt-25">
                             <div class="create__input-wrapper">
-                                <form method="POST" action="{{route('websiteSetting.update')}}" enctype="multipart/form-data">
+                            <form method="POST" action="{{route('websiteSetting.update')}}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                    <div class="create__input-wrapper row">
-                                        
-                                        <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                            <div>
+                                <div class="create__input-wrapper row">
+                                    
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div>
+                                            <label for="formFile" class="input__field-textlabel">Header Image <span class="text-danger">*</span></label><br/>
+                                            <!-- Show the previous image if available -->
+                                            @if($websiteSetting->header_image)
+                                                <img src="{{ asset('images/header/' . $websiteSetting->header_image) }}" alt="Header Image" class="img-blog" width="200">
+                                            @endif
 
-                                                <label for="formFile" class="input__field-textlabel">Header Image</label><br/>
-                                                <!-- Show the previous image if available -->
-                                                @if($websiteSetting->header_image)
-                                                    <img src="{{ asset('images/header/' . $websiteSetting->header_image) }}" alt="Header Image" class="img-blog" width="200">
-                                                @endif
-
-                                                <input class="form-control" type="file" name="header_image">
-                                                @error('image')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                            <input class="form-control" type="file" name="header_image">
+                                            @error('header_image')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                        <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                            <div class="singel__input-field mb-15"><label
-                                                    class="input__field-text">Header Title</label>
-                                                    <input name="header_title" type="text" value="{{$websiteSetting->header_title}}"/>
-                                                    @error('header_title')
-                                                        <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                            <div class="singel__input-field mb-15"><label
-                                                    class="input__field-text">Contact Form Email</label>
-                                                    <input name="contact_form_email" type="email" value="{{$websiteSetting->contact_form_email}}"/>
-                                                    @error('contact_form_email')
-                                                        <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                            </div>
-                                        </div>
-                                        <div class="col-xxl-6 col-xl-6 col-lg-6">
-                                            <div class="singel__input-field mb-15"><label
-                                                    class="input__field-text">Feedback Form Email</label>
-                                                    <input name="feedback_form_email" type="email" value="{{$websiteSetting->feedback_form_email}}"/>
-                                                    @error('feedback_form_email')
-                                                        <span class="text-danger">{{$message}}</span>
-                                                    @enderror
-                                            </div>
-                                        </div>
-                                        
-                                        <button class="input__btn w-100" type="submit">Update</button>
                                     </div>
-                                </form>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Header Title <span class="text-danger">*</span></label>
+                                            <input name="header_title" type="text" value="{{$websiteSetting->header_title}}" required/>
+                                            @error('header_title')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Contact Form Email <span class="text-danger">*</span></label>
+                                            <input name="contact_form_email" type="email" value="{{$websiteSetting->contact_form_email}}" required/>
+                                            @error('contact_form_email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Feedback Form Email <span class="text-danger">*</span></label>
+                                            <input name="feedback_form_email" type="email" value="{{$websiteSetting->feedback_form_email}}" required/>
+                                            @error('feedback_form_email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="input__btn w-100" type="submit">Update</button>
+                                </div>
+                            </form>
+
                             </div>
                         </div>
                     </div>

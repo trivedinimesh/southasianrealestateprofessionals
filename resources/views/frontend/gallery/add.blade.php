@@ -37,32 +37,34 @@ Add Gallery
                             </div>
                         </div>
                         <div class="pt-25">
-                            <form method="POST" action="{{route('gallery.store')}}" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-group">
-                                <label for="title">Title</label>
+                        <form method="POST" action="{{route('gallery.store')}}" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="title">Title <span class="text-danger">*</span></label>
+                                        <select class="tom-select-single" name="title" required>
+                                            @foreach($events as $event)
+                                                <option value="{{ $event->title }}">{{ $event->title }}</option>
+                                            @endforeach
+                                            @foreach($galleries as $gallery)
+                                                <option value="{{ $gallery->title }}">{{ $gallery->title }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('title')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                                <select class="tom-select-single " name="title" >
-                                    @foreach($events as $event)
-                                        <option value="{{ $event->title }}">{{ $event->title }}</option>
-                                    @endforeach
-                                    @foreach($galleries as $gallery)
-                                        <option value="{{ $gallery->title }}">{{ $gallery->title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                                    <div class="form-group">
+                                        <label for="images">Upload Images <span class="text-danger">*</span></label>
+                                        <input type="file" name="images[]" multiple required>
+                                        @error('images.*')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
 
-                            <div class="form-group">
-                                <label for="images">Upload Images</label>
-                                <input type="file" name="images[]" multiple>
-                                @error('images.*')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                                    
                                     <button class="input__btn w-100" type="submit">Create Gallery</button>
-                                </div>
-                            </form>
+                                </form>
+
                         </div>
                     </div>
                 </div>
