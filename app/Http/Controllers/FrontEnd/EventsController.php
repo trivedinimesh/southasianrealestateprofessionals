@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EventRequest;
 use Carbon\Carbon;
 use App\Models\Feature;
-
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class EventsController extends Controller
 {
@@ -91,7 +92,7 @@ class EventsController extends Controller
             // Create Event
             $event = new Event();
             $event->title = $request->title;
-            $event->details = $request->details;
+            $event->details = $this->purifyHtml($request['details']);
             $event->image = $file_name;
             $event->price_member = $request->price_member;
             $event->price_non_member = $request->price_non_member;
@@ -198,7 +199,7 @@ class EventsController extends Controller
     
             // Update the event fields
             $event->title = $request->title;
-            $event->details = $request->details;
+            $event->details = $this->purifyHtml($request['details']);
             $event->price_member = $request->price_member;
             $event->price_non_member = $request->price_non_member;
             $event->is_active = $request->is_active;
@@ -428,6 +429,17 @@ class EventsController extends Controller
         }
     }
 
+    /**
+     * Purify HTML content to prevent XSS attacks.
+     */
+    private function purifyHtml($html)
+    {
+        // Create a new HTML Purifier instance
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
 
+        // Purify the HTML content
+        return $purifier->purify($html);
+    }
 
 }

@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Http\Requests\BlogRequest;
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class BlogController extends Controller
 {
@@ -104,14 +106,14 @@ class BlogController extends Controller
     public function store(BlogRequest $request)
     {
         $this->authorizeAdmin();
-            
 
+            
         DB::beginTransaction();
 
         try {
             $blog = new Blog();
             $blog->title = $request['title'];
-            $blog->body = $request['body'];
+            $blog->body = $this->purifyHtml($request['body']);
             $blog->image = $this->uploadImage($request);
 
             $blog->save();
@@ -130,8 +132,8 @@ class BlogController extends Controller
     public function edit(string $id)
     {
         $this->authorizeAdmin();
-            
 
+            
         $blog = Blog::findOrFail($id);
         $keywords = Keyword::all();
         $tags = Tag::all();
@@ -148,7 +150,7 @@ class BlogController extends Controller
         try {
             $blog = Blog::findOrFail($id);
             $blog->title = $request['title'];
-            $blog->body = $request['body'];
+            $blog->body = $this->purifyHtml($request['body']);
             if ($request->hasFile('image')) {
                 $blog->image = $this->uploadImage($request, $blog->image);
             }
@@ -169,8 +171,8 @@ class BlogController extends Controller
     public function destroy(string $id)
     {
         $this->authorizeAdmin();
-            
 
+            
         DB::beginTransaction();
 
         try {
@@ -233,5 +235,18 @@ class BlogController extends Controller
         if (!Auth::user()->hasRole('admin')) {
             abort(403, 'Access denied.');
         }
+    }
+
+    /**
+     * Purify HTML content to prevent XSS attacks.
+     */
+    private function purifyHtml($html)
+    {
+        // Create a new HTML Purifier instance
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+
+        // Purify the HTML content
+        return $purifier->purify($html);
     }
 }

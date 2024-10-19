@@ -32,28 +32,37 @@ class EditProfileRequest extends FormRequest
             'password' => ['nullable', 'string', 'min:8'], // Nullable for unchanged password
         ];
     }
-    
+
+
     public function messages()
-    {
-        return [
-            'first_name.required' => 'First name is required.',
-            'first_name.regex' => 'First name can only contain letters and spaces.',
-            'last_name.required' => 'Last name is required.',
-            'last_name.regex' => 'Last name can only contain letters and spaces.',
-            'isd_code.required' => 'ISD code is required.',
-            'isd_code.regex' => 'ISD code must start with a "+" followed by digits (e.g., +91).',
-            'phone_number.required' => 'Phone number is required.',
-            'phone_number.regex' => 'Phone number can only contain numbers, dashes, parentheses, and spaces.',
-            'phone_number.min' => 'Phone number must be at least 10 characters long.',
-            'phone_number.max' => 'Phone number must not exceed 15 characters.',
-            'email.required' => 'Email address is required.',
-            'email.email' => 'Email address must be a valid email format.',
-            'email.max' => 'Email address must not exceed 255 characters.',
-            'email.unique' => 'The email address has already been taken.',
-            'password.min' => 'Password must be at least 8 characters long.',
-        ];
-    }
-    
+{
+    return [
+        'first_name.required' => 'First name is required.',
+        'first_name.string' => 'First name must be a valid string.',
+        'first_name.max' => 'First name cannot exceed 255 characters.',
+        'first_name.regex' => 'First name can only contain letters and spaces.',
+
+        'last_name.required' => 'Last name is required.',
+        'last_name.string' => 'Last name must be a valid string.',
+        'last_name.max' => 'Last name cannot exceed 255 characters.',
+        'last_name.regex' => 'Last name can only contain letters and spaces.',
+
+        'isd_code.required' => 'ISD code is required.',
+        'isd_code.string' => 'ISD code must be a valid string.',
+
+        'phone_number.required' => 'Phone number is required.',
+        'phone_number.integer' => 'Phone number must be a valid integer.',
+        'phone_number.regex' => 'Phone number must contain only numbers, dashes, or spaces.',
+        'phone_number.digits' => 'Phone number must be exactly 10 digits.',
+
+        'email.required' => 'Email address is required.',
+        'email.email' => 'Please enter a valid email address.',
+        'email.max' => 'Email address cannot exceed 255 characters.',
+
+        'password.min' => 'Password must be at least 8 characters long.',
+    ];
+}
+
     protected function prepareForValidation()
     {
         // Sanitize inputs to prevent XSS
@@ -67,4 +76,5 @@ class EditProfileRequest extends FormRequest
         ]);
     }
     
+
 }
