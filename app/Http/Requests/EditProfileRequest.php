@@ -19,19 +19,22 @@ class EditProfileRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+    use Illuminate\Validation\Rule;
+
     public function rules(): array
     {
         return [
-            'first_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
-            'last_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
-            'isd_code' => ['required', 'string'],
-            'phone_number' => ['required', 'integer', 'regex:/^[0-9\-\+\(\)\s]+$/', 'digits:10'],
-            'email' => ['required', 'email', 'max:255'], // Unique check except for current user
-            'password' => ['nullable', 'string', 'min:8'], // Nullable allows leaving password unchanged
+            'first_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/u'],
+            'last_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/u'],
+            'isd_code' => ['required', 'string', 'regex:/^\+\d+$/'], // ISD codes like +91
+            'phone_number' => ['required', 'string', 'regex:/^[0-9\-\+\(\)\s]+$/', 'min:10', 'max:15'], // Allows numbers, dashes, spaces, and parentheses
+            'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($this->user()->id)], // Unique except for the current user
+            'password' => ['nullable', 'string', 'min:8'], // Nullable for unchanged password
         ];
     }
 
-    public function messages(): array
+
+    public function messages()
 {
     return [
         'first_name.required' => 'First name is required.',
@@ -69,6 +72,9 @@ class EditProfileRequest extends FormRequest
             'isd_code' => strip_tags($this->input('isd_code')),
             'phone_number' => strip_tags($this->input('phone_number')),
             'email' => strip_tags($this->input('email')),
+            'password' => $this->input('password') ? strip_tags($this->input('password')) : null, // Keep password as null if not set
         ]);
     }
+    
+
 }

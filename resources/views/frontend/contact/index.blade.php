@@ -54,99 +54,106 @@ Contact
     <div class="row g-4">
       <div class="col-12 col-lg-6">
         <div class="contact_form">
-          <form action="{{ route('contact.send') }}" method="POST">
-            @csrf
-            <div class="row">
-              <div class="col-12 col-md-6 contact_div">
-                <div class="form-group m-0">
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="first_name"
-                    placeholder="First Name"
-                    value="{{ old('first_name') }}"
-                  />
-                </div>
-                @if ($errors->has('first_name'))
-                                    <span class="text-danger">{{ $message }}</span>
-                                @endif
-              </div>
-              <div class="col-12 col-md-6 contact_div">
-                <div class="form-group m-0">
-                  <input
-                    class="form-control"
-                    type="text"
-                    name="last_name"
-                    placeholder="Last Name"
-                    value="{{ old('last_name') }}"
-                  />
-                </div>
-                @if ($errors->has('last_name'))
-                                    <span class="text-danger">{{ $message }}</span>
-                                @endif
-              </div>
-              <div class="col-12 col-md-6 contact_div">
-                <div class="form-group m-0">
-                  <input
-                    class="form-control"
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value="{{ old('email') }}"
-                  />
-                </div>
-              </div>
+        <form action="{{ route('contact.send') }}" method="POST">
+              @csrf
               <div class="row">
-                  <div class="col-3 col-md-3 contact_div">
-                    <div class="form-group m-0">
-                      <input
-                        class="form-control"
-                        type="text"
-                        name="isd_code"
-                        placeholder="ISD Code"
-                        value="{{ old('isd_code') }}"
-                      />
-                    </div>
-                    @if ($errors->has('isd_code'))
-                                    <span class="text-danger">{{ $message }}</span>
-                                @endif
-                               
+                  <div class="col-12 col-md-6 contact_div">
+                      <div class="form-group m-0">
+                          <input
+                              class="form-control"
+                              type="text"
+                              name="first_name"
+                              placeholder="First Name"
+                              value="{{ old('first_name') }}"
+                              required
+                          />
+                      </div>
+                      @if ($errors->has('first_name'))
+                          <span class="text-danger">{{ $message }}</span>
+                      @endif
                   </div>
-                  <div class="col-9 col-md-9 contact_div">
-                    <div class="form-group m-0">
-                      <input
-                        class="form-control"
-                        type="text"
-                        name="phone_number"
-                        placeholder="Phone Number"
-                         value="{{ old('phone_number') }}"
-                      />
-                    </div>
-                    @if ($errors->has('phone_number'))
-                                <span class="text-danger">{{ $message }}</span>
-                            @endif
-                               
+                  <div class="col-12 col-md-6 contact_div">
+                      <div class="form-group m-0">
+                          <input
+                              class="form-control"
+                              type="text"
+                              name="last_name"
+                              placeholder="Last Name"
+                              value="{{ old('last_name') }}"
+                              required
+                          />
+                      </div>
+                      @if ($errors->has('last_name'))
+                          <span class="text-danger">{{ $message }}</span>
+                      @endif
+                  </div>
+                  <div class="col-12 col-md-6 contact_div">
+                      <div class="form-group m-0">
+                          <input
+                              class="form-control"
+                              type="email"
+                              name="email"
+                              placeholder="Email Address"
+                              value="{{ old('email') }}"
+                              required
+                          />
+                      </div>
+                      @if ($errors->has('email'))
+                          <span class="text-danger">{{ $message }}</span>
+                      @endif
+                  </div>
+                  <div class="row">
+                      <div class="col-3 col-md-3 contact_div">
+                          <div class="form-group m-0">
+                              <input
+                                  class="form-control"
+                                  type="text"
+                                  name="isd_code"
+                                  placeholder="ISD Code"
+                                  value="{{ old('isd_code') }}"
+                                  required
+                              />
+                          </div>
+                          @if ($errors->has('isd_code'))
+                              <span class="text-danger">{{ $message }}</span>
+                          @endif
+                      </div>
+                      <div class="col-9 col-md-9 contact_div">
+                          <div class="form-group m-0">
+                              <input
+                                  class="form-control"
+                                  type="text"
+                                  name="phone_number"
+                                  placeholder="Phone Number"
+                                  value="{{ old('phone_number') }}"
+                                  required
+                              />
+                          </div>
+                          @if ($errors->has('phone_number'))
+                              <span class="text-danger">{{ $message }}</span>
+                          @endif
+                      </div>
                   </div>
 
+                  <div class="col contact_div">
+                      <div class="form-group">
+                          <textarea
+                              class="form-control"
+                              name="message"
+                              placeholder="Write your Message"
+                              required
+                          ></textarea>
+                      </div>
+                      <div class="header__btn">
+                          <button type="submit" class="blog_custome_btn">
+                              Send Message
+                              <i class="fa-regular fa-angle-right"></i>
+                          </button>
+                      </div>
+                  </div>
               </div>
-         
-              <div class="col contact_div">
-                <div class="form-group">
-                  <textarea
-                    class="form-control"
-                    name="message"
-                    placeholder="Write your Message"
-                  ></textarea>
-                </div>
-                <div class="header__btn">
-                  <button type="submit" class="blog_custome_btn">
-                    Send Message
-                    <i class="fa-regular fa-angle-right"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
           </form>
+
         </div>
       </div>
       <div class="col-12 col-lg-6">

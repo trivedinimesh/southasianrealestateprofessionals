@@ -24,7 +24,7 @@ class WebsiteSettingController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(WesbiteSettingRequest $request)
     {
         try {
             $websiteSetting = WebsiteSetting::first();

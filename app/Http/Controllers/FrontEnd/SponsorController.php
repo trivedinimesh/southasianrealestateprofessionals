@@ -14,37 +14,54 @@ class SponsorController extends Controller
 {
     public function index(Request $request)
     {
+        // Ensure the user is authorized as an admin
         $this->authorizeAdmin();
-
-        
-        $sponsor = Sponsor::select('id', 'name', 'category', 'image')->get();
-        $query = Sponsor::query();
-        
-        // Filter by category if any are selected
+    
+        // Create a query builder for Sponsor
+        $query = Sponsor::select('id', 'name', 'category', 'image');
+    
+        // Sanitize and validate category input
         if ($request->has('category') && is_array($request->input('category'))) {
+            // Validate each category input if needed
+            foreach ($request->input('category') as $category) {
+                if (!is_string($category) || strlen($category) > 255) {
+                    abort(400, 'Invalid category input.'); // Handle invalid category input
+                }
+            }
+    
             // Assuming 'category' is a column in your sponsors table
             $query->whereIn('category', $request->input('category'));
         }
-        
+    
+        // Sanitize and validate search input
+        $validatedData = $request->validate([
+            'search' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9\s\-\,\.]*$/', // Allow specific characters
+        ]);
+    
         // Filter by search input (searching by name or category)
         if ($request->filled('search')) {
-            $search = $request->input('search');
-            $searchTerms = explode(' ', $search); // Split the search input by spaces
-        
+            $searchInput = trim($validatedData['search']); // Trim the input
+            $searchTerms = explode(' ', $searchInput); // Split the search input by spaces
+    
+            // Use the search terms in the query
             $query->where(function ($q) use ($searchTerms) {
                 foreach ($searchTerms as $term) {
-                    $q->orWhere('name', 'like', '%' . $term . '%')
-                      ->orWhere('category', 'like', '%' . $term . '%'); // Adjust 'category' if it's a column
+                    // Escape the term to prevent XSS
+                    $q->orWhere('name', 'like', '%' . e($term) . '%')
+                      ->orWhere('category', 'like', '%' . e($term) . '%'); // Adjust 'category' if it's a column
                 }
             });
         }
-        
+    
         // Retrieve the filtered sponsors
-        $sponsor = $query->paginate(10);
+        $sponsors = $query->paginate(10);
+    
+        // Retrieve all sponsors data if needed (consider removing this if not necessary)
         $sponsorData = Sponsor::all();
-
-        return view('frontend.sponsor.index')->with('sponsors', $sponsor)->with('sponsorData',$sponsorData);
+    
+        return view('frontend.sponsor.index')->with('sponsors', $sponsors)->with('sponsorData', $sponsorData);
     }
+    
 
     public function create()
     {
