@@ -42,8 +42,8 @@ Add Event
                                 <div class="create__input-wrapper row">
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >Title</label>
-                                            <input name="title" type="text" value="{{ old('title') }}"/>
+                                            <label class="input__field-text" >Title<span class="text-danger">*</span></label>
+                                            <input name="title" type="text" required value="{{ old('title') }}"/>
                                             @error('title')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -51,9 +51,9 @@ Add Event
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
                                         <div>
-                                            <label for="formFile" class="input__field-text">Add Image</label>
+                                            <label for="formFile" class="input__field-text">Add Image<span class="text-danger">*</span></label>
                                             <img src="" alt="" class="img-blog">
-                                            <input class="form-control" type="file" name="image">
+                                            <input class="form-control" type="file" required name="image">
                                                 @error('image')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -61,7 +61,7 @@ Add Event
                                     </div>
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >Details</label>
+                                            <label class="input__field-text" >Details<span class="text-danger">*</span></label>
                                             <textarea class="form-control" name="details" id="floatingTextarea" cols="30" rows="10"></textarea>
                                             <script>
                                                 // Initialize CKEditor
@@ -81,8 +81,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text">Date</label>
-                                            <input name="date" type="date" value="{{ old('date') }}"/>
+                                            <label class="input__field-text">Date<span class="text-danger">*</span></label>
+                                            <input name="date" type="date" required value="{{ old('date') }}"/>
                                             @error('date')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -90,8 +90,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text">Start Time</label>
-                                            <input name="start_time" type="time" value="{{ old('start_time') }}" />
+                                            <label class="input__field-text">Start Time<span class="text-danger">*</span></label>
+                                            <input name="start_time" type="time" required value="{{ old('start_time') }}" />
                                             @error('start_time')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -99,8 +99,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-4 col-xl-4 col-lg-4">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text">End Time</label>
-                                            <input name="end_time" type="time" value="{{ old('last_name') }}" />
+                                            <label class="input__field-text">End Time<span class="text-danger">*</span></label>
+                                            <input name="end_time" type="time" required value="{{ old('last_name') }}" />
                                             @error('end_time')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -143,8 +143,8 @@ Add Event
                                         </div>
                                     </div>
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
-                                        <label for="formFile" class="input__field-text">Features</label>
-                                        <select class="tom-select-multiple w-full" name="features[]" multiple>
+                                        <label for="formFile" class="input__field-text">Features<span class="text-danger">*</span></label>
+                                        <select class="tom-select-multiple w-full" required name="features[]" multiple>
                                             @foreach($features as $feature)
                                                 <option value="{{ $feature->feature }}">{{ $feature->feature }}</option>
                                             @endforeach
@@ -152,8 +152,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-12 col-xl-12 col-lg-12">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >Address</label>
-                                            <input name="address" type="text" value="{{ old('address') }}" />
+                                            <label class="input__field-text" >Address<span class="text-danger">*</span></label>
+                                            <input name="address" type="text" required value="{{ old('address') }}" />
                                             @error('address')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -161,8 +161,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >Country</label>
-                                            <input name="country" type="text" value="{{ old('country') }}" />
+                                            <label class="input__field-text" >Country<span class="text-danger">*</span></label>
+                                            <input name="country" type="text" required value="{{ old('country') }}" />
                                             @error('country')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -170,8 +170,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >State</label>
-                                            <input name="state" type="text" value="{{ old('state') }}"/>
+                                            <label class="input__field-text" >State<span class="text-danger">*</span></label>
+                                            <input name="state" type="text" required value="{{ old('state') }}"/>
                                             @error('state')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -179,8 +179,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >City</label>
-                                            <input name="city" type="text" value="{{ old('city') }}"/>
+                                            <label class="input__field-text" >City<span class="text-danger">*</span></label>
+                                            <input name="city" type="text" required value="{{ old('city') }}"/>
                                             @error('city')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
@@ -188,8 +188,8 @@ Add Event
                                     </div>
                                     <div class="col-xxl-3 col-xl-3 col-lg-3">
                                         <div class="singel__input-field mb-15">
-                                            <label class="input__field-text" >Zip Code</label>
-                                            <input name="pincode" type="text" value="{{ old('pincode') }}"/>
+                                            <label class="input__field-text" >Zip Code<span class="text-danger">*</span></label>
+                                            <input name="pincode" type="text" required value="{{ old('pincode') }}"/>
                                             @error('pincode')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
