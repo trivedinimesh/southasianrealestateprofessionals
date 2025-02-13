@@ -45,7 +45,7 @@ Edit Profile
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text" >First Name</label>
-                                                <input name="first_name" type="text" value="{{$current_user->first_name}}" />
+                                                <input name="first_name" type="text" value="{{ old('first_name', $current_user->first_name) }}" />
                                                 @error('first_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -55,7 +55,7 @@ Edit Profile
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Last Name</label>
-                                                <input name="last_name" type="text" value="{{$current_user->last_name}}"/>
+                                                <input name="last_name" type="text" value="{{ old('last_name', $current_user->last_name) }}"/>
                                                 @error('last_name')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -65,7 +65,7 @@ Edit Profile
 
                                         <div class="singel__input-field mb-15"><label
                                                 class="input__field-text">Email</label>
-                                                <input name="email" type="text" value="{{$current_user->email}}"/>
+                                                <input name="email" type="email" value="{{ old('email', $current_user->email) }}"/>
                                                 @error('email')
                                                     <span class="text-danger">{{$message}}</span>
                                                 @enderror
@@ -75,14 +75,14 @@ Edit Profile
                                     <div class="col-xxl-6 col-xl-6 col-lg-6 row">
                                         <div class="col-sm-3 singel__input-field mb-15"><label
                                             class="input__field-text">ISD Code</label>
-                                            <input name="isd_code" type="text" value="{{$current_user->isd_code}}"/>
+                                            <input name="isd_code" type="text" value="{{ old('isd_code', $current_user->isd_code) }}"/>
                                             @error('isd_code')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror
                                         </div>
                                         <div class="col-sm-9 singel__input-field mb-15"><label
                                             class="input__field-text">Phone Number</label>
-                                            <input name="phone_number" type="text" value="{{$current_user->phone_number}}"/>
+                                            <input name="phone_number" type="text" value="{{ old('phone_number', $current_user->phone_number) }}"/>
                                             @error('phone_number')
                                                 <span class="text-danger">{{$message}}</span>
                                             @enderror

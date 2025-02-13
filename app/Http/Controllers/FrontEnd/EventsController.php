@@ -11,13 +11,16 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EventRequest;
 use Carbon\Carbon;
 use App\Models\Feature;
-
+use HTMLPurifier;
+use HTMLPurifier_Config;
 
 class EventsController extends Controller
 {
     public function index()
     {
-        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')->where('members_only', 0)->get(); // Paginate results
+        $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')
+            ->where('members_only', 0)
+            ->get(); // Paginate results
 
         return view('frontend.events.index')->with('events', $events);
     }
@@ -25,22 +28,20 @@ class EventsController extends Controller
     public function eventDetail(Request $request, string $id)
     {
         try {
-            $event = Event::findOrFail($id);  
+            $event = Event::findOrFail($id);
             $user = Auth::user();
             return view('frontend.events.event-detail', [
                 'event' => $event,
                 'user' => $user,
             ]);
         } catch (ModelNotFoundException $e) {
-            return redirect()->route('home')->with('error', 'User not found.');
+            return redirect()->route('home')->with('error', 'Event not found.');
         }
     }
 
     public function list(Request $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
     
         $query = Event::select(
             'id', 'title', 'details', 'image', 'price_member', 'price_non_member', 
@@ -74,9 +75,7 @@ class EventsController extends Controller
 
     public function create()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
         $features = Feature::all();
         
         return view('frontend.events.add', compact('features'));
@@ -88,13 +87,12 @@ class EventsController extends Controller
         $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
         try {
             // Image upload
-            $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-            $request->image->move(public_path('images/events'), $file_name);
+            $file_name = $this->uploadImage($request);  
 
             // Create Event
             $event = new Event();
             $event->title = $request->title;
-            $event->details = $request->details;
+            $event->details = $this->purifyHtml($request['details']);
             $event->image = $file_name;
             $event->price_member = $request->price_member;
             $event->price_non_member = $request->price_non_member;
@@ -111,7 +109,9 @@ class EventsController extends Controller
 
             $event->save();
 
-            $this->syncFeatures($event, $request['features']);
+            if ($request->filled('features')) {
+                $this->syncFeatures($event, $request['features']);
+            }
 
             $users = \App\Models\User::role('user')->get(); // Get all users with the "admin" role
 
@@ -126,8 +126,7 @@ class EventsController extends Controller
         return redirect()->route('events.list')->with('features',$features)->with('success', 'Event created successfully.');
         } catch (\Throwable $th) {
             // Handle error\
-            // return back()->with('error', 'Failed to create event.');
-            return $th;
+            return back()->with('error', 'Failed to create event.');
         }
     }
     private function syncFeatures(Event $event, array $features)
@@ -145,9 +144,7 @@ class EventsController extends Controller
 
     public function show(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
         
         try {
             $event = Event::findOrFail($id);
@@ -168,9 +165,7 @@ class EventsController extends Controller
      */
     public function edit(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
         
         try {
             $event = Event::findOrFail($id);
@@ -187,44 +182,24 @@ class EventsController extends Controller
      */
     public function update(EventRequest $request, $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
         
         $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
         $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
         
         
-        // DB::beginTransaction();
+        DB::beginTransaction();
         
         try {
             
             // Retrieve the existing event by ID
             $event = Event::findOrFail($id);
 
-            // Check if a new image is uploaded
-            if ($request->hasFile('image')) {
-                // Log image processing
-                \Log::info('New image uploaded');
-    
-                // Delete the old image if it exists
-                if ($event->image && file_exists(public_path('images/events/' . $event->image))) {
-                    \Log::info('Deleting old image: ' . $event->image);
-                    unlink(public_path('images/events/' . $event->image));
-                }
-    
-                // Upload the new image
-                $file_name = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images/events'), $file_name);
-    
-                // Set the new image name in the event record
-                $event->image = $file_name;
-                \Log::info('Image uploaded successfully: ' . $file_name);
-            }
+            $event->image = $this->uploadImage($request);
     
             // Update the event fields
             $event->title = $request->title;
-            $event->details = $request->details;
+            $event->details = $this->purifyHtml($request['details']);
             $event->price_member = $request->price_member;
             $event->price_non_member = $request->price_non_member;
             $event->is_active = $request->is_active;
@@ -240,10 +215,12 @@ class EventsController extends Controller
     
             // Save the updated event
             $event->save();
-            $this->syncFeatures($event, $request['features']);
+            if ($request->filled('features')) {
+                $this->syncFeatures($event, $request['features']);
+            }
     
             // Commit the transaction
-            // DB::commit();
+            DB::commit();
     
             // Redirect on success
             return redirect()->route('events.list')->with('success', 'Event updated successfully.');
@@ -263,17 +240,12 @@ class EventsController extends Controller
 
     public function destroy(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
         
         DB::beginTransaction();
         try {
             $event = Event::findOrFail($id);
-            // Delete event image securely
-            if (file_exists(public_path("storage/images/events/{$event->image}"))) {
-                unlink(public_path("storage/images/events/{$event->image}"));
-            }
+            $this->deleteExistingImage($event->image); 
             $event->delete();
 
             DB::commit();
@@ -402,33 +374,72 @@ class EventsController extends Controller
      }
 
      public function sendFeedbackRequest()
-{
-    // Get the current date - 2 days (events that ended 2 days ago)
-    $feedbackDate = Carbon::now('Asia/Kolkata')->subDays(2)->format('Y-m-d');
-    
-    // Retrieve events that ended 2 days ago
-    $events = Event::where('date', $feedbackDate)->get();
-    
-    foreach ($events as $event) {
-        // Get all bookings for the event
-        $bookings = Booking::where('event_id', $event->id)->get();
+    {
+        // Get the current date - 2 days (events that ended 2 days ago)
+        $feedbackDate = Carbon::now('Asia/Kolkata')->subDays(2)->format('Y-m-d');
+        
+        // Retrieve events that ended 2 days ago
+        $events = Event::where('date', $feedbackDate)->get();
+        
+        foreach ($events as $event) {
+            // Get all bookings for the event
+            $bookings = Booking::where('event_id', $event->id)->get();
 
-        foreach ($bookings as $booking) {
-            // Get the user associated with the booking
-            $user = $booking->user;
+            foreach ($bookings as $booking) {
+                // Get the user associated with the booking
+                $user = $booking->user;
 
-            // Check if user exists
-            if ($user) {
-                // Send feedback email to user
-                \Mail::to($user->email)->send(new \App\Mail\FeedbackFormNotification($booking));
-            } else {
-                // Log if user is not found
-                \Log::warning("User not found for booking ID: {$booking->id}");
+                // Check if user exists
+                if ($user) {
+                    // Send feedback email to user
+                    \Mail::to($user->email)->send(new \App\Mail\FeedbackFormNotification($booking));
+                } else {
+                    // Log if user is not found
+                    \Log::warning("User not found for booking ID: {$booking->id}");
+                }
             }
         }
     }
-}
 
+    private function uploadImage(Request $request, $existingImage = null)
+    {
+        if ($request->hasFile('image')) {
+            $this->deleteExistingImage($existingImage);
 
+            $fileName = time() . '.' . $request->image->getClientOriginalExtension();
+            $request->image->move(public_path('images/events/'), $fileName);
+
+            return $fileName;
+        }
+
+        return $existingImage;
+    }
+
+    private function deleteExistingImage($image)
+    {
+        if ($image && file_exists(public_path('images/events/' . $image))) {
+            unlink(public_path('images/events/' . $image));
+        }
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
+        }
+    }
+
+    /**
+     * Purify HTML content to prevent XSS attacks.
+     */
+    private function purifyHtml($html)
+    {
+        // Create a new HTML Purifier instance
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+
+        // Purify the HTML content
+        return $purifier->purify($html);
+    }
 
 }

@@ -66,6 +66,9 @@ Add Sponsor
                                                 <option value="{{ $sponsor->category }}">{{ $sponsor->category }}</option>
                                             @endforeach
                                         </select>
+                                        @error('category')
+                                                    <span class="text-danger">{{$message}}</span>
+                                                @enderror
                                     </div>
 
                                     <button class="input__btn w-100" type="submit">Create Sponsor</button>

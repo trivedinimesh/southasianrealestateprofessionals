@@ -41,36 +41,37 @@
                     </ul>
                 </div>
             @endif
+                <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
 
-            <form method="POST" action="{{ route('password.update') }}">
-                @csrf
+                    <div class="form-group">
+                        <label for="current_password">Current Password <span class="text-danger">*</span></label>
+                        <input type="password" name="current_password" class="form-control" required oninput="this.value = this.value.trim()">
+                        @if ($errors->has('current_password'))
+                            <span class="text-danger">{{ $errors->first('current_password') }}</span>
+                        @endif
+                    </div>
 
-                <div class="form-group">
-                    <label for="current_password">Current Password</label>
-                    <input type="password" name="current_password" class="form-control" required>
-                    @if ($errors->has('current_password'))
-                        <span class="text-danger">{{ $errors->first('current_password') }}</span>
-                    @endif
-                </div>
+                    <div class="form-group">
+                        <label for="new_password">New Password <span class="text-danger">*</span></label>
+                        <input type="password" name="new_password" class="form-control" required oninput="this.value = this.value.trim()">
+                        @if ($errors->has('new_password'))
+                            <span class="text-danger">{{ $errors->first('new_password') }}</span>
+                        @endif
+                    </div>
 
-                <div class="form-group">
-                    <label for="new_password">New Password</label>
-                    <input type="password" name="new_password" class="form-control" required>
-                    @if ($errors->has('new_password'))
-                        <span class="text-danger">{{ $errors->first('new_password') }}</span>
-                    @endif
-                </div>
+                    <div class="form-group">
+                        <label for="new_password_confirmation">Confirm New Password <span class="text-danger">*</span></label>
+                        <input type="password" name="new_password_confirmation" class="form-control" required oninput="this.value = this.value.trim()">
+                        @if ($errors->has('new_password_confirmation'))
+                            <span class="text-danger">{{ $errors->first('new_password_confirmation') }}</span>
+                        @endif
+                    </div>
 
-                <div class="form-group">
-                    <label for="new_password_confirmation">Confirm New Password</label>
-                    <input type="password" name="new_password_confirmation" class="form-control" required>
-                    @if ($errors->has('new_password_confirmation'))
-                        <span class="text-danger">{{ $errors->first('new_password_confirmation') }}</span>
-                    @endif
-                </div>
+                    <button type="submit" class="btn btn-primary">Change Password</button>
+                </form>
 
-                <button type="submit" class="btn btn-primary">Change Password</button>
-            </form>
+
         </div>
     </div>
 </div>

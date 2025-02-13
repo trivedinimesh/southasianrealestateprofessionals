@@ -19,22 +19,32 @@ class GalleryRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+            'title' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9\s\-\,\.\'\"\(\)\&]+$/'],
+            'images.*' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:8192'], // Allows multiple images
         ];
     }
-
+    
     public function messages()
     {
         return [
             'title.required' => 'The title field is required.',
-            'images.*.required' => 'Each image is required.',
+            'title.regex' => 'The title may only contain letters, numbers, spaces, dashes, commas, periods, quotes, parentheses, and ampersands.',
             'images.*.image' => 'Each file must be an image.',
-            'images.*.mimes' => 'Each image must be of type: jpeg, png, jpg, gif, svg.',
+            'image.required' => 'The image field is required.',
+            'images.*.mimes' => 'Each image must be of type: jpeg, png, jpg.',
             'images.*.max' => 'Each image should not exceed 8MB.',
         ];
     }
+    
+    protected function prepareForValidation()
+    {
+        // Sanitize inputs to prevent XSS
+        $this->merge([
+            'title' => strip_tags($this->input('title')),
+        ]);
+    }
+    
 }

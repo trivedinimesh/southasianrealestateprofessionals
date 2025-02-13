@@ -41,44 +41,48 @@ Edit User
                                 @csrf
                                 @method('PUT')
                                 <div class="create__input-wrapper row">
-                                <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
 
-                                        <div class="singel__input-field mb-15"><label
-                                                class="input__field-text" >First Name</label>
-                                                <input name="first_name" type="text" value="{{$user->first_name}}" />
-                                                @error('first_name')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                @enderror
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">First Name</label>
+                                            <input name="first_name" type="text" value="{{ old('first_name', $user->first_name) }}" />
+                                            @error('first_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
-
-                                        <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Last Name</label>
-                                                <input name="last_name" type="text" value="{{$user->last_name}}"/>
-                                                @error('last_name')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                @enderror
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Last Name</label>
+                                            <input name="last_name" type="text" value="{{ old('last_name', $user->last_name) }}" />
+                                            @error('last_name')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
-
-                                        <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Email</label>
-                                                <input name="email" type="text" value="{{$user->email}}"/>
-                                                @error('email')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                @enderror
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Email</label>
+                                            <input name="email" type="email" value="{{ old('email', $user->email) }}" />
+                                            @error('email')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
-
-                                        <div class="singel__input-field mb-15"><label
-                                                class="input__field-text">Phone Number</label>
-                                                <input name="phone_number" type="text" value="{{$user->phone_number}}"/>
-                                                @error('phone_number')
-                                                    <span class="text-danger">{{$message}}</span>
-                                                @enderror
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6 row">
+                                        <div class="col-sm-3 singel__input-field mb-15">
+                                            <label class="input__field-text">ISD Code</label>
+                                            <input name="isd_code" type="text" value="{{ old('isd_code', $user->isd_code) }}" />
+                                            @error('isd_code')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-sm-9 singel__input-field mb-15">
+                                            <label class="input__field-text">Phone Number</label>
+                                            <input name="phone_number" type="text" value="{{ old('phone_number', $user->phone_number) }}" />
+                                            @error('phone_number')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-xxl-6 col-xl-6 col-lg-6">
@@ -86,17 +90,25 @@ Edit User
                                             <label class="input__field-text">Role</label>
                                             <div class="contact__select">
                                                 <select name="role">
-                                                @foreach ($user->roles as $role)
-                                                    <option value="{{$role->name}}" disable selected>{{$role->name}}</option>
-                                                @endforeach
-                                                @foreach ($roles as $role)
-                                                    <option value="{{$role->name}}">{{$role->name}}</option>
-                                                @endforeach
+                                                    @foreach ($roles as $role)
+                                                        <option value="{{ $role->name }}" {{ $user->roles->contains('name', $role->name) ? 'selected' : '' }}>
+                                                            {{ $role->name }}
+                                                        </option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="input__btn w-100" type="submit">Create User</button>
+                                    <div class="col-xxl-6 col-xl-6 col-lg-6">
+                                        <div class="singel__input-field mb-15">
+                                            <label class="input__field-text">Password (Leave blank if not changing)</label>
+                                            <input type="password" name="password" />
+                                            @error('password')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <button class="input__btn w-100" type="submit">Update User</button>
                                 </div>
                             </form>
                         </div>

@@ -14,47 +14,60 @@ use App\Http\Requests\BODRequest;
 
 class BODController extends Controller
 {
-    // Middleware to restrict access to admins
-    public function __construct()
-    {
-        
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
-    }
-
+    
     public function index(Request $request)
     {
+        // Ensure the user is authorized as an admin
+        $this->authorizeAdmin();
+    
+        // Sanitize and validate search input
+        $validatedData = $request->validate([
+            'search' => 'nullable|string|max:255|regex:/^[a-zA-Z0-9\s\-\,\.]+$/', // Validation rule for search
+        ]);
+    
         $query = BOD::select('id', 'first_name', 'last_name', 'designation', 'image', 'fb_id', 'twitter_id', 'linkedin_id');
-
-        // Filter by search input (searching by name)
+    
+        // Check if the search field is filled and not empty
         if ($request->filled('search')) {
-            $searchTerms = explode(' ', $request->input('search'));
-
+            // Trim the search input to remove unnecessary spaces
+            $searchInput = trim($validatedData['search']); // Use validated data
+    
+            // Break down the search terms into an array
+            $searchTerms = explode(' ', $searchInput);
+    
+            // Use the search terms in the query
             $query->where(function ($q) use ($searchTerms) {
                 if (count($searchTerms) == 2) {
                     // Search by both first and last name
-                    $q->where('first_name', 'like', '%' . $searchTerms[0] . '%')
-                      ->where('last_name', 'like', '%' . $searchTerms[1] . '%');
+                    $q->where('first_name', 'like', '%' . e($searchTerms[0]) . '%')
+                      ->where('last_name', 'like', '%' . e($searchTerms[1]) . '%');
                 } else {
                     // Single term search (first name or last name)
-                    $q->where('first_name', 'like', '%' . $searchTerms[0] . '%')
-                      ->orWhere('last_name', 'like', '%' . $searchTerms[0] . '%');
+                    $q->where('first_name', 'like', '%' . e($searchTerms[0]) . '%')
+                      ->orWhere('last_name', 'like', '%' . e($searchTerms[0]) . '%');
                 }
             });
         }
-
+    
+        // Paginate the results (10 per page)
         $bods = $query->paginate(10);
+    
+        // Render the view with sanitized output data
         return view('frontend.bod.index', ['bods' => $bods]);
     }
+    
 
     public function create()
     {
+        $this->authorizeAdmin();
+
         return view('frontend.bod.add');
     }
 
     public function store(BODRequest $request)
     {
+        $this->authorizeAdmin();
+
 
         try {
             // Store the image securely
@@ -82,6 +95,8 @@ class BODController extends Controller
 
     public function edit($id)
     {
+        $this->authorizeAdmin();
+
         try {
             $bod = BOD::findOrFail($id);
             return view('frontend.bod.edit', ['bod' => $bod]);
@@ -92,6 +107,8 @@ class BODController extends Controller
 
     public function update(BODRequest $request, $id)
     {
+        $this->authorizeAdmin();
+
         try {
             $bod = BOD::findOrFail($id);
             
@@ -123,6 +140,8 @@ class BODController extends Controller
 
     public function destroy($id)
     {
+        $this->authorizeAdmin();
+
         DB::beginTransaction();
         try {
             $bod = BOD::findOrFail($id);
@@ -154,6 +173,13 @@ class BODController extends Controller
     {
         if ($image && File::exists(public_path('images/bods/' . $image))) {
             File::delete(public_path('images/bods/' . $image));
+        }
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
         }
     }
 }

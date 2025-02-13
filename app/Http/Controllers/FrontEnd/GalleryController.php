@@ -18,9 +18,7 @@ class GalleryController extends Controller
 
     public function list()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
     
         $galleries = Gallery::paginate(10);
     
@@ -31,9 +29,7 @@ class GalleryController extends Controller
 
     public function create()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
 
         $events = Event::all();
         $galleries = Gallery::all();
@@ -47,6 +43,8 @@ class GalleryController extends Controller
     // Store multiple images in the gallery
     public function store(GalleryRequest $request)
     {
+        $this->authorizeAdmin();
+
         // Loop through each image, save to storage and database
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
@@ -64,39 +62,12 @@ class GalleryController extends Controller
         return redirect()->route('gallery.list')->with('success', 'Images uploaded successfully under the title "' . $request->input('title') . '".');
     }
 
-    // // Edit an image (not applicable for multiple, but here's an example)
-    // public function edit($id)
-    // {
-    //     $image = Gallery::findOrFail($id);
-    //     return view('frontend.gallery.edit', compact('image'));
-    // }
-
-    // Update image
-    // public function update(Request $request, $id)
-    //     $gallery = Gallery::findOrFail($id);
-
-    //     if ($request->hasFile('image')) {
-    //         // Delete the old image
-    //         if (file_exists(public_path($gallery->image_path))) {
-    //             unlink(public_path($gallery->image_path));
-    //         }
-
-    //         // Upload the new image
-    //         $file_name = time() . '_' . $request->image->getClientOriginalName();
-    //         $request->image->move(public_path('images/gallery'), $file_name);
-
-    //         // Update in the database
-    //         $gallery->update([
-    //             'image_path' => 'images/gallery/' . $file_name,
-    //         ]);
-    //     }
-
-    //     return redirect()->route('gallery')->with('success', 'Image updated successfully.');
-    // }
 
     // Delete an image from the gallery
     public function destroy($id)
     {
+        $this->authorizeAdmin();
+
         $gallery = Gallery::findOrFail($id);
 
         // Delete the image file from the storage
@@ -108,5 +79,12 @@ class GalleryController extends Controller
         $gallery->delete();
 
         return redirect()->route('gallery.list')->with('success', 'Image deleted successfully.');
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
+        }
     }
 }

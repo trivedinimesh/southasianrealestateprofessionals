@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Blog;
 use App\Models\Event;
 use App\Models\Sponsor;
+use App\Models\WebsiteSetting;
 
 class HomeController extends Controller
 {
@@ -15,6 +16,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $websiteSetting = WebsiteSetting::first();
         $events = Event::select('id', 'title', 'details', 'image', 'price_member', 'price_non_member', 'is_active', 'date', 'start_time', 'end_time', 'address', 'country', 'state', 'city', 'pincode', 'created_by', 'updated_by')
         ->where('members_only', 0)
         ->where('is_active', 1)
@@ -23,8 +25,8 @@ class HomeController extends Controller
         $blogs = Blog::select('id', 'image', 'title', 'body', 'meta_tag', 'meta_description', 'slug', 'created_at')
         ->take(4)
         ->get();
-        $sponsor = Sponsor::select('id', 'name', 'image')->get();
+        $sponsor = Sponsor::select('id', 'name', 'image', 'category')->get();
 
-        return view('frontend.home')->with('events', $events)->with('blogs', $blogs)->with('sponsors', $sponsor);
+        return view('frontend.home')->with('events', $events)->with('blogs', $blogs)->with('sponsors', $sponsor)->with('websiteSetting', $websiteSetting);
     }
 }

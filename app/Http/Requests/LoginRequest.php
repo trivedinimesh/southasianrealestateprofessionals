@@ -11,14 +11,22 @@ class LoginRequest extends FormRequest
         return true;
     }
 
-    public function rules()
+    public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required|min:6',
+            'email' => ['required', 'email', 'max:255'],
+            'password' => [
+                'required',
+                'string',
+                'min:6',
+                'regex:/[a-z]/', // At least one lowercase letter
+                'regex:/[A-Z]/', // At least one uppercase letter
+                'regex:/[0-9]/', // At least one digit
+                'regex:/[@$!%*#?&]/', // At least one special character
+            ],
         ];
     }
-
+    
     public function messages()
     {
         return [
@@ -26,6 +34,16 @@ class LoginRequest extends FormRequest
             'email.email' => 'Please provide a valid email address.',
             'password.required' => 'Password is required.',
             'password.min' => 'Password must be at least 6 characters long.',
+            'password.regex' => 'Password must include at least one lowercase letter, one uppercase letter, one number, and one special character.',
         ];
     }
+    
+    protected function prepareForValidation()
+    {
+        // Sanitize inputs to prevent XSS
+        $this->merge([
+            'email' => strip_tags($this->input('email')),
+        ]);
+    }
+    
 }

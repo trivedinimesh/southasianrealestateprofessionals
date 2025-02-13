@@ -43,7 +43,7 @@ Edit Blog
                                 @method('PATCH')
                                     <div class="singel__input-field mb-15">
                                         <label class="input__field-text" >Title</label>
-                                        <input name="title" type="text" value="{{$blog->title}}"/>
+                                        <input name="title" type="text" value="{{ old('title', $blog->title)}}"/>
                                         @error('title')
                                             <span class="text-danger">{{$message}}</span>
                                         @enderror
@@ -72,34 +72,47 @@ Edit Blog
                                     
                                     <!-- Show the previous image if available -->
                                     @if($blog->image)
-                                        <img src="{{ asset('images/blogs/' . $blog->image) }}" alt="Blog Image" class="img-blog" width="200">
+                                        <img id="imagePreview" src="{{ asset('images/blogs/' . $blog->image) }}" alt="Blog Image" class="img-blog" width="200">
                                     @endif
 
-                                    <input class="form-control" type="file" name="image">
+                                    <input class="form-control" type="file" name="image" id="imageInput">
                                     @error('image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <label for="formFile" class="input__field-text">Keywords</label>
-                                <select class="tom-select-multiple w-full" name="keywords[]" multiple>
-                                    @foreach($keywords as $keyword)
-                                        <option value="{{ $keyword->keyword }}"
-                                            @if(in_array($keyword->keyword, $blog->keywords->pluck('keyword')->toArray())) selected @endif>
-                                            {{ $keyword->keyword }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <label for="formFile" class="input__field-text">Tags</label>
-                                <select class="tom-select-multiple w-full" name="tags[]" multiple>
-                                    @foreach($tags as $tag)
-                                        <option value="{{ $tag->tag }}"
-                                            @if(in_array($tag->tag, $blog->tags->pluck('tag')->toArray())) selected @endif>
-                                            {{ $tag->tag }}
-                                        </option>
-                                    @endforeach
-                                </select>
+                                <div class="row pb-20 pt-20">
+                                    <div class="col-md-6">
+                                        <label for="formFile" class="input__field-text">Keywords</label>
+                                        <select class="tom-select-multiple w-full" name="keywords[]" multiple>
+                                            @foreach($keywords as $keyword)
+                                                <option value="{{ $keyword->keyword }}"
+                                                    @if(in_array($keyword->keyword, $blog->keywords->pluck('keyword')->toArray())) selected @endif>
+                                                    {{ $keyword->keyword }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('keywords')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="formFile" class="input__field-text">Tags</label>
+                                        <select class="tom-select-multiple w-full" name="tags[]" multiple>
+                                            @foreach($tags as $tag)
+                                                <option value="{{ $tag->tag }}"
+                                                    @if(in_array($tag->tag, $blog->tags->pluck('tag')->toArray())) selected @endif>
+                                                    {{ $tag->tag }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        @error('tags')
+                                            <span class="text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <button class="input__btn w-100"
-                                    type="submit">Edit Blog</button>
+                                    type="submit">Update Blog</button>
                                 </form>
                             </div>
                     </div>
@@ -107,5 +120,14 @@ Edit Blog
             </div>
         </div>
     </div>
+
+    <script>
+        document.getElementById('imageInput').onchange = function (event) {
+            const [file] = event.target.files;
+            if (file) {
+                document.getElementById('imagePreview').src = URL.createObjectURL(file);
+            }
+        };
+    </script>
 
 @endsection

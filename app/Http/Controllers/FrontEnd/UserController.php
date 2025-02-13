@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest; // Use the Form Request for validation
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\EditProfileRequest;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Booking;
@@ -26,54 +27,47 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
 
-        $users = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
-
-        $query = User::query();
+        $query = User::select('id', 'email', 'first_name', 'last_name', 'isd_code', 'phone_number');
     
-    // Filter by roles if any are selected
-    if ($request->has('roles') && is_array($request->input('roles'))) {
-        $query->whereHas('roles', function($q) use ($request) {
-            $q->whereIn('name', $request->input('roles'));
-        });
-    }
-
-    // Filter by search input (searching by name)
-    if ($request->filled('search')) {
-        $search = $request->input('search');
-        $searchTerms = explode(' ', $search); // Split the search input by spaces
-
-        // If there are multiple terms (e.g., first and last name)
-        if (count($searchTerms) == 2) {
-            $query->where('first_name', 'like', '%' . $searchTerms[0] . '%')
-                  ->where('last_name', 'like', '%' . $searchTerms[1] . '%');
-        } else {
-            // Single term search (first name or last name)
-            $query->where(function ($q) use ($search) {
-                $q->where('first_name', 'like', '%' . $search . '%')
-                  ->orWhere('last_name', 'like', '%' . $search . '%');
+        // Filter by roles if any are selected
+        if ($request->has('roles') && is_array($request->input('roles'))) {
+            $query->whereHas('roles', function($q) use ($request) {
+                $q->whereIn('name', $request->input('roles'));
             });
         }
-    }
 
-    // Retrieve the filtered users
-    $users = $query->paginate(10);
-    $roles = Role::all(); // Assuming you have a Role model
+        // Filter by search input (searching by name)
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $searchTerms = explode(' ', $search); // Split the search input by spaces
 
-                return view('frontend.users.index')->with('users', $users)->with('roles', $roles);
+            if (count($searchTerms) == 2) {
+                $query->where('first_name', 'like', '%' . e($searchTerms[0]) . '%')
+                      ->where('last_name', 'like', '%' . e($searchTerms[1]) . '%');
+            } else {
+                $query->where(function ($q) use ($search) {
+                    $q->where('first_name', 'like', '%' . e($search) . '%')
+                      ->orWhere('last_name', 'like', '%' . e($search) . '%');
+                });
             }
+        }
+
+        // Retrieve the filtered users
+        $users = $query->paginate(10);
+        $roles = Role::all(); // Assuming you have a Role model
+
+        return view('frontend.users.index')->with('users', $users)->with('roles', $roles);
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
 
         $roles = Role::all();
 
@@ -85,12 +79,8 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
-         // Check if the logged-in user has admin role
-         if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
 
-        // Begin a database transaction
         DB::beginTransaction();
         try {
             // Create the user and assign a role
@@ -103,23 +93,13 @@ class UserController extends Controller
                 'password' => bcrypt($request->password) // Use the user's password
             ])->assignRole($request->role);
 
-            // Commit the transaction after user creation
             DB::commit();
 
-          
-
-            // Redirect back with success message if user creation and email sending is successful
             return redirect()->route('users.index')->with('success', 'User stored successfully.');
-
         } catch (\Throwable $th) {
-            // Rollback the transaction if something goes wrong
             DB::rollBack();
-            // Log the error for debugging
-            Log::error('Error storing user: ' . $th->getMessage());
-            // Redirect back with error message
             return back()->with('error', 'Something went wrong while saving user data.');
         }
-    
     }
 
     /**
@@ -127,9 +107,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
 
         try {
             $user = User::findOrFail($id);
@@ -144,9 +123,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         $roles = Role::all();
         try {
             $user = User::findOrFail($id);
@@ -161,9 +139,7 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
 
         DB::beginTransaction();
         try {
@@ -194,9 +170,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
         
         DB::beginTransaction();
         try {
@@ -213,9 +188,8 @@ class UserController extends Controller
 
     public function member()
     {
-        if (!Auth::user()->hasRole('admin')) {
-            return redirect()->route('dashboard')->with('error', 'Access denied. Admins only.');
-        }
+        $this->authorizeAdmin();
+
 
         // $members = User::select('id', 'email', 'first_name', 'last_name','isd_code','phone_number')->paginate(10); // Paginate results
         $members = User::role('member')->paginate(10); // Paginate results
@@ -266,7 +240,7 @@ class UserController extends Controller
         return view('frontend.users.edit-profile')->with('current_user', $current_user);
     }
 
-    public function updateProfile(UserRequest $request, $id)
+    public function updateProfile(EditProfileRequest $request, $id)
     {
         DB::beginTransaction();
         try {
@@ -287,6 +261,13 @@ class UserController extends Controller
         } catch (\Throwable $th) {
             DB::rollBack();
             return back()->with('error', 'Something went wrong while updating the profile.');
+        }
+    }
+
+    private function authorizeAdmin()
+    {
+        if (!Auth::user()->hasRole('admin')) {
+            abort(403, 'Access denied.');
         }
     }
 }

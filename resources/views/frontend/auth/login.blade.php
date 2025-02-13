@@ -34,7 +34,7 @@ Sign
 
                         <div class="sign__action">
                             <div class="sign__forget">
-                                <span><a href="{{ route('forgot.password') }}">Forget Password?</a></span>
+                                <span><a href="{{ route('forgot.password') }}">Forgot Password?</a></span>
                             </div>
                         </div>
 
