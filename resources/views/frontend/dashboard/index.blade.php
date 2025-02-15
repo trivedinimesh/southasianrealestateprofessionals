@@ -236,6 +236,11 @@ Dashboard
                                 </div>
                             </div>
                         </div>
+
+                        <form action="{{ route('create.product') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button type="submit">Submit</button>
+                        </form>
                         <!-- <div class="row">
                             <div class="col-xxl-6 col-xl-6">
                                 <div class="card__wrapper">

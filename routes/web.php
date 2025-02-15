@@ -115,4 +115,6 @@ Route::middleware('auth')->group(function () {
     // Route::get('/admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
     // Route::put('/admin/gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('/admin/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+
+    Route::post('/admin/create-product', [EventsController::class, 'createProduct'])->name('create.product');
 });

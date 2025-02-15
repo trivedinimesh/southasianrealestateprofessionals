@@ -7,12 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Event;
 use App\Models\Booking;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\EventRequest;
 use Carbon\Carbon;
 use App\Models\Feature;
 use HTMLPurifier;
 use HTMLPurifier_Config;
+use Illuminate\Support\Facades\Http;
 
 class EventsController extends Controller
 {
@@ -85,6 +87,7 @@ class EventsController extends Controller
     {
         $request->merge(['is_active' => $request->has('is_active') ? 1 : 0]);
         $request->merge(['members_only' => $request->has('members_only') ? 1 : 0]);
+
         try {
             // Image upload
             $file_name = $this->uploadImage($request);  
@@ -108,6 +111,14 @@ class EventsController extends Controller
             $event->pincode = $request->pincode;
 
             $event->save();
+
+            // Create product for members in WaveApp
+            $this->createProduct($event, 'member');
+
+            // Create product for non-members in WaveApp, only if it's not members-only event
+            if (!$event->members_only) {
+                $this->createProduct($event, 'non_member');
+            }
 
             if ($request->filled('features')) {
                 $this->syncFeatures($event, $request['features']);
@@ -265,39 +276,286 @@ class EventsController extends Controller
     {
         $event = Event::findOrFail($eventId);
         $user = Auth::user();
-
+    
         // Check if the user has already booked
         if (Booking::where('event_id', $eventId)->where('user_id', $user->id)->exists()) {
             return redirect()->back()->with('error', 'You have already booked this event.');
         }
+    
+        // WaveApps API details
+        $waveApiKey = env('WAVEAPP_ACCESS_TOKEN');
+        $graphqlUrl = 'https://gql.waveapps.com/graphql/public';
+    
+        // Step 1: Check if the customer exists in WaveApps
+        $customerQuery = '
+            query($businessId: ID!, $customerEmail: String!) {
+                business(id: $businessId) {
+                    customers(email: $customerEmail) {
+                        edges {
+                            node {
+                                id
+                            }
+                        }
+                    }
+                }
+            }
+        ';
+    
+        $variables = [
+            "businessId" => env('WAVEAPP_BUSINESS_ID'),
+            "customerEmail" => $user->email
+        ];
+    
+        try {
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $waveApiKey,
+                'Content-Type' => 'application/json',
+            ])->post($graphqlUrl, [
+                'query' => $customerQuery,
+                'variables' => $variables
+            ]);
+        
+            if (!$response->successful()) {
+                throw new \Exception('Failed to fetch customer data from WaveApps.');
+            }
+        
+            $customerData = $response->json();
+        } catch (\Exception $e) {
+            \Log::error('WaveApps API Error: ' . $e->getMessage());
+            return back()->with('error', 'Unable to fetch customer details. Please try again.');
+        }
+        
+        $customerId = $customerData['data']['business']['customers']['edges'][0]['node']['id'] ?? null;
+    
+        // Step 2: Create a new customer in WaveApps if not found
+        if (!$customerId) {
+            $customerMutation = '
+                mutation ($input: CustomerCreateInput!) {
+                    customerCreate(input: $input) {
+                        didSucceed
+                        customer {
+                            id
+                        }
+                        inputErrors {
+                            message
+                        }
+                    }
+                }
+            ';
+    
+            $customerVariables = [
+                "input" => [
+                    "businessId" => env('WAVEAPP_BUSINESS_ID'),
+                    "name" => $user->first_name ?? '',
+                    "firstName" => $user->first_name ?? '',
+                    "lastName" => $user->last_name ?? '',
+                    "email" => $user->email,
+                    "address" => [
+                        "city" => "YourCity",
+                        "postalCode" => "H0H 0H0",
+                        "provinceCode" => "CA-NU",
+                        "countryCode" => "CA"
+                    ],
+                    "currency" => "CAD"
+                ]
+            ];
+            try {
+        
+                $customerCreateResponse = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $waveApiKey,
+                    'Content-Type' => 'application/json',
+                ])->post($graphqlUrl, [
+                    'query' => $customerMutation,
+                    'variables' => $customerVariables
+                ]);
 
-        // Generate a unique booking ID
+                if (!$customerCreateResponse->successful()) {
+                    throw new \Exception('Failed to create customer data from WaveApps.');
+                }
+            
+                $customerCreateData = $customerCreateResponse->json();
+            } catch (\Exception $e) {
+                \Log::error('WaveApps API Error: ' . $e->getMessage());
+                return back()->with('error', 'Unable to fetch customer details. Please try again.');
+            }
+    
+            
+            if ($customerCreateData['data']['customerCreate']['didSucceed']) {
+                $customerId = $customerCreateData['data']['customerCreate']['customer']['id'];
+            } else {
+                return redirect()->back()->with('error', 'Failed to create customer in WaveApps.');
+            }
+        }
+    
+        // Step 3: Create Invoice
+        $invoiceQuery = '
+            mutation ($input: InvoiceCreateInput!) {
+                invoiceCreate(input: $input) {
+                    didSucceed
+                    invoice {
+                        id
+                        viewUrl
+                    }
+                    inputErrors {
+                        message
+                    }
+                }
+            }
+        ';
+    
+        $invoiceVariables = [
+            'input' => [
+                'businessId' => env('WAVEAPP_BUSINESS_ID'),
+                'customerId' => $customerId,
+                'items' => [
+                    [
+                        'productId' => $event->wave_product_id,
+                    ]
+                ]
+            ]
+        ];
+        try {
+            $invoiceResponse = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $waveApiKey,
+                'Content-Type'  => 'application/json',
+            ])->post($graphqlUrl, [
+                'query' => $invoiceQuery,
+                'variables' => $invoiceVariables,
+            ]);
+
+            if (!$invoiceResponse->successful()) {
+                throw new \Exception('Failed to create invoice from WaveApps.');
+            }
+        
+            $invoiceData = $invoiceResponse->json();
+
+        } catch (\Exception $e) {
+            \Log::error('WaveApps API Error: ' . $e->getMessage());
+            return back()->with('error', 'Unable to create invoice. Please try again.');
+        }
+
+        if (!$invoiceData['data']['invoiceCreate']['didSucceed']) {
+            return back()->with('error', 'Failed to create invoice.');
+        }
+    
+        $invoiceId = $invoiceData['data']['invoiceCreate']['invoice']['id'];
+        $invoiceUrl = $invoiceData['data']['invoiceCreate']['invoice']['viewUrl'];
+    
+        // Step 4: Approve Invoice
+        $invoiceApproveQuery = '
+            mutation ($input: InvoiceApproveInput!) {
+                invoiceApprove(input: $input) {
+                    didSucceed
+                    inputErrors {
+                        message
+                    }
+                }
+            }
+        ';
+    
+        $invoiceApproveVariables = [
+            'input' => [
+                'invoiceId' => $invoiceId
+            ]
+        ];
+    
+        try{
+            $approveResponse = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $waveApiKey,
+                'Content-Type'  => 'application/json',
+            ])->post($graphqlUrl, [
+                'query'     => $invoiceApproveQuery,
+                'variables' => $invoiceApproveVariables,
+            ]);
+
+            if (!$approveResponse->successful()) {
+                throw new \Exception('Failed to approve invoice from WaveApps.');
+            }
+        
+            $approveData = $approveResponse->json();
+            
+        } catch (\Exception $e) {
+            \Log::error('WaveApps API Error: ' . $e->getMessage());
+            return back()->with('error', 'Unable to approve invoice. Please try again.');
+        }
+
+        if (!$approveData['data']['invoiceApprove']['didSucceed']) {
+            redirect()->back()->with('error', 'Failed to approve invoice.');
+        }
+    
+        $invoiceSendQuery = '
+        mutation ($input: InvoiceSendInput!) {
+            invoiceSend(input: $input) {
+                didSucceed
+                inputErrors {
+                    message
+                    code
+                    path
+                }
+            }
+        }
+    ';
+    
+    $invoiceSendVariables = [
+        'input' => [
+            'invoiceId' => $invoiceId,
+            'to' => [$user->email],
+            'message' => 'Thank you for booking the event. Please find your invoice attached.',
+            'attachPDF' => true,
+        ]
+    ];
+    
+    try {
+        $sendResponse = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $waveApiKey,
+            'Content-Type' => 'application/json',
+        ])->post($graphqlUrl, [
+            'query' => $invoiceSendQuery,
+            'variables' => $invoiceSendVariables,
+        ]);
+    
+        if (!$sendResponse->successful()) {
+            throw new \Exception('Failed to send invoice email from WaveApps.');
+        }
+    
+        $sendData = $sendResponse->json();
+        } catch (\Exception $e) {
+            \Log::error('WaveApps API Error: ' . $e->getMessage());
+            return back()->with('error', 'Unable to send invoice email. Please try again.');
+        }
+        
+        if (!$sendData['data']['invoiceSend']['didSucceed']) {
+            return back()->with('error', 'Failed to send invoice email.');
+        }
+
+            // Step 5: Store Booking
+            
+        // Step 5: Store Booking
         $bookingId = 'SAREP-' . strtoupper(uniqid());
-
-        // Calculate the amount with a membership discount (if applicable)
-        $isMember = $user->hasRole('member'); // Assuming a 'is_subscribed' flag in users table
-        $amount = $isMember ? $event->price_member : $event->price_non_member; 
-
-        // Store the booking
+        $amount = $user->hasRole('member') ? $event->price_member : $event->price_non_member;
+    
         $booking = Booking::create([
             'user_id' => $user->id,
             'event_id' => $eventId,
             'booking_id' => $bookingId,
             'amount' => $amount,
-            'is_member' => $isMember,
+            'is_member' => $user->hasRole('member'),
         ]);
+    
+        // Step 6: Store Customer ID in User Table
+        $user->update(['wave_customer_id' => $customerId]);
+    
 
-
-        $admins = \App\Models\User::role('admin')->get(); // Get all users with the "admin" role
+        // Step 7: Notify Admins & Users
+        $admins = \App\Models\User::role('admin')->get();
         foreach ($admins as $admin) {
             \Mail::to($admin->email)->send(new \App\Mail\AdminBookingNotification($booking));
         }
-        $user=$booking->user;
         \Mail::to($user->email)->send(new \App\Mail\UserBookingNotification($booking));
-
-
+    
         return redirect()->route('booking-confirmation')->with('success', 'Event booked successfully! Your booking ID is ' . $bookingId);
     }
+    
 
     public function bookingConfirmation()
     {
@@ -440,6 +698,83 @@ class EventsController extends Controller
 
         // Purify the HTML content
         return $purifier->purify($html);
+    }
+
+    public function createProduct($event, $type)
+    {
+        $waveApiKey = env('WAVEAPP_ACCESS_TOKEN'); // Store API Key in .env
+        $graphqlUrl = 'https://gql.waveapps.com/graphql/public';
+
+        // Determine the price based on type (member or non-member)
+        $price = $type === 'member' ? $event->price_member : $event->price_non_member;
+        $name = $type === 'member' ? $event->title . ' - Member' : $event->title . ' - Non-Member';
+        $description = $event->details;
+
+        // Define mutation and variables
+        $mutation = '
+            mutation ($input: ProductCreateInput!) {
+                productCreate(input: $input) {
+                    didSucceed
+                    inputErrors {
+                        code
+                        message
+                        path
+                    }
+                    product {
+                        id
+                        name
+                        description
+                        unitPrice
+                        incomeAccount {
+                            id
+                            name
+                        }
+                        expenseAccount {
+                            id
+                            name
+                        }
+                        isSold
+                        isBought
+                        isArchived
+                        createdAt
+                        modifiedAt
+                    }
+                }
+            }
+        ';
+
+        $variables = [
+            "input" => [
+                "businessId" => env('WAVEAPP_BUSINESS_ID'), // Your Business ID
+                "name" => $name, // Product name based on type (Member/Non-Member)
+                "description" => strip_tags($description), // Use event details as the product description
+                "unitPrice" => $price, // Dynamic price based on member/non-member
+                "incomeAccountId" => env('WAVEAPP_INCOME_ACCOUNT_ID'), // Your Income Account ID
+            ]
+        ];
+
+        // Send GraphQL request
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $waveApiKey,
+            'Content-Type'  => 'application/json',
+        ])->post($graphqlUrl, [
+            'query' => $mutation,
+            'variables' => $variables
+        ]);
+
+        $result = $response->json();
+
+        if (isset($result['data']['productCreate']['didSucceed']) && $result['data']['productCreate']['didSucceed']) {
+            return response()->json([
+                'success' => true,
+                'product' => $result['data']['productCreate']['product']
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'errors' => $result
+            ], 400);
+        }
     }
 
 }
