@@ -43,8 +43,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/events', [EventsController::class, 'index'])->name('events');
 Route::get('/event-detail/{event}', [EventsController::class, 'eventDetail'])->name('event-detail');
+Route::get('/processing/{eventId}/{invoiceId}', [EventsController::class, 'processingPayment'])->name('event-processing');
 Route::get('/booking-confirmation', [EventsController::class, 'bookingConfirmation'])->name('booking-confirmation');
 
+Route::get('/check-payment-status/{eventId}/{invoiceId}', [EventsController::class, 'checkPaymentStatus'])->name('check-payment-status');
 
 Route::get('/blogs/{request?}', [BlogController::class, 'index'])->name('blogs');
 Route::get('/blog-detail/{blog}', [BlogController::class, 'blogDetail'])->name('blog-detail');
@@ -115,4 +117,6 @@ Route::middleware('auth')->group(function () {
     // Route::get('/admin/gallery/{id}/edit', [GalleryController::class, 'edit'])->name('gallery.edit');
     // Route::put('/admin/gallery/{id}', [GalleryController::class, 'update'])->name('gallery.update');
     Route::delete('/admin/gallery/{id}', [GalleryController::class, 'destroy'])->name('gallery.destroy');
+
+    Route::post('/admin/create-product', [EventsController::class, 'createProduct'])->name('create.product');
 });
