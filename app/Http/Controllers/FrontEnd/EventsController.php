@@ -15,6 +15,7 @@ use App\Models\Feature;
 use HTMLPurifier;
 use HTMLPurifier_Config;
 use Illuminate\Support\Facades\Http;
+use App\Jobs\CheckPaymentStatus;
 
 class EventsController extends Controller
 {
@@ -113,16 +114,27 @@ class EventsController extends Controller
             $event->save();
 
             // Create product for members in WaveApp
-            $this->createProduct($event, 'member');
+            $waveProduct = $this->createProduct($event, 'member');
 
             // Create product for non-members in WaveApp, only if it's not members-only event
             if (!$event->members_only) {
-                $this->createProduct($event, 'non_member');
+                $waveProduct = $this->createProduct($event, 'non_member');
             }
 
             if ($request->filled('features')) {
                 $this->syncFeatures($event, $request['features']);
             }
+
+            $waveProductData = json_decode($waveProduct->getContent(), true);
+
+            if (isset($waveProductData['product']['id'])) {
+                $productId = $waveProductData['product']['id'];
+            } else {
+                // Handle the error: maybe log it or return with an error message
+                return back()->with('error', 'Failed to create member product in WaveApp.');
+            }
+            
+            $event->update(['wave_product_id' => $productId]);
 
             $users = \App\Models\User::role('user')->get(); // Get all users with the "admin" role
 
@@ -140,6 +152,7 @@ class EventsController extends Controller
             return back()->with('error', 'Failed to create event.');
         }
     }
+
     private function syncFeatures(Event $event, array $features)
     {
         if (!empty($features)) {
@@ -206,7 +219,9 @@ class EventsController extends Controller
             // Retrieve the existing event by ID
             $event = Event::findOrFail($id);
 
-            $event->image = $this->uploadImage($request);
+            if ($request->hasFile('image')) {
+                $event->image = $this->uploadImage($request, $event->image);
+            }
     
             // Update the event fields
             $event->title = $request->title;
@@ -382,6 +397,8 @@ class EventsController extends Controller
             
             if ($customerCreateData['data']['customerCreate']['didSucceed']) {
                 $customerId = $customerCreateData['data']['customerCreate']['customer']['id'];
+                
+                $user->update(['wave_customer_id' => $customerId]);
             } else {
                 return redirect()->back()->with('error', 'Failed to create customer in WaveApps.');
             }
@@ -398,6 +415,8 @@ class EventsController extends Controller
                     }
                     inputErrors {
                         message
+                        code
+                        path
                     }
                 }
             }
@@ -493,32 +512,31 @@ class EventsController extends Controller
                     path
                 }
             }
-        }
-    ';
+        }';
     
-    $invoiceSendVariables = [
-        'input' => [
-            'invoiceId' => $invoiceId,
-            'to' => [$user->email],
-            'message' => 'Thank you for booking the event. Please find your invoice attached.',
-            'attachPDF' => true,
-        ]
-    ];
+        $invoiceSendVariables = [
+            'input' => [
+                'invoiceId' => $invoiceId,
+                'to' => [$user->email],
+                'message' => 'Thank you for booking the event. Please find your invoice attached.',
+                'attachPDF' => true,
+            ]
+        ];
     
-    try {
-        $sendResponse = Http::withHeaders([
-            'Authorization' => 'Bearer ' . $waveApiKey,
-            'Content-Type' => 'application/json',
-        ])->post($graphqlUrl, [
-            'query' => $invoiceSendQuery,
-            'variables' => $invoiceSendVariables,
-        ]);
-    
-        if (!$sendResponse->successful()) {
-            throw new \Exception('Failed to send invoice email from WaveApps.');
-        }
-    
-        $sendData = $sendResponse->json();
+        try {
+            $sendResponse = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $waveApiKey,
+                'Content-Type' => 'application/json',
+            ])->post($graphqlUrl, [
+                'query' => $invoiceSendQuery,
+                'variables' => $invoiceSendVariables,
+            ]);
+        
+            if (!$sendResponse->successful()) {
+                throw new \Exception('Failed to send invoice email from WaveApps.');
+            }
+        
+            $sendData = $sendResponse->json();
         } catch (\Exception $e) {
             \Log::error('WaveApps API Error: ' . $e->getMessage());
             return back()->with('error', 'Unable to send invoice email. Please try again.');
@@ -528,34 +546,101 @@ class EventsController extends Controller
             return back()->with('error', 'Failed to send invoice email.');
         }
 
-            // Step 5: Store Booking
-            
-        // Step 5: Store Booking
+        return redirect()->route('event-processing', [$event->id, 'invoiceId' => $invoiceId]);
+
+    }
+
+
+    public function checkPaymentStatus($eventId, $invoiceId)
+    {
+
+        // Fetch the event
+        $event = Event::findOrFail($eventId);
+
+        $waveApiKey = env('WAVEAPP_ACCESS_TOKEN'); // Store API Key in .env
+        $graphqlUrl = 'https://gql.waveapps.com/graphql/public';
+        $businessId = env('WAVEAPP_BUSINESS_ID');
+
+        // Construct the GraphQL query
+        $query = '
+        query ($businessId: ID!, $invoiceId: ID!) {
+            business(id: $businessId) {
+                invoice(id: $invoiceId) {
+                    status
+                }
+            }
+        }';
+
+        // GraphQL Variables
+        $variables = [
+            'businessId' => $businessId, // Assuming you have a business_id in your Event model
+            'invoiceId' => $invoiceId,
+        ];
+
+        $response = Http::withHeaders([
+            'Authorization' => 'Bearer ' . $waveApiKey,
+            'Content-Type'  => 'application/json',
+        ])->post($graphqlUrl, [
+            'query' => $query,
+            'variables' => $variables
+        ]);
+
+        $status = $response->json('data.business.invoice.status');
+
+        if ($status == "PAID") {
+            // Trigger booking creation if status is PAID
+            $user = auth()->user();
+            $this->createBooking($event, $user);
+
+            return response()->json(['status' => 'PAID']);
+        }
+
+        return response()->json(['status' => 'PENDING']);
+    }
+
+    private function createBooking($event, $user)
+    {
         $bookingId = 'SAREP-' . strtoupper(uniqid());
         $amount = $user->hasRole('member') ? $event->price_member : $event->price_non_member;
-    
+
+        // Create the booking
         $booking = Booking::create([
             'user_id' => $user->id,
-            'event_id' => $eventId,
+            'event_id' => $event->id,
             'booking_id' => $bookingId,
             'amount' => $amount,
             'is_member' => $user->hasRole('member'),
         ]);
-    
-        // Step 6: Store Customer ID in User Table
-        $user->update(['wave_customer_id' => $customerId]);
-    
 
-        // Step 7: Notify Admins & Users
+        // Notify admins & users
         $admins = \App\Models\User::role('admin')->get();
         foreach ($admins as $admin) {
             \Mail::to($admin->email)->send(new \App\Mail\AdminBookingNotification($booking));
         }
         \Mail::to($user->email)->send(new \App\Mail\UserBookingNotification($booking));
-    
+
+        // Redirect to booking confirmation route
         return redirect()->route('booking-confirmation')->with('success', 'Event booked successfully! Your booking ID is ' . $bookingId);
     }
-    
+
+
+
+
+    public function processingPayment(Request $request, String $eventId, String $invoiceId)
+    {
+        // Get the user's data and the event
+        $user = $request->user(); // Assuming you're using Laravel authentication
+        $event = Event::find($eventId);
+
+        // Get the invoice ID dynamically (e.g., from the event)
+        $invoiceId = $invoiceId; // Assuming you have an invoice_id field
+
+        // Dispatch the job to check payment status
+        // CheckPaymentStatus::dispatch($eventId, $invoiceId, $user->id);
+
+        // Return a view or a response to inform the user that the payment is being processed
+        return view('frontend.events.payment-processing', ['event' => $event, 'user' => $user, 'invoiceId' => $invoiceId]);
+    }
 
     public function bookingConfirmation()
     {

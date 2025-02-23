@@ -43,8 +43,10 @@ Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/events', [EventsController::class, 'index'])->name('events');
 Route::get('/event-detail/{event}', [EventsController::class, 'eventDetail'])->name('event-detail');
+Route::get('/processing/{eventId}/{invoiceId}', [EventsController::class, 'processingPayment'])->name('event-processing');
 Route::get('/booking-confirmation', [EventsController::class, 'bookingConfirmation'])->name('booking-confirmation');
 
+Route::get('/check-payment-status/{eventId}/{invoiceId}', [EventsController::class, 'checkPaymentStatus'])->name('check-payment-status');
 
 Route::get('/blogs/{request?}', [BlogController::class, 'index'])->name('blogs');
 Route::get('/blog-detail/{blog}', [BlogController::class, 'blogDetail'])->name('blog-detail');
