@@ -97,7 +97,7 @@ Sponsor
                                     </div>
                                 </td>
                                 <td>
-                                    <img class="" style="max-width:60px;" src="{{ asset('images/sponsors/'.$sponsor->image)}}" alt="">
+                                    <img class="" style="max-width:120px;" src="{{ asset('images/sponsors/'.$sponsor->image)}}" alt="">
                                 </td>
                                 <td>
                                     <div>

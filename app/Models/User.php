@@ -25,6 +25,7 @@ class User extends Authenticatable
         'phone_number',
         'email',
         'password',
+        'wave_customer_id',
     ];
 
     /**
