@@ -219,7 +219,9 @@ class EventsController extends Controller
             // Retrieve the existing event by ID
             $event = Event::findOrFail($id);
 
-            $event->image = $this->uploadImage($request);
+            if ($request->hasFile('image')) {
+                $event->image = $this->uploadImage($request, $event->image);
+            }
     
             // Update the event fields
             $event->title = $request->title;
